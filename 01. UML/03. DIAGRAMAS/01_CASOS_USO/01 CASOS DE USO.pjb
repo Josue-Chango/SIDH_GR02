@@ -531,7 +531,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>CU_02_Gestionar_Usuarios_Roles</a:Code>
 <a:CreationDate>1793579694</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793646388</a:ModificationDate>
+<a:ModificationDate>1793645846</a:ModificationDate>
 <a:Modifier>Usuario</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/_RESPALDO/Antes_Corregir_ERS_2026-11-02/Modelos_corregidos/CU_02_Gestionar_Usuarios_Roles.oom</a:Location>
 <a:Extension>oom</a:Extension>
@@ -544,7 +544,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>CU_03_Administrar_Catalogos</a:Code>
 <a:CreationDate>1793579694</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793646388</a:ModificationDate>
+<a:ModificationDate>1793645846</a:ModificationDate>
 <a:Modifier>Usuario</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/_RESPALDO/Antes_Corregir_ERS_2026-11-02/Modelos_corregidos/CU_03_Administrar_Catalogos.oom</a:Location>
 <a:Extension>oom</a:Extension>
@@ -557,7 +557,7 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>CU_04_Registrar_Pacientes</a:Code>
 <a:CreationDate>1793579694</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793646388</a:ModificationDate>
+<a:ModificationDate>1793645846</a:ModificationDate>
 <a:Modifier>Usuario</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/_RESPALDO/Antes_Corregir_ERS_2026-11-02/Modelos_corregidos/CU_04_Registrar_Pacientes.oom</a:Location>
 <a:Extension>oom</a:Extension>
@@ -596,8 +596,8 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>CU_07_Consultar_HCE</a:Code>
 <a:CreationDate>1793579694</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793579694</a:ModificationDate>
-<a:Modifier>josue</a:Modifier>
+<a:ModificationDate>1793645846</a:ModificationDate>
+<a:Modifier>Usuario</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/CU_07_Consultar_HCE.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>3AE90F59-B6FF-5801-9357-21BFAABC2AD3</a:ModelDocument.ModelID>
@@ -609,8 +609,8 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>CU_08_Registrar_Consulta</a:Code>
 <a:CreationDate>1793579694</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793579694</a:ModificationDate>
-<a:Modifier>josue</a:Modifier>
+<a:ModificationDate>1793645846</a:ModificationDate>
+<a:Modifier>Usuario</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/CU_08_Registrar_Consulta.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>C28C055A-0583-5BCA-ABCD-59583E735E23</a:ModelDocument.ModelID>
@@ -622,8 +622,8 @@ Shadow=0</a:DisplayPreferences>
 <a:Code>CU_09_Registrar_Signos_Vitales</a:Code>
 <a:CreationDate>1793579694</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793579694</a:ModificationDate>
-<a:Modifier>josue</a:Modifier>
+<a:ModificationDate>1793645846</a:ModificationDate>
+<a:Modifier>Usuario</a:Modifier>
 <a:Location>file:///%[PRJ_ROOT_DIR]%/CU_09_Registrar_Signos_Vitales.oom</a:Location>
 <a:Extension>oom</a:Extension>
 <a:ModelDocument.ModelID>72C73C1A-7A25-58F4-881C-E38708445348</a:ModelDocument.ModelID>

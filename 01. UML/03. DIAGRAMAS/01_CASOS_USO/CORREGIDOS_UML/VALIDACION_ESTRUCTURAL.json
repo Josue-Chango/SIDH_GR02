@@ -1,0 +1,259 @@
+{
+  "date": "2026-11-02",
+  "native_models": 24,
+  "diagrams": 29,
+  "catalog_cases": 23,
+  "requirements": 74,
+  "includes": 13,
+  "pdf_pages": 29,
+  "svg_files": 29,
+  "broken_references": 0,
+  "unrepresented_semantic_actors_or_cases": 0,
+  "graphic_semantic_endpoint_mismatches": 0,
+  "actors_inside_subject": 0,
+  "cases_outside_subject": 0,
+  "include_cycles": 0,
+  "errors": [],
+  "files": [
+    {
+      "file": "CU_01_Iniciar_Sesion.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 5,
+      "associations": 3,
+      "includes": 2,
+      "sha256": "042431af4f9145e5caefa98aa23658443a25e9ad1a7ae33874fb6aae513b1d7c"
+    },
+    {
+      "file": "CU_02_Gestionar_Usuarios_Roles.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 5,
+      "associations": 7,
+      "includes": 0,
+      "sha256": "a080a1cf0abc1c6544a540a731bfde83336ab6fe248ffc646585bbfb5a3ba8b3"
+    },
+    {
+      "file": "CU_03_Administrar_Catalogos.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 2,
+      "associations": 2,
+      "includes": 0,
+      "sha256": "5780952b9484ba5c639a3327288e41d9d2aad8879628271193ac6258bf64a00c"
+    },
+    {
+      "file": "CU_04_Registrar_Pacientes.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 6,
+      "associations": 7,
+      "includes": 1,
+      "sha256": "a7dde8f6eb1244d166221cda259e69c5c82223e0258f7cc3cfada9886dbb2646"
+    },
+    {
+      "file": "CU_05_Gestionar_Citas.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 7,
+      "associations": 7,
+      "includes": 2,
+      "sha256": "f1b9d0250bd1e3446b160eb8c44712058a964c5e4d43d3df1b105c9826586e35"
+    },
+    {
+      "file": "CU_06_Admitir_Pacientes.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 3,
+      "associations": 4,
+      "includes": 0,
+      "sha256": "26ec6ea1a23e18d70ff2931a4939c0324bbd0eff88f5bd6ae6a769ccbc9c15b5"
+    },
+    {
+      "file": "CU_07_Consultar_HCE.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 3,
+      "cases": 3,
+      "associations": 5,
+      "includes": 0,
+      "sha256": "653ce9bf6db3a4015b9160990c70c05665bd5a70a8025410629e21cbf373dd84"
+    },
+    {
+      "file": "CU_08_Registrar_Consulta.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 7,
+      "associations": 7,
+      "includes": 0,
+      "sha256": "a26e5b1522d05181bcc97f7c5b15d691a65a9e1fb7dbe31b2ce69fe29846812f"
+    },
+    {
+      "file": "CU_09_Registrar_Signos_Vitales.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 2,
+      "associations": 2,
+      "includes": 0,
+      "sha256": "f2a110cabb73477377a9c8509d1e784528a81a1c10c88d8d4898cd49c4bf8b4c"
+    },
+    {
+      "file": "CU_10_Gestionar_Urgencias.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 4,
+      "cases": 5,
+      "associations": 9,
+      "includes": 0,
+      "sha256": "684b0341a22758149289d8168b5f261de42ccae0857b84acb3276f5d428695c1"
+    },
+    {
+      "file": "CU_11_Solicitar_Laboratorio.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 2,
+      "associations": 2,
+      "includes": 0,
+      "sha256": "4490240fe76321eceeef81490434d1180f67f965a05d92ae0ef84d7d17836fb3"
+    },
+    {
+      "file": "CU_12_Registrar_Resultados_Lab.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 4,
+      "associations": 5,
+      "includes": 0,
+      "sha256": "a3c4923f21aea185f4d17a272f06043d9a7d9d02fd18ce140b636b0e33951a5a"
+    },
+    {
+      "file": "CU_13_Gestionar_Imagenologia.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 6,
+      "associations": 7,
+      "includes": 0,
+      "sha256": "357a3442d2e76b84295e976cdbc0219c4ade1469c8ab163a58b155c82e8c42b2"
+    },
+    {
+      "file": "CU_14_Gestionar_Recetas.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 3,
+      "associations": 5,
+      "includes": 0,
+      "sha256": "6b79b2fab5d69351f70971efe0e50327622751b5b444a43b93aa0186fb6328d9"
+    },
+    {
+      "file": "CU_15_Dispensar_Medicamentos.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 4,
+      "associations": 1,
+      "includes": 3,
+      "sha256": "1bcb05894f8506e90dd45dfa63ee24f314930c8899b298152bb9aea0338a8ba5"
+    },
+    {
+      "file": "CU_16_Gestionar_Inventario.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 5,
+      "associations": 5,
+      "includes": 0,
+      "sha256": "7647bc83cea2f7bbff5cdaf03d142fa108f8126b53d6843e2f4596478ba87ad0"
+    },
+    {
+      "file": "CU_17_Gestionar_Camas.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 6,
+      "associations": 8,
+      "includes": 2,
+      "sha256": "c7817872435e05a3ec06c13bd63f0a66dd7f9f3315d13876504a41d615162056"
+    },
+    {
+      "file": "CU_18_Gestionar_Quirofano.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 5,
+      "associations": 7,
+      "includes": 1,
+      "sha256": "b2d6b840c895a158118bbf27250d4fb893136a0ace3f85a3e5c40b6ca569dd27"
+    },
+    {
+      "file": "CU_19_Registrar_Alta.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 2,
+      "associations": 1,
+      "includes": 1,
+      "sha256": "25da9e6499e4121e35a6c7c6507699a77d0acbfb7534fc4ddc66ae67d3e8eded"
+    },
+    {
+      "file": "CU_20_Generar_Facturas.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 1,
+      "cases": 3,
+      "associations": 2,
+      "includes": 1,
+      "sha256": "26ed0d97645fcd385eaa07bfd2a365ad1acece31d4463c41cc727d4e546e0022"
+    },
+    {
+      "file": "CU_21_Registrar_Pagos.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 2,
+      "cases": 3,
+      "associations": 4,
+      "includes": 0,
+      "sha256": "c7b55ff5604299ee1639bbe24015706f8c008ec45faa876f761513b271533e74"
+    },
+    {
+      "file": "CU_22_Generar_Reportes.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 6,
+      "cases": 6,
+      "associations": 19,
+      "includes": 0,
+      "sha256": "0b5b4edcf6e50b1f5a48aa4db1837c2a0a9729d3b781ee5184ce88393ec46046"
+    },
+    {
+      "file": "CU_23_Consultar_Auditoria.oom",
+      "models": 1,
+      "diagrams": 1,
+      "actors": 3,
+      "cases": 1,
+      "associations": 3,
+      "includes": 0,
+      "sha256": "1ad9f81ac0085bffa8b08f81f334ef87c5c746e7cd2fd966427b2fff81117025"
+    },
+    {
+      "file": "CU_SIGHO_General.oom",
+      "models": 1,
+      "diagrams": 6,
+      "actors": 17,
+      "cases": 23,
+      "associations": 45,
+      "includes": 0,
+      "sha256": "b8c80028ca39268631ec2498c2db57fa1f0a4d2d7f222e9642c1f708252ff71b"
+    }
+  ]
+}
