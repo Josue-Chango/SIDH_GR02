@@ -1,0 +1,49 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_CU22.04 Generar informe de farmacia
+actor "Farmacéutico" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "seguridad" as sec
+control "reglas" as rules
+database "datos" as repo
+control "auditoria" as aud
+note over actor, aud
+Precondición: Usuario identificado; objeto de trabajo y datos de entrada disponibles. La sesión y los permisos se comprueban en servidor.
+Objetivos: CU-22.04
+ERS: RF-AUD-001, RF-AUD-003, RF-AUD-004, RF-INF-004, RF-INF-007, RF-SEG-003, RF-SEG-004
+end note
+actor -> ui : Generar informe de farmacia (datos o filtros)
+ui -> app : Ejecutar solicitud con contexto de usuario
+app -> sec : Comprobar sesión, permiso de operación y alcance del objeto
+sec --> app : Decisión de autorización y ámbito permitido
+alt [solicitud autorizada]
+app -> repo : Consultar existencias, movimientos, mínimos y vencimientos
+repo --> app : Datos vigentes del ámbito permitido y versión aplicable
+app -> rules : Agrupar datos de farmacia según filtros autorizados
+rules --> app : Datos o archivo del resultado autorizado y validación aplicada
+alt [datos y reglas válidos]
+opt [la política exige auditar esta consulta o exportación]
+app -> aud : Registrar acceso o exportación: usuario, objeto, fecha y resultado
+aud --> app : Constancia protegida registrada
+end
+app --> ui : Informe de farmacia autorizado; conjunto vacío si no hay datos
+ui --> actor : Informe de farmacia autorizado; conjunto vacío si no hay datos
+else [else]
+app --> ui : Informar validaciones pendientes; no efectuar cambios
+ui --> actor : Informar validaciones pendientes; no efectuar cambios
+end
+else [else]
+opt [denegación relevante según política]
+app -> aud : Registrar acceso denegado sin secretos
+aud --> app : Constancia protegida registrada
+end
+app --> ui : Acceso denegado; nueva autenticación si la sesión venció
+ui --> actor : Acceso denegado; nueva autenticación si la sesión venció
+end
+note over actor, aud
+Existencias, movimientos, próximos vencimientos y niveles mínimos según los permisos.
+end note
+@enduml

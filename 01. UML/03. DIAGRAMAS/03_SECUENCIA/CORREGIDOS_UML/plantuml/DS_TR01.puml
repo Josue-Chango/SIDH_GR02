@@ -1,0 +1,27 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_TR01 Rechazar solicitud con sesión expirada
+actor "Usuario del sistema" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "seguridad" as sec
+database "datos" as repo
+note over actor, repo
+Precondición: La sesión presentada ha superado el límite institucional de inactividad.
+Objetivos: Regla transversal
+ERS: RF-SEG-004, RF-AUD-001
+end note
+actor -> ui : Solicitar función protegida tras inactividad
+ui -> app : Procesar solicitud con sesión presentada
+app -> sec : Comprobar vigencia e inactividad de sesión
+sec -> repo : Invalidar sesión expirada y conservar evento según política
+repo --> sec : Sesión inactiva; sin autorización para la solicitud
+sec --> app : Autorización denegada por sesión expirada
+app --> ui : Exigir nueva autenticación; operación de negocio no ejecutada
+ui --> actor : Exigir nueva autenticación; operación de negocio no ejecutada
+note over actor, repo
+Regla transversal del sistema; no agrega un objetivo de negocio al catálogo de casos de uso.
+end note
+@enduml

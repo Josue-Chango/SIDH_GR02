@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1195" height="1053" viewBox="0 0 1195 1053" role="img" aria-labelledby="title desc">
+<title id="title">DS_TR02 Proteger evidencia frente a usuario ordinario</title>
+<desc id="desc">Secuencia UML. Llamadas síncronas, respuestas, activaciones y alternativas con guardas. Regla transversal del sistema; no agrega un objetivo de negocio al catálogo de casos de uso.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<text x="45" y="45" font-family="Arial,sans-serif" font-size="23" font-weight="700" text-anchor="start" fill="#0f172a">DS_TR02 Proteger evidencia frente a usuario ordinario</text>
+<text x="45" y="82" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Caso de uso: Regla transversal</text>
+<text x="45" y="100" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Requisitos: RF-AUD-003, RF-AUD-004</text>
+<text x="45" y="118" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Actor de esta secuencia: Usuario del sistema</text>
+<rect x="25" y="193" width="1145" height="644" fill="white" stroke="#475569" stroke-width="1"/>
+<text x="36" y="209" font-family="Arial,sans-serif" font-size="11" font-weight="700" text-anchor="start" fill="#0f172a">sd  DS_TR02</text>
+<line x1="135" y1="295" x2="135" y2="829" stroke="#94a3b8" stroke-width="1.1" stroke-dasharray="6 5"/>
+<line x1="365" y1="295" x2="365" y2="829" stroke="#94a3b8" stroke-width="1.1" stroke-dasharray="6 5"/>
+<line x1="595" y1="295" x2="595" y2="829" stroke="#94a3b8" stroke-width="1.1" stroke-dasharray="6 5"/>
+<line x1="825" y1="295" x2="825" y2="829" stroke="#94a3b8" stroke-width="1.1" stroke-dasharray="6 5"/>
+<line x1="1055" y1="295" x2="1055" y2="829" stroke="#94a3b8" stroke-width="1.1" stroke-dasharray="6 5"/>
+<rect x="360" y="381" width="10" height="407" fill="#eff6ff" stroke="#64748b" stroke-width="1"/>
+<rect x="590" y="430" width="10" height="293" fill="#eff6ff" stroke="#64748b" stroke-width="1"/>
+<rect x="820" y="495" width="10" height="65" fill="#eff6ff" stroke="#64748b" stroke-width="1"/>
+<rect x="1050" y="609" width="10" height="49" fill="#eff6ff" stroke="#64748b" stroke-width="1"/>
+<line x1="135" y1="381" x2="360" y2="381" stroke="#334155" stroke-width="1.1"/>
+<polyline points="351,377 360,381 351,385" fill="#334155" stroke="#334155" stroke-width="1.1"/>
+<rect x="158.07373046875" y="346" width="178.85253906250003" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="247.5" y="358" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">1. Intentar modificar o eliminar</text>
+<rect x="181.899658203125" y="362" width="131.20068359375" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="247.5" y="374" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">evidencia de auditoría</text>
+<line x1="370" y1="430" x2="590" y2="430" stroke="#334155" stroke-width="1.1"/>
+<polyline points="581,426 590,430 581,434" fill="#334155" stroke="#334155" stroke-width="1.1"/>
+<rect x="386.590576171875" y="411" width="186.81884765625003" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="480.0" y="423" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">2. Solicitar cambio de evidencia</text>
+<line x1="600" y1="495" x2="820" y2="495" stroke="#334155" stroke-width="1.1"/>
+<polyline points="811,491 820,495 811,499" fill="#334155" stroke="#334155" stroke-width="1.1"/>
+<rect x="619.48828125" y="460" width="181.02343750000003" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="710.0" y="472" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">3. Comprobar privilegios sobre</text>
+<rect x="655.965087890625" y="476" width="108.06982421875001" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="710.0" y="488" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">bitácora protegida</text>
+<line x1="820" y1="560" x2="600" y2="560" stroke="#334155" stroke-width="1.1" stroke-dasharray="6 5"/>
+<polyline points="609,556 600,560 609,564" fill="none" stroke="#334155" stroke-width="1.1"/>
+<rect x="632.834228515625" y="525" width="154.33154296875" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="710.0" y="537" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">4. Denegado para usuario</text>
+<rect x="682.707763671875" y="541" width="54.58447265625001" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="710.0" y="553" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">ordinario</text>
+<line x1="600" y1="609" x2="1050" y2="609" stroke="#334155" stroke-width="1.1"/>
+<polyline points="1041,605 1050,609 1041,613" fill="#334155" stroke="#334155" stroke-width="1.1"/>
+<rect x="669.78662109375" y="590" width="310.4267578125" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="825.0" y="602" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">5. Registrar intento relevante de alteración denegada</text>
+<line x1="1050" y1="658" x2="600" y2="658" stroke="#334155" stroke-width="1.1" stroke-dasharray="6 5"/>
+<polyline points="609,654 600,658 609,662" fill="none" stroke="#334155" stroke-width="1.1"/>
+<rect x="723.6337890625" y="639" width="202.73242187500003" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="825.0" y="651" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">6. Constancia protegida registrada</text>
+<line x1="590" y1="723" x2="370" y2="723" stroke="#334155" stroke-width="1.1" stroke-dasharray="6 5"/>
+<polyline points="379,719 370,723 379,727" fill="none" stroke="#334155" stroke-width="1.1"/>
+<rect x="378.98291015625" y="688" width="202.03417968750003" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="480.0" y="700" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">7. Operación denegada; evidencia</text>
+<rect x="421.6328125" y="704" width="116.73437500000001" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="480.0" y="716" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">original conservada</text>
+<line x1="360" y1="788" x2="135" y2="788" stroke="#334155" stroke-width="1.1" stroke-dasharray="6 5"/>
+<polyline points="144,784 135,788 144,792" fill="none" stroke="#334155" stroke-width="1.1"/>
+<rect x="146.48291015625" y="753" width="202.03417968750003" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="247.5" y="765" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">8. Operación denegada; evidencia</text>
+<rect x="189.1328125" y="769" width="116.73437500000001" height="16" fill="white" stroke="none" stroke-width="1"/>
+<text x="247.5" y="781" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#0f172a">original conservada</text>
+<rect x="40" y="215" width="190" height="80" fill="#fff7ed" stroke="#475569" stroke-width="1"/>
+<text x="135" y="233" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#0f172a">«actor»</text>
+<text x="135" y="252" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#0f172a">Usuario del sistema</text>
+<rect x="270" y="215" width="190" height="80" fill="#eff6ff" stroke="#475569" stroke-width="1"/>
+<text x="365" y="240" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#0f172a">«boundary»</text>
+<text x="365" y="264" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#0f172a">interfaz</text>
+<rect x="500" y="215" width="190" height="80" fill="#eff6ff" stroke="#475569" stroke-width="1"/>
+<text x="595" y="240" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#0f172a">«control»</text>
+<text x="595" y="264" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#0f172a">aplicacion</text>
+<rect x="730" y="215" width="190" height="80" fill="#eff6ff" stroke="#475569" stroke-width="1"/>
+<text x="825" y="240" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#0f172a">«control»</text>
+<text x="825" y="264" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#0f172a">seguridad</text>
+<rect x="960" y="215" width="190" height="80" fill="#eff6ff" stroke="#475569" stroke-width="1"/>
+<text x="1055" y="240" font-family="Arial,sans-serif" font-size="11" font-weight="400" text-anchor="middle" fill="#0f172a">«control»</text>
+<text x="1055" y="264" font-family="Arial,sans-serif" font-size="14" font-weight="700" text-anchor="middle" fill="#0f172a">auditoria</text>
+<text x="45" y="869" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Precondición: El solicitante es un usuario ordinario sin autorización administrativa especial sobre la bitácora.</text>
+<text x="45" y="905" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Resultado: Solicitud rechazada y estado protegido.</text>
+<text x="45" y="941" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Roles que pueden sustituir al actor según autorización: Usuario del sistema</text>
+<text x="45" y="977" font-family="Arial,sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#0f172a">Restricciones: Regla transversal del sistema; no agrega un objetivo de negocio al catálogo de casos de uso.</text>
+</svg>

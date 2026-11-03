@@ -1,0 +1,27 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_TR02 Proteger evidencia frente a usuario ordinario
+actor "Usuario del sistema" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "seguridad" as sec
+control "auditoria" as aud
+note over actor, aud
+Precondición: El solicitante es un usuario ordinario sin autorización administrativa especial sobre la bitácora.
+Objetivos: Regla transversal
+ERS: RF-AUD-003, RF-AUD-004
+end note
+actor -> ui : Intentar modificar o eliminar evidencia de auditoría
+ui -> app : Solicitar cambio de evidencia
+app -> sec : Comprobar privilegios sobre bitácora protegida
+sec --> app : Denegado para usuario ordinario
+app -> aud : Registrar intento relevante de alteración denegada
+aud --> app : Constancia protegida registrada
+app --> ui : Operación denegada; evidencia original conservada
+ui --> actor : Operación denegada; evidencia original conservada
+note over actor, aud
+Regla transversal del sistema; no agrega un objetivo de negocio al catálogo de casos de uso.
+end note
+@enduml

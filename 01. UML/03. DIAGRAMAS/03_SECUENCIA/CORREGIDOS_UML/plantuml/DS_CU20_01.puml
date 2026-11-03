@@ -1,0 +1,54 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_CU20.01 Registrar cargos por servicios
+actor "Facturador" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "seguridad" as sec
+control "reglas" as rules
+database "datos" as repo
+control "auditoria" as aud
+note over actor, aud
+Precondición: Usuario identificado; objeto de trabajo y datos de entrada disponibles. La sesión y los permisos se comprueban en servidor.
+Objetivos: CU-20.01
+ERS: RF-AUD-001, RF-AUD-003, RF-AUD-004, RF-FAC-001, RF-SEG-003, RF-SEG-004
+end note
+actor -> ui : Registrar cargos por servicios (datos o filtros)
+ui -> app : Ejecutar solicitud con contexto de usuario
+app -> sec : Comprobar sesión, permiso de operación y alcance del objeto
+sec --> app : Decisión de autorización y ámbito permitido
+alt [solicitud autorizada]
+app -> repo : Consultar servicios prestados, dispensaciones y cuenta
+repo --> app : Datos vigentes del ámbito permitido y versión aplicable
+app -> rules : Validar origen real, tarifas aplicables y referencias de cargos
+rules --> app : Resultado de validación y reglas aplicadas
+alt [datos y reglas válidos]
+app -> aud : Preparar evento: usuario, fecha, objeto, operación y resultado
+aud --> app : Evento sin contraseñas ni secretos
+app -> repo : Registrar cargos con paciente, episodio o cuenta y origen; confirmar cambio y evento juntos
+repo --> app : Resultado de transacción: confirmada o sin cambios
+alt [transacción confirmada]
+app --> ui : Cargos registrados sin duplicar el mismo origen
+ui --> actor : Cargos registrados sin duplicar el mismo origen
+else [else]
+app --> ui : Operación no confirmada; informar validación, conflicto o fallo sin cambios parciales
+ui --> actor : Operación no confirmada; informar validación, conflicto o fallo sin cambios parciales
+end
+else [else]
+app --> ui : Informar validaciones pendientes; no efectuar cambios
+ui --> actor : Informar validaciones pendientes; no efectuar cambios
+end
+else [else]
+opt [denegación relevante según política]
+app -> aud : Registrar acceso denegado sin secretos
+aud --> app : Constancia protegida registrada
+end
+app --> ui : Acceso denegado; nueva autenticación si la sesión venció
+ui --> actor : Acceso denegado; nueva autenticación si la sesión venció
+end
+note over actor, aud
+Solo servicios o productos efectivamente prestados o dispensados; conservar origen y paciente, episodio o cuenta.
+end note
+@enduml

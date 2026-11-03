@@ -1,0 +1,29 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_CU01.02 Cerrar sesión
+actor "Usuario del sistema" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+database "datos" as repo
+control "auditoria" as aud
+note over actor, aud
+Precondición: Cuenta individual y mecanismo institucional de autenticación o recuperación.
+Objetivos: CU-01.02
+ERS: RF-AUD-001, RF-AUD-003, RF-AUD-004, RF-SEG-004
+end note
+actor -> ui : Solicitar cierre de sesión
+ui -> app : Cerrar sesión presentada
+app -> repo : Invalidar identificador de sesión si sigue activo
+repo --> app : Sesión invalidada o ya inactiva
+opt [existe evento de cierre que registrar según política]
+app -> aud : Registrar cierre de sesión
+aud --> app : Constancia protegida registrada
+end
+app --> ui : Sesión inactiva; las funciones protegidas exigen autenticación
+ui --> actor : Sesión inactiva; las funciones protegidas exigen autenticación
+note over actor, aud
+Invalida la sesión. La expiración y el límite de inactividad son controles automáticos; una sesión cerrada o expirada exige nueva autenticación.
+end note
+@enduml

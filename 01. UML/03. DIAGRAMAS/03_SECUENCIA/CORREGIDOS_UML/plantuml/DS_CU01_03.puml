@@ -1,0 +1,51 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_CU01.03 Recuperar o restablecer credenciales
+actor "Usuario del sistema" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "reglas" as rules
+database "datos" as repo
+control "auditoria" as aud
+note over actor, aud
+Precondición: Cuenta individual y mecanismo institucional de autenticación o recuperación.
+Objetivos: CU-01.03, CU-01.05
+ERS: RF-AUD-001, RF-AUD-003, RF-AUD-004, RF-SEG-004, RF-SEG-005
+end note
+actor -> ui : Presentar solicitud, prueba de identidad y nueva credencial por mecanismo aprobado
+ui -> app : Ejecutar restablecimiento controlado
+app -> repo : Consultar contexto del procedimiento aprobado
+repo --> app : Datos necesarios para verificar identidad
+app -> rules : Verificar identidad y autorización de restablecimiento por mecanismo aprobado
+rules --> app : Identidad y solicitud verificadas o rechazadas
+alt [identidad verificada y solicitud válida]
+app -> rules : Validar nueva credencial según política institucional
+rules --> app : Nueva credencial admisible o rechazada
+alt [nueva credencial admisible]
+app -> aud : Preparar evento: usuario, fecha, objeto, operación y resultado
+aud --> app : Evento sin contraseñas ni secretos
+app -> repo : Actualizar credencial protegida conforme al procedimiento aprobado; confirmar cambio y evento juntos
+repo --> app : Resultado de transacción: confirmada o sin cambios
+alt [transacción confirmada]
+app --> ui : Credencial restablecida sin revelar la anterior
+ui --> actor : Credencial restablecida sin revelar la anterior
+else [else]
+app --> ui : Operación no confirmada; informar validación, conflicto o fallo sin cambios parciales
+ui --> actor : Operación no confirmada; informar validación, conflicto o fallo sin cambios parciales
+end
+else [else]
+app --> ui : Informar validación de nueva credencial; no modificar cuenta
+ui --> actor : Informar validación de nueva credencial; no modificar cuenta
+end
+else [else]
+app -> aud : Registrar intento de recuperación denegado sin secretos
+aud --> app : Constancia protegida registrada
+app --> ui : Respuesta genérica del procedimiento de recuperación
+ui --> actor : Respuesta genérica del procedimiento de recuperación
+end
+note over actor, aud
+Procedimiento controlado aprobado por el hospital; no revela contraseñas existentes. No depende de iniciar sesión con éxito.
+end note
+@enduml

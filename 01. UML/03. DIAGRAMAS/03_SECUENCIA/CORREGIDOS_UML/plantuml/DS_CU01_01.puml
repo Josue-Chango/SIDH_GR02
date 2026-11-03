@@ -1,0 +1,44 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_CU01.01 Iniciar sesión
+actor "Usuario del sistema" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "reglas" as rules
+database "datos" as repo
+control "auditoria" as aud
+note over actor, aud
+Precondición: Cuenta individual y mecanismo institucional de autenticación o recuperación.
+Objetivos: CU-01.01, CU-01.04
+ERS: RF-AUD-001, RF-AUD-003, RF-AUD-004, RF-SEG-001, RF-SEG-004
+end note
+actor -> ui : Ingresar credenciales individuales
+ui -> app : Solicitar inicio de sesión
+app -> repo : Consultar cuenta, estado y bloqueo
+repo --> app : Información de cuenta o ausencia de coincidencia
+app -> rules : Verificar credenciales con mecanismo configurado y cuenta habilitada
+rules --> app : Credenciales válidas y estado permitido, o rechazo genérico
+alt [credenciales válidas y cuenta habilitada]
+app -> aud : Preparar evento: usuario, fecha, objeto, operación y resultado
+aud --> app : Evento sin contraseñas ni secretos
+app -> repo : Crear sesión segura según política institucional; confirmar cambio y evento juntos
+repo --> app : Resultado de transacción: confirmada o sin cambios
+alt [transacción confirmada]
+app --> ui : Sesión iniciada; panel según permisos
+ui --> actor : Sesión iniciada; panel según permisos
+else [else]
+app --> ui : Operación no confirmada; informar validación, conflicto o fallo sin cambios parciales
+ui --> actor : Operación no confirmada; informar validación, conflicto o fallo sin cambios parciales
+end
+else [else]
+app -> aud : Registrar autenticación denegada sin contraseñas ni secretos
+aud --> app : Constancia protegida registrada
+app --> ui : Autenticación fallida; mensaje genérico
+ui --> actor : Autenticación fallida; mensaje genérico
+end
+note over actor, aud
+Recibe credenciales individuales; la cuenta debe estar activa y no bloqueada. Crea una sesión segura o devuelve un error genérico.
+end note
+@enduml

@@ -1,0 +1,49 @@
+@startuml
+hide footbox
+autonumber
+skinparam sequenceMessageAlign center
+title DS_CU16.01 Consultar disponibilidad de inventario
+actor "Farmacéutico" as actor
+boundary "interfaz" as ui
+control "aplicacion" as app
+control "seguridad" as sec
+control "reglas" as rules
+database "datos" as repo
+control "auditoria" as aud
+note over actor, aud
+Precondición: Usuario identificado; objeto de trabajo y datos de entrada disponibles. La sesión y los permisos se comprueban en servidor.
+Objetivos: CU-16.01
+ERS: RF-AUD-001, RF-AUD-003, RF-AUD-004, RF-FAR-002, RF-SEG-003, RF-SEG-004
+end note
+actor -> ui : Consultar disponibilidad de inventario (datos o filtros)
+ui -> app : Ejecutar solicitud con contexto de usuario
+app -> sec : Comprobar sesión, permiso de operación y alcance del objeto
+sec --> app : Decisión de autorización y ámbito permitido
+alt [solicitud autorizada]
+app -> repo : Consultar existencias por producto y ubicación
+repo --> app : Datos vigentes del ámbito permitido y versión aplicable
+app -> rules : Separar disponible, reservado y no dispensable
+rules --> app : Datos o archivo del resultado autorizado y validación aplicada
+alt [datos y reglas válidos]
+opt [la política exige auditar esta consulta o exportación]
+app -> aud : Registrar acceso o exportación: usuario, objeto, fecha y resultado
+aud --> app : Constancia protegida registrada
+end
+app --> ui : Disponibilidad de inventario diferenciada; conjunto vacío si no hay datos
+ui --> actor : Disponibilidad de inventario diferenciada; conjunto vacío si no hay datos
+else [else]
+app --> ui : Informar validaciones pendientes; no efectuar cambios
+ui --> actor : Informar validaciones pendientes; no efectuar cambios
+end
+else [else]
+opt [denegación relevante según política]
+app -> aud : Registrar acceso denegado sin secretos
+aud --> app : Constancia protegida registrada
+end
+app --> ui : Acceso denegado; nueva autenticación si la sesión venció
+ui --> actor : Acceso denegado; nueva autenticación si la sesión venció
+end
+note over actor, aud
+Diferenciar stock disponible, reservado y no dispensable por producto y ubicación.
+end note
+@enduml

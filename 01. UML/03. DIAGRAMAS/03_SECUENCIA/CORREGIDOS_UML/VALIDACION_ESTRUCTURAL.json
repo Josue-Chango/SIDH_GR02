@@ -1,0 +1,26 @@
+{
+  "models": 23,
+  "diagrams": 86,
+  "user_objectives": 84,
+  "included_behaviors": 11,
+  "requirements": 74,
+  "messages": 1742,
+  "fragments": 330,
+  "activations": 649,
+  "pdf_pages": 86,
+  "svg_files": 86,
+  "errors": [],
+  "ers_sha256": "b0599b72f9ee9d1aab83be530a6048d50424c72358c87ea4e847083ed50ca4fa",
+  "unanswered_calls": 0,
+  "invalid_reply_pairs": 0,
+  "original_models_and_ers_unchanged": true,
+  "powerdesigner_project_opened": true,
+  "powerdesigner_sample_roundtrip": {
+    "model": "DS_CU15_Dispensar_Medicamentos",
+    "messages": 22,
+    "horizontal_messages": 22,
+    "activations": 8
+  },
+  "pdf_pages_rendered": 86,
+  "visual_review": "86 páginas en vistas generales; detalle de autenticación, dispensación y exportación"
+}
