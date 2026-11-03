@@ -1,0 +1,860 @@
+{
+  "source_sha256": "89d581531d116f9caba3709c8be42de0fbaa864ab1bdac59119d4e871991c902",
+  "security_diagram_id": "o47",
+  "security_objects": 78,
+  "frozen_objects": 106,
+  "security_byte_exact": true,
+  "personal_byte_exact": true,
+  "protected_incident_relationships_unchanged": true,
+  "original_file_unchanged": true,
+  "blocks": [
+    {
+      "id": "o11",
+      "type": "Relationship",
+      "name": "GENERO_PERSONA",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "38cc90ab3e116b48847b0cacae3132742129020d767b1ffdcd6f27aace62e06a",
+      "sha256_after": "38cc90ab3e116b48847b0cacae3132742129020d767b1ffdcd6f27aace62e06a"
+    },
+    {
+      "id": "o14",
+      "type": "Relationship",
+      "name": "ESTCIV_PERSONA",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "39de12a1546eda7d062ccaeb120f5270bd71b26db2e4181b67d9c5f3513735b5",
+      "sha256_after": "39de12a1546eda7d062ccaeb120f5270bd71b26db2e4181b67d9c5f3513735b5"
+    },
+    {
+      "id": "o15",
+      "type": "Entity",
+      "name": "PERSONA",
+      "scope": "Seguridad",
+      "sha256_before": "fbef6abc90e2776a7db911b74265be8e424d74a5121c8af532af5f22d0b4701c",
+      "sha256_after": "fbef6abc90e2776a7db911b74265be8e424d74a5121c8af532af5f22d0b4701c"
+    },
+    {
+      "id": "o16",
+      "type": "Entity",
+      "name": "CARGO",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "677928e2cb48168fdc1c758af643389704e4025dc60730547a117e323780dae2",
+      "sha256_after": "677928e2cb48168fdc1c758af643389704e4025dc60730547a117e323780dae2"
+    },
+    {
+      "id": "o164",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "a5021095bb0f136206c5e4b69a67ccbae1536ca70c44c9e4d2958ff3d7f32d25",
+      "sha256_after": "a5021095bb0f136206c5e4b69a67ccbae1536ca70c44c9e4d2958ff3d7f32d25"
+    },
+    {
+      "id": "o165",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "d47fd940192d9308b9308bdec2fa0eac67393cb7fc804f58096f421f04fbd232",
+      "sha256_after": "d47fd940192d9308b9308bdec2fa0eac67393cb7fc804f58096f421f04fbd232"
+    },
+    {
+      "id": "o166",
+      "type": "DataItem",
+      "name": "CodigoPersona",
+      "scope": "Seguridad",
+      "sha256_before": "d99ba17f17e9badfc8f25a1e4ce71e48831740465b255de333a6858a67dec3af",
+      "sha256_after": "d99ba17f17e9badfc8f25a1e4ce71e48831740465b255de333a6858a67dec3af"
+    },
+    {
+      "id": "o167",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "964a3eaccf195eb5a13c4d5e1ea7bc24897e0c9131508350fad627da57fd1dc0",
+      "sha256_after": "964a3eaccf195eb5a13c4d5e1ea7bc24897e0c9131508350fad627da57fd1dc0"
+    },
+    {
+      "id": "o168",
+      "type": "DataItem",
+      "name": "Apellidos",
+      "scope": "Seguridad",
+      "sha256_before": "d896d538482c1f01120bec764a50f45c281a7824b1c4255614e07f2fed7cf7cd",
+      "sha256_after": "d896d538482c1f01120bec764a50f45c281a7824b1c4255614e07f2fed7cf7cd"
+    },
+    {
+      "id": "o169",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "325709f112447cdb36319950e32f9c75b96df7e00f491e1fcb2ea2ef4ae0d451",
+      "sha256_after": "325709f112447cdb36319950e32f9c75b96df7e00f491e1fcb2ea2ef4ae0d451"
+    },
+    {
+      "id": "o17",
+      "type": "Entity",
+      "name": "GENERO",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "28eb82442a7e6c75b31fb98c23b99a4bdff0c4ce8b56e7de98b7f56685c2cfe5",
+      "sha256_after": "28eb82442a7e6c75b31fb98c23b99a4bdff0c4ce8b56e7de98b7f56685c2cfe5"
+    },
+    {
+      "id": "o170",
+      "type": "DataItem",
+      "name": "Nombres",
+      "scope": "Seguridad",
+      "sha256_before": "bb3384c0c664a091315d39215ea76ee162dac1c4a907d86ace91faab8e7d08a2",
+      "sha256_after": "bb3384c0c664a091315d39215ea76ee162dac1c4a907d86ace91faab8e7d08a2"
+    },
+    {
+      "id": "o171",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "e667fca064139cfc017c405d9e3708a81101de7e3afd71b33730db7bda9ce0eb",
+      "sha256_after": "e667fca064139cfc017c405d9e3708a81101de7e3afd71b33730db7bda9ce0eb"
+    },
+    {
+      "id": "o172",
+      "type": "DataItem",
+      "name": "FecNacimiento",
+      "scope": "Seguridad",
+      "sha256_before": "b0cf60078302055746ff8232d402ef73571aff6327d73fea4627152d60108339",
+      "sha256_after": "b0cf60078302055746ff8232d402ef73571aff6327d73fea4627152d60108339"
+    },
+    {
+      "id": "o173",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "67369f219b47c8f391dd1d6a7d67d4dbc548fe0a74f21be5c8602d729f27b784",
+      "sha256_after": "67369f219b47c8f391dd1d6a7d67d4dbc548fe0a74f21be5c8602d729f27b784"
+    },
+    {
+      "id": "o174",
+      "type": "DataItem",
+      "name": "Cedula",
+      "scope": "Seguridad",
+      "sha256_before": "fc6d1e7a0f04da95b9a960a45ceae353a3ecaef1d6e0ed8d40a9f523761a1026",
+      "sha256_after": "fc6d1e7a0f04da95b9a960a45ceae353a3ecaef1d6e0ed8d40a9f523761a1026"
+    },
+    {
+      "id": "o175",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "994abc3349fc7076dfcb14b187c478a5d964027d33911b3310c7e3b2affcaa9c",
+      "sha256_after": "994abc3349fc7076dfcb14b187c478a5d964027d33911b3310c7e3b2affcaa9c"
+    },
+    {
+      "id": "o176",
+      "type": "DataItem",
+      "name": "Pasaporte",
+      "scope": "Seguridad",
+      "sha256_before": "1bece5af3b41e28b3f448f83ab319fa83cff7bdecd0f07a4c765ab77a87c2335",
+      "sha256_after": "1bece5af3b41e28b3f448f83ab319fa83cff7bdecd0f07a4c765ab77a87c2335"
+    },
+    {
+      "id": "o177",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "06ed409f947f498c36a5ba4f4bb308af57e79abafda932731703c8be554e97f2",
+      "sha256_after": "06ed409f947f498c36a5ba4f4bb308af57e79abafda932731703c8be554e97f2"
+    },
+    {
+      "id": "o178",
+      "type": "DataItem",
+      "name": "Email",
+      "scope": "Seguridad",
+      "sha256_before": "2ea7d518cdcd27d177976208a76acd47683248c77ff57f1ce24fb03a2dff5e0b",
+      "sha256_after": "2ea7d518cdcd27d177976208a76acd47683248c77ff57f1ce24fb03a2dff5e0b"
+    },
+    {
+      "id": "o179",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "ba34bfd8d204f275522c60e6784ec0126944d508b1d8220d122bafea29fa31ee",
+      "sha256_after": "ba34bfd8d204f275522c60e6784ec0126944d508b1d8220d122bafea29fa31ee"
+    },
+    {
+      "id": "o18",
+      "type": "Entity",
+      "name": "DEPARTAMENTO",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "910c6356e14ab67e4ebabb78cea941408136fb1ec19266c38cdab57b310511ad",
+      "sha256_after": "910c6356e14ab67e4ebabb78cea941408136fb1ec19266c38cdab57b310511ad"
+    },
+    {
+      "id": "o180",
+      "type": "DataItem",
+      "name": "CargasFam",
+      "scope": "Seguridad",
+      "sha256_before": "87dd32fce4c6d4601ead600a7c45d8106a95386751100782ad0d2b2396005380",
+      "sha256_after": "87dd32fce4c6d4601ead600a7c45d8106a95386751100782ad0d2b2396005380"
+    },
+    {
+      "id": "o181",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "3de8038cbe87fc57abe22e275903dc991630a47302324c63372ba5c4fcecd13f",
+      "sha256_after": "3de8038cbe87fc57abe22e275903dc991630a47302324c63372ba5c4fcecd13f"
+    },
+    {
+      "id": "o182",
+      "type": "DataItem",
+      "name": "Foto",
+      "scope": "Seguridad",
+      "sha256_before": "8c471402044b44214c57c162e6c2423e075eb6c0b3078a0f043285405e4126fd",
+      "sha256_after": "8c471402044b44214c57c162e6c2423e075eb6c0b3078a0f043285405e4126fd"
+    },
+    {
+      "id": "o183",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "1c1b2a90692de6192123d7e184e7e78d3c0b49cfd6f7fc0fb7c013532bded0be",
+      "sha256_after": "1c1b2a90692de6192123d7e184e7e78d3c0b49cfd6f7fc0fb7c013532bded0be"
+    },
+    {
+      "id": "o184",
+      "type": "DataItem",
+      "name": "Discapacidad",
+      "scope": "Seguridad",
+      "sha256_before": "f018a4d4dff1d999e0278dfa39c7c35fec34eaee651d615994dcc3d5fe163780",
+      "sha256_after": "f018a4d4dff1d999e0278dfa39c7c35fec34eaee651d615994dcc3d5fe163780"
+    },
+    {
+      "id": "o185",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "156cc54324dfa450d583009bc00ed137ba018596fefce7a7eb05245dd6b704fd",
+      "sha256_after": "156cc54324dfa450d583009bc00ed137ba018596fefce7a7eb05245dd6b704fd"
+    },
+    {
+      "id": "o186",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "0d2103456fd0777bcde3de362e75ec33a2429760c0f2618db0badbcc86887742",
+      "sha256_after": "0d2103456fd0777bcde3de362e75ec33a2429760c0f2618db0badbcc86887742"
+    },
+    {
+      "id": "o187",
+      "type": "DataItem",
+      "name": "CodigoCargo",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "28c300f4113ed322d9f05f2d5246f8f898834adb8500a21fb1ce247ddca8afe4",
+      "sha256_after": "28c300f4113ed322d9f05f2d5246f8f898834adb8500a21fb1ce247ddca8afe4"
+    },
+    {
+      "id": "o188",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "dc1cdf7424ff0bdcf2f66b413e14a5581f2e012939e1597f33502a32607ee3aa",
+      "sha256_after": "dc1cdf7424ff0bdcf2f66b413e14a5581f2e012939e1597f33502a32607ee3aa"
+    },
+    {
+      "id": "o189",
+      "type": "DataItem",
+      "name": "DescriCargo",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "6fccf1b6f7e1f1b2f1e1de46014f3c20078572f5ffba8270cb66ba14e554a7cd",
+      "sha256_after": "6fccf1b6f7e1f1b2f1e1de46014f3c20078572f5ffba8270cb66ba14e554a7cd"
+    },
+    {
+      "id": "o19",
+      "type": "Entity",
+      "name": "ESTADO CIVIL",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "8ec14fcc6e9096cbeb64acb7fabc5cffba5bb1807f7306bdada40f6d65d08d05",
+      "sha256_after": "8ec14fcc6e9096cbeb64acb7fabc5cffba5bb1807f7306bdada40f6d65d08d05"
+    },
+    {
+      "id": "o190",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "44ec9c7d9b50ccf988f5d578e433b0deabb98768a7b9deb27da528e75626808f",
+      "sha256_after": "44ec9c7d9b50ccf988f5d578e433b0deabb98768a7b9deb27da528e75626808f"
+    },
+    {
+      "id": "o191",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "0acf4451625555138e78192ab7fdf987d6198404879c9a32c325dae266ec03a2",
+      "sha256_after": "0acf4451625555138e78192ab7fdf987d6198404879c9a32c325dae266ec03a2"
+    },
+    {
+      "id": "o192",
+      "type": "DataItem",
+      "name": "CodigoGenero",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "a7a321b5505af8fd3e8c1919bda7430f8dc615c9257ceb0d50b70cfac699624e",
+      "sha256_after": "a7a321b5505af8fd3e8c1919bda7430f8dc615c9257ceb0d50b70cfac699624e"
+    },
+    {
+      "id": "o193",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "eb2a42f1abb418c08d0f6b64147d3df889b67d69e1ac0eb35c03aaab06a91fce",
+      "sha256_after": "eb2a42f1abb418c08d0f6b64147d3df889b67d69e1ac0eb35c03aaab06a91fce"
+    },
+    {
+      "id": "o194",
+      "type": "DataItem",
+      "name": "DescriGenero",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "72d15b9b6ae62c3e89a57ce332c99fd7e178043b8552ac2d3740b056ce4bc12f",
+      "sha256_after": "72d15b9b6ae62c3e89a57ce332c99fd7e178043b8552ac2d3740b056ce4bc12f"
+    },
+    {
+      "id": "o195",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "5e5c5b7187d1e55f3e89cf4ee645445b4c1d87d2574ed1afd4cd8290a4b12eec",
+      "sha256_after": "5e5c5b7187d1e55f3e89cf4ee645445b4c1d87d2574ed1afd4cd8290a4b12eec"
+    },
+    {
+      "id": "o196",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "8527452fd3ef283565933644ff511ecad314854b27325dcce08bdf7cb9e27cb8",
+      "sha256_after": "8527452fd3ef283565933644ff511ecad314854b27325dcce08bdf7cb9e27cb8"
+    },
+    {
+      "id": "o197",
+      "type": "DataItem",
+      "name": "CodigoDepart",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "c52fb66247935c3b67a9abdc66918cf771a84f98dd40052f8d7bc40de8280a98",
+      "sha256_after": "c52fb66247935c3b67a9abdc66918cf771a84f98dd40052f8d7bc40de8280a98"
+    },
+    {
+      "id": "o198",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "a51a7d79ca9e730fbffe1585e7d7db91409e92958083ec1dd35ae8e14e222609",
+      "sha256_after": "a51a7d79ca9e730fbffe1585e7d7db91409e92958083ec1dd35ae8e14e222609"
+    },
+    {
+      "id": "o199",
+      "type": "DataItem",
+      "name": "DescriDeparta",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "9098c41e53186fbade449d226cd926f69b03b65be8330084725f30bf5b51b10c",
+      "sha256_after": "9098c41e53186fbade449d226cd926f69b03b65be8330084725f30bf5b51b10c"
+    },
+    {
+      "id": "o200",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "afc86c2abab2daf4166a373793042a0306112fd667042efa1d85510a7fee70ae",
+      "sha256_after": "afc86c2abab2daf4166a373793042a0306112fd667042efa1d85510a7fee70ae"
+    },
+    {
+      "id": "o201",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "5d0f40b162f6177dc203f4575e7cfa5f87a72723bc4796996a3b157567ef6932",
+      "sha256_after": "5d0f40b162f6177dc203f4575e7cfa5f87a72723bc4796996a3b157567ef6932"
+    },
+    {
+      "id": "o202",
+      "type": "DataItem",
+      "name": "CodigoEstCiv",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "0e35added13112a3805dcf9182c17077e7a1da8670787cc1bb81e24aa9229419",
+      "sha256_after": "0e35added13112a3805dcf9182c17077e7a1da8670787cc1bb81e24aa9229419"
+    },
+    {
+      "id": "o203",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "813b2acf086ede57513fda037bb819fbc66ab97f2ef91bfe569ed9c29d2227d3",
+      "sha256_after": "813b2acf086ede57513fda037bb819fbc66ab97f2ef91bfe569ed9c29d2227d3"
+    },
+    {
+      "id": "o204",
+      "type": "DataItem",
+      "name": "DescriEstCiv",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "d3b579522978c316199bbfb612065675001d8a626110be78c7180e412a1fa713",
+      "sha256_after": "d3b579522978c316199bbfb612065675001d8a626110be78c7180e412a1fa713"
+    },
+    {
+      "id": "o205",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "da35a90861c2689ce99ee329821b5fbaa5cba32a0b0168da2f336f06acd730e8",
+      "sha256_after": "da35a90861c2689ce99ee329821b5fbaa5cba32a0b0168da2f336f06acd730e8"
+    },
+    {
+      "id": "o206",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "ddec2147b964ed60ebed9a5be2769367e21955dc25b65de03bc222a707d28612",
+      "sha256_after": "ddec2147b964ed60ebed9a5be2769367e21955dc25b65de03bc222a707d28612"
+    },
+    {
+      "id": "o207",
+      "type": "DataItem",
+      "name": "Password",
+      "scope": "Seguridad",
+      "sha256_before": "40c22a4cdefd8299a432081ce72dccb35664c03ae8c8dcbee62aba548f47d1ca",
+      "sha256_after": "40c22a4cdefd8299a432081ce72dccb35664c03ae8c8dcbee62aba548f47d1ca"
+    },
+    {
+      "id": "o208",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "b4f6bcf799f8a5c17bec53938bd10b407e87f0dabc09ddce2650b990db5e9b70",
+      "sha256_after": "b4f6bcf799f8a5c17bec53938bd10b407e87f0dabc09ddce2650b990db5e9b70"
+    },
+    {
+      "id": "o209",
+      "type": "DataItem",
+      "name": "Fecha_Crea",
+      "scope": "Seguridad",
+      "sha256_before": "62d7f4a5404cec74472c1740eb516a362f0ffdcef19eda9678a10d7d885542ad",
+      "sha256_after": "62d7f4a5404cec74472c1740eb516a362f0ffdcef19eda9678a10d7d885542ad"
+    },
+    {
+      "id": "o210",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "cf2e69f03b9dad2acef7cabe6a2474bc048e06e304f6d0ffa6beea5ee8f0eb7c",
+      "sha256_after": "cf2e69f03b9dad2acef7cabe6a2474bc048e06e304f6d0ffa6beea5ee8f0eb7c"
+    },
+    {
+      "id": "o211",
+      "type": "DataItem",
+      "name": "Fecha_Modi",
+      "scope": "Seguridad",
+      "sha256_before": "4f4b30d93a9d6b1c39fa9505e2d41b2912b744ddd06f02dd7a57c881444761d2",
+      "sha256_after": "4f4b30d93a9d6b1c39fa9505e2d41b2912b744ddd06f02dd7a57c881444761d2"
+    },
+    {
+      "id": "o212",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "86325dc5288745f4ef667ed6fcb6214231db7ebd14c0cafbe2c72eb285202a40",
+      "sha256_after": "86325dc5288745f4ef667ed6fcb6214231db7ebd14c0cafbe2c72eb285202a40"
+    },
+    {
+      "id": "o213",
+      "type": "DataItem",
+      "name": "Piefirma",
+      "scope": "Seguridad",
+      "sha256_before": "2f54ad282ee5eca470133ac270905bef518839fd020a80ba34873989a853c441",
+      "sha256_after": "2f54ad282ee5eca470133ac270905bef518839fd020a80ba34873989a853c441"
+    },
+    {
+      "id": "o214",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "577d63ca9ee2a9768187ee2f2588b0d621da714665c0460911121b2bcbf64dcd",
+      "sha256_after": "577d63ca9ee2a9768187ee2f2588b0d621da714665c0460911121b2bcbf64dcd"
+    },
+    {
+      "id": "o215",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "c6f69d592177707c89c05a96ca7398106006c3a00bfc84acaf8d4cc81b585b5b",
+      "sha256_after": "c6f69d592177707c89c05a96ca7398106006c3a00bfc84acaf8d4cc81b585b5b"
+    },
+    {
+      "id": "o216",
+      "type": "DataItem",
+      "name": "Cod_Estado",
+      "scope": "Seguridad",
+      "sha256_before": "7216cc126951208b37c99aa8f652c32e1dd749d9464c30e5ba870e89a88d56f7",
+      "sha256_after": "7216cc126951208b37c99aa8f652c32e1dd749d9464c30e5ba870e89a88d56f7"
+    },
+    {
+      "id": "o217",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "acbb4ac3abaee4515c80c54e52529290a678a4998689c244465c292e0c82e9f7",
+      "sha256_after": "acbb4ac3abaee4515c80c54e52529290a678a4998689c244465c292e0c82e9f7"
+    },
+    {
+      "id": "o218",
+      "type": "DataItem",
+      "name": "Desc_Estado",
+      "scope": "Seguridad",
+      "sha256_before": "a7986555f558f70d6f2e762548c81a6a69ee9ad3601082904a9a8a8b9c84eeac",
+      "sha256_after": "a7986555f558f70d6f2e762548c81a6a69ee9ad3601082904a9a8a8b9c84eeac"
+    },
+    {
+      "id": "o219",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "04653eea5d8c2c715a16e4f36317bd2559374466b254f2683cd65b62ac33acc8",
+      "sha256_after": "04653eea5d8c2c715a16e4f36317bd2559374466b254f2683cd65b62ac33acc8"
+    },
+    {
+      "id": "o220",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "36c1001970d4ab7782a41fb501d3eca1905ea4b4d490ad0098dfb00a0af98f45",
+      "sha256_after": "36c1001970d4ab7782a41fb501d3eca1905ea4b4d490ad0098dfb00a0af98f45"
+    },
+    {
+      "id": "o221",
+      "type": "DataItem",
+      "name": "Cod_Sistema",
+      "scope": "Seguridad",
+      "sha256_before": "4db05fd20a5255e5ee5e25d7260a1b2daf7f9cf5fa1cce5878f8bdf38b52854b",
+      "sha256_after": "4db05fd20a5255e5ee5e25d7260a1b2daf7f9cf5fa1cce5878f8bdf38b52854b"
+    },
+    {
+      "id": "o222",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "8fb8541df19dd01cc17e643e965f66fa3ede806369595ecb35ea31d22afc9b7d",
+      "sha256_after": "8fb8541df19dd01cc17e643e965f66fa3ede806369595ecb35ea31d22afc9b7d"
+    },
+    {
+      "id": "o223",
+      "type": "DataItem",
+      "name": "Desc_Sistema",
+      "scope": "Seguridad",
+      "sha256_before": "96d1f88ec35a82bda37607efe3fd955be5b1afaf10fa3dc55dd7c4cc61f1417e",
+      "sha256_after": "96d1f88ec35a82bda37607efe3fd955be5b1afaf10fa3dc55dd7c4cc61f1417e"
+    },
+    {
+      "id": "o224",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "e83147b7d8fcc88a3b1529929727e52d24f3863da2a10b6428948bb6bd8a8d30",
+      "sha256_after": "e83147b7d8fcc88a3b1529929727e52d24f3863da2a10b6428948bb6bd8a8d30"
+    },
+    {
+      "id": "o225",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "364a0d67555ac46b5dceb23de2e51393a8c5a1b021b0fda665a00391ae777617",
+      "sha256_after": "364a0d67555ac46b5dceb23de2e51393a8c5a1b021b0fda665a00391ae777617"
+    },
+    {
+      "id": "o226",
+      "type": "DataItem",
+      "name": "Cod_Opcion",
+      "scope": "Seguridad",
+      "sha256_before": "0f384233e17e77c8bb69f55c03fa9865ec700b8f6388d3ba054624c1bfad5b8d",
+      "sha256_after": "0f384233e17e77c8bb69f55c03fa9865ec700b8f6388d3ba054624c1bfad5b8d"
+    },
+    {
+      "id": "o227",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "079e880c5a722815b1199906c19606f9ce423177a4479cea48b1fb917ab4bf8d",
+      "sha256_after": "079e880c5a722815b1199906c19606f9ce423177a4479cea48b1fb917ab4bf8d"
+    },
+    {
+      "id": "o228",
+      "type": "DataItem",
+      "name": "Desc_Opcion",
+      "scope": "Seguridad",
+      "sha256_before": "523c52bc23782e45b2ee97a5b001bec4503ed37e110496d66738cc50380e3b8c",
+      "sha256_after": "523c52bc23782e45b2ee97a5b001bec4503ed37e110496d66738cc50380e3b8c"
+    },
+    {
+      "id": "o229",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "72c7c86cea7aa58fbe91c11dc18e617ff62e4bf3a362d18be711ecf449862d43",
+      "sha256_after": "72c7c86cea7aa58fbe91c11dc18e617ff62e4bf3a362d18be711ecf449862d43"
+    },
+    {
+      "id": "o230",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "07f46a9cd6c80c4ebf248f282f9bfb017a604fdd135ea7b51f4d044db3ba4048",
+      "sha256_after": "07f46a9cd6c80c4ebf248f282f9bfb017a604fdd135ea7b51f4d044db3ba4048"
+    },
+    {
+      "id": "o231",
+      "type": "DataItem",
+      "name": "Cod_Perfil",
+      "scope": "Seguridad",
+      "sha256_before": "735864559c21b94d2e4f4e3dcace49b912b390ceaca97dc7e6ecd19bd96835ac",
+      "sha256_after": "735864559c21b94d2e4f4e3dcace49b912b390ceaca97dc7e6ecd19bd96835ac"
+    },
+    {
+      "id": "o232",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "5509f8349958b02cb7f796ca1667c860b9fa909ebb42ee0cac39e37fab0d0388",
+      "sha256_after": "5509f8349958b02cb7f796ca1667c860b9fa909ebb42ee0cac39e37fab0d0388"
+    },
+    {
+      "id": "o233",
+      "type": "DataItem",
+      "name": "Desc_Perfil",
+      "scope": "Seguridad",
+      "sha256_before": "48b82ed9f498511fd0527ab15112ecf0d271fbd336a61d1085925cc7769c8ded",
+      "sha256_after": "48b82ed9f498511fd0527ab15112ecf0d271fbd336a61d1085925cc7769c8ded"
+    },
+    {
+      "id": "o234",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "79dfbad9b057ffce0989369ee571e21f75b0b04f57ff11fe2f6d60f140387770",
+      "sha256_after": "79dfbad9b057ffce0989369ee571e21f75b0b04f57ff11fe2f6d60f140387770"
+    },
+    {
+      "id": "o235",
+      "type": "DataItem",
+      "name": "Observaciones",
+      "scope": "Seguridad",
+      "sha256_before": "4963f8dc68fcb57798f73a5ad1e190ea695fd40a52e31c8777a86d516813c70f",
+      "sha256_after": "4963f8dc68fcb57798f73a5ad1e190ea695fd40a52e31c8777a86d516813c70f"
+    },
+    {
+      "id": "o236",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "54dd436b6182c83725165df1ceb3fbae79d432ad2d1dcdeb18f3c212cc7af73f",
+      "sha256_after": "54dd436b6182c83725165df1ceb3fbae79d432ad2d1dcdeb18f3c212cc7af73f"
+    },
+    {
+      "id": "o237",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "cff53973af345d70c97e649ade3f2dde8380d55c963dbda4ec27a1b6b0cbc044",
+      "sha256_after": "cff53973af345d70c97e649ade3f2dde8380d55c963dbda4ec27a1b6b0cbc044"
+    },
+    {
+      "id": "o238",
+      "type": "DataItem",
+      "name": "Fec_Asignacion",
+      "scope": "Seguridad",
+      "sha256_before": "6a99f2142a979561bc06f76397b964b29e123bf39ad61b56ca3b7e90bb875b10",
+      "sha256_after": "6a99f2142a979561bc06f76397b964b29e123bf39ad61b56ca3b7e90bb875b10"
+    },
+    {
+      "id": "o239",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "5b780eb83c3f4b13057b9e5cb1c153c65a4c068dddc59a2bb359d392a8b12eb5",
+      "sha256_after": "5b780eb83c3f4b13057b9e5cb1c153c65a4c068dddc59a2bb359d392a8b12eb5"
+    },
+    {
+      "id": "o240",
+      "type": "DataItem",
+      "name": "Fec_Retiro",
+      "scope": "Seguridad",
+      "sha256_before": "cd115cc1e630541c03f2579a4b5c4642482510a1e1fa2adf689d623686bdca60",
+      "sha256_after": "cd115cc1e630541c03f2579a4b5c4642482510a1e1fa2adf689d623686bdca60"
+    },
+    {
+      "id": "o241",
+      "type": "Identifier",
+      "name": "Identifier_1",
+      "scope": "Seguridad",
+      "sha256_before": "223481d6989988297fc60f67342ada1ec943ae7b7a72e76114c195040674180a",
+      "sha256_after": "223481d6989988297fc60f67342ada1ec943ae7b7a72e76114c195040674180a"
+    },
+    {
+      "id": "o242",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "c1b840a198569b522947668ffa11a81ccca530d6d886ef084dfef5504d53b4bc",
+      "sha256_after": "c1b840a198569b522947668ffa11a81ccca530d6d886ef084dfef5504d53b4bc"
+    },
+    {
+      "id": "o243",
+      "type": "DataItem",
+      "name": "Fec_Asignacion_OPC_PER",
+      "scope": "Seguridad",
+      "sha256_before": "f28ea414a5845dddc755d9377f622a1501ce5994c59d5a16d52f62a8eb748d33",
+      "sha256_after": "f28ea414a5845dddc755d9377f622a1501ce5994c59d5a16d52f62a8eb748d33"
+    },
+    {
+      "id": "o244",
+      "type": "EntityAttribute",
+      "name": "",
+      "scope": "Seguridad",
+      "sha256_before": "f00943cc36f9d3ecf29152fb97950c4be09774dde3998071429b38f50eb81915",
+      "sha256_after": "f00943cc36f9d3ecf29152fb97950c4be09774dde3998071429b38f50eb81915"
+    },
+    {
+      "id": "o245",
+      "type": "DataItem",
+      "name": "Fec_Retiro_OPC_PER",
+      "scope": "Seguridad",
+      "sha256_before": "b8e6bb205075ccc8e9e6728db2f4868e845c02499d8a0367ccdf7ed98ec73f17",
+      "sha256_after": "b8e6bb205075ccc8e9e6728db2f4868e845c02499d8a0367ccdf7ed98ec73f17"
+    },
+    {
+      "id": "o3",
+      "type": "ConceptualDiagram",
+      "name": "Personal",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "f70006921840fc12a5a3ab7d280f59a761a8f8d810a4d7caa3ee3e13518d0c5b",
+      "sha256_after": "f70006921840fc12a5a3ab7d280f59a761a8f8d810a4d7caa3ee3e13518d0c5b"
+    },
+    {
+      "id": "o47",
+      "type": "ConceptualDiagram",
+      "name": "Seguridad",
+      "scope": "Seguridad",
+      "sha256_before": "4422e4e0363026fb7b742b3c7edd6a34c10f2cee6fa597e3157893102ce2645a",
+      "sha256_after": "4422e4e0363026fb7b742b3c7edd6a34c10f2cee6fa597e3157893102ce2645a"
+    },
+    {
+      "id": "o51",
+      "type": "Relationship",
+      "name": "EST_USU",
+      "scope": "Seguridad",
+      "sha256_before": "f743e7ce06746f01ff329b6a5e6b6b84ce42da9be0553ae0d6950ac6204d6065",
+      "sha256_after": "f743e7ce06746f01ff329b6a5e6b6b84ce42da9be0553ae0d6950ac6204d6065"
+    },
+    {
+      "id": "o55",
+      "type": "Relationship",
+      "name": "OPC_SIS",
+      "scope": "Seguridad",
+      "sha256_before": "98de5426c4c5695e91d63c1364c11cb6406cf3d4b45781f582bff720ea45c510",
+      "sha256_after": "98de5426c4c5695e91d63c1364c11cb6406cf3d4b45781f582bff720ea45c510"
+    },
+    {
+      "id": "o59",
+      "type": "Relationship",
+      "name": "PER_UXP",
+      "scope": "Seguridad",
+      "sha256_before": "fc549e0366a2fa12860e76a53497c27ac07d7ce72dd85aa88ea433f6e6d50bca",
+      "sha256_after": "fc549e0366a2fa12860e76a53497c27ac07d7ce72dd85aa88ea433f6e6d50bca"
+    },
+    {
+      "id": "o61",
+      "type": "Relationship",
+      "name": "USU_UXP",
+      "scope": "Seguridad",
+      "sha256_before": "f927d1b088daec992122caef6513433c5ae9d346838598f0aaa7113248ce0557",
+      "sha256_after": "f927d1b088daec992122caef6513433c5ae9d346838598f0aaa7113248ce0557"
+    },
+    {
+      "id": "o64",
+      "type": "Relationship",
+      "name": "PER_OXP",
+      "scope": "Seguridad",
+      "sha256_before": "f6e056865611bcc0cb2e55d4b6befbeb2d7e1cd97117aedad28e4aa615e94a66",
+      "sha256_after": "f6e056865611bcc0cb2e55d4b6befbeb2d7e1cd97117aedad28e4aa615e94a66"
+    },
+    {
+      "id": "o66",
+      "type": "Relationship",
+      "name": "OPC_OXP",
+      "scope": "Seguridad",
+      "sha256_before": "f021e76587e5b7da9890e0c34aea6528965421d77eaf1581ff480de009436844",
+      "sha256_after": "f021e76587e5b7da9890e0c34aea6528965421d77eaf1581ff480de009436844"
+    },
+    {
+      "id": "o7",
+      "type": "Relationship",
+      "name": "DEPARTA_CARG",
+      "scope": "Personal o dependencia compartida",
+      "sha256_before": "46f57eb451847a63157746b0099c94fc81cf3f0066fa341baab1fee17ae110bd",
+      "sha256_after": "46f57eb451847a63157746b0099c94fc81cf3f0066fa341baab1fee17ae110bd"
+    },
+    {
+      "id": "o70",
+      "type": "Relationship",
+      "name": "PERSONA_USUARIO",
+      "scope": "Seguridad",
+      "sha256_before": "9c423da682866202a13f26d68c816bee770d7de73bfaf9c02f47b3dcc777e682",
+      "sha256_after": "9c423da682866202a13f26d68c816bee770d7de73bfaf9c02f47b3dcc777e682"
+    },
+    {
+      "id": "o71",
+      "type": "Entity",
+      "name": "USUARIO",
+      "scope": "Seguridad",
+      "sha256_before": "81f8a1a916acef6937896839206c5cd12ec4c2d2dce45faaf4e7a93f706c2c81",
+      "sha256_after": "81f8a1a916acef6937896839206c5cd12ec4c2d2dce45faaf4e7a93f706c2c81"
+    },
+    {
+      "id": "o72",
+      "type": "Entity",
+      "name": "ESTADO",
+      "scope": "Seguridad",
+      "sha256_before": "7982a9376ccc988c976845b49062eafcffbda4f2e0b4720697e6e9573ca8571b",
+      "sha256_after": "7982a9376ccc988c976845b49062eafcffbda4f2e0b4720697e6e9573ca8571b"
+    },
+    {
+      "id": "o73",
+      "type": "Entity",
+      "name": "SISTEMA",
+      "scope": "Seguridad",
+      "sha256_before": "3739d90a6e045bb29d78dffd5fbad515cb125a0afb91eca2cf8603018c50dcf9",
+      "sha256_after": "3739d90a6e045bb29d78dffd5fbad515cb125a0afb91eca2cf8603018c50dcf9"
+    },
+    {
+      "id": "o74",
+      "type": "Entity",
+      "name": "OPCION",
+      "scope": "Seguridad",
+      "sha256_before": "a121117248bbe2a7e1dcdba47729bcd24d141105697770e3894380379941ed0a",
+      "sha256_after": "a121117248bbe2a7e1dcdba47729bcd24d141105697770e3894380379941ed0a"
+    },
+    {
+      "id": "o75",
+      "type": "Entity",
+      "name": "PERFIL",
+      "scope": "Seguridad",
+      "sha256_before": "6e9ca81931e77cb49931a13f1f8aa14785d9293c65f15c2840a61951b70261a3",
+      "sha256_after": "6e9ca81931e77cb49931a13f1f8aa14785d9293c65f15c2840a61951b70261a3"
+    },
+    {
+      "id": "o76",
+      "type": "Entity",
+      "name": "USUPER",
+      "scope": "Seguridad",
+      "sha256_before": "a96eb37bb899f7860c307d7fa306307de273938d77b621ab392414f7d5b5809b",
+      "sha256_after": "a96eb37bb899f7860c307d7fa306307de273938d77b621ab392414f7d5b5809b"
+    },
+    {
+      "id": "o77",
+      "type": "Entity",
+      "name": "OPC_PER",
+      "scope": "Seguridad",
+      "sha256_before": "fb15b8bc8ba076fb5b4168942ea42d63063466844bc2ff1e7fa363e21bec5300",
+      "sha256_after": "fb15b8bc8ba076fb5b4168942ea42d63063466844bc2ff1e7fa363e21bec5300"
+    }
+  ]
+}

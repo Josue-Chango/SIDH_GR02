@@ -1,0 +1,435 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2565" viewBox="0 0 1800 2565" role="img" aria-labelledby="title">
+<title id="title">Hospitalización, camas y egreso</title>
+<rect width="100%" height="100%" fill="white"/>
+<text x="45" y="44" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#0f172a" text-anchor="start">GH09  Hospitalización, camas y egreso</text>
+<text x="45" y="76" font-family="Arial,sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">SIGH · Modelo conceptual de negocio · Entidades compartidas entre vistas</text>
+<text x="45" y="101" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start"># Identificador principal · * Dato obligatorio · 1 Exactamente uno · 0..1 Opcional · 0..n Cero o varios · 1..n Uno o varios</text>
+<text x="45" y="124" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">Los extremos muestran la multiplicidad de la entidad situada en ese extremo. Rxxx remite a la leyenda inferior.</text>
+<polyline points="900,1420 900,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="883.8515625" y="1511.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="900.0" y="1524.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R041</text>
+<rect x="917.6630859375" y="1434" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1447" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="910.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1560,1000 1560,1200" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1543.8515625" y="1091.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1560.0" y="1104.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R053</text>
+<rect x="1577.6630859375" y="1014" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1584" y="1027" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1570.9921875" y="1165" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1584" y="1178" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<polyline points="900,1200 900,980" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="883.8515625" y="1081.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="900.0" y="1094.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R043</text>
+<rect x="917.6630859375" y="1165" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1178" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="910.9921875" y="994" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1007" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="500,1320 540,1320 540,1260 700,1260" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="603.8515625" y="1251.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="620.0" y="1264.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R040</text>
+<rect x="520.6630859375" y="1300" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="1313" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="659.9921875" y="1240" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="1253" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1300,340 1260,340 1260,260 1100,260" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1163.8515625" y="251.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1180.0" y="264.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R037</text>
+<rect x="1266.6630859375" y="320" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="333" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1113.9921875" y="240" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1127" y="253" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="200,1020 200,1160 300,1160 300,1200" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="183.8515625" y="1081.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="200.0" y="1094.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R039</text>
+<rect x="217.6630859375" y="1034" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="224" y="1047" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="310.9921875" y="1165" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="324" y="1178" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="500,380 540,380 540,260 700,260" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="523.8515625" y="311.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="540.0" y="324.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R036</text>
+<rect x="520.6630859375" y="360" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="373" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="659.9921875" y="240" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="253" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1560,480 1560,520 1500,520 1500,760" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1483.8515625" y="631.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1500.0" y="644.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R051</text>
+<rect x="1577.6630859375" y="494" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1584" y="507" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1510.9921875" y="725" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1524" y="738" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="860,440 860,720 900,720 900,760" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="843.8515625" y="571.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="860.0" y="584.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R042</text>
+<rect x="877.6630859375" y="454" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="884" y="467" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="910.9921875" y="725" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="738" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="700,1320 660,1320 660,1700 500,1700" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="563.8515625" y="1691.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="580.0" y="1704.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R047</text>
+<rect x="659.9921875" y="1300" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="1313" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<rect x="513.9921875" y="1680" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="1693" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="300,1020 300,1060 520,1060 520,1580 300,1580 300,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="393.8515625" y="1051.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="410.0" y="1064.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R045</text>
+<rect x="317.6630859375" y="1034" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="324" y="1047" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="310.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="324" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="400,1020 400,1180 560,1180 560,1560 400,1560 400,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="383.8515625" y="1091.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="400.0" y="1104.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R046</text>
+<rect x="417.6630859375" y="1034" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="424" y="1047" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="410.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="424" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="700,1360 580,1360 580,1760 500,1760" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="523.8515625" y="1751.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="540.0" y="1764.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R048</text>
+<rect x="659.9921875" y="1340" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="1353" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<rect x="513.9921875" y="1740" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="1753" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1100,360 1140,360 1140,880 1300,880" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1123.8515625" y="611.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1140.0" y="624.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R049</text>
+<rect x="1120.6630859375" y="340" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1127" y="353" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1259.9921875" y="860" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="873" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="500,940 660,940 660,360 700,360" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="563.8515625" y="931.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="580.0" y="944.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R038</text>
+<rect x="520.6630859375" y="920" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="933" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="659.9921875" y="340" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="353" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1620,1620 1620,1580 1720,1580 1720,1180 1440,1180 1440,1000" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1423.8515625" y="1081.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1440.0" y="1094.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R050</text>
+<rect x="1637.6630859375" y="1585" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1644" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1450.9921875" y="1014" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1464" y="1027" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1440,480 1440,520 1280,520 1280,1580 1460,1580 1460,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1263.8515625" y="1041.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1280.0" y="1054.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R014</text>
+<rect x="1457.6630859375" y="494" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1464" y="507" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1470.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1484" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1020,440 1020,480 1120,480 1120,1160 1440,1160 1440,1200" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1053.8515625" y="471.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1070.0" y="484.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R052</text>
+<rect x="1037.6630859375" y="454" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1044" y="467" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1450.9921875" y="1165" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1464" y="1178" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<polyline points="500,840 680,840 680,1600 1260,1600 1260,1740 1300,1740" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="573.8515625" y="831.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="590.0" y="844.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R015</text>
+<rect x="520.6630859375" y="820" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="833" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1259.9921875" y="1720" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="1733" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="940,440 940,740 80,740 80,1580 200,1580 200,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="63.8515625" y="1151.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="80.0" y="1164.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R044</text>
+<rect x="957.6630859375" y="454" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="964" y="467" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="210.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="224" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="780,440 780,460 1260,460 1260,1560 1540,1560 1540,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1003.8515625" y="451.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1020.0" y="464.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R017</text>
+<rect x="790.9921875" y="454" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="804" y="467" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<rect x="1550.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1564" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="300,580 300,620 520,620 520,1000 1100,1000 1100,1180 1240,1180 1240,1540 1380,1540 1380,1620" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="393.8515625" y="611.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="410.0" y="624.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R013</text>
+<rect x="317.6630859375" y="594" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="324" y="607" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1390.9921875" y="1585" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1404" y="1598" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<rect x="100" y="180" width="400" height="400" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="180" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="204" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">PACIENTE</text>
+<text x="112" y="239" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idPaciente</text>
+<text x="422.626953125" y="239" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="259" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* identificadorHospitalario</text>
+<text x="422.626953125" y="259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoIdentidad</text>
+<text x="449.97265625" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  tipoDocumento</text>
+<text x="449.97265625" y="299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  numeroDocumento</text>
+<text x="457.98828125" y="319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  nombres</text>
+<text x="457.98828125" y="339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  apellidos</text>
+<text x="457.98828125" y="359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  fechaNacimiento</text>
+<text x="454.6484375" y="379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="399" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  sexoRegistrado</text>
+<text x="449.97265625" y="399" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="419" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  direccion</text>
+<text x="457.98828125" y="419" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="439" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  entidadCobertura</text>
+<text x="457.98828125" y="439" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="459" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  referenciaCobertura</text>
+<text x="457.98828125" y="459" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="479" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estadoRegistro</text>
+<text x="449.97265625" y="479" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="499" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="499" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="519" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="519" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,553 500,553" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="570" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idPaciente  |  UQ: identificadorHospitalario</text>
+<rect x="700" y="180" width="400" height="260" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="180" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="204" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">ADMISION</text>
+<text x="712" y="239" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idAdmision</text>
+<text x="1022.626953125" y="239" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="259" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* ingresoEl</text>
+<text x="1017.962890625" y="259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoAdmision</text>
+<text x="1049.97265625" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* indicacionIngreso</text>
+<text x="1027.970703125" y="299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto largo</text>
+<text x="712" y="319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  procedencia</text>
+<text x="1057.98828125" y="319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1049.97265625" y="339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,413 1100,413" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="430" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idAdmision</text>
+<rect x="1300" y="180" width="400" height="300" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="180" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="204" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">PROFESIONAL</text>
+<text x="1312" y="239" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idProfesional</text>
+<text x="1622.626953125" y="239" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="259" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* nombres</text>
+<text x="1657.98828125" y="259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* apellidos</text>
+<text x="1657.98828125" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoProfesional</text>
+<text x="1649.97265625" y="299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  registroProfesional</text>
+<text x="1657.98828125" y="319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  telefono</text>
+<text x="1657.98828125" y="339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  correo</text>
+<text x="1657.98828125" y="359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="399" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="399" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="419" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="419" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,453 1700,453" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="470" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idProfesional</text>
+<rect x="100" y="760" width="400" height="260" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="760" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="784" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">SERVICIO_HOSPITALARIO</text>
+<text x="112" y="819" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idServicioHospitalario</text>
+<text x="422.626953125" y="819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="839" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* codigo</text>
+<text x="449.97265625" y="839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descripcion</text>
+<text x="457.98828125" y="859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteDesde</text>
+<text x="454.6484375" y="879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteHasta</text>
+<text x="454.6484375" y="899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="449.97265625" y="919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="959" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="959" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,993 500,993" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="1010" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idServicioHospitalario  |  UQ: codigo</text>
+<rect x="700" y="760" width="400" height="220" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="760" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="784" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">ASIGNACION_CAMA</text>
+<text x="712" y="819" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idAsignacion</text>
+<text x="1022.626953125" y="819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="839" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* desde</text>
+<text x="1017.962890625" y="839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  hasta</text>
+<text x="1017.962890625" y="859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1049.97265625" y="879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,953 1100,953" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="970" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idAsignacion</text>
+<rect x="1300" y="760" width="400" height="240" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="760" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="784" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">ALTA_MEDICA</text>
+<text x="1312" y="819" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idAltaMedica</text>
+<text x="1622.626953125" y="819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="839" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* autorizadaEl</text>
+<text x="1617.962890625" y="839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* indicacionesSalida</text>
+<text x="1627.970703125" y="859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto largo</text>
+<text x="1312" y="879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  documentacionRequerida</text>
+<text x="1627.970703125" y="879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto largo</text>
+<text x="1312" y="899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,973 1700,973" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="990" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idAltaMedica</text>
+<rect x="100" y="1200" width="400" height="240" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="1200" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="1224" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">HABITACION</text>
+<text x="112" y="1259" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idHabitacion</text>
+<text x="422.626953125" y="1259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="1279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* codigo</text>
+<text x="449.97265625" y="1279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="1299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  piso</text>
+<text x="457.98828125" y="1299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="1319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  descripcion</text>
+<text x="457.98828125" y="1319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="1339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="449.97265625" y="1339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="1359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="1359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="1379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="1379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,1413 500,1413" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="1430" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idHabitacion  |  UQ: codigo</text>
+<rect x="700" y="1200" width="400" height="220" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="1200" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="1224" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">CAMA</text>
+<text x="712" y="1259" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idCama</text>
+<text x="1022.626953125" y="1259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="1279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* codigo</text>
+<text x="1049.97265625" y="1279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="1299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoCama</text>
+<text x="1049.97265625" y="1299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="1319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estadoOperativo</text>
+<text x="1049.97265625" y="1319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="1339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="1339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="1359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,1393 1100,1393" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="1410" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idCama  |  UQ: codigo</text>
+<rect x="1300" y="1200" width="400" height="220" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="1200" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="1224" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">EGRESO_ADMINISTRATIVO</text>
+<text x="1312" y="1259" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idEgreso</text>
+<text x="1622.626953125" y="1259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="1279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* egresoEl</text>
+<text x="1617.962890625" y="1279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* documentacionVerificada</text>
+<text x="1657.98828125" y="1299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="1319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="1319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="1339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="1359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,1393 1700,1393" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="1410" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idEgreso</text>
+<rect x="100" y="1620" width="400" height="220" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="1620" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="1644" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">TRASLADO_HOSPITALARIO</text>
+<text x="112" y="1679" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idTraslado</text>
+<text x="422.626953125" y="1679" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="1699" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* trasladadoEl</text>
+<text x="417.962890625" y="1699" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="1719" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* motivo</text>
+<text x="457.98828125" y="1719" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="1739" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="449.97265625" y="1739" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="1759" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="1759" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="1779" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="1779" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,1813 500,1813" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="1830" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idTraslado</text>
+<rect x="700" y="1620" width="400" height="240" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="1620" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="1644" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">HISTORIAL_ESTADO_CAMA</text>
+<text x="712" y="1679" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idEstadoCama</text>
+<text x="1022.626953125" y="1679" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="1699" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* desde</text>
+<text x="1017.962890625" y="1699" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1719" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  hasta</text>
+<text x="1017.962890625" y="1719" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1739" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estadoOperativo</text>
+<text x="1049.97265625" y="1739" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="1759" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  motivo</text>
+<text x="1057.98828125" y="1759" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="1779" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="1779" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1799" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="1799" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,1833 1100,1833" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="1850" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idEstadoCama</text>
+<rect x="1300" y="1620" width="400" height="260" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="1620" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="1644" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">EPISODIO_ATENCION</text>
+<text x="1312" y="1679" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idEpisodio</text>
+<text x="1622.626953125" y="1679" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="1699" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoAtencion</text>
+<text x="1649.97265625" y="1699" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1719" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* inicio</text>
+<text x="1617.962890625" y="1719" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1739" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  fin</text>
+<text x="1617.962890625" y="1739" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1759" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="1759" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1779" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  motivoAtencion</text>
+<text x="1657.98828125" y="1779" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="1799" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="1799" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1819" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="1819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,1853 1700,1853" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="1870" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idEpisodio</text>
+<text x="45" y="1984" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">Reglas de la vista</text>
+<text x="45" y="2008" font-family="Arial,sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">Alta clínica y egreso administrativo son distintos. Asignaciones y estados tienen intervalos; no se omiten limpieza y preparación ni se permiten solapamientos incompatibles.</text>
+<text x="45" y="2046" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">Relaciones y multiplicidades</text>
+<text x="45" y="2070" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R013 PACIENTE (1..1) — episodios — EPISODIO_ATENCION (0..n)</text>
+<text x="45" y="2090" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R014 PROFESIONAL (1..1) — responsable — EPISODIO_ATENCION (0..n)</text>
+<text x="45" y="2110" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R015 SERVICIO_HOSPITALARIO (1..1) — atenciones — EPISODIO_ATENCION (0..n)</text>
+<text x="45" y="2130" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R017 ADMISION (0..1) — contextoIngreso — EPISODIO_ATENCION (0..n)</text>
+<text x="45" y="2150" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R036 PACIENTE (1..1) — admisiones — ADMISION (0..n)</text>
+<text x="45" y="2170" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R037 PROFESIONAL (1..1) — responsableIngreso — ADMISION (0..n)</text>
+<text x="45" y="2190" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R038 SERVICIO_HOSPITALARIO (1..1) — servicioIngreso — ADMISION (0..n)</text>
+<text x="45" y="2210" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R039 SERVICIO_HOSPITALARIO (1..1) — habitaciones — HABITACION (0..n)</text>
+<text x="45" y="2230" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R040 HABITACION (1..1) — camas — CAMA (0..n)</text>
+<text x="45" y="2250" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R041 CAMA (1..1) — estados — HISTORIAL_ESTADO_CAMA (0..n)</text>
+<text x="45" y="2270" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R042 ADMISION (1..1) — ocupaciones — ASIGNACION_CAMA (0..n)</text>
+<text x="45" y="2290" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R043 CAMA (1..1) — asignaciones — ASIGNACION_CAMA (0..n)</text>
+<text x="45" y="2310" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R044 ADMISION (1..1) — traslados — TRASLADO_HOSPITALARIO (0..n)</text>
+<text x="45" y="2330" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R045 SERVICIO_HOSPITALARIO (1..1) — servicioOrigen — TRASLADO_HOSPITALARIO (0..n)</text>
+<text x="45" y="2350" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R046 SERVICIO_HOSPITALARIO (1..1) — servicioDestino — TRASLADO_HOSPITALARIO (0..n)</text>
+<text x="45" y="2370" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R047 CAMA (0..1) — camaOrigen — TRASLADO_HOSPITALARIO (0..n)</text>
+<text x="45" y="2390" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R048 CAMA (0..1) — camaDestino — TRASLADO_HOSPITALARIO (0..n)</text>
+<text x="45" y="2410" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R049 ADMISION (1..1) — altas — ALTA_MEDICA (0..n)</text>
+<text x="45" y="2430" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R050 EPISODIO_ATENCION (1..1) — documentaAlta — ALTA_MEDICA (0..n)</text>
+<text x="45" y="2450" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R051 PROFESIONAL (1..1) — autorizaAlta — ALTA_MEDICA (0..n)</text>
+<text x="45" y="2470" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R052 ADMISION (1..1) — egreso — EGRESO_ADMINISTRATIVO (0..1)</text>
+<text x="45" y="2490" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R053 ALTA_MEDICA (1..1) — habilitaEgreso — EGRESO_ADMINISTRATIVO (0..1)</text>
+</svg>

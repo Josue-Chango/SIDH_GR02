@@ -1,0 +1,20 @@
+{
+  "total_entities": 79,
+  "business_entities": 67,
+  "preserved_entities": 12,
+  "relationships": 125,
+  "business_relationships": 115,
+  "native_diagrams": 14,
+  "reviewed_views": 12,
+  "security_preserved": true,
+  "personal_preserved": true,
+  "original_file_unchanged": true,
+  "preserved_original_free_symbols": [
+    "o67"
+  ],
+  "errors": [],
+  "pdf_pages": 12,
+  "powerdesigner_open_verified": true,
+  "pdf_pages_rendered_and_visually_reviewed": 12,
+  "protected_objects_byte_exact": 106
+}

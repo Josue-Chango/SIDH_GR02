@@ -1,0 +1,380 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="2565" viewBox="0 0 1800 2565" role="img" aria-labelledby="title">
+<title id="title">Finanzas</title>
+<rect width="100%" height="100%" fill="white"/>
+<text x="45" y="44" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#0f172a" text-anchor="start">FI01  Finanzas</text>
+<text x="45" y="76" font-family="Arial,sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">SIGH · Modelo conceptual de negocio · Entidades compartidas entre vistas</text>
+<text x="45" y="101" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start"># Identificador principal · * Dato obligatorio · 1 Exactamente uno · 0..1 Opcional · 0..n Cero o varios · 1..n Uno o varios</text>
+<text x="45" y="124" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">Los extremos muestran la multiplicidad de la entidad situada en ese extremo. Rxxx remite a la leyenda inferior.</text>
+<polyline points="300,1040 300,1280" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="283.8515625" y="1151.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="300.0" y="1164.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R105</text>
+<rect x="317.6630859375" y="1054" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="324" y="1067" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="310.9921875" y="1245" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="324" y="1258" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="900,1040 900,1280" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="883.8515625" y="1151.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="900.0" y="1164.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R109</text>
+<rect x="917.6630859375" y="1054" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1067" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="910.9921875" y="1245" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1258" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1440,1100 1440,1240 1500,1240 1500,1280" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1423.8515625" y="1161.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1440.0" y="1174.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R110</text>
+<rect x="1457.6630859375" y="1114" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1464" y="1127" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1510.9921875" y="1245" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1524" y="1258" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1500,1780 1500,1520" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1483.8515625" y="1641.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1500.0" y="1654.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R111</text>
+<rect x="1517.6630859375" y="1745" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1524" y="1758" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1510.9921875" y="1534" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1524" y="1547" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1300,360 1260,360 1260,260 1100,260" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1163.8515625" y="251.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1180.0" y="264.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R103</text>
+<rect x="1259.9921875" y="340" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="353" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<rect x="1113.9921875" y="240" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1127" y="253" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="500,440 540,440 540,300 700,300" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="523.8515625" y="361.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="540.0" y="374.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R102</text>
+<rect x="520.6630859375" y="420" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="433" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="659.9921875" y="280" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="293" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="900,420 900,760" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="883.8515625" y="581.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="900.0" y="594.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R104</text>
+<rect x="917.6630859375" y="434" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="447" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="910.9921875" y="725" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="738" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1300,980 1140,980 1140,1440 1100,1440" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1123.8515625" y="1201.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1140.0" y="1214.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R108</text>
+<rect x="1266.6630859375" y="960" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="973" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1113.9921875" y="1420" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1127" y="1433" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1300,1400 1260,1400 1260,1920 1100,1920" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1163.8515625" y="1911.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1180.0" y="1924.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R113</text>
+<rect x="1259.9921875" y="1380" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="1393" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..1</text>
+<rect x="1113.9921875" y="1900" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1127" y="1913" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="500,1440 540,1440 540,900 700,900" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="523.8515625" y="1161.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="540.0" y="1174.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R106</text>
+<rect x="520.6630859375" y="1420" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="1433" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="659.9921875" y="880" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="673" y="893" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1100,340 1140,340 1140,880 1300,880" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1123.8515625" y="601.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1140.0" y="614.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R107</text>
+<rect x="1120.6630859375" y="320" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1127" y="333" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1259.9921875" y="860" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="873" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="500,320 680,320 680,160 1260,160 1260,260 1300,260" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="573.8515625" y="311.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="590.0" y="324.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R013</text>
+<rect x="520.6630859375" y="300" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="527" y="313" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="1259.9921875" y="240" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1273" y="253" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<polyline points="1560,1100 1560,1260 1160,1260 1160,1740 900,1740 900,1780" fill="none" stroke="#64748b" stroke-width="1.2"/>
+<rect x="1013.8515625" y="1731.0" width="32.296875" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1030.0" y="1744.0" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="middle">R112</text>
+<rect x="1577.6630859375" y="1114" width="12.673828125" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="1584" y="1127" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">1</text>
+<rect x="910.9921875" y="1745" width="26.015625" height="17" fill="white" stroke="none" stroke-width="1"/>
+<text x="924" y="1758" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#0f172a" text-anchor="middle">0..n</text>
+<rect x="100" y="180" width="400" height="400" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="180" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="204" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">PACIENTE</text>
+<text x="112" y="239" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idPaciente</text>
+<text x="422.626953125" y="239" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="259" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* identificadorHospitalario</text>
+<text x="422.626953125" y="259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoIdentidad</text>
+<text x="449.97265625" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  tipoDocumento</text>
+<text x="449.97265625" y="299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  numeroDocumento</text>
+<text x="457.98828125" y="319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  nombres</text>
+<text x="457.98828125" y="339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  apellidos</text>
+<text x="457.98828125" y="359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  fechaNacimiento</text>
+<text x="454.6484375" y="379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="399" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  sexoRegistrado</text>
+<text x="449.97265625" y="399" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="419" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  direccion</text>
+<text x="457.98828125" y="419" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="439" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  entidadCobertura</text>
+<text x="457.98828125" y="439" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="459" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  referenciaCobertura</text>
+<text x="457.98828125" y="459" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="479" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estadoRegistro</text>
+<text x="449.97265625" y="479" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="499" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="499" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="519" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="519" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,553 500,553" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="570" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idPaciente  |  UQ: identificadorHospitalario</text>
+<rect x="700" y="180" width="400" height="240" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="180" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="204" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">CUENTA_FACTURACION</text>
+<text x="712" y="239" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idCuenta</text>
+<text x="1022.626953125" y="239" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="259" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* abiertaEl</text>
+<text x="1017.962890625" y="259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  cerradaEl</text>
+<text x="1017.962890625" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* moneda</text>
+<text x="1049.97265625" y="299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1049.97265625" y="319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,393 1100,393" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="410" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idCuenta</text>
+<rect x="1300" y="180" width="400" height="260" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="180" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="204" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">EPISODIO_ATENCION</text>
+<text x="1312" y="239" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idEpisodio</text>
+<text x="1622.626953125" y="239" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="259" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoAtencion</text>
+<text x="1649.97265625" y="259" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="279" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* inicio</text>
+<text x="1617.962890625" y="279" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="299" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  fin</text>
+<text x="1617.962890625" y="299" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="319" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="319" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="339" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  motivoAtencion</text>
+<text x="1657.98828125" y="339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,413 1700,413" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="430" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idEpisodio</text>
+<rect x="100" y="760" width="400" height="280" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="760" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="784" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">SERVICIO</text>
+<text x="112" y="819" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idServicio</text>
+<text x="422.626953125" y="819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="839" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* codigo</text>
+<text x="449.97265625" y="839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descripcion</text>
+<text x="457.98828125" y="859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoServicio</text>
+<text x="449.97265625" y="879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteDesde</text>
+<text x="454.6484375" y="899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteHasta</text>
+<text x="454.6484375" y="919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="449.97265625" y="939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="959" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="959" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="979" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="979" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,1013 500,1013" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="1030" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idServicio  |  UQ: codigo</text>
+<rect x="700" y="760" width="400" height="280" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="760" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="784" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">CARGO_SERVICIO</text>
+<text x="712" y="819" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idCargo</text>
+<text x="1022.626953125" y="819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="839" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* cargoEl</text>
+<text x="1017.962890625" y="839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoOrigen</text>
+<text x="1049.97265625" y="859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* referenciaOrigen</text>
+<text x="1057.98828125" y="879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* cantidad</text>
+<text x="1044.658203125" y="899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Decimal</text>
+<text x="712" y="919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descripcionOrigen</text>
+<text x="1057.98828125" y="919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1049.97265625" y="939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="959" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="959" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="979" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="979" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,1013 1100,1013" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="1030" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idCargo</text>
+<rect x="1300" y="760" width="400" height="340" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="760" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="784" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">FACTURA</text>
+<text x="1312" y="819" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idFactura</text>
+<text x="1622.626953125" y="819" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="839" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  numeroDocumento</text>
+<text x="1657.98828125" y="839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoDocumento</text>
+<text x="1649.97265625" y="859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  emitidaEl</text>
+<text x="1617.962890625" y="879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* moneda</text>
+<text x="1649.97265625" y="899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  subtotal</text>
+<text x="1647.318359375" y="919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="1312" y="939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  descuento</text>
+<text x="1647.318359375" y="939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="1312" y="959" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  impuesto</text>
+<text x="1647.318359375" y="959" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="1312" y="979" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  total</text>
+<text x="1647.318359375" y="979" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="1312" y="999" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="999" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1019" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="1019" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1039" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="1039" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,1073 1700,1073" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="1090" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idFactura  |  UQ: numeroDocumento</text>
+<rect x="100" y="1280" width="400" height="320" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="100" y="1280" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="300.0" y="1304" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">TARIFA</text>
+<text x="112" y="1339" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idTarifa</text>
+<text x="422.626953125" y="1339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="112" y="1359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descripcion</text>
+<text x="457.98828125" y="1359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="112" y="1379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* vigenteDesde</text>
+<text x="454.6484375" y="1379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="1399" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteHasta</text>
+<text x="454.6484375" y="1399" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="112" y="1419" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* precioUnitario</text>
+<text x="447.318359375" y="1419" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="112" y="1439" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  tasaDescuento</text>
+<text x="444.658203125" y="1439" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Decimal</text>
+<text x="112" y="1459" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  tasaImpuesto</text>
+<text x="444.658203125" y="1459" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Decimal</text>
+<text x="112" y="1479" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* moneda</text>
+<text x="449.97265625" y="1479" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="1499" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="449.97265625" y="1499" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="112" y="1519" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="417.962890625" y="1519" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="112" y="1539" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="397.279296875" y="1539" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="100,1573 500,1573" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="112" y="1590" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idTarifa</text>
+<rect x="700" y="1280" width="400" height="300" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="1280" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="1304" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">DETALLE_FACTURA</text>
+<text x="712" y="1339" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idDetalleFactura</text>
+<text x="1022.626953125" y="1339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="1359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descripcionAplicada</text>
+<text x="1057.98828125" y="1359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="1379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* cantidad</text>
+<text x="1044.658203125" y="1379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Decimal</text>
+<text x="712" y="1399" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* precioUnitarioAplicado</text>
+<text x="1047.318359375" y="1399" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="712" y="1419" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descuentoAplicado</text>
+<text x="1047.318359375" y="1419" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="712" y="1439" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tasaImpuestoAplicada</text>
+<text x="1044.658203125" y="1439" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Decimal</text>
+<text x="712" y="1459" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* impuestoAplicado</text>
+<text x="1047.318359375" y="1459" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="712" y="1479" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* totalLinea</text>
+<text x="1047.318359375" y="1479" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="712" y="1499" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="1499" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1519" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="1519" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,1553 1100,1553" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="1570" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idDetalleFactura</text>
+<rect x="1300" y="1280" width="400" height="240" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="1280" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="1304" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">PAGO</text>
+<text x="1312" y="1339" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idPago</text>
+<text x="1622.626953125" y="1339" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="1359" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* pagadoEl</text>
+<text x="1617.962890625" y="1359" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1379" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* importe</text>
+<text x="1647.318359375" y="1379" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="1312" y="1399" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  referencia</text>
+<text x="1657.98828125" y="1399" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="1419" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="1419" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1439" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="1439" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1459" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="1459" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,1493 1700,1493" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="1510" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idPago</text>
+<rect x="700" y="1780" width="400" height="280" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="700" y="1780" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="900.0" y="1804" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">AJUSTE_FINANCIERO</text>
+<text x="712" y="1839" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idAjuste</text>
+<text x="1022.626953125" y="1839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="712" y="1859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* tipoAjuste</text>
+<text x="1049.97265625" y="1859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="1879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* ajustadoEl</text>
+<text x="1017.962890625" y="1879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  importe</text>
+<text x="1047.318359375" y="1899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Importe</text>
+<text x="712" y="1919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* motivo</text>
+<text x="1057.98828125" y="1919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="1939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* referenciaAutorizacion</text>
+<text x="1057.98828125" y="1939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="712" y="1959" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1049.97265625" y="1959" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="712" y="1979" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1017.962890625" y="1979" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="712" y="1999" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="997.279296875" y="1999" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="700,2033 1100,2033" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="712" y="2050" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idAjuste</text>
+<rect x="1300" y="1780" width="400" height="260" fill="white" stroke="#64748b" stroke-width="1"/>
+<rect x="1300" y="1780" width="400" height="36" fill="#eaf0f7" stroke="#64748b" stroke-width="1"/>
+<text x="1500.0" y="1804" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">FORMA_PAGO</text>
+<text x="1312" y="1839" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#0f172a" text-anchor="start"># idFormaPago</text>
+<text x="1622.626953125" y="1839" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Identificador</text>
+<text x="1312" y="1859" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* codigo</text>
+<text x="1649.97265625" y="1859" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1879" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* descripcion</text>
+<text x="1657.98828125" y="1879" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Texto</text>
+<text x="1312" y="1899" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteDesde</text>
+<text x="1654.6484375" y="1899" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="1312" y="1919" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">  vigenteHasta</text>
+<text x="1654.6484375" y="1919" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha</text>
+<text x="1312" y="1939" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* estado</text>
+<text x="1649.97265625" y="1939" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Código</text>
+<text x="1312" y="1959" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoEl</text>
+<text x="1617.962890625" y="1959" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Fecha y hora</text>
+<text x="1312" y="1979" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">* registradoPor</text>
+<text x="1597.279296875" y="1979" font-family="Arial,sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="start">Ref. responsable</text>
+<polyline points="1300,2013 1700,2013" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+<text x="1312" y="2030" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#0f172a" text-anchor="start">ID: idFormaPago  |  UQ: codigo</text>
+<text x="45" y="2164" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">Reglas de la vista</text>
+<text x="45" y="2188" font-family="Arial,sans-serif" font-size="14" font-weight="400" fill="#0f172a" text-anchor="start">Cargos antes de facturar, líneas con reglas e importes históricos, pagos parciales y ajustes vinculados al documento original. Sin integración tributaria implícita.</text>
+<text x="45" y="2226" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#0f172a" text-anchor="start">Relaciones y multiplicidades</text>
+<text x="45" y="2250" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R013 PACIENTE (1..1) — episodios — EPISODIO_ATENCION (0..n)</text>
+<text x="45" y="2270" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R102 PACIENTE (1..1) — cuentas — CUENTA_FACTURACION (0..n)</text>
+<text x="45" y="2290" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R103 EPISODIO_ATENCION (0..1) — cuentaEpisodio — CUENTA_FACTURACION (0..n)</text>
+<text x="45" y="2310" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R104 CUENTA_FACTURACION (1..1) — cargos — CARGO_SERVICIO (0..n)</text>
+<text x="45" y="2330" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R105 SERVICIO (1..1) — tarifas — TARIFA (0..n)</text>
+<text x="45" y="2350" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R106 TARIFA (1..1) — tarifaOrigen — CARGO_SERVICIO (0..n)</text>
+<text x="45" y="2370" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R107 CUENTA_FACTURACION (1..1) — documentos — FACTURA (0..n)</text>
+<text x="45" y="2390" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R108 FACTURA (1..1) — lineas — DETALLE_FACTURA (0..n)</text>
+<text x="45" y="2410" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R109 CARGO_SERVICIO (1..1) — cargoFacturado — DETALLE_FACTURA (0..n)</text>
+<text x="45" y="2430" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R110 FACTURA (1..1) — pagos — PAGO (0..n)</text>
+<text x="45" y="2450" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R111 FORMA_PAGO (1..1) — medio — PAGO (0..n)</text>
+<text x="45" y="2470" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R112 FACTURA (1..1) — documentoOriginal — AJUSTE_FINANCIERO (0..n)</text>
+<text x="45" y="2490" font-family="Arial,sans-serif" font-size="13" font-weight="400" fill="#0f172a" text-anchor="start">R113 PAGO (0..1) — pagoOriginal — AJUSTE_FINANCIERO (0..n)</text>
+</svg>
