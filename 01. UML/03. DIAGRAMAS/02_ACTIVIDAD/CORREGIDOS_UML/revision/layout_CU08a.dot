@@ -1,0 +1,43 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Médico"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="CU08a\nSeleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+merge_op [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+op [label="Seleccionar episodio y evolución,\nrectificación o documento",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+tipo [label="¿Operación elegida?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+nota [label="Registrar evolución o adenda\nvinculada al original; conservar\nautor, fecha y contenido",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+archivo [label="Seleccionar documento y datos de\nasociación al episodio",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="CU08a\nVerificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="CU08a\nDenegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+merge_val [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+val [label="Validar competencia, acceso y,\npara archivos, tipo y tamaño\npermitidos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+ok [label="¿Registro válido?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar errores para su corrección",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+guardar [label="Guardar con trazabilidad sin\nsobrescribir documentos clínicos\nfinalizados",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> merge_op [id="flow_5",xlabel="[sí]"];
+op -> tipo [id="flow_6",xlabel=""];
+tipo -> nota [id="flow_7",xlabel="[evolución o rectificación]"];
+tipo -> archivo [id="flow_8",xlabel="[adjuntar o vincular documento]"];
+nota -> merge_val [id="flow_9",xlabel=""];
+archivo -> merge_val [id="flow_10",xlabel=""];
+val -> ok [id="flow_11",xlabel=""];
+ok -> err [id="flow_12",xlabel="[no]"];
+err -> merge_op [id="flow_13",xlabel="",constraint=false];
+ok -> guardar [id="flow_14",xlabel="[sí]"];
+guardar -> fin [id="flow_15",xlabel=""];
+merge_op -> op [id="flow_16",xlabel=""];
+merge_val -> val [id="flow_17",xlabel=""];
+}

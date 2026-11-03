@@ -1,0 +1,55 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Personal de laboratorio"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="Seleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+sel [label="Seleccionar solicitud y verificar\npaciente, muestra y estado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+cancel [label="¿Cancelar según\nprocedimiento?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+recibir [label="Registrar recepción de muestra y\nestado recibida",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+merge_procesar [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+procesar [label="Registrar estado en proceso y\nresultados con valores, unidades,\nintervalos y observaciones",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+revisar [label="Revisar resultados y competencia\npara su validación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+validos [label="¿Validación aprobada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+corregir [label="Corregir registro o repetir según\nprocedimiento; conservar\ntrazabilidad",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+}
+subgraph cluster_1 { label="Médico consultante"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+consulta [label="Consultar resultados y estado del\ninforme",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_2 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_2 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="Verificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="Denegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+cancelar [label="Registrar motivo y cancelar solo\nsi la transición está permitida",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+pendiente [label="Guardar resultados claramente\npendientes de validación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+validar [label="Registrar validación con\nresponsable y fecha; cambiar\nestado a validada",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+liberar [label="Liberar resultados definitivos\npara consulta autorizada",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Registrar entrega o consulta\nconforme al flujo de laboratorio y\nauditar",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+confirmar_final [label="Mostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+{rank=same;anchor_0;anchor_1;anchor_2;}
+anchor_0 -> anchor_1 -> anchor_2 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> sel [id="flow_5",xlabel="[sí]"];
+sel -> cancel [id="flow_6",xlabel=""];
+cancel -> cancelar [id="flow_7",xlabel="[sí]"];
+cancelar -> fin [id="flow_8",xlabel=""];
+cancel -> recibir [id="flow_9",xlabel="[no]"];
+recibir -> merge_procesar [id="flow_10",xlabel=""];
+procesar -> pendiente [id="flow_11",xlabel=""];
+pendiente -> revisar [id="flow_12",xlabel=""];
+revisar -> validos [id="flow_13",xlabel=""];
+validos -> corregir [id="flow_14",xlabel="[no]"];
+corregir -> merge_procesar [id="flow_15",xlabel="",constraint=false];
+validos -> validar [id="flow_16",xlabel="[sí]"];
+validar -> liberar [id="flow_17",xlabel=""];
+liberar -> consulta [id="flow_18",xlabel=""];
+consulta -> audit_final [id="flow_19",xlabel=""];
+audit_final -> confirmar_final [id="flow_20",xlabel=""];
+confirmar_final -> fin [id="flow_21",xlabel="",constraint=false];
+merge_procesar -> procesar [id="flow_22",xlabel=""];
+}

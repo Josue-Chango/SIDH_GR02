@@ -1,0 +1,51 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Médico"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="CU08\nSeleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+episodio [label="Seleccionar o abrir episodio\nasociado al paciente y origen\nasistencial",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+merge_clinica [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+clinica [label="Registrar motivo, problema actual,\nantecedentes, hallazgos y\nevaluación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+alergias [label="Registrar diagnósticos, alergias,\nfuente y estado de verificación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+plan [label="Registrar tratamiento, órdenes o\nprescripciones cuando proceda y\nseguimiento",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+finalizar [label="¿Finalizar la nota?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+firmar [label="Confirmar finalización con el\nmecanismo aprobado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="CU08\nVerificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="CU08\nDenegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+borrador [label="Guardar como borrador\nidentificado; permitir completarlo\nposteriormente",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+validar [label="Validar contenido obligatorio y\ncompetencia del profesional",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+ok [label="¿Nota completa y\nautorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar campos o permisos\npendientes",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+final [label="Conservar nota finalizada, autor y\nfecha; rectificar solo con\ntrazabilidad",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Registrar auditoría con usuario,\nfecha, objeto y resultado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+confirmar_final [label="Mostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> episodio [id="flow_5",xlabel="[sí]"];
+episodio -> merge_clinica [id="flow_6",xlabel=""];
+clinica -> alergias [id="flow_7",xlabel=""];
+alergias -> plan [id="flow_8",xlabel=""];
+plan -> finalizar [id="flow_9",xlabel=""];
+finalizar -> borrador [id="flow_10",xlabel="[no]"];
+borrador -> fin [id="flow_11",xlabel=""];
+finalizar -> validar [id="flow_12",xlabel="[sí]"];
+validar -> ok [id="flow_13",xlabel=""];
+ok -> err [id="flow_14",xlabel="[no]"];
+err -> merge_clinica [id="flow_15",xlabel="",constraint=false];
+ok -> firmar [id="flow_16",xlabel="[sí]"];
+firmar -> final [id="flow_17",xlabel=""];
+final -> audit_final [id="flow_18",xlabel=""];
+audit_final -> confirmar_final [id="flow_19",xlabel=""];
+confirmar_final -> fin [id="flow_20",xlabel="",constraint=false];
+merge_clinica -> clinica [id="flow_21",xlabel=""];
+}

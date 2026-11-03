@@ -1,0 +1,43 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Médico"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="Seleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+episodio [label="Revisar paciente, episodio y\ndocumentación clínica",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+decision [label="¿Alta clínicamente\nindicada por el médico?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+merge_datos [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+datos [label="Registrar autorización, fecha,\nresponsable e indicaciones de\nsalida",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="Verificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="Denegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+seguir [label="Conservar atención abierta y\nregistrar evolución cuando\ncorresponda",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+validar [label="Comprobar documentación requerida\npor el proceso institucional",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+ok [label="¿Documentación completa?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar pendientes para completar\nel alta",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+alta [label="Guardar alta autorizada y\ndocumentación; registrar autoría y\nauditoría",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+egreso [label="Dejar alta disponible para DA\nCU17a; la cama sigue el flujo de\negreso y preparación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> episodio [id="flow_5",xlabel="[sí]"];
+episodio -> decision [id="flow_6",xlabel=""];
+decision -> seguir [id="flow_7",xlabel="[no]"];
+seguir -> fin [id="flow_8",xlabel=""];
+decision -> merge_datos [id="flow_9",xlabel="[sí]"];
+datos -> validar [id="flow_10",xlabel=""];
+validar -> ok [id="flow_11",xlabel=""];
+ok -> err [id="flow_12",xlabel="[no]"];
+err -> merge_datos [id="flow_13",xlabel="",constraint=false];
+ok -> alta [id="flow_14",xlabel="[sí]"];
+alta -> egreso [id="flow_15",xlabel=""];
+egreso -> fin [id="flow_16",xlabel=""];
+merge_datos -> datos [id="flow_17",xlabel=""];
+}

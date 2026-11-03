@@ -1,0 +1,48 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Usuario autorizado según\ntipo de informe"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="Seleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+tipo [label="Elegir informe de citas,\natenciones, ocupación, farmacia o\nfinanzas y filtros",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+export [label="¿Solicitar exportación?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="Verificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="Denegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+scope [label="Comprobar permiso por tipo,\nperiodo y datos solicitados",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+ok [label="¿Consulta permitida?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Denegar consulta y registrar\nintento",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+generar [label="Generar informe con datos mínimos\ny definiciones de indicadores\naprobadas",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+ver [label="Mostrar informe o resultado sin\ndatos; registrar generación\nsensible según política",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+expcheck [label="Verificar permiso de exportación,\nformato y alcance de datos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+expok [label="¿Exportación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+noexp [label="Denegar exportación y registrar el\nintento",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+archivo [label="Generar archivo autorizado en PDF\no CSV con los mismos controles y\nfiltros",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+audit [label="Registrar exportación sensible\nconforme a la política\ninstitucional",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> tipo [id="flow_5",xlabel="[sí]"];
+tipo -> scope [id="flow_6",xlabel=""];
+scope -> ok [id="flow_7",xlabel=""];
+ok -> err [id="flow_8",xlabel="[no]"];
+err -> fin [id="flow_9",xlabel=""];
+ok -> generar [id="flow_10",xlabel="[sí]"];
+generar -> ver [id="flow_11",xlabel=""];
+ver -> export [id="flow_12",xlabel=""];
+export -> fin [id="flow_13",xlabel="[no]"];
+export -> expcheck [id="flow_14",xlabel="[sí]"];
+expcheck -> expok [id="flow_15",xlabel=""];
+expok -> noexp [id="flow_16",xlabel="[no]"];
+noexp -> fin [id="flow_17",xlabel=""];
+expok -> archivo [id="flow_18",xlabel="[sí]"];
+archivo -> audit [id="flow_19",xlabel=""];
+audit -> fin [id="flow_20",xlabel=""];
+}

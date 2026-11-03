@@ -24,7 +24,7 @@ La sesión válida, la autorización contextual y la existencia de datos previos
 
 | Hallazgo en los modelos anteriores | Corrección aplicada |
 |---|---|
-| Límite del sistema ausente en los 23 diagramas detallados | Sujeto SIGH identificado y actores fuera del límite en las 29 vistas. |
+| Límite del sistema ausente en los 23 diagramas detallados | Sujeto SIGH identificado y actores fuera del límite en las 24 diagramas. |
 | Relaciones `include` invertidas o usadas como agrupación en reportes | Cinco tipos de informe explícitos; filtros dentro del flujo y exportación como objetivo independiente. |
 | Supervisión de seguridad asociada a asignación de permisos | Se separan consultar permisos y asignarlos; la asignación corresponde al administrador autorizado. |
 | Médico asociado al resumen de resultados de laboratorio sin distinción de tareas | En el detalle el médico consulta; solo personal facultado registra, valida o libera. |
@@ -36,18 +36,11 @@ La sesión válida, la autorización contextual y la existencia de datos previos
 | Registro de auditoría y protección tratados como tareas del auditor | Reglas transversales automáticas y consulta autorizada sin edición de evidencias. |
 | Objetos y relaciones ocultos con comentarios contradictorios | El proyecto revisado contiene únicamente elementos pertinentes, visibles y con referencias coherentes. |
 
-## Catálogo general por áreas
+## Diagrama general único
 
-Las seis vistas de `CU_SIGHO_General.oom` representan el mismo sujeto SIGH. Cada caso del catálogo aparece una vez en su área. La asociación general agrega la participación existente en los casos detallados y no autoriza todas las funciones del módulo. La separación por áreas reduce cruces y permite leer los 23 casos sin concentrarlos en una sola lámina.
+`CU_SIGHO_General.oom` contiene una sola vista, `G00_SIGH_General`, con los 23 casos del catálogo, 17 actores y 45 asociaciones. Todos los casos están dentro de un único límite SIGH y los actores fuera. Las dos columnas son una distribución espacial del mismo diagrama; no representan sistemas ni vistas separados. Las asociaciones y las identidades de los actores y casos se conservaron.
 
-| Vista | Casos del catálogo |
-|---|---|
-| [Seguridad y administración](svg/G01_Seguridad_y_auditoria.svg) | CU-01, CU-02, CU-03, CU-23 |
-| [Pacientes, citas y admisión](svg/G02_Pacientes_y_citas.svg) | CU-04, CU-05, CU-06 |
-| [Historia clínica y atención](svg/G03_Atencion_clinica.svg) | CU-07, CU-08, CU-09, CU-10, CU-19 |
-| [Diagnóstico y farmacia](svg/G04_Diagnostico_y_farmacia.svg) | CU-11, CU-12, CU-13, CU-14, CU-15, CU-16 |
-| [Hospitalización y cirugía](svg/G05_Hospitalizacion_y_cirugia.svg) | CU-17, CU-18 |
-| [Facturación e informes](svg/G06_Facturacion_y_reportes.svg) | CU-20, CU-21, CU-22 |
+[Diagrama general SVG](svg/G00_SIGH_General.svg) · [Diagrama general PDF](DIAGRAMA_GENERAL_SIGH.pdf)
 
 ## Responsabilidades de los actores
 
@@ -441,12 +434,12 @@ Reglas del comportamiento:
 
 La [matriz CSV](TRAZABILIDAD_ERS.csv) y su [versión JSON](TRAZABILIDAD_ERS.json) relacionan los 74 requisitos funcionales con objetivos, comportamientos incluidos o reglas transversales. Distinguir estos tipos evita atribuir al auditor una tarea automática o afirmar que un requisito desapareció porque no se dibujó como un óvalo. La cobertura documental no demuestra que el software esté implementado o aceptado.
 
-La [validación estructural](VALIDACION_ESTRUCTURAL.json) comprueba los 24 OOM, los vínculos de los 24 modelos en el proyecto, referencias locales, coincidencia entre extremos gráficos y semánticos, actores fuera del sujeto, casos dentro, ausencia de elementos semánticos ocultos y ausencia de ciclos de inclusión. También comprueba que el general conserve los 23 códigos y los actores del detalle, y que existan 29 láminas PDF y 29 SVG. El proyecto se abrió en PowerDesigner 16 y se comprobaron visualmente muestras de dispensación, reportes y la vista general de seguridad. Las 29 páginas del PDF se renderizaron y revisaron. La comprobación programática no equivale a ejecutar todas las reglas de Check Model de PowerDesigner.
+La [validación estructural](VALIDACION_ESTRUCTURAL.json) comprueba los 24 OOM, los vínculos de los 24 modelos en el proyecto, referencias locales, coincidencia entre extremos gráficos y semánticos, actores fuera del sujeto, casos dentro, ausencia de elementos semánticos ocultos y ausencia de ciclos de inclusión. También comprueba que el general conserve los 23 códigos y los actores del detalle, y que existan 24 láminas PDF y 24 SVG. El proyecto se abrió en PowerDesigner 16 y se comprobaron visualmente muestras de dispensación, reportes y el diagrama general único. Las 24 páginas del PDF se renderizaron y revisaron. La comprobación programática no equivale a ejecutar todas las reglas de Check Model de PowerDesigner.
 
 Los SVG y el PDF se dibujaron a partir de los nombres, símbolos, geometría y relaciones guardados en los OOM. Son exportaciones de lectura; las propiedades y comentarios completos permanecen en los archivos editables.
 
 ## Archivos y apertura
 
-Abrir [CASOS_USO_SIGH_CORREGIDOS.prj](CASOS_USO_SIGH_CORREGIDOS.prj) en PowerDesigner y hacer doble clic en el modelo deseado. En `CU_SIGHO_General` se pueden abrir las seis vistas G01 a G06. La tecla **F8** centra la vista general del diagrama. Si PowerDesigner muestra un diagrama de proyecto vacío llamado Diagram_1, abrir uno de los modelos de su árbol: los casos están en los OOM.
+Abrir [CASOS_USO_SIGH_CORREGIDOS.prj](CASOS_USO_SIGH_CORREGIDOS.prj) en PowerDesigner y hacer doble clic en el modelo deseado. En `CU_SIGHO_General` se abre la única vista `G00_SIGH_General`, que reúne todo el sistema. La tecla **F8** centra la vista general del diagrama. Si PowerDesigner muestra un diagrama de proyecto vacío llamado Diagram_1, abrir uno de los modelos de su árbol: los casos están en los OOM.
 
 Para lectura, usar la [vista previa HTML](VISTA_PREVIA.html) o el [PDF de diagramas](DIAGRAMAS_CASOS_USO_CORREGIDOS.pdf). Conservar juntos el proyecto y los OOM, ya que las rutas son relativas. Los modelos previos permanecen en la carpeta superior; sus identificadores no se reutilizaron para evitar colisiones con modelos ya abiertos.

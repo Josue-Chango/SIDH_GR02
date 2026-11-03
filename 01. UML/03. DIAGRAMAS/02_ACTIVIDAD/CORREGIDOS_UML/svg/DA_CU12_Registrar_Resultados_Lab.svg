@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14 0 920.00 1539.40" width="920" height="1539" font-family="Arial, sans-serif">
+<title>DA CU12 Procesar y validar resultados de laboratorio</title>
+<rect x="-14" width="920.0" height="1539.4" fill="white"/>
+<text x="8" y="24" font-size="17" font-weight="bold" fill="#0f172a">DA CU12  Procesar y validar resultados de laboratorio</text>
+<text x="8" y="44" font-size="10" fill="#475569">RF-LAB-002, RF-LAB-003, RF-LAB-004, RF-LAB-005, RN-008</text>
+<rect x="8.0" y="84.0" width="292.0" height="1423.4" fill="white" stroke="#94a3b8" stroke-width=".7"/>
+<rect x="8.0" y="84.0" width="292.0" height="48" fill="#f1f5f9" stroke="#94a3b8" stroke-width=".7"/>
+<text x="154.0" y="102.0" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Personal de laboratorio</text>
+<rect x="608.0" y="84.0" width="258.0" height="1423.4" fill="white" stroke="#94a3b8" stroke-width=".7"/>
+<rect x="608.0" y="84.0" width="258.0" height="48" fill="#f1f5f9" stroke="#94a3b8" stroke-width=".7"/>
+<text x="737.0" y="102.0" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Médico consultante</text>
+<rect x="308.0" y="84.0" width="292.0" height="1423.4" fill="white" stroke="#94a3b8" stroke-width=".7"/>
+<rect x="308.0" y="84.0" width="292.0" height="48" fill="#f1f5f9" stroke="#94a3b8" stroke-width=".7"/>
+<text x="454.0" y="102.0" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Sistema SIGH</text>
+<polyline points="268.00,171.90 268.00,207.60" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="268.00,207.60 265.60,201.60 270.40,201.60" fill="#334155"/>
+<polyline points="205.80,249.40 205.80,305.40 332.22,305.40" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="332.22,305.40 326.22,307.80 326.22,303.00" fill="#334155"/>
+<polyline points="437.00,326.10 437.00,361.60" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="437.00,361.60 434.60,355.60 439.40,355.60" fill="#334155"/>
+<polyline points="437.00,420.10 437.00,455.00" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="437.00,455.00 434.60,449.00 439.40,449.00" fill="#334155"/>
+<polyline points="437.00,496.70 437.00,548.58" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="437.00,548.58 434.60,542.58 439.40,542.58" fill="#334155"/>
+<polyline points="334.74,390.40 136.20,390.40 136.20,455.30" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="136.20,455.30 133.80,449.30 138.60,449.30" fill="#334155"/>
+<polyline points="171.00,496.70 171.00,532.19" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="171.00,532.19 168.60,526.19 173.40,526.19" fill="#334155"/>
+<polyline points="197.30,582.40 378.66,582.40 378.66,625.63" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="378.66,625.63 376.26,619.63 381.06,619.63" fill="#334155"/>
+<polyline points="437.00,667.70 437.00,702.99" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="437.00,702.99 434.60,696.99 439.40,696.99" fill="#334155"/>
+<polyline points="171.00,590.72 171.00,625.61" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="171.00,625.61 168.60,619.61 173.40,619.61" fill="#334155"/>
+<polyline points="154.00,667.70 154.00,707.13" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="154.00,707.13 151.60,701.13 156.40,701.13" fill="#334155"/>
+<polyline points="241.83,790.40 395.66,790.40 395.66,852.58" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="395.66,852.58 393.26,846.58 398.06,846.58" fill="#334155"/>
+<polyline points="366.23,873.40 271.40,873.40 271.40,929.91" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="271.40,929.91 269.00,923.91 273.80,923.91" fill="#334155"/>
+<polyline points="171.00,971.25 171.00,1006.75" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="171.00,1006.75 168.60,1000.75 173.40,1000.75" fill="#334155"/>
+<polyline points="171.00,1065.10 171.00,1100.32" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="171.00,1100.32 168.60,1094.32 173.40,1094.32" fill="#334155"/>
+<polyline points="275.79,1127.40 304.00,1127.40 304.00,718.40 159.70,718.40" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="159.70,718.40 165.70,716.00 165.70,720.80" fill="#334155"/>
+<polyline points="268.82,1036.40 471.00,1036.40 471.00,1100.56" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="471.00,1100.56 468.60,1094.56 473.40,1094.56" fill="#334155"/>
+<polyline points="471.00,1154.13 471.00,1189.60" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="471.00,1189.60 468.60,1183.60 473.40,1183.60" fill="#334155"/>
+<polyline points="575.62,1210.40 633.30,1210.40 633.30,1266.88" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="633.30,1266.88 630.90,1260.88 635.70,1260.88" fill="#334155"/>
+<polyline points="632.25,1287.40 471.00,1287.40 471.00,1343.90" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="471.00,1343.90 468.60,1337.90 473.40,1337.90" fill="#334155"/>
+<polyline points="471.00,1397.49 471.00,1432.96" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="471.00,1432.96 468.60,1426.96 473.40,1426.96" fill="#334155"/>
+<polyline points="366.23,1453.40 349.60,1453.40 349.60,712.40 424.85,712.40" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="424.85,712.40 418.85,714.80 418.85,710.00" fill="#334155"/>
+<polyline points="154.00,724.07 154.00,763.29" fill="none" stroke="#334155" stroke-width="1.05"/>
+<polygon points="154.00,763.29 151.60,757.29 156.40,757.29" fill="#334155"/>
+<circle cx="268.0" cy="164.60000000000014" r="7.2" fill="#0f172a"/>
+<rect x="66.60000000000001" y="207.88000000000008" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="171.0" y="225.50000000000009" text-anchor="middle" font-size="11" fill="#0f172a">Seleccionar la operación y su</text>
+<text x="171.0" y="238.50000000000009" text-anchor="middle" font-size="11" fill="#0f172a">contexto</text>
+<rect x="332.6" y="284.8800000000001" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="437.0" y="302.5000000000001" text-anchor="middle" font-size="11" fill="#0f172a">Verificar sesión, rol y permiso en</text>
+<text x="437.0" y="315.5000000000001" text-anchor="middle" font-size="11" fill="#0f172a">el servidor</text>
+<polygon points="335.5484,390.70000000000005 437.0,361.90000000000003 538.4516,390.70000000000005 437.0,419.50000000000006" fill="#fff7ed" stroke="#334155" stroke-width="1.05"/>
+<text x="437.0" y="394.30000000000007" text-anchor="middle" font-size="11" fill="#0f172a">¿Operación autorizada?</text>
+<rect x="332.6" y="455.48" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="437.0" y="473.1" text-anchor="middle" font-size="11" fill="#0f172a">Denegar la operación y registrar</text>
+<text x="437.0" y="486.1" text-anchor="middle" font-size="11" fill="#0f172a">el intento sin secretos</text>
+<circle cx="437.0" cy="561.3600000000001" r="12.27996" fill="white" stroke="#0f172a" stroke-width="1.2"/>
+<circle cx="437.0" cy="561.3600000000001" r="9.27996" fill="#0f172a"/>
+<rect x="66.60000000000001" y="455.48" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="171.0" y="473.1" text-anchor="middle" font-size="11" fill="#0f172a">Seleccionar solicitud y verificar</text>
+<text x="171.0" y="486.1" text-anchor="middle" font-size="11" fill="#0f172a">paciente, muestra y estado</text>
+<polygon points="79.2,561.3600000000001 171.0,532.5600000000002 262.8,561.3600000000001 171.0,590.1600000000001" fill="#fff7ed" stroke="#334155" stroke-width="1.05"/>
+<text x="171.0" y="558.4600000000002" text-anchor="middle" font-size="11" fill="#0f172a">¿Cancelar según</text>
+<text x="171.0" y="571.4600000000002" text-anchor="middle" font-size="11" fill="#0f172a">procedimiento?</text>
+<rect x="332.6" y="626.1600000000001" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="437.0" y="643.7800000000001" text-anchor="middle" font-size="11" fill="#0f172a">Registrar motivo y cancelar solo</text>
+<text x="437.0" y="656.7800000000001" text-anchor="middle" font-size="11" fill="#0f172a">si la transición está permitida</text>
+<rect x="58.60000000000001" y="626.1600000000001" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="163.0" y="643.7800000000001" text-anchor="middle" font-size="11" fill="#0f172a">Registrar recepción de muestra y</text>
+<text x="163.0" y="656.7800000000001" text-anchor="middle" font-size="11" fill="#0f172a">estado recibida</text>
+<polygon points="146.08,715.4800000000001 154.0,707.5600000000002 161.92,715.4800000000001 154.0,723.4000000000001" fill="white" stroke="#334155" stroke-width="1.05"/>
+<rect x="32.60000000000001" y="763.7600000000001" width="208.79999999999998" height="53.28" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="137.0" y="781.0000000000001" text-anchor="middle" font-size="11" fill="#0f172a">Registrar estado en proceso y</text>
+<text x="137.0" y="794.0000000000001" text-anchor="middle" font-size="11" fill="#0f172a">resultados con valores, unidades,</text>
+<text x="137.0" y="807.0000000000001" text-anchor="middle" font-size="11" fill="#0f172a">intervalos y observaciones</text>
+<rect x="366.6" y="853.0400000000001" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="471.0" y="870.6600000000001" text-anchor="middle" font-size="11" fill="#0f172a">Guardar resultados claramente</text>
+<text x="471.0" y="883.6600000000001" text-anchor="middle" font-size="11" fill="#0f172a">pendientes de validación</text>
+<rect x="66.60000000000001" y="930.0800000000002" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="171.0" y="947.7000000000002" text-anchor="middle" font-size="11" fill="#0f172a">Revisar resultados y competencia</text>
+<text x="171.0" y="960.7000000000002" text-anchor="middle" font-size="11" fill="#0f172a">para su validación</text>
+<polygon points="73.26,1035.92 171.0,1007.1200000000001 268.74,1035.92 171.0,1064.72" fill="#fff7ed" stroke="#334155" stroke-width="1.05"/>
+<text x="171.0" y="1039.52" text-anchor="middle" font-size="11" fill="#0f172a">¿Validación aprobada?</text>
+<rect x="66.60000000000001" y="1100.72" width="208.79999999999998" height="53.28" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="171.0" y="1117.96" text-anchor="middle" font-size="11" fill="#0f172a">Corregir registro o repetir según</text>
+<text x="171.0" y="1130.96" text-anchor="middle" font-size="11" fill="#0f172a">procedimiento; conservar</text>
+<text x="171.0" y="1143.96" text-anchor="middle" font-size="11" fill="#0f172a">trazabilidad</text>
+<rect x="366.6" y="1100.72" width="208.79999999999998" height="53.28" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="471.0" y="1117.96" text-anchor="middle" font-size="11" fill="#0f172a">Registrar validación con</text>
+<text x="471.0" y="1130.96" text-anchor="middle" font-size="11" fill="#0f172a">responsable y fecha; cambiar</text>
+<text x="471.0" y="1143.96" text-anchor="middle" font-size="11" fill="#0f172a">estado a validada</text>
+<rect x="366.6" y="1190.0" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="471.0" y="1207.62" text-anchor="middle" font-size="11" fill="#0f172a">Liberar resultados definitivos</text>
+<text x="471.0" y="1220.62" text-anchor="middle" font-size="11" fill="#0f172a">para consulta autorizada</text>
+<rect x="632.6" y="1267.0400000000002" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="737.0" y="1284.66" text-anchor="middle" font-size="11" fill="#0f172a">Consultar resultados y estado del</text>
+<text x="737.0" y="1297.66" text-anchor="middle" font-size="11" fill="#0f172a">informe</text>
+<circle cx="437.0" cy="715.4800000000001" r="12.27996" fill="white" stroke="#0f172a" stroke-width="1.2"/>
+<circle cx="437.0" cy="715.4800000000001" r="9.27996" fill="#0f172a"/>
+<rect x="366.6" y="1344.08" width="208.79999999999998" height="53.28" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="471.0" y="1361.32" text-anchor="middle" font-size="11" fill="#0f172a">Registrar entrega o consulta</text>
+<text x="471.0" y="1374.32" text-anchor="middle" font-size="11" fill="#0f172a">conforme al flujo de laboratorio y</text>
+<text x="471.0" y="1387.32" text-anchor="middle" font-size="11" fill="#0f172a">auditar</text>
+<rect x="366.6" y="1433.3600000000001" width="208.79999999999998" height="41.04" rx="10" fill="#eff6ff" stroke="#334155" stroke-width="1.05"/>
+<text x="471.0" y="1450.98" text-anchor="middle" font-size="11" fill="#0f172a">Mostrar el resultado de la</text>
+<text x="471.0" y="1463.98" text-anchor="middle" font-size="11" fill="#0f172a">operación</text>
+<rect x="416.89" y="421.10000000000014" width="25.2" height="14" rx="2" fill="white"/>
+<text x="429.49" y="431.10000000000014" text-anchor="middle" font-size="9" fill="#334155">[no]</text>
+<rect x="187.17000000000002" y="378.0" width="25.2" height="14" rx="2" fill="white"/>
+<text x="199.77" y="388.0" text-anchor="middle" font-size="9" fill="#334155">[sí]</text>
+<rect x="285.73999999999995" y="570.0000000000001" width="25.2" height="14" rx="2" fill="white"/>
+<text x="298.34" y="580.0000000000001" text-anchor="middle" font-size="9" fill="#334155">[sí]</text>
+<rect x="150.89000000000001" y="591.7600000000001" width="25.2" height="14" rx="2" fill="white"/>
+<text x="163.49" y="601.7600000000001" text-anchor="middle" font-size="9" fill="#334155">[no]</text>
+<rect x="150.89000000000001" y="1066.3000000000002" width="25.2" height="14" rx="2" fill="white"/>
+<text x="163.49" y="1076.3000000000002" text-anchor="middle" font-size="9" fill="#334155">[no]</text>
+<rect x="378.13" y="1024.0" width="25.2" height="14" rx="2" fill="white"/>
+<text x="390.73" y="1034.0" text-anchor="middle" font-size="9" fill="#334155">[sí]</text>
+<text x="8" y="1528.4" font-size="9" fill="#64748b">SIGH · Revisión de actividades · ERS y casos de uso CU01 a CU23 · 2 noviembre 2026</text></svg>

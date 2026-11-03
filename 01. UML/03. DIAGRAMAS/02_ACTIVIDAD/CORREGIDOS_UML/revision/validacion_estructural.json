@@ -1,0 +1,122 @@
+{
+  "models": [
+    {
+      "file": "DA_CU01_Iniciar_Sesion.oom",
+      "errors": [],
+      "sha256": "a725fbdb98354dcf35d5ab8f305043bd746c4fb61d5f64614a16882781b0fa9f"
+    },
+    {
+      "file": "DA_CU02_Gestionar_Usuarios_Roles.oom",
+      "errors": [],
+      "sha256": "83bc32bf8ee8a8973137bfc64b349aec11cdf5eb531e7ff12b943dd23a4b04f6"
+    },
+    {
+      "file": "DA_CU03_Administrar_Catalogos.oom",
+      "errors": [],
+      "sha256": "d5256a1ce1ef949c5000f3cb373ca32c6f31bcab9d661c5252fb995d5c35511f"
+    },
+    {
+      "file": "DA_CU04_Registrar_Pacientes.oom",
+      "errors": [],
+      "sha256": "f96ad2b8050023f7ead62fe5a7c014a4adf9370e1895e22dd3e2026d9270a37f"
+    },
+    {
+      "file": "DA_CU05_Gestionar_Citas.oom",
+      "errors": [],
+      "sha256": "a4cfa7cbce8cd30421bc04993aade55bb038f5969f9a07859ce0c162a56ad881"
+    },
+    {
+      "file": "DA_CU06_Admitir_Pacientes.oom",
+      "errors": [],
+      "sha256": "f2ac6c1a15bf4959d950979cb20a80a58526132639368ccfe98e31712841caf7"
+    },
+    {
+      "file": "DA_CU07_Consultar_HCE.oom",
+      "errors": [],
+      "sha256": "a5637617d7acbf7b32935c9d3766991e37e74b3c6c38aecb1166ec03718a6007"
+    },
+    {
+      "file": "DA_CU08_Registrar_Consulta.oom",
+      "errors": [],
+      "sha256": "ef1201758b1c94f1ad7e8b3a4d5e145d76786d7433fb4878ee3001bd1b231f7a"
+    },
+    {
+      "file": "DA_CU09_Registrar_Signos_Vitales.oom",
+      "errors": [],
+      "sha256": "29738dd4941c62e2e26dafadb833317f0571c2e48859407ff234b6520ae28e61"
+    },
+    {
+      "file": "DA_CU10_Gestionar_Urgencias.oom",
+      "errors": [],
+      "sha256": "01abc07bfa887bd331f29a26dc04291fdd51c1fb2c3a9abec5237abf9e99704c"
+    },
+    {
+      "file": "DA_CU11_Solicitar_Laboratorio.oom",
+      "errors": [],
+      "sha256": "12d00bd03224d1b30e84889855dd925b615c5816072d9d4817aaf04a4f96a129"
+    },
+    {
+      "file": "DA_CU12_Registrar_Resultados_Lab.oom",
+      "errors": [],
+      "sha256": "9038acde3eb94983dc5ac667efcda1ac12e4d73e3a31805e1712249388a00064"
+    },
+    {
+      "file": "DA_CU13_Gestionar_Imagenologia.oom",
+      "errors": [],
+      "sha256": "8a6a2b3cc601941a0fd8cd9f9367465fe0e9dc8ae5999f4e25a6791b40fba83a"
+    },
+    {
+      "file": "DA_CU14_Gestionar_Recetas.oom",
+      "errors": [],
+      "sha256": "032fe2e20e7c19229b1dfb1094a21879119d0b372b65b455935462a8619c9bb3"
+    },
+    {
+      "file": "DA_CU15_Dispensar_Medicamentos.oom",
+      "errors": [],
+      "sha256": "6cb5de427690ce79822b35baef81aa85d9e00dc1f6d9ab416b5de4e673efb7e5"
+    },
+    {
+      "file": "DA_CU16_Gestionar_Inventario.oom",
+      "errors": [],
+      "sha256": "ce125bcad7e86046c323429f5934627e2b3e03596c3a25dfc09f38bbd88478f4"
+    },
+    {
+      "file": "DA_CU17_Gestionar_Camas.oom",
+      "errors": [],
+      "sha256": "4c6ec639ce5ca9824bd8733ea7592a0cac68584ba16579447b33764370acdaaa"
+    },
+    {
+      "file": "DA_CU18_Gestionar_Quirofano.oom",
+      "errors": [],
+      "sha256": "aa7b1ed9cac8a7111338fdf9aec6b45e3c337253ef33c1674fc6113cc1c49052"
+    },
+    {
+      "file": "DA_CU19_Registrar_Alta.oom",
+      "errors": [],
+      "sha256": "5819084d2d931ed3e991b0189f24ce202c093bd9cdb69b4e8cccd4e3d5ce7bb2"
+    },
+    {
+      "file": "DA_CU20_Generar_Facturas.oom",
+      "errors": [],
+      "sha256": "554048dec73e2220306a13bb7b136e29b01deafa2c1d465644cc70fdef7507dd"
+    },
+    {
+      "file": "DA_CU21_Registrar_Pagos.oom",
+      "errors": [],
+      "sha256": "4d1a2ee24f0f9f4c46ef335e75b31d6e377af11aa9c6f0d83eeb71509e0950cd"
+    },
+    {
+      "file": "DA_CU22_Generar_Reportes.oom",
+      "errors": [],
+      "sha256": "ebda8a8833ed54a2e069c6c9d06277b8ee5d5bd61218033d458652da9efa5b45"
+    },
+    {
+      "file": "DA_CU23_Consultar_Auditoria.oom",
+      "errors": [],
+      "sha256": "ec3b293ba52605deaf529f74464e323389b4697ca383d151711074f5c08c0115"
+    }
+  ],
+  "project_models": 23,
+  "diagrams": 32,
+  "graph_errors": 0
+}

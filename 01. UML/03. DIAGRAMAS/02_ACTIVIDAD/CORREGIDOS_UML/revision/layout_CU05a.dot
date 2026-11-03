@@ -1,0 +1,53 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Recepcionista / Médico\nsegún permiso"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="CU05a\nSeleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+merge_op [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+op [label="Seleccionar consulta,\nconfiguración, cancelación o\nasistencia",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+tipo [label="¿Operación seleccionada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+config [label="Definir profesional, servicio,\njornada, duración y capacidad",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+cancel [label="Seleccionar cita y registrar\nmotivo de cancelación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+asist [label="Registrar estado de asistencia\npermitido",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="CU05a\nVerificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="CU05a\nDenegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+ver [label="Mostrar agenda diaria autorizada y\ndatos mínimos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+merge_validar [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+validar [label="Validar permiso específico, campos\ny transición según el flujo\naprobado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+ok [label="¿Cambio permitido?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar motivo de rechazo",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+aplicar [label="Guardar agenda o estado; liberar\nturno al cancelar cuando\ncorresponda; conservar historial",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Registrar auditoría con usuario,\nfecha, objeto y resultado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+confirmar_final [label="Mostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> merge_op [id="flow_5",xlabel="[sí]"];
+op -> tipo [id="flow_6",xlabel=""];
+tipo -> ver [id="flow_7",xlabel="[consultar]"];
+ver -> fin [id="flow_8",xlabel=""];
+tipo -> config [id="flow_9",xlabel="[configurar agenda]"];
+config -> merge_validar [id="flow_10",xlabel=""];
+tipo -> cancel [id="flow_11",xlabel="[cancelar cita]"];
+cancel -> merge_validar [id="flow_12",xlabel=""];
+tipo -> asist [id="flow_13",xlabel="[registrar asistencia]"];
+asist -> merge_validar [id="flow_14",xlabel=""];
+validar -> ok [id="flow_15",xlabel=""];
+ok -> err [id="flow_16",xlabel="[no]"];
+err -> merge_op [id="flow_17",xlabel="",constraint=false];
+ok -> aplicar [id="flow_18",xlabel="[sí]"];
+aplicar -> audit_final [id="flow_19",xlabel=""];
+audit_final -> confirmar_final [id="flow_20",xlabel=""];
+confirmar_final -> fin [id="flow_21",xlabel="",constraint=false];
+merge_op -> op [id="flow_22",xlabel=""];
+merge_validar -> validar [id="flow_23",xlabel=""];
+}

@@ -1,12 +1,16 @@
 {
   "date": "2026-11-02",
   "native_models": 24,
-  "diagrams": 29,
+  "diagrams": 24,
+  "general_diagrams": 1,
+  "general_actors": 17,
+  "general_associations": 45,
   "catalog_cases": 23,
   "requirements": 74,
   "includes": 13,
-  "pdf_pages": 29,
-  "svg_files": 29,
+  "pdf_pages": 24,
+  "general_pdf_pages": 1,
+  "svg_files": 24,
   "broken_references": 0,
   "unrepresented_semantic_actors_or_cases": 0,
   "graphic_semantic_endpoint_mismatches": 0,
@@ -248,12 +252,14 @@
     {
       "file": "CU_SIGHO_General.oom",
       "models": 1,
-      "diagrams": 6,
+      "diagrams": 1,
       "actors": 17,
       "cases": 23,
       "associations": 45,
       "includes": 0,
-      "sha256": "b8c80028ca39268631ec2498c2db57fa1f0a4d2d7f222e9642c1f708252ff71b"
+      "sha256": "ee915e0925b09751f1961e5d48dc1621760d535c97d5ba40102d3e2d31770c74"
     }
-  ]
+  ],
+  "detailed_models_unchanged": 23,
+  "general_semantic_objects_preserved": true
 }

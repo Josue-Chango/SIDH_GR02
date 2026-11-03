@@ -1,0 +1,45 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Facturador autorizado"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="CU21a\nSeleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+sel [label="Seleccionar documento original y\nconsultar estado de cuenta",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+datos [label="Registrar anulación o devolución\ncon importe, motivo y soporte\nrequerido",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="CU21a\nVerificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="CU21a\nDenegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+validar [label="Comprobar permiso específico,\nestado y reglas del procedimiento\naprobado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+ok [label="¿Operación autorizada y\nválida?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Rechazar operación e informar\nmotivo",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+tx [label="Registrar reverso y actualizar\nsaldo en transacción; mantener\nreferencia al original",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+commit [label="¿Transacción confirmada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+fallo [label="Revertir cambios y conservar\ndocumentos y saldo previos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+resultado [label="Mostrar resultado y conservar\ntrazabilidad sin borrar el\ndocumento original",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Registrar auditoría con usuario,\nfecha, objeto y resultado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+confirmar_final [label="Mostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> sel [id="flow_5",xlabel="[sí]"];
+sel -> datos [id="flow_6",xlabel=""];
+datos -> validar [id="flow_7",xlabel=""];
+validar -> ok [id="flow_8",xlabel=""];
+ok -> err [id="flow_9",xlabel="[no]"];
+err -> fin [id="flow_10",xlabel=""];
+ok -> tx [id="flow_11",xlabel="[sí]"];
+tx -> commit [id="flow_12",xlabel=""];
+commit -> fallo [id="flow_13",xlabel="[no]"];
+fallo -> fin [id="flow_14",xlabel=""];
+commit -> resultado [id="flow_15",xlabel="[sí]"];
+resultado -> audit_final [id="flow_16",xlabel=""];
+audit_final -> confirmar_final [id="flow_17",xlabel=""];
+confirmar_final -> fin [id="flow_18",xlabel="",constraint=false];
+}

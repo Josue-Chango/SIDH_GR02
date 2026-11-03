@@ -1,0 +1,51 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Médico"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="Seleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+op [label="¿Operación solicitada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+context [label="Seleccionar paciente y episodio;\nconsultar alergias y antecedentes\nrelevantes",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+merge_datos [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+datos [label="Registrar medicamento, dosis, vía,\nfrecuencia, duración e\nindicaciones aplicables",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+firmar [label="Confirmar o firmar prescripción\ncon mecanismo aprobado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Farmacéutico"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+consulta [label="Consultar catálogo y\nprescripciones autorizadas",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_2 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_2 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="Verificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="Denegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+catalogo [label="Consultar catálogo institucional\nde medicamentos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+validar [label="Validar campos institucionales y\nautorización del prescriptor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+ok [label="¿Prescripción completa y\nautorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar errores de registro",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+guardar [label="Guardar con autoría y dejar\ndisponible para validación\nfarmacéutica en DA CU15",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Registrar auditoría con usuario,\nfecha, objeto y resultado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+confirmar_final [label="Mostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+{rank=same;anchor_0;anchor_1;anchor_2;}
+anchor_0 -> anchor_1 -> anchor_2 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> op [id="flow_5",xlabel="[sí]"];
+op -> consulta [id="flow_6",xlabel="[consultar]"];
+consulta -> fin [id="flow_7",xlabel=""];
+op -> context [id="flow_8",xlabel="[prescribir]"];
+context -> catalogo [id="flow_9",xlabel=""];
+catalogo -> merge_datos [id="flow_10",xlabel=""];
+datos -> validar [id="flow_11",xlabel=""];
+validar -> ok [id="flow_12",xlabel=""];
+ok -> err [id="flow_13",xlabel="[no]"];
+err -> merge_datos [id="flow_14",xlabel="",constraint=false];
+ok -> firmar [id="flow_15",xlabel="[sí]"];
+firmar -> guardar [id="flow_16",xlabel=""];
+guardar -> audit_final [id="flow_17",xlabel=""];
+audit_final -> confirmar_final [id="flow_18",xlabel=""];
+confirmar_final -> fin [id="flow_19",xlabel="",constraint=false];
+merge_datos -> datos [id="flow_20",xlabel=""];
+}

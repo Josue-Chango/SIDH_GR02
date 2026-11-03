@@ -1,0 +1,40 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Facturador"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="Seleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+cuenta [label="Seleccionar paciente, episodio o\ncuenta",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+merge_revision [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+revision [label="Revisar cargos y corregir datos\nautorizados",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="Verificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="Denegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+cargos [label="Cargar cargos de servicios\nprestados y productos dispensados\ncon referencia a su origen",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+calc [label="Calcular precios, tarifas,\ndescuentos e impuestos vigentes;\nconservar reglas utilizadas",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+ok [label="¿Cargos y cálculo\nválidos?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar inconsistencias sin emitir\ndocumento",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+emitir [label="Emitir documento del alcance\naprobado con identificador, estado\ny referencia",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+comprobante [label="Mostrar o entregar comprobante\nautorizado y registrar auditoría",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> cuenta [id="flow_5",xlabel="[sí]"];
+cuenta -> cargos [id="flow_6",xlabel=""];
+cargos -> merge_revision [id="flow_7",xlabel=""];
+revision -> calc [id="flow_8",xlabel=""];
+calc -> ok [id="flow_9",xlabel=""];
+ok -> err [id="flow_10",xlabel="[no]"];
+err -> merge_revision [id="flow_11",xlabel="",constraint=false];
+ok -> emitir [id="flow_12",xlabel="[sí]"];
+emitir -> comprobante [id="flow_13",xlabel=""];
+comprobante -> fin [id="flow_14",xlabel=""];
+merge_revision -> revision [id="flow_15",xlabel=""];
+}

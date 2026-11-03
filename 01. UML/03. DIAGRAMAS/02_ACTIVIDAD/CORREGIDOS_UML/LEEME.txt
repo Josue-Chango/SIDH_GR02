@@ -1,0 +1,17 @@
+DIAGRAMAS DE ACTIVIDAD DEL SIGH
+
+Se incluyen 23 modelos editables de PowerDesigner con 32 diagramas.
+
+1. Extraer todo el ZIP conservando la estructura de carpetas.
+2. Abrir ACTIVIDAD_SIGH_CORREGIDOS.prj en PowerDesigner.
+3. Abrir el modelo DA_CU correspondiente. Los diagramas complementarios están
+   dentro de paquetes identificados con el caso de uso y un sufijo a o b.
+4. Para consultar los diagramas sin PowerDesigner, abrir
+   DIAGRAMAS_ACTIVIDAD_CORREGIDOS.pdf o INDICE_DIAGRAMAS.html.
+5. Consultar INFORME_REVISION.md y TRAZABILIDAD_ACTIVIDADES.csv para conocer
+   las correcciones, sus fuentes y los requisitos relacionados.
+
+El respaldo anterior a la revisión se encuentra en
+_RESPALDO/ORIGINALES_2026-11-02.zip.
+
+Las comprobaciones nativas y estructurales se documentan en revision/.

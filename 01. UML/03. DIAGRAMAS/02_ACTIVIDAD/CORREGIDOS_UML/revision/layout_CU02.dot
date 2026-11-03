@@ -1,0 +1,50 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Administrador del sistema"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="CU02\nSeleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+merge_listar [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+listar [label="Consultar cuentas y seleccionar\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+op [label="¿Tipo de operación?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+capt [label="Capturar alta o cambios de cuenta",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+estado [label="Seleccionar activar o desactivar\nla cuenta",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="CU02\nVerificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="CU02\nDenegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+ver [label="Mostrar los datos autorizados de\nla cuenta",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+merge_validar [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+validar [label="Validar identificador único,\ncampos y estado solicitado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+ok [label="¿Datos y transición\nválidos?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar errores de validación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+hist [label="Guardar alta, cambios o estado de\ncuenta; conservar identidad e\nhistorial y usar desactivación\nlógica",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.9199999999999999];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Registrar auditoría con usuario,\nfecha, objeto y resultado",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+confirmar_final [label="CU02\nMostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> merge_listar [id="flow_5",xlabel="[sí]"];
+listar -> op [id="flow_6",xlabel=""];
+op -> ver [id="flow_7",xlabel="[consultar]"];
+ver -> fin [id="flow_8",xlabel=""];
+op -> capt [id="flow_9",xlabel="[crear o actualizar]"];
+op -> estado [id="flow_10",xlabel="[activar o desactivar]"];
+capt -> merge_validar [id="flow_11",xlabel=""];
+estado -> merge_validar [id="flow_12",xlabel=""];
+validar -> ok [id="flow_13",xlabel=""];
+ok -> err [id="flow_14",xlabel="[no]"];
+err -> merge_listar [id="flow_15",xlabel="",constraint=false];
+ok -> hist [id="flow_16",xlabel="[sí]"];
+hist -> audit_final [id="flow_17",xlabel=""];
+audit_final -> confirmar_final [id="flow_18",xlabel=""];
+confirmar_final -> fin [id="flow_19",xlabel="",constraint=false];
+merge_listar -> listar [id="flow_20",xlabel=""];
+merge_validar -> validar [id="flow_21",xlabel=""];
+}

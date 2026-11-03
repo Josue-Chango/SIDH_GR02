@@ -1,0 +1,45 @@
+digraph G { graph [rankdir=TB,splines=ortho,nodesep=0.45,ranksep=0.5,pad=0.12,newrank=true,compound=true,forcelabels=true,bgcolor="white"]; node [fontname="Arial",fontsize=11,color="#334155",penwidth=1.1]; edge [fontname="Arial",fontsize=9,arrowsize=0.65,color="#334155"];
+subgraph cluster_0 { label="Administrador / Responsable\nde seguridad"; fontname="Arial"; fontsize=12; margin=25; anchor_0 [shape=point,width=0.01,height=0.01,label="",style=invis];
+inicio [label="",shape=circle,width=.20,height=.20,fixedsize=true,style=filled,fillcolor="#0f172a"];
+pedir [label="CU02a\nSeleccionar la operación y su\ncontexto",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+op [label="Seleccionar roles, permisos,\npolíticas de sesión o auditoría",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+tipo [label="¿Operación de consulta?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+merge_editar [label="",shape=diamond,width=.22,height=.22,fixedsize=true];
+editar [label="Definir asignaciones o política de\nsesión aprobada",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+}
+subgraph cluster_1 { label="Sistema SIGH"; fontname="Arial"; fontsize=12; margin=25; anchor_1 [shape=point,width=0.01,height=0.01,label="",style=invis];
+autorizar [label="CU02a\nVerificar sesión, rol y permiso en\nel servidor",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+permiso [label="¿Operación autorizada?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+denegado [label="CU02a\nDenegar la operación y registrar\nel intento sin secretos",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin_denegado [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+consultar [label="Consultar roles y permisos o\nauditoría de cambios autorizados",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+validar [label="Validar alcance del permiso y\nvalores de la política",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+ok [label="¿Configuración válida?",shape=diamond,style=filled,fillcolor="#fff7ed",width=2.55,height=0.8];
+err [label="Mostrar errores y solicitar\ncorrección",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+aplicar [label="Aplicar permisos en solicitudes\nsiguientes y sesiones según\npolítica",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+fin [label="",shape=doublecircle,width=.23,height=.23,fixedsize=true,style=filled,fillcolor="#0f172a"];
+audit_final [label="Guardar valores anteriores y\nnuevos, responsable y auditoría",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.57];
+confirmar_final [label="CU02a\nMostrar el resultado de la\noperación",shape=box,style="rounded,filled",fillcolor="#eff6ff",width=2.9,height=0.74];
+}
+{rank=same;anchor_0;anchor_1;}
+anchor_0 -> anchor_1 [style=invis,weight=100];
+inicio -> pedir [id="flow_0",xlabel=""];
+pedir -> autorizar [id="flow_1",xlabel=""];
+autorizar -> permiso [id="flow_2",xlabel=""];
+permiso -> denegado [id="flow_3",xlabel="[no]"];
+denegado -> fin_denegado [id="flow_4",xlabel=""];
+permiso -> op [id="flow_5",xlabel="[sí]"];
+op -> tipo [id="flow_6",xlabel=""];
+tipo -> consultar [id="flow_7",xlabel="[sí]"];
+consultar -> fin [id="flow_8",xlabel=""];
+tipo -> merge_editar [id="flow_9",xlabel="[no]"];
+editar -> validar [id="flow_10",xlabel=""];
+validar -> ok [id="flow_11",xlabel=""];
+ok -> err [id="flow_12",xlabel="[no]"];
+err -> merge_editar [id="flow_13",xlabel="",constraint=false];
+ok -> aplicar [id="flow_14",xlabel="[sí]"];
+aplicar -> audit_final [id="flow_15",xlabel=""];
+audit_final -> confirmar_final [id="flow_16",xlabel=""];
+confirmar_final -> fin [id="flow_17",xlabel="",constraint=false];
+merge_editar -> editar [id="flow_18",xlabel=""];
+}

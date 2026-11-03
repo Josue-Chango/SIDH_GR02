@@ -1,0 +1,7312 @@
+[
+  {
+    "cu": 1,
+    "suffix": "",
+    "title": "Iniciar sesión",
+    "lanes": [
+      "Usuario del sistema",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-SEG-001",
+      "RF-AUD-001",
+      "RF-AUD-004"
+    ],
+    "pre": "Usuario con cuenta institucional; no se exige sesión previa.",
+    "post": "Sesión segura autorizada o autenticación rechazada y registrada.",
+    "change": "Se comprueban credenciales y estado de cuenta; se auditan éxito y rechazo.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "merge_cred",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "cred",
+        "kind": "action",
+        "label": "Ingresar usuario y credencial",
+        "lane": 0
+      },
+      {
+        "id": "ver",
+        "kind": "action",
+        "label": "Validar formato, credenciales y cuenta activa no bloqueada",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Autenticación válida?",
+        "lane": 1
+      },
+      {
+        "id": "error",
+        "kind": "action",
+        "label": "Registrar intento fallido y mostrar error genérico",
+        "lane": 1
+      },
+      {
+        "id": "reintento",
+        "kind": "decision",
+        "label": "¿Reintentar?",
+        "lane": 0
+      },
+      {
+        "id": "sesion",
+        "kind": "action",
+        "label": "Crear sesión segura y cargar permisos vigentes",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar autenticación exitosa",
+        "lane": 1
+      },
+      {
+        "id": "panel",
+        "kind": "action",
+        "label": "Mostrar funciones permitidas",
+        "lane": 1
+      },
+      {
+        "id": "fin_cancelado",
+        "kind": "end",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "merge_cred",
+        "guard": ""
+      },
+      {
+        "source": "cred",
+        "target": "ver",
+        "guard": ""
+      },
+      {
+        "source": "ver",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "error",
+        "guard": "no"
+      },
+      {
+        "source": "error",
+        "target": "reintento",
+        "guard": ""
+      },
+      {
+        "source": "reintento",
+        "target": "merge_cred",
+        "guard": "sí"
+      },
+      {
+        "source": "reintento",
+        "target": "fin_cancelado",
+        "guard": "no"
+      },
+      {
+        "source": "ok",
+        "target": "sesion",
+        "guard": "sí"
+      },
+      {
+        "source": "sesion",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "panel",
+        "guard": ""
+      },
+      {
+        "source": "panel",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_cred",
+        "target": "cred",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 1,
+    "suffix": "a",
+    "title": "Recuperar o restablecer credenciales",
+    "lanes": [
+      "Usuario del sistema",
+      "Personal autorizado de soporte",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-SEG-005",
+      "RF-AUD-001"
+    ],
+    "pre": "Solicitud de recuperación sin sesión previa; personal de soporte autorizado.",
+    "post": "Credencial restablecida con trazabilidad o solicitud rechazada.",
+    "change": "Se modela recuperación por procedimiento aprobado sin revelar contraseñas.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "sol",
+        "kind": "action",
+        "label": "Solicitar recuperación o restablecimiento",
+        "lane": 0
+      },
+      {
+        "id": "ident",
+        "kind": "action",
+        "label": "Verificar identidad mediante el mecanismo aprobado",
+        "lane": 1
+      },
+      {
+        "id": "idok",
+        "kind": "decision",
+        "label": "¿Identidad verificada?",
+        "lane": 1
+      },
+      {
+        "id": "rech",
+        "kind": "action",
+        "label": "Registrar rechazo y mostrar respuesta genérica",
+        "lane": 2
+      },
+      {
+        "id": "rest",
+        "kind": "action",
+        "label": "Ejecutar el procedimiento controlado de restablecimiento",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Guardar credencial protegida y registrar el evento",
+        "lane": 2
+      },
+      {
+        "id": "info",
+        "kind": "action",
+        "label": "Informar resultado sin revelar la contraseña existente",
+        "lane": 2
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "sol",
+        "guard": ""
+      },
+      {
+        "source": "sol",
+        "target": "ident",
+        "guard": ""
+      },
+      {
+        "source": "ident",
+        "target": "idok",
+        "guard": ""
+      },
+      {
+        "source": "idok",
+        "target": "rest",
+        "guard": "sí"
+      },
+      {
+        "source": "idok",
+        "target": "rech",
+        "guard": "no"
+      },
+      {
+        "source": "rest",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "info",
+        "guard": ""
+      },
+      {
+        "source": "info",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "rech",
+        "target": "fin",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 1,
+    "suffix": "b",
+    "title": "Cerrar o expirar una sesión",
+    "lanes": [
+      "Usuario del sistema",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-SEG-004",
+      "RF-AUD-001"
+    ],
+    "pre": "Existe una sesión iniciada.",
+    "post": "Sesión invalidada; una nueva operación protegida exige autenticación.",
+    "change": "Se añaden cierre explícito, inactividad y vencimiento según política.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "esperar",
+        "kind": "action",
+        "label": "Esperar cierre solicitado o vencimiento de sesión",
+        "lane": 1
+      },
+      {
+        "id": "causa",
+        "kind": "decision",
+        "label": "¿Evento de cierre?",
+        "lane": 1
+      },
+      {
+        "id": "cerrar",
+        "kind": "action",
+        "label": "Solicitar cierre de sesión",
+        "lane": 0
+      },
+      {
+        "id": "expirar",
+        "kind": "action",
+        "label": "Detectar expiración o inactividad máxima configurada",
+        "lane": 1
+      },
+      {
+        "id": "merge_invalidar",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "invalidar",
+        "kind": "action",
+        "label": "Invalidar la sesión en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar el cierre o expiración según política",
+        "lane": 1
+      },
+      {
+        "id": "login",
+        "kind": "action",
+        "label": "Exigir nueva autenticación para funciones protegidas",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "esperar",
+        "guard": ""
+      },
+      {
+        "source": "esperar",
+        "target": "causa",
+        "guard": ""
+      },
+      {
+        "source": "causa",
+        "target": "cerrar",
+        "guard": "cierre solicitado"
+      },
+      {
+        "source": "causa",
+        "target": "expirar",
+        "guard": "expiración o inactividad"
+      },
+      {
+        "source": "cerrar",
+        "target": "merge_invalidar",
+        "guard": ""
+      },
+      {
+        "source": "expirar",
+        "target": "merge_invalidar",
+        "guard": ""
+      },
+      {
+        "source": "invalidar",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "login",
+        "guard": ""
+      },
+      {
+        "source": "login",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_invalidar",
+        "target": "invalidar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 2,
+    "suffix": "",
+    "title": "Administrar cuentas de usuario",
+    "lanes": [
+      "Administrador del sistema",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-SEG-002",
+      "RF-AUD-001"
+    ],
+    "pre": "Administrador con permisos de gestión de cuentas.",
+    "post": "Cuenta consultada, creada, actualizada, activada o desactivada; historial conservado.",
+    "change": "Se separan las operaciones y se evita eliminar cuentas con operaciones históricas.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_listar",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "listar",
+        "kind": "action",
+        "label": "Consultar cuentas y seleccionar operación",
+        "lane": 0
+      },
+      {
+        "id": "op",
+        "kind": "decision",
+        "label": "¿Tipo de operación?",
+        "lane": 0
+      },
+      {
+        "id": "ver",
+        "kind": "action",
+        "label": "Mostrar los datos autorizados de la cuenta",
+        "lane": 1
+      },
+      {
+        "id": "capt",
+        "kind": "action",
+        "label": "Capturar alta o cambios de cuenta",
+        "lane": 0
+      },
+      {
+        "id": "estado",
+        "kind": "action",
+        "label": "Seleccionar activar o desactivar la cuenta",
+        "lane": 0
+      },
+      {
+        "id": "merge_validar",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar identificador único, campos y estado solicitado",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Datos y transición válidos?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores de validación",
+        "lane": 1
+      },
+      {
+        "id": "hist",
+        "kind": "action",
+        "label": "Guardar alta, cambios o estado de cuenta; conservar identidad e historial y usar desactivación lógica",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_listar",
+        "guard": "sí"
+      },
+      {
+        "source": "listar",
+        "target": "op",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "ver",
+        "guard": "consultar"
+      },
+      {
+        "source": "ver",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "capt",
+        "guard": "crear o actualizar"
+      },
+      {
+        "source": "op",
+        "target": "estado",
+        "guard": "activar o desactivar"
+      },
+      {
+        "source": "capt",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "estado",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_listar",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "hist",
+        "guard": "sí"
+      },
+      {
+        "source": "hist",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_listar",
+        "target": "listar",
+        "guard": ""
+      },
+      {
+        "source": "merge_validar",
+        "target": "validar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 2,
+    "suffix": "a",
+    "title": "Gestionar permisos y políticas de sesión",
+    "lanes": [
+      "Administrador / Responsable de seguridad",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-SEG-003",
+      "RF-SEG-004",
+      "RF-AUD-001",
+      "RF-AUD-002"
+    ],
+    "pre": "Permiso específico para la operación de seguridad elegida.",
+    "post": "Roles, permisos o política actualizados; o auditoría consultada.",
+    "change": "Se incorporan consulta de roles, políticas de sesión y auditoría de cambios.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "op",
+        "kind": "action",
+        "label": "Seleccionar roles, permisos, políticas de sesión o auditoría",
+        "lane": 0
+      },
+      {
+        "id": "tipo",
+        "kind": "decision",
+        "label": "¿Operación de consulta?",
+        "lane": 0
+      },
+      {
+        "id": "consultar",
+        "kind": "action",
+        "label": "Consultar roles y permisos o auditoría de cambios autorizados",
+        "lane": 1
+      },
+      {
+        "id": "merge_editar",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "editar",
+        "kind": "action",
+        "label": "Definir asignaciones o política de sesión aprobada",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar alcance del permiso y valores de la política",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Configuración válida?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores y solicitar corrección",
+        "lane": 1
+      },
+      {
+        "id": "aplicar",
+        "kind": "action",
+        "label": "Aplicar permisos en solicitudes siguientes y sesiones según política",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Guardar valores anteriores y nuevos, responsable y auditoría",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "op",
+        "guard": "sí"
+      },
+      {
+        "source": "op",
+        "target": "tipo",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "consultar",
+        "guard": "sí"
+      },
+      {
+        "source": "consultar",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "merge_editar",
+        "guard": "no"
+      },
+      {
+        "source": "editar",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_editar",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "aplicar",
+        "guard": "sí"
+      },
+      {
+        "source": "aplicar",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_editar",
+        "target": "editar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 3,
+    "suffix": "",
+    "title": "Administrar catálogos institucionales",
+    "lanes": [
+      "Administrador del sistema",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-CAT-001",
+      "RF-CAT-002",
+      "RF-CAT-003"
+    ],
+    "pre": "Usuario con permisos sobre el catálogo seleccionado.",
+    "post": "Elemento consultado o mantenido con vigencia e historial.",
+    "change": "Se distinguen consulta y mantenimiento; la desactivación conserva referencias históricas.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "select",
+        "kind": "action",
+        "label": "Seleccionar catálogo, elemento y operación",
+        "lane": 0
+      },
+      {
+        "id": "consulta",
+        "kind": "decision",
+        "label": "¿Solo consultar?",
+        "lane": 0
+      },
+      {
+        "id": "ver",
+        "kind": "action",
+        "label": "Mostrar catálogo y vigencias",
+        "lane": 1
+      },
+      {
+        "id": "merge_editar",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "editar",
+        "kind": "action",
+        "label": "Registrar, modificar o desactivar el elemento y su vigencia",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar unicidad, campos, fechas y referencias históricas",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Elemento válido?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores sin guardar cambios",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "guardar",
+        "kind": "action",
+        "label": "Guardar vigencia y conservar referencias históricas",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar cambio, responsable, fecha y valores anteriores y nuevos",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "select",
+        "guard": "sí"
+      },
+      {
+        "source": "select",
+        "target": "consulta",
+        "guard": ""
+      },
+      {
+        "source": "consulta",
+        "target": "ver",
+        "guard": "sí"
+      },
+      {
+        "source": "ver",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "consulta",
+        "target": "merge_editar",
+        "guard": "no"
+      },
+      {
+        "source": "editar",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_editar",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "guardar",
+        "guard": "sí"
+      },
+      {
+        "source": "guardar",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_editar",
+        "target": "editar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 4,
+    "suffix": "",
+    "title": "Registrar y actualizar pacientes",
+    "lanes": [
+      "Recepcionista / Responsable de admisión",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-PAC-001",
+      "RF-PAC-002",
+      "RF-PAC-003",
+      "RF-PAC-004",
+      "RF-PAC-005"
+    ],
+    "pre": "Personal autorizado; catálogo de campos y validaciones aprobado.",
+    "post": "Paciente identificado o actualizado sin duplicación automática; historial consultable.",
+    "change": "El identificador se genera solo para pacientes nuevos y las coincidencias exigen revisión.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_buscar",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "buscar",
+        "kind": "action",
+        "label": "Buscar por identificador, documento o nombres",
+        "lane": 0
+      },
+      {
+        "id": "matches",
+        "kind": "action",
+        "label": "Mostrar coincidencias con datos mínimos",
+        "lane": 1
+      },
+      {
+        "id": "existe",
+        "kind": "decision",
+        "label": "¿Paciente existente seleccionado?",
+        "lane": 0
+      },
+      {
+        "id": "consulta",
+        "kind": "action",
+        "label": "Consultar datos e historial administrativo autorizado",
+        "lane": 1
+      },
+      {
+        "id": "actualizar",
+        "kind": "decision",
+        "label": "¿Actualizar datos?",
+        "lane": 0
+      },
+      {
+        "id": "merge_capt",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "capt",
+        "kind": "action",
+        "label": "Capturar datos nuevos o cambios demográficos",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar campos, formatos, fechas e identificadores sensibles",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Datos válidos?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores para su corrección",
+        "lane": 1
+      },
+      {
+        "id": "dup",
+        "kind": "action",
+        "label": "Buscar posibles duplicados del registro",
+        "lane": 1
+      },
+      {
+        "id": "coinc",
+        "kind": "decision",
+        "label": "¿Existen posibles duplicados?",
+        "lane": 1
+      },
+      {
+        "id": "rev",
+        "kind": "action",
+        "label": "Solicitar revisión fundamentada de coincidencias mediante DA CU04a",
+        "lane": 1
+      },
+      {
+        "id": "nuevo",
+        "kind": "decision",
+        "label": "¿Alta nueva autorizada tras revisión?",
+        "lane": 1
+      },
+      {
+        "id": "merge_id",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "id",
+        "kind": "action",
+        "label": "Generar identificador hospitalario único",
+        "lane": 1
+      },
+      {
+        "id": "merge_save",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "save",
+        "kind": "action",
+        "label": "Guardar alta o actualización, conservar identificador existente y auditar",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "alta",
+        "kind": "decision",
+        "label": "¿Es un registro nuevo?",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_buscar",
+        "guard": "sí"
+      },
+      {
+        "source": "buscar",
+        "target": "matches",
+        "guard": ""
+      },
+      {
+        "source": "matches",
+        "target": "existe",
+        "guard": ""
+      },
+      {
+        "source": "existe",
+        "target": "consulta",
+        "guard": "sí"
+      },
+      {
+        "source": "consulta",
+        "target": "actualizar",
+        "guard": ""
+      },
+      {
+        "source": "actualizar",
+        "target": "merge_capt",
+        "guard": "sí"
+      },
+      {
+        "source": "actualizar",
+        "target": "fin",
+        "guard": "no"
+      },
+      {
+        "source": "existe",
+        "target": "merge_capt",
+        "guard": "no"
+      },
+      {
+        "source": "capt",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_capt",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "dup",
+        "guard": "sí"
+      },
+      {
+        "source": "dup",
+        "target": "coinc",
+        "guard": ""
+      },
+      {
+        "source": "coinc",
+        "target": "rev",
+        "guard": "sí"
+      },
+      {
+        "source": "rev",
+        "target": "nuevo",
+        "guard": ""
+      },
+      {
+        "source": "nuevo",
+        "target": "merge_buscar",
+        "guard": "no"
+      },
+      {
+        "source": "nuevo",
+        "target": "merge_id",
+        "guard": "sí"
+      },
+      {
+        "source": "coinc",
+        "target": "alta",
+        "guard": "no"
+      },
+      {
+        "source": "alta",
+        "target": "merge_id",
+        "guard": "sí"
+      },
+      {
+        "source": "alta",
+        "target": "merge_save",
+        "guard": "no"
+      },
+      {
+        "source": "id",
+        "target": "merge_save",
+        "guard": ""
+      },
+      {
+        "source": "save",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_buscar",
+        "target": "buscar",
+        "guard": ""
+      },
+      {
+        "source": "merge_capt",
+        "target": "capt",
+        "guard": ""
+      },
+      {
+        "source": "merge_id",
+        "target": "id",
+        "guard": ""
+      },
+      {
+        "source": "merge_save",
+        "target": "save",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 4,
+    "suffix": "a",
+    "title": "Resolver posibles duplicados",
+    "lanes": [
+      "Personal expresamente autorizado",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-PAC-005",
+      "RN-001",
+      "RN-002"
+    ],
+    "pre": "Coincidencia detectada y permiso específico para resolver duplicados.",
+    "post": "Decisión fundamentada registrada; fusión autorizada conserva las referencias históricas.",
+    "change": "Se elimina cualquier fusión automática por similitud de nombres.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "revisar",
+        "kind": "action",
+        "label": "Revisar identidad, evidencias y registros potencialmente duplicados",
+        "lane": 0
+      },
+      {
+        "id": "decision",
+        "kind": "decision",
+        "label": "¿Decisión autorizada?",
+        "lane": 0
+      },
+      {
+        "id": "fusion",
+        "kind": "action",
+        "label": "Consolidar conforme al procedimiento aprobado; mantener identificadores vinculados e historial",
+        "lane": 1
+      },
+      {
+        "id": "distintos",
+        "kind": "action",
+        "label": "Conservar registros separados y justificar la decisión",
+        "lane": 1
+      },
+      {
+        "id": "pendiente",
+        "kind": "action",
+        "label": "Conservar caso pendiente de revisión sin fusionar",
+        "lane": 1
+      },
+      {
+        "id": "merge_registrar",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "registrar",
+        "kind": "action",
+        "label": "Registrar evidencia, decisión, responsable y fecha; conservar atenciones y documentos",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "revisar",
+        "guard": "sí"
+      },
+      {
+        "source": "revisar",
+        "target": "decision",
+        "guard": ""
+      },
+      {
+        "source": "decision",
+        "target": "fusion",
+        "guard": "fusionar"
+      },
+      {
+        "source": "decision",
+        "target": "distintos",
+        "guard": "personas distintas"
+      },
+      {
+        "source": "decision",
+        "target": "pendiente",
+        "guard": "evidencia insuficiente"
+      },
+      {
+        "source": "fusion",
+        "target": "merge_registrar",
+        "guard": ""
+      },
+      {
+        "source": "distintos",
+        "target": "merge_registrar",
+        "guard": ""
+      },
+      {
+        "source": "pendiente",
+        "target": "merge_registrar",
+        "guard": ""
+      },
+      {
+        "source": "registrar",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_registrar",
+        "target": "registrar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 5,
+    "suffix": "",
+    "title": "Programar o reprogramar citas",
+    "lanes": [
+      "Recepcionista",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-CIT-002",
+      "RF-CIT-003",
+      "RF-CIT-006",
+      "RN-003"
+    ],
+    "pre": "Paciente registrado; agenda configurada; permiso de programación.",
+    "post": "Cita confirmada o reprogramada con reserva exclusiva; el turno anterior se libera al confirmar el nuevo.",
+    "change": "Se validan concurrencia y disponibilidad antes de confirmar, sin perder la cita anterior ante un conflicto.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Seleccionar paciente, profesional, especialidad y operación",
+        "lane": 0
+      },
+      {
+        "id": "merge_agenda",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "agenda",
+        "kind": "action",
+        "label": "Consultar agenda y disponibilidad del periodo",
+        "lane": 1
+      },
+      {
+        "id": "turno",
+        "kind": "action",
+        "label": "Elegir turno, motivo y cita anterior si se reprograma",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar datos, estado de cita y disponibilidad del nuevo turno",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Reserva válida y exclusiva?",
+        "lane": 1
+      },
+      {
+        "id": "error",
+        "kind": "action",
+        "label": "Informar conflicto y conservar la cita anterior",
+        "lane": 1
+      },
+      {
+        "id": "seguir",
+        "kind": "decision",
+        "label": "¿Elegir otro turno?",
+        "lane": 0
+      },
+      {
+        "id": "reservar",
+        "kind": "action",
+        "label": "Confirmar reserva en transacción; liberar turno anterior solo si se reprograma",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Asignar o conservar identificador de cita; registrar estado e historial del cambio",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "datos",
+        "guard": "sí"
+      },
+      {
+        "source": "datos",
+        "target": "merge_agenda",
+        "guard": ""
+      },
+      {
+        "source": "agenda",
+        "target": "turno",
+        "guard": ""
+      },
+      {
+        "source": "turno",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "error",
+        "guard": "no"
+      },
+      {
+        "source": "error",
+        "target": "seguir",
+        "guard": ""
+      },
+      {
+        "source": "seguir",
+        "target": "merge_agenda",
+        "guard": "sí"
+      },
+      {
+        "source": "seguir",
+        "target": "fin",
+        "guard": "no"
+      },
+      {
+        "source": "ok",
+        "target": "reservar",
+        "guard": "sí"
+      },
+      {
+        "source": "reservar",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_agenda",
+        "target": "agenda",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 5,
+    "suffix": "a",
+    "title": "Gestionar agendas y estados de cita",
+    "lanes": [
+      "Recepcionista / Médico según permiso",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-CIT-001",
+      "RF-CIT-004",
+      "RF-CIT-005",
+      "RF-CIT-006"
+    ],
+    "pre": "Agenda o cita existente; médicos consultan según rol y recepcionistas operan según permiso.",
+    "post": "Agenda consultada o configurada; cancelación o asistencia registrada con historial.",
+    "change": "Consulta, configuración, cancelación y asistencia son alternativas independientes.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_op",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "op",
+        "kind": "action",
+        "label": "Seleccionar consulta, configuración, cancelación o asistencia",
+        "lane": 0
+      },
+      {
+        "id": "tipo",
+        "kind": "decision",
+        "label": "¿Operación seleccionada?",
+        "lane": 0
+      },
+      {
+        "id": "ver",
+        "kind": "action",
+        "label": "Mostrar agenda diaria autorizada y datos mínimos",
+        "lane": 1
+      },
+      {
+        "id": "config",
+        "kind": "action",
+        "label": "Definir profesional, servicio, jornada, duración y capacidad",
+        "lane": 0
+      },
+      {
+        "id": "cancel",
+        "kind": "action",
+        "label": "Seleccionar cita y registrar motivo de cancelación",
+        "lane": 0
+      },
+      {
+        "id": "asist",
+        "kind": "action",
+        "label": "Registrar estado de asistencia permitido",
+        "lane": 0
+      },
+      {
+        "id": "merge_validar",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar permiso específico, campos y transición según el flujo aprobado",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Cambio permitido?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar motivo de rechazo",
+        "lane": 1
+      },
+      {
+        "id": "aplicar",
+        "kind": "action",
+        "label": "Guardar agenda o estado; liberar turno al cancelar cuando corresponda; conservar historial",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_op",
+        "guard": "sí"
+      },
+      {
+        "source": "op",
+        "target": "tipo",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "ver",
+        "guard": "consultar"
+      },
+      {
+        "source": "ver",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "config",
+        "guard": "configurar agenda"
+      },
+      {
+        "source": "config",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "cancel",
+        "guard": "cancelar cita"
+      },
+      {
+        "source": "cancel",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "asist",
+        "guard": "registrar asistencia"
+      },
+      {
+        "source": "asist",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_op",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "aplicar",
+        "guard": "sí"
+      },
+      {
+        "source": "aplicar",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_op",
+        "target": "op",
+        "guard": ""
+      },
+      {
+        "source": "merge_validar",
+        "target": "validar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 6,
+    "suffix": "",
+    "title": "Admitir pacientes y consultar ingresos",
+    "lanes": [
+      "Responsable de admisión / Gestor de camas",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HOS-001",
+      "RF-PAC-002",
+      "RF-PAC-004"
+    ],
+    "pre": "Paciente registrado; indicación de ingreso y responsable cuando se admite.",
+    "post": "Admisión asociada al paciente y episodio, o historial de ingresos y egresos consultado.",
+    "change": "La cobertura es un dato administrativo; su validación externa no se presupone.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "buscar",
+        "kind": "action",
+        "label": "Buscar y seleccionar paciente",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Consultar datos administrativos, cobertura registrada e historial autorizado",
+        "lane": 1
+      },
+      {
+        "id": "ingreso",
+        "kind": "decision",
+        "label": "¿Registrar nueva admisión?",
+        "lane": 0
+      },
+      {
+        "id": "merge_capt",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "capt",
+        "kind": "action",
+        "label": "Registrar indicación, motivo, profesional responsable y datos del ingreso",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Comprobar paciente, campos obligatorios e indicación",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Admisión completa?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Solicitar completar o corregir datos",
+        "lane": 1
+      },
+      {
+        "id": "crear",
+        "kind": "action",
+        "label": "Crear admisión y asociar o abrir episodio único del paciente",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "buscar",
+        "guard": "sí"
+      },
+      {
+        "source": "buscar",
+        "target": "datos",
+        "guard": ""
+      },
+      {
+        "source": "datos",
+        "target": "ingreso",
+        "guard": ""
+      },
+      {
+        "source": "ingreso",
+        "target": "merge_capt",
+        "guard": "sí"
+      },
+      {
+        "source": "ingreso",
+        "target": "fin",
+        "guard": "no"
+      },
+      {
+        "source": "capt",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_capt",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "crear",
+        "guard": "sí"
+      },
+      {
+        "source": "crear",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_capt",
+        "target": "capt",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 7,
+    "suffix": "",
+    "title": "Consultar historia clínica electrónica",
+    "lanes": [
+      "Médico / Enfermero / Auditor según rol",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HC-005",
+      "RF-LAB-005",
+      "RF-AUD-001",
+      "RF-AUD-004",
+      "RN-015",
+      "RN-017"
+    ],
+    "pre": "Sesión válida; acceso limitado por rol, relación asistencial o finalidad de auditoría autorizada.",
+    "post": "Información clínica permitida presentada y acceso trazado, o consulta denegada.",
+    "change": "La autorización precede a la lectura; el auditor accede solo a evidencias permitidas.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "buscar",
+        "kind": "action",
+        "label": "Solicitar paciente y finalidad de consulta",
+        "lane": 0
+      },
+      {
+        "id": "alcance",
+        "kind": "action",
+        "label": "Verificar rol, relación asistencial o autorización de auditoría y datos permitidos",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Acceso clínico autorizado?",
+        "lane": 1
+      },
+      {
+        "id": "no",
+        "kind": "action",
+        "label": "Denegar y registrar el intento sin revelar datos clínicos",
+        "lane": 1
+      },
+      {
+        "id": "leer",
+        "kind": "action",
+        "label": "Recuperar antecedentes, diagnósticos, alergias, atenciones y resultados autorizados",
+        "lane": 1
+      },
+      {
+        "id": "mostrar",
+        "kind": "action",
+        "label": "Mostrar datos mínimos y distinguir resultados pendientes de definitivos",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar usuario, finalidad, paciente, fecha y resultado del acceso",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "buscar",
+        "guard": "sí"
+      },
+      {
+        "source": "buscar",
+        "target": "alcance",
+        "guard": ""
+      },
+      {
+        "source": "alcance",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "no",
+        "guard": "no"
+      },
+      {
+        "source": "no",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "leer",
+        "guard": "sí"
+      },
+      {
+        "source": "leer",
+        "target": "mostrar",
+        "guard": ""
+      },
+      {
+        "source": "mostrar",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "fin",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 8,
+    "suffix": "",
+    "title": "Registrar consulta y finalizar nota clínica",
+    "lanes": [
+      "Médico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HC-001",
+      "RF-HC-002",
+      "RF-HC-003",
+      "RF-HC-006",
+      "RF-HC-007",
+      "RN-006",
+      "RN-007",
+      "RN-022"
+    ],
+    "pre": "Paciente identificado o temporal de emergencia; cita, admisión o emergencia vinculable.",
+    "post": "Nota en borrador o finalizada con autoría; el episodio conserva su estado asistencial.",
+    "change": "Se separan borrador y finalización; finalizar una nota no cierra automáticamente todo el episodio.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "episodio",
+        "kind": "action",
+        "label": "Seleccionar o abrir episodio asociado al paciente y origen asistencial",
+        "lane": 0
+      },
+      {
+        "id": "merge_clinica",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "clinica",
+        "kind": "action",
+        "label": "Registrar motivo, problema actual, antecedentes, hallazgos y evaluación",
+        "lane": 0
+      },
+      {
+        "id": "alergias",
+        "kind": "action",
+        "label": "Registrar diagnósticos, alergias, fuente y estado de verificación",
+        "lane": 0
+      },
+      {
+        "id": "plan",
+        "kind": "action",
+        "label": "Registrar tratamiento, órdenes o prescripciones cuando proceda y seguimiento",
+        "lane": 0
+      },
+      {
+        "id": "finalizar",
+        "kind": "decision",
+        "label": "¿Finalizar la nota?",
+        "lane": 0
+      },
+      {
+        "id": "borrador",
+        "kind": "action",
+        "label": "Guardar como borrador identificado; permitir completarlo posteriormente",
+        "lane": 1
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar contenido obligatorio y competencia del profesional",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Nota completa y autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar campos o permisos pendientes",
+        "lane": 1
+      },
+      {
+        "id": "firmar",
+        "kind": "action",
+        "label": "Confirmar finalización con el mecanismo aprobado",
+        "lane": 0
+      },
+      {
+        "id": "final",
+        "kind": "action",
+        "label": "Conservar nota finalizada, autor y fecha; rectificar solo con trazabilidad",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "episodio",
+        "guard": "sí"
+      },
+      {
+        "source": "episodio",
+        "target": "merge_clinica",
+        "guard": ""
+      },
+      {
+        "source": "clinica",
+        "target": "alergias",
+        "guard": ""
+      },
+      {
+        "source": "alergias",
+        "target": "plan",
+        "guard": ""
+      },
+      {
+        "source": "plan",
+        "target": "finalizar",
+        "guard": ""
+      },
+      {
+        "source": "finalizar",
+        "target": "borrador",
+        "guard": "no"
+      },
+      {
+        "source": "borrador",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "finalizar",
+        "target": "validar",
+        "guard": "sí"
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_clinica",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "firmar",
+        "guard": "sí"
+      },
+      {
+        "source": "firmar",
+        "target": "final",
+        "guard": ""
+      },
+      {
+        "source": "final",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_clinica",
+        "target": "clinica",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 8,
+    "suffix": "a",
+    "title": "Registrar evoluciones y documentos clínicos",
+    "lanes": [
+      "Médico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HC-004",
+      "RF-HC-008",
+      "RN-007"
+    ],
+    "pre": "Episodio existente y autorización sobre sus documentos.",
+    "post": "Evolución, adenda o documento asociado con autoría, controles de archivo y auditoría.",
+    "change": "Se añaden evoluciones, rectificación trazada y documentos; el original finalizado se conserva.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_op",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "op",
+        "kind": "action",
+        "label": "Seleccionar episodio y evolución, rectificación o documento",
+        "lane": 0
+      },
+      {
+        "id": "tipo",
+        "kind": "decision",
+        "label": "¿Operación elegida?",
+        "lane": 0
+      },
+      {
+        "id": "nota",
+        "kind": "action",
+        "label": "Registrar evolución o adenda vinculada al original; conservar autor, fecha y contenido",
+        "lane": 0
+      },
+      {
+        "id": "archivo",
+        "kind": "action",
+        "label": "Seleccionar documento y datos de asociación al episodio",
+        "lane": 0
+      },
+      {
+        "id": "merge_val",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "val",
+        "kind": "action",
+        "label": "Validar competencia, acceso y, para archivos, tipo y tamaño permitidos",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Registro válido?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores para su corrección",
+        "lane": 1
+      },
+      {
+        "id": "guardar",
+        "kind": "action",
+        "label": "Guardar con trazabilidad sin sobrescribir documentos clínicos finalizados",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_op",
+        "guard": "sí"
+      },
+      {
+        "source": "op",
+        "target": "tipo",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "nota",
+        "guard": "evolución o rectificación"
+      },
+      {
+        "source": "tipo",
+        "target": "archivo",
+        "guard": "adjuntar o vincular documento"
+      },
+      {
+        "source": "nota",
+        "target": "merge_val",
+        "guard": ""
+      },
+      {
+        "source": "archivo",
+        "target": "merge_val",
+        "guard": ""
+      },
+      {
+        "source": "val",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_op",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "guardar",
+        "guard": "sí"
+      },
+      {
+        "source": "guardar",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_op",
+        "target": "op",
+        "guard": ""
+      },
+      {
+        "source": "merge_val",
+        "target": "val",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 9,
+    "suffix": "",
+    "title": "Registrar signos vitales y cuidados",
+    "lanes": [
+      "Enfermero",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HOS-005",
+      "RN-005",
+      "RN-022"
+    ],
+    "pre": "Paciente y episodio identificados; profesional de enfermería autorizado.",
+    "post": "Observaciones, signos medidos y cuidados guardados con responsable y fecha.",
+    "change": "Los datos no medidos o desconocidos se distinguen de negativos; los errores regresan a captura.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "pac",
+        "kind": "action",
+        "label": "Confirmar paciente y episodio activo",
+        "lane": 0
+      },
+      {
+        "id": "merge_datos",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Registrar signos medidos, observaciones y cuidados realizados",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar campos, unidades y fecha; distinguir no medido, desconocido y negativo",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Registro válido?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores de registro",
+        "lane": 1
+      },
+      {
+        "id": "guardar",
+        "kind": "action",
+        "label": "Guardar con autor, fecha, paciente, episodio y auditoría",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "pac",
+        "guard": "sí"
+      },
+      {
+        "source": "pac",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "datos",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "guardar",
+        "guard": "sí"
+      },
+      {
+        "source": "guardar",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_datos",
+        "target": "datos",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 10,
+    "suffix": "",
+    "title": "Registrar atención de urgencias",
+    "lanes": [
+      "Admisión / Recepcionista",
+      "Médico / Enfermero según competencia",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-EME-001",
+      "RF-EME-002",
+      "RF-EME-003",
+      "RF-EME-004",
+      "RN-005"
+    ],
+    "pre": "Personal autorizado para su intervención; la falta de datos administrativos admite identidad temporal.",
+    "post": "Atención documentada con disposición indicada por el profesional, o atención aún abierta.",
+    "change": "La identidad se concilia después; no se exige estabilización como condición inventada de cierre.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 2
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 2
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 2
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "ingreso",
+        "kind": "action",
+        "label": "Registrar ingreso con datos disponibles",
+        "lane": 0
+      },
+      {
+        "id": "ident",
+        "kind": "decision",
+        "label": "¿Identidad suficiente?",
+        "lane": 0
+      },
+      {
+        "id": "temp",
+        "kind": "action",
+        "label": "Generar identificador temporal controlado y dejar conciliación pendiente",
+        "lane": 2
+      },
+      {
+        "id": "merge_episode",
+        "kind": "merge",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "episode",
+        "kind": "action",
+        "label": "Crear o asociar episodio de emergencia al identificador del paciente",
+        "lane": 2
+      },
+      {
+        "id": "prioridad",
+        "kind": "action",
+        "label": "Registrar prioridad según protocolo aprobado por el hospital",
+        "lane": 1
+      },
+      {
+        "id": "merge_atender",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "atender",
+        "kind": "action",
+        "label": "Registrar valoración, signos vitales, intervenciones, órdenes y observaciones",
+        "lane": 1
+      },
+      {
+        "id": "disp",
+        "kind": "decision",
+        "label": "¿Existe disposición clínica definida?",
+        "lane": 1
+      },
+      {
+        "id": "continuar",
+        "kind": "action",
+        "label": "Guardar evolución y mantener la atención abierta",
+        "lane": 2
+      },
+      {
+        "id": "destino",
+        "kind": "action",
+        "label": "Registrar alta, hospitalización, traslado o derivación según decisión clínica",
+        "lane": 1
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Comprobar datos obligatorios para el cierre y vínculos del destino",
+        "lane": 2
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Cierre documentado?",
+        "lane": 2
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Indicar información clínica pendiente",
+        "lane": 2
+      },
+      {
+        "id": "cerrar",
+        "kind": "action",
+        "label": "Cerrar atención de emergencia y conservar pendiente de identidad si corresponde",
+        "lane": 2
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 2
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 2
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "ingreso",
+        "guard": "sí"
+      },
+      {
+        "source": "ingreso",
+        "target": "ident",
+        "guard": ""
+      },
+      {
+        "source": "ident",
+        "target": "temp",
+        "guard": "no"
+      },
+      {
+        "source": "ident",
+        "target": "merge_episode",
+        "guard": "sí"
+      },
+      {
+        "source": "temp",
+        "target": "merge_episode",
+        "guard": ""
+      },
+      {
+        "source": "episode",
+        "target": "prioridad",
+        "guard": ""
+      },
+      {
+        "source": "prioridad",
+        "target": "merge_atender",
+        "guard": ""
+      },
+      {
+        "source": "atender",
+        "target": "disp",
+        "guard": ""
+      },
+      {
+        "source": "disp",
+        "target": "continuar",
+        "guard": "no"
+      },
+      {
+        "source": "continuar",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "disp",
+        "target": "destino",
+        "guard": "sí"
+      },
+      {
+        "source": "destino",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_atender",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "cerrar",
+        "guard": "sí"
+      },
+      {
+        "source": "cerrar",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_episode",
+        "target": "episode",
+        "guard": ""
+      },
+      {
+        "source": "merge_atender",
+        "target": "atender",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 10,
+    "suffix": "a",
+    "title": "Conciliar identidad temporal de emergencia",
+    "lanes": [
+      "Personal autorizado de admisión",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-EME-001",
+      "RF-PAC-005",
+      "RN-001",
+      "RN-002",
+      "RN-005"
+    ],
+    "pre": "Registro temporal existente y procedimiento de conciliación aprobado.",
+    "post": "Identidad conciliada con historia preservada o pendiente justificada.",
+    "change": "La conciliación es un proceso posterior independiente de la atención urgente.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar registro temporal y recopilar datos de identificación",
+        "lane": 0
+      },
+      {
+        "id": "buscar",
+        "kind": "action",
+        "label": "Buscar coincidencias de paciente y preservar atenciones del temporal",
+        "lane": 1
+      },
+      {
+        "id": "rev",
+        "kind": "action",
+        "label": "Revisar evidencias de identidad y posibles duplicados",
+        "lane": 0
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Conciliación autorizada y fundamentada?",
+        "lane": 0
+      },
+      {
+        "id": "pend",
+        "kind": "action",
+        "label": "Registrar motivo pendiente y conservar el identificador temporal",
+        "lane": 1
+      },
+      {
+        "id": "vinc",
+        "kind": "action",
+        "label": "Vincular identidad confirmada sin perder episodios, órdenes ni resultados",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "buscar",
+        "guard": ""
+      },
+      {
+        "source": "buscar",
+        "target": "rev",
+        "guard": ""
+      },
+      {
+        "source": "rev",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "pend",
+        "guard": "no"
+      },
+      {
+        "source": "pend",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "vinc",
+        "guard": "sí"
+      },
+      {
+        "source": "vinc",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 11,
+    "suffix": "",
+    "title": "Solicitar laboratorio o consultar resultados",
+    "lanes": [
+      "Médico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-LAB-001",
+      "RF-LAB-005"
+    ],
+    "pre": "Paciente y episodio identificados; médico autorizado.",
+    "post": "Solicitud creada en estado solicitada o resultados autorizados consultados.",
+    "change": "Se añade consulta de resultados y corrección de solicitudes inválidas.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar paciente, episodio y operación",
+        "lane": 0
+      },
+      {
+        "id": "op",
+        "kind": "decision",
+        "label": "¿Crear solicitud?",
+        "lane": 0
+      },
+      {
+        "id": "result",
+        "kind": "action",
+        "label": "Consultar resultados y mostrar estado, fecha y validador cuando corresponda",
+        "lane": 1
+      },
+      {
+        "id": "catalogo",
+        "kind": "action",
+        "label": "Consultar catálogo de exámenes",
+        "lane": 1
+      },
+      {
+        "id": "merge_datos",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Seleccionar exámenes e indicaciones clínicas",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar paciente, episodio, exámenes, solicitante y datos obligatorios",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Solicitud válida?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores de la solicitud",
+        "lane": 1
+      },
+      {
+        "id": "crear",
+        "kind": "action",
+        "label": "Guardar solicitud única, fecha, solicitante y estado solicitada",
+        "lane": 1
+      },
+      {
+        "id": "lab",
+        "kind": "action",
+        "label": "Dejar solicitud disponible al laboratorio y registrar auditoría",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "op",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "result",
+        "guard": "no"
+      },
+      {
+        "source": "result",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "catalogo",
+        "guard": "sí"
+      },
+      {
+        "source": "catalogo",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "datos",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "crear",
+        "guard": "sí"
+      },
+      {
+        "source": "crear",
+        "target": "lab",
+        "guard": ""
+      },
+      {
+        "source": "lab",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_datos",
+        "target": "datos",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 12,
+    "suffix": "",
+    "title": "Procesar y validar resultados de laboratorio",
+    "lanes": [
+      "Personal de laboratorio",
+      "Médico consultante",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-LAB-002",
+      "RF-LAB-003",
+      "RF-LAB-004",
+      "RF-LAB-005",
+      "RN-008"
+    ],
+    "pre": "Solicitud existente; recepción, procesamiento y validación limitados a competencias autorizadas.",
+    "post": "Solicitud cancelada con motivo, pendiente de validación o resultado validado y consultable.",
+    "change": "Un valor fuera de referencia no se toma como error; la validación depende del profesional competente.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 2
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 2
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 2
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar solicitud y verificar paciente, muestra y estado",
+        "lane": 0
+      },
+      {
+        "id": "cancel",
+        "kind": "decision",
+        "label": "¿Cancelar según procedimiento?",
+        "lane": 0
+      },
+      {
+        "id": "cancelar",
+        "kind": "action",
+        "label": "Registrar motivo y cancelar solo si la transición está permitida",
+        "lane": 2
+      },
+      {
+        "id": "recibir",
+        "kind": "action",
+        "label": "Registrar recepción de muestra y estado recibida",
+        "lane": 0
+      },
+      {
+        "id": "merge_procesar",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "procesar",
+        "kind": "action",
+        "label": "Registrar estado en proceso y resultados con valores, unidades, intervalos y observaciones",
+        "lane": 0
+      },
+      {
+        "id": "pendiente",
+        "kind": "action",
+        "label": "Guardar resultados claramente pendientes de validación",
+        "lane": 2
+      },
+      {
+        "id": "revisar",
+        "kind": "action",
+        "label": "Revisar resultados y competencia para su validación",
+        "lane": 0
+      },
+      {
+        "id": "validos",
+        "kind": "decision",
+        "label": "¿Validación aprobada?",
+        "lane": 0
+      },
+      {
+        "id": "corregir",
+        "kind": "action",
+        "label": "Corregir registro o repetir según procedimiento; conservar trazabilidad",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Registrar validación con responsable y fecha; cambiar estado a validada",
+        "lane": 2
+      },
+      {
+        "id": "liberar",
+        "kind": "action",
+        "label": "Liberar resultados definitivos para consulta autorizada",
+        "lane": 2
+      },
+      {
+        "id": "consulta",
+        "kind": "action",
+        "label": "Consultar resultados y estado del informe",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar entrega o consulta conforme al flujo de laboratorio y auditar",
+        "lane": 2
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 2
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "cancel",
+        "guard": ""
+      },
+      {
+        "source": "cancel",
+        "target": "cancelar",
+        "guard": "sí"
+      },
+      {
+        "source": "cancelar",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "cancel",
+        "target": "recibir",
+        "guard": "no"
+      },
+      {
+        "source": "recibir",
+        "target": "merge_procesar",
+        "guard": ""
+      },
+      {
+        "source": "procesar",
+        "target": "pendiente",
+        "guard": ""
+      },
+      {
+        "source": "pendiente",
+        "target": "revisar",
+        "guard": ""
+      },
+      {
+        "source": "revisar",
+        "target": "validos",
+        "guard": ""
+      },
+      {
+        "source": "validos",
+        "target": "corregir",
+        "guard": "no"
+      },
+      {
+        "source": "corregir",
+        "target": "merge_procesar",
+        "guard": ""
+      },
+      {
+        "source": "validos",
+        "target": "validar",
+        "guard": "sí"
+      },
+      {
+        "source": "validar",
+        "target": "liberar",
+        "guard": ""
+      },
+      {
+        "source": "liberar",
+        "target": "consulta",
+        "guard": ""
+      },
+      {
+        "source": "consulta",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_procesar",
+        "target": "procesar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 13,
+    "suffix": "",
+    "title": "Gestionar estudios de imagenología",
+    "lanes": [
+      "Médico",
+      "Profesional de imagenología",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-IMG-001",
+      "RF-IMG-002",
+      "RF-IMG-003",
+      "RF-IMG-004"
+    ],
+    "pre": "Paciente y episodio identificados; cada profesional autorizado para su función.",
+    "post": "Estudio programado, ejecutado e informe publicado, o informe conservado en borrador.",
+    "change": "Se separan solicitud, ejecución, borrador, validación y publicación; se usa repositorio interno aprobado.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 2
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 2
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 2
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "merge_sol",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "sol",
+        "kind": "action",
+        "label": "Solicitar estudio con paciente, episodio e indicación clínica",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar solicitud y datos obligatorios",
+        "lane": 2
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Solicitud válida?",
+        "lane": 2
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar datos pendientes de la solicitud",
+        "lane": 2
+      },
+      {
+        "id": "programar",
+        "kind": "action",
+        "label": "Registrar programación y ejecución del estudio con su estado",
+        "lane": 1
+      },
+      {
+        "id": "informe",
+        "kind": "action",
+        "label": "Elaborar informe radiológico en borrador",
+        "lane": 1
+      },
+      {
+        "id": "vincular",
+        "kind": "action",
+        "label": "Vincular imágenes y documentos al estudio en repositorio aprobado",
+        "lane": 2
+      },
+      {
+        "id": "publicar",
+        "kind": "decision",
+        "label": "¿Informe validado por profesional autorizado?",
+        "lane": 1
+      },
+      {
+        "id": "borrador",
+        "kind": "action",
+        "label": "Conservar borrador sin publicarlo como definitivo",
+        "lane": 2
+      },
+      {
+        "id": "definitivo",
+        "kind": "action",
+        "label": "Guardar informe validado con autoría y publicar según permiso",
+        "lane": 2
+      },
+      {
+        "id": "consulta",
+        "kind": "action",
+        "label": "Consultar informe e imágenes autorizados",
+        "lane": 0
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 2
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 2
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_sol",
+        "guard": "sí"
+      },
+      {
+        "source": "sol",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_sol",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "programar",
+        "guard": "sí"
+      },
+      {
+        "source": "programar",
+        "target": "informe",
+        "guard": ""
+      },
+      {
+        "source": "informe",
+        "target": "vincular",
+        "guard": ""
+      },
+      {
+        "source": "vincular",
+        "target": "publicar",
+        "guard": ""
+      },
+      {
+        "source": "publicar",
+        "target": "borrador",
+        "guard": "no"
+      },
+      {
+        "source": "borrador",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "publicar",
+        "target": "definitivo",
+        "guard": "sí"
+      },
+      {
+        "source": "definitivo",
+        "target": "consulta",
+        "guard": ""
+      },
+      {
+        "source": "consulta",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_sol",
+        "target": "sol",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 14,
+    "suffix": "",
+    "title": "Registrar y consultar prescripciones",
+    "lanes": [
+      "Médico",
+      "Farmacéutico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HC-002",
+      "RF-HC-006",
+      "RF-FAR-001",
+      "RF-FAR-003"
+    ],
+    "pre": "Paciente y episodio identificados; catálogo vigente; autorización para prescribir o consultar.",
+    "post": "Prescripción autorizada y disponible para validación farmacéutica, o consulta realizada.",
+    "change": "La autorización médica y la validación para dispensar se distinguen; no se inventan alertas clínicas automáticas.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 2
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 2
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 2
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "op",
+        "kind": "decision",
+        "label": "¿Operación solicitada?",
+        "lane": 0
+      },
+      {
+        "id": "consulta",
+        "kind": "action",
+        "label": "Consultar catálogo y prescripciones autorizadas",
+        "lane": 1
+      },
+      {
+        "id": "context",
+        "kind": "action",
+        "label": "Seleccionar paciente y episodio; consultar alergias y antecedentes relevantes",
+        "lane": 0
+      },
+      {
+        "id": "catalogo",
+        "kind": "action",
+        "label": "Consultar catálogo institucional de medicamentos",
+        "lane": 2
+      },
+      {
+        "id": "merge_datos",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Registrar medicamento, dosis, vía, frecuencia, duración e indicaciones aplicables",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar campos institucionales y autorización del prescriptor",
+        "lane": 2
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Prescripción completa y autorizada?",
+        "lane": 2
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores de registro",
+        "lane": 2
+      },
+      {
+        "id": "firmar",
+        "kind": "action",
+        "label": "Confirmar o firmar prescripción con mecanismo aprobado",
+        "lane": 0
+      },
+      {
+        "id": "guardar",
+        "kind": "action",
+        "label": "Guardar con autoría y dejar disponible para validación farmacéutica en DA CU15",
+        "lane": 2
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 2
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 2
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "op",
+        "guard": "sí"
+      },
+      {
+        "source": "op",
+        "target": "consulta",
+        "guard": "consultar"
+      },
+      {
+        "source": "consulta",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "context",
+        "guard": "prescribir"
+      },
+      {
+        "source": "context",
+        "target": "catalogo",
+        "guard": ""
+      },
+      {
+        "source": "catalogo",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "datos",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "firmar",
+        "guard": "sí"
+      },
+      {
+        "source": "firmar",
+        "target": "guardar",
+        "guard": ""
+      },
+      {
+        "source": "guardar",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_datos",
+        "target": "datos",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 15,
+    "suffix": "",
+    "title": "Dispensar medicamentos",
+    "lanes": [
+      "Farmacéutico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-FAR-002",
+      "RF-FAR-003",
+      "RF-FAR-004",
+      "RF-FAR-005",
+      "RF-FAR-006",
+      "RN-011",
+      "RN-012",
+      "RN-021"
+    ],
+    "pre": "Prescripción autorizada; farmacéutico con permiso; paciente identificado.",
+    "post": "Dispensación única e inventario actualizados consistentemente, o entrega no realizada.",
+    "change": "Se elimina duplicación y se incorporan rechazo por receta, lote y concurrencia.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "receta",
+        "kind": "action",
+        "label": "Seleccionar paciente y prescripción autorizada",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Comprobar información de prescripción para dispensación",
+        "lane": 0
+      },
+      {
+        "id": "valida",
+        "kind": "decision",
+        "label": "¿Prescripción válida para dispensar?",
+        "lane": 0
+      },
+      {
+        "id": "rech",
+        "kind": "action",
+        "label": "Registrar rechazo y solicitar revisión al prescriptor sin entregar medicamento",
+        "lane": 1
+      },
+      {
+        "id": "merge_stock",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "stock",
+        "kind": "action",
+        "label": "Consultar existencias dispensables por producto, ubicación y lote",
+        "lane": 1
+      },
+      {
+        "id": "disponible",
+        "kind": "decision",
+        "label": "¿Cantidad suficiente y lote vigente no bloqueado?",
+        "lane": 1
+      },
+      {
+        "id": "falta",
+        "kind": "action",
+        "label": "Informar faltante o bloqueo y conservar receta pendiente",
+        "lane": 1
+      },
+      {
+        "id": "confirmar",
+        "kind": "action",
+        "label": "Confirmar cantidad y lote a dispensar",
+        "lane": 0
+      },
+      {
+        "id": "tx",
+        "kind": "action",
+        "label": "Revalidar cantidad y lote; guardar dispensación y salida en una transacción",
+        "lane": 1
+      },
+      {
+        "id": "commit",
+        "kind": "decision",
+        "label": "¿Transacción confirmada?",
+        "lane": 1
+      },
+      {
+        "id": "conflicto",
+        "kind": "action",
+        "label": "Revertir operación completa e informar conflicto de inventario",
+        "lane": 1
+      },
+      {
+        "id": "entrega",
+        "kind": "action",
+        "label": "Entregar medicamento y registrar responsable y fecha",
+        "lane": 0
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría de dispensación y movimiento asociado sin duplicar la salida",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "receta",
+        "guard": "sí"
+      },
+      {
+        "source": "receta",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "valida",
+        "guard": ""
+      },
+      {
+        "source": "valida",
+        "target": "rech",
+        "guard": "no"
+      },
+      {
+        "source": "rech",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "valida",
+        "target": "merge_stock",
+        "guard": "sí"
+      },
+      {
+        "source": "stock",
+        "target": "disponible",
+        "guard": ""
+      },
+      {
+        "source": "disponible",
+        "target": "falta",
+        "guard": "no"
+      },
+      {
+        "source": "falta",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "disponible",
+        "target": "confirmar",
+        "guard": "sí"
+      },
+      {
+        "source": "confirmar",
+        "target": "tx",
+        "guard": ""
+      },
+      {
+        "source": "tx",
+        "target": "commit",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "conflicto",
+        "guard": "no"
+      },
+      {
+        "source": "conflicto",
+        "target": "merge_stock",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "entrega",
+        "guard": "sí"
+      },
+      {
+        "source": "entrega",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_stock",
+        "target": "stock",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 16,
+    "suffix": "",
+    "title": "Gestionar inventario de farmacia",
+    "lanes": [
+      "Farmacéutico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-FAR-002",
+      "RF-FAR-005",
+      "RF-FAR-006",
+      "RF-FAR-007"
+    ],
+    "pre": "Producto y ubicación registrados; ajustes sujetos a permiso específico.",
+    "post": "Consulta realizada o movimiento, lote o umbral actualizado con trazabilidad.",
+    "change": "Se añaden transferencias y control de lotes; consultar no genera un movimiento.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_sel",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar producto, ubicación y operación",
+        "lane": 0
+      },
+      {
+        "id": "op",
+        "kind": "decision",
+        "label": "¿Operación elegida?",
+        "lane": 0
+      },
+      {
+        "id": "ver",
+        "kind": "action",
+        "label": "Mostrar existencias disponibles, reservadas y no dispensables; lotes y alertas",
+        "lane": 1
+      },
+      {
+        "id": "mov",
+        "kind": "action",
+        "label": "Capturar entrada, salida, ajuste o transferencia con cantidad, motivo y referencia",
+        "lane": 0
+      },
+      {
+        "id": "lote",
+        "kind": "action",
+        "label": "Registrar lote, caducidad o bloqueo conforme a la política",
+        "lane": 0
+      },
+      {
+        "id": "min",
+        "kind": "action",
+        "label": "Definir nivel mínimo por producto y ubicación",
+        "lane": 0
+      },
+      {
+        "id": "merge_validar",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar campos, permiso específico, saldo y restricciones del movimiento",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Operación válida?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar errores sin alterar existencias",
+        "lane": 1
+      },
+      {
+        "id": "tx",
+        "kind": "action",
+        "label": "Guardar movimiento y saldos de origen y destino en transacción, o configuración elegida",
+        "lane": 1
+      },
+      {
+        "id": "eval",
+        "kind": "action",
+        "label": "Evaluar existencias disponibles frente al umbral configurado",
+        "lane": 1
+      },
+      {
+        "id": "bajo",
+        "kind": "decision",
+        "label": "¿Umbral de alerta alcanzado?",
+        "lane": 1
+      },
+      {
+        "id": "alerta",
+        "kind": "action",
+        "label": "Generar o actualizar alerta de stock visible al farmacéutico",
+        "lane": 1
+      },
+      {
+        "id": "normal",
+        "kind": "action",
+        "label": "Mantener estado sin alerta de stock bajo",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_audit",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar operación y responsable sin duplicar movimientos de dispensación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "op",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "ver",
+        "guard": "consultar"
+      },
+      {
+        "source": "ver",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "mov",
+        "guard": "movimiento"
+      },
+      {
+        "source": "mov",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "lote",
+        "guard": "lote o caducidad"
+      },
+      {
+        "source": "lote",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "op",
+        "target": "min",
+        "guard": "nivel mínimo"
+      },
+      {
+        "source": "min",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_sel",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "tx",
+        "guard": "sí"
+      },
+      {
+        "source": "tx",
+        "target": "eval",
+        "guard": ""
+      },
+      {
+        "source": "eval",
+        "target": "bajo",
+        "guard": ""
+      },
+      {
+        "source": "bajo",
+        "target": "alerta",
+        "guard": "sí"
+      },
+      {
+        "source": "bajo",
+        "target": "normal",
+        "guard": "no"
+      },
+      {
+        "source": "alerta",
+        "target": "merge_audit",
+        "guard": ""
+      },
+      {
+        "source": "normal",
+        "target": "merge_audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_sel",
+        "target": "sel",
+        "guard": ""
+      },
+      {
+        "source": "merge_validar",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "merge_audit",
+        "target": "audit",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 17,
+    "suffix": "",
+    "title": "Asignar cama o registrar traslado",
+    "lanes": [
+      "Gestor de camas / Responsable de admisión según permiso",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HOS-001",
+      "RF-HOS-002",
+      "RF-HOS-003",
+      "RF-HOS-004",
+      "RN-009",
+      "RN-010",
+      "RN-021"
+    ],
+    "pre": "Ingreso hospitalario existente; cama y restricciones configuradas.",
+    "post": "Asignación o traslado consistente con historial, o paciente conserva ubicación anterior / espera.",
+    "change": "El traslado no ejecuta un egreso administrativo; origen y destino se actualizan juntos.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "merge_ocup",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "ocup",
+        "kind": "action",
+        "label": "Consultar ocupación e ingreso del paciente",
+        "lane": 0
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar asignación o traslado, destino y motivo",
+        "lane": 0
+      },
+      {
+        "id": "val",
+        "kind": "action",
+        "label": "Comprobar disponibilidad operativa y restricciones institucionales",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Destino compatible y disponible?",
+        "lane": 1
+      },
+      {
+        "id": "espera",
+        "kind": "action",
+        "label": "Informar falta de cama; conservar ubicación actual o registrar espera",
+        "lane": 1
+      },
+      {
+        "id": "tx",
+        "kind": "action",
+        "label": "Revalidar destino y actualizar ocupaciones de origen y destino en transacción",
+        "lane": 1
+      },
+      {
+        "id": "commit",
+        "kind": "decision",
+        "label": "¿Asignación confirmada?",
+        "lane": 1
+      },
+      {
+        "id": "conf",
+        "kind": "action",
+        "label": "Revertir cambios e informar conflicto concurrente",
+        "lane": 1
+      },
+      {
+        "id": "hist",
+        "kind": "action",
+        "label": "Registrar origen, destino, motivo, fecha y responsable; conservar historial",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_ocup",
+        "guard": "sí"
+      },
+      {
+        "source": "ocup",
+        "target": "sel",
+        "guard": ""
+      },
+      {
+        "source": "sel",
+        "target": "val",
+        "guard": ""
+      },
+      {
+        "source": "val",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "espera",
+        "guard": "no"
+      },
+      {
+        "source": "espera",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "tx",
+        "guard": "sí"
+      },
+      {
+        "source": "tx",
+        "target": "commit",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "conf",
+        "guard": "no"
+      },
+      {
+        "source": "conf",
+        "target": "merge_ocup",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "hist",
+        "guard": "sí"
+      },
+      {
+        "source": "hist",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_ocup",
+        "target": "ocup",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 17,
+    "suffix": "a",
+    "title": "Administrar estados de cama y egreso",
+    "lanes": [
+      "Gestor de camas y hospitalización",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HOS-002",
+      "RF-HOS-006",
+      "RN-009"
+    ],
+    "pre": "Cama registrada; el egreso requiere alta médica autorizada de DA CU19.",
+    "post": "Estado operativo o egreso registrado; disponibilidad respeta limpieza y preparación.",
+    "change": "Se separa alta médica de egreso; no se marca disponible una cama sin completar su preparación.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar cama, estado operativo o egreso administrativo",
+        "lane": 0
+      },
+      {
+        "id": "tipo",
+        "kind": "decision",
+        "label": "¿Registrar egreso?",
+        "lane": 0
+      },
+      {
+        "id": "estado",
+        "kind": "action",
+        "label": "Definir estado operativo aprobado y motivo del cambio",
+        "lane": 0
+      },
+      {
+        "id": "alta",
+        "kind": "action",
+        "label": "Verificar alta médica, salida registrada y documentación de egreso",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Egreso autorizado y completo?",
+        "lane": 1
+      },
+      {
+        "id": "pend",
+        "kind": "action",
+        "label": "Mantener ocupación e informar pendientes",
+        "lane": 1
+      },
+      {
+        "id": "egreso",
+        "kind": "action",
+        "label": "Preparar egreso con fecha y responsable sin confirmar todavía los cambios",
+        "lane": 1
+      },
+      {
+        "id": "limpieza",
+        "kind": "action",
+        "label": "Determinar el estado de limpieza o preparación que corresponda",
+        "lane": 1
+      },
+      {
+        "id": "merge_validar",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar transición operativa y ausencia de ocupaciones incompatibles",
+        "lane": 1
+      },
+      {
+        "id": "val",
+        "kind": "decision",
+        "label": "¿Transición permitida?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Rechazar cambio y conservar estado actual",
+        "lane": 1
+      },
+      {
+        "id": "save",
+        "kind": "action",
+        "label": "Guardar egreso, fin de ocupación y estado en transacción; disponer cama solo tras preparación requerida",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "tipo",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "estado",
+        "guard": "no"
+      },
+      {
+        "source": "estado",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "tipo",
+        "target": "alta",
+        "guard": "sí"
+      },
+      {
+        "source": "alta",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "pend",
+        "guard": "no"
+      },
+      {
+        "source": "pend",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "egreso",
+        "guard": "sí"
+      },
+      {
+        "source": "egreso",
+        "target": "limpieza",
+        "guard": ""
+      },
+      {
+        "source": "limpieza",
+        "target": "merge_validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "val",
+        "guard": ""
+      },
+      {
+        "source": "val",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "val",
+        "target": "save",
+        "guard": "sí"
+      },
+      {
+        "source": "save",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_validar",
+        "target": "validar",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 18,
+    "suffix": "",
+    "title": "Programar y registrar cirugía",
+    "lanes": [
+      "Personal de quirófano",
+      "Médico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-QUI-001",
+      "RF-QUI-002",
+      "RF-QUI-003",
+      "RF-QUI-004"
+    ],
+    "pre": "Paciente y procedimiento identificados; recursos gestionados por el sistema.",
+    "post": "Cirugía programada o realizada y recuperación documentada; pendientes no se dan por resueltos.",
+    "change": "La disponibilidad se valida antes de programar y la lista preoperatoria antes de documentar la intervención.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 2
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 2
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 2
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "merge_datos",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Registrar paciente, procedimiento, equipo, fecha, hora y recursos",
+        "lane": 0
+      },
+      {
+        "id": "recursos",
+        "kind": "action",
+        "label": "Comprobar disponibilidad de recursos gestionados",
+        "lane": 2
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Recursos disponibles?",
+        "lane": 2
+      },
+      {
+        "id": "conf",
+        "kind": "action",
+        "label": "Informar conflicto y solicitar reprogramación",
+        "lane": 2
+      },
+      {
+        "id": "program",
+        "kind": "action",
+        "label": "Confirmar programación y registrar responsable",
+        "lane": 2
+      },
+      {
+        "id": "lista",
+        "kind": "action",
+        "label": "Registrar lista preoperatoria y quién completa los controles",
+        "lane": 0
+      },
+      {
+        "id": "pre",
+        "kind": "decision",
+        "label": "¿Controles y autorización completos?",
+        "lane": 1
+      },
+      {
+        "id": "pend",
+        "kind": "action",
+        "label": "Registrar pendientes y decisión del equipo; mantener programación pendiente o reprogramar",
+        "lane": 0
+      },
+      {
+        "id": "cirugia",
+        "kind": "action",
+        "label": "Registrar intervención, tiempos, participantes y observaciones",
+        "lane": 1
+      },
+      {
+        "id": "recup",
+        "kind": "action",
+        "label": "Registrar recuperación y disposición posterior del paciente",
+        "lane": 0
+      },
+      {
+        "id": "cierre",
+        "kind": "action",
+        "label": "Actualizar estado del procedimiento y cerrar registro según protocolo",
+        "lane": 2
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 2
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 2
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 2
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "merge_datos",
+        "guard": "sí"
+      },
+      {
+        "source": "datos",
+        "target": "recursos",
+        "guard": ""
+      },
+      {
+        "source": "recursos",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "conf",
+        "guard": "no"
+      },
+      {
+        "source": "conf",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "program",
+        "guard": "sí"
+      },
+      {
+        "source": "program",
+        "target": "lista",
+        "guard": ""
+      },
+      {
+        "source": "lista",
+        "target": "pre",
+        "guard": ""
+      },
+      {
+        "source": "pre",
+        "target": "pend",
+        "guard": "no"
+      },
+      {
+        "source": "pend",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "pre",
+        "target": "cirugia",
+        "guard": "sí"
+      },
+      {
+        "source": "cirugia",
+        "target": "recup",
+        "guard": ""
+      },
+      {
+        "source": "recup",
+        "target": "cierre",
+        "guard": ""
+      },
+      {
+        "source": "cierre",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_datos",
+        "target": "datos",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 19,
+    "suffix": "",
+    "title": "Registrar alta médica autorizada",
+    "lanes": [
+      "Médico",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-HOS-006",
+      "RN-006"
+    ],
+    "pre": "Paciente hospitalizado y episodio abierto; profesional competente para autorizar el alta.",
+    "post": "Alta médica e indicaciones guardadas y disponibles para el egreso administrativo.",
+    "change": "La decisión es clínica; se valida documentación antes de guardar el alta definitiva.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "episodio",
+        "kind": "action",
+        "label": "Revisar paciente, episodio y documentación clínica",
+        "lane": 0
+      },
+      {
+        "id": "decision",
+        "kind": "decision",
+        "label": "¿Alta clínicamente indicada por el médico?",
+        "lane": 0
+      },
+      {
+        "id": "seguir",
+        "kind": "action",
+        "label": "Conservar atención abierta y registrar evolución cuando corresponda",
+        "lane": 1
+      },
+      {
+        "id": "merge_datos",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Registrar autorización, fecha, responsable e indicaciones de salida",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Comprobar documentación requerida por el proceso institucional",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Documentación completa?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar pendientes para completar el alta",
+        "lane": 1
+      },
+      {
+        "id": "alta",
+        "kind": "action",
+        "label": "Guardar alta autorizada y documentación; registrar autoría y auditoría",
+        "lane": 1
+      },
+      {
+        "id": "egreso",
+        "kind": "action",
+        "label": "Dejar alta disponible para DA CU17a; la cama sigue el flujo de egreso y preparación",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "episodio",
+        "guard": "sí"
+      },
+      {
+        "source": "episodio",
+        "target": "decision",
+        "guard": ""
+      },
+      {
+        "source": "decision",
+        "target": "seguir",
+        "guard": "no"
+      },
+      {
+        "source": "seguir",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "decision",
+        "target": "merge_datos",
+        "guard": "sí"
+      },
+      {
+        "source": "datos",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "alta",
+        "guard": "sí"
+      },
+      {
+        "source": "alta",
+        "target": "egreso",
+        "guard": ""
+      },
+      {
+        "source": "egreso",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_datos",
+        "target": "datos",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 20,
+    "suffix": "",
+    "title": "Generar documento de facturación",
+    "lanes": [
+      "Facturador",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-FAC-001",
+      "RF-FAC-002",
+      "RF-FAC-003",
+      "RN-013"
+    ],
+    "pre": "Servicios o productos prestados; tarifas y reglas vigentes configuradas.",
+    "post": "Documento de facturación emitido con estado, cálculo reproducible y referencia a cargos originales.",
+    "change": "Se conservan los orígenes de cargo y no se presupone emisión tributaria electrónica externa.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "cuenta",
+        "kind": "action",
+        "label": "Seleccionar paciente, episodio o cuenta",
+        "lane": 0
+      },
+      {
+        "id": "cargos",
+        "kind": "action",
+        "label": "Cargar cargos de servicios prestados y productos dispensados con referencia a su origen",
+        "lane": 1
+      },
+      {
+        "id": "merge_revision",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "revision",
+        "kind": "action",
+        "label": "Revisar cargos y corregir datos autorizados",
+        "lane": 0
+      },
+      {
+        "id": "calc",
+        "kind": "action",
+        "label": "Calcular precios, tarifas, descuentos e impuestos vigentes; conservar reglas utilizadas",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Cargos y cálculo válidos?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar inconsistencias sin emitir documento",
+        "lane": 1
+      },
+      {
+        "id": "emitir",
+        "kind": "action",
+        "label": "Emitir documento del alcance aprobado con identificador, estado y referencia",
+        "lane": 1
+      },
+      {
+        "id": "comprobante",
+        "kind": "action",
+        "label": "Mostrar o entregar comprobante autorizado y registrar auditoría",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "cuenta",
+        "guard": "sí"
+      },
+      {
+        "source": "cuenta",
+        "target": "cargos",
+        "guard": ""
+      },
+      {
+        "source": "cargos",
+        "target": "merge_revision",
+        "guard": ""
+      },
+      {
+        "source": "revision",
+        "target": "calc",
+        "guard": ""
+      },
+      {
+        "source": "calc",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_revision",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "emitir",
+        "guard": "sí"
+      },
+      {
+        "source": "emitir",
+        "target": "comprobante",
+        "guard": ""
+      },
+      {
+        "source": "comprobante",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_revision",
+        "target": "revision",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 21,
+    "suffix": "",
+    "title": "Registrar pagos y consultar saldo",
+    "lanes": [
+      "Cajero / Facturador según permiso",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-FAC-004",
+      "RF-FAC-006",
+      "RN-021"
+    ],
+    "pre": "Cuenta y documentos relacionados existentes; permiso específico para registrar pagos.",
+    "post": "Estado consultado o pago registrado con saldo pendiente y comprobante consistentes.",
+    "change": "Se contemplan pagos parciales; el saldo se actualiza antes de emitir comprobante.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar cuenta y consultar cargos, pagos, ajustes y saldo",
+        "lane": 0
+      },
+      {
+        "id": "pagar",
+        "kind": "decision",
+        "label": "¿Registrar pago?",
+        "lane": 0
+      },
+      {
+        "id": "merge_datos",
+        "kind": "merge",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Registrar importe, fecha, medio y documento relacionado",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Validar permiso de caja, datos y reglas del importe aplicables",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Pago válido?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Mostrar motivo de rechazo sin aplicar el pago",
+        "lane": 1
+      },
+      {
+        "id": "tx",
+        "kind": "action",
+        "label": "Guardar pago y actualizar saldo pendiente de forma transaccional",
+        "lane": 1
+      },
+      {
+        "id": "commit",
+        "kind": "decision",
+        "label": "¿Registro confirmado?",
+        "lane": 1
+      },
+      {
+        "id": "fallo",
+        "kind": "action",
+        "label": "Revertir pago y saldo; informar fallo sin emitir comprobante",
+        "lane": 1
+      },
+      {
+        "id": "comprob",
+        "kind": "action",
+        "label": "Emitir comprobante del pago confirmado, incluido pago parcial",
+        "lane": 1
+      },
+      {
+        "id": "saldo",
+        "kind": "action",
+        "label": "Mostrar saldo actualizado y registrar auditoría",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "pagar",
+        "guard": ""
+      },
+      {
+        "source": "pagar",
+        "target": "fin",
+        "guard": "no"
+      },
+      {
+        "source": "pagar",
+        "target": "merge_datos",
+        "guard": "sí"
+      },
+      {
+        "source": "datos",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_datos",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "tx",
+        "guard": "sí"
+      },
+      {
+        "source": "tx",
+        "target": "commit",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "fallo",
+        "guard": "no"
+      },
+      {
+        "source": "fallo",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "comprob",
+        "guard": "sí"
+      },
+      {
+        "source": "comprob",
+        "target": "saldo",
+        "guard": ""
+      },
+      {
+        "source": "saldo",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_datos",
+        "target": "datos",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 21,
+    "suffix": "a",
+    "title": "Registrar anulaciones y devoluciones",
+    "lanes": [
+      "Facturador autorizado",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-FAC-005",
+      "RF-FAC-006",
+      "RN-014",
+      "RN-021"
+    ],
+    "pre": "Documento original identificado; permiso y procedimiento institucional para la operación.",
+    "post": "Anulación o devolución ligada al original con saldo e historial consistentes, o rechazo trazado.",
+    "change": "Se incorpora la alternativa financiera omitida, sin borrar documentos originales.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "sel",
+        "kind": "action",
+        "label": "Seleccionar documento original y consultar estado de cuenta",
+        "lane": 0
+      },
+      {
+        "id": "datos",
+        "kind": "action",
+        "label": "Registrar anulación o devolución con importe, motivo y soporte requerido",
+        "lane": 0
+      },
+      {
+        "id": "validar",
+        "kind": "action",
+        "label": "Comprobar permiso específico, estado y reglas del procedimiento aprobado",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Operación autorizada y válida?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Rechazar operación e informar motivo",
+        "lane": 1
+      },
+      {
+        "id": "tx",
+        "kind": "action",
+        "label": "Registrar reverso y actualizar saldo en transacción; mantener referencia al original",
+        "lane": 1
+      },
+      {
+        "id": "commit",
+        "kind": "decision",
+        "label": "¿Transacción confirmada?",
+        "lane": 1
+      },
+      {
+        "id": "fallo",
+        "kind": "action",
+        "label": "Revertir cambios y conservar documentos y saldo previos",
+        "lane": 1
+      },
+      {
+        "id": "resultado",
+        "kind": "action",
+        "label": "Mostrar resultado y conservar trazabilidad sin borrar el documento original",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit_final",
+        "kind": "action",
+        "label": "Registrar auditoría con usuario, fecha, objeto y resultado",
+        "lane": 1
+      },
+      {
+        "id": "confirmar_final",
+        "kind": "action",
+        "label": "Mostrar el resultado de la operación",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "sel",
+        "guard": "sí"
+      },
+      {
+        "source": "sel",
+        "target": "datos",
+        "guard": ""
+      },
+      {
+        "source": "datos",
+        "target": "validar",
+        "guard": ""
+      },
+      {
+        "source": "validar",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "tx",
+        "guard": "sí"
+      },
+      {
+        "source": "tx",
+        "target": "commit",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "fallo",
+        "guard": "no"
+      },
+      {
+        "source": "fallo",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "commit",
+        "target": "resultado",
+        "guard": "sí"
+      },
+      {
+        "source": "resultado",
+        "target": "audit_final",
+        "guard": ""
+      },
+      {
+        "source": "audit_final",
+        "target": "confirmar_final",
+        "guard": ""
+      },
+      {
+        "source": "confirmar_final",
+        "target": "fin",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 22,
+    "suffix": "",
+    "title": "Generar y exportar informes autorizados",
+    "lanes": [
+      "Usuario autorizado según tipo de informe",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-INF-001",
+      "RF-INF-002",
+      "RF-INF-003",
+      "RF-INF-004",
+      "RF-INF-005",
+      "RF-INF-006",
+      "RF-INF-007"
+    ],
+    "pre": "Analista, director, gestor de camas, farmacéutico, facturador o cajero con permiso de informe.",
+    "post": "Informe de citas, atenciones, ocupación, farmacia o finanzas presentado; exportación opcional controlada.",
+    "change": "La exportación se decide y autoriza por separado, con los mismos filtros y minimización.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "tipo",
+        "kind": "action",
+        "label": "Elegir informe de citas, atenciones, ocupación, farmacia o finanzas y filtros",
+        "lane": 0
+      },
+      {
+        "id": "scope",
+        "kind": "action",
+        "label": "Comprobar permiso por tipo, periodo y datos solicitados",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Consulta permitida?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Denegar consulta y registrar intento",
+        "lane": 1
+      },
+      {
+        "id": "generar",
+        "kind": "action",
+        "label": "Generar informe con datos mínimos y definiciones de indicadores aprobadas",
+        "lane": 1
+      },
+      {
+        "id": "ver",
+        "kind": "action",
+        "label": "Mostrar informe o resultado sin datos; registrar generación sensible según política",
+        "lane": 1
+      },
+      {
+        "id": "export",
+        "kind": "decision",
+        "label": "¿Solicitar exportación?",
+        "lane": 0
+      },
+      {
+        "id": "expcheck",
+        "kind": "action",
+        "label": "Verificar permiso de exportación, formato y alcance de datos",
+        "lane": 1
+      },
+      {
+        "id": "expok",
+        "kind": "decision",
+        "label": "¿Exportación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "noexp",
+        "kind": "action",
+        "label": "Denegar exportación y registrar el intento",
+        "lane": 1
+      },
+      {
+        "id": "archivo",
+        "kind": "action",
+        "label": "Generar archivo autorizado en PDF o CSV con los mismos controles y filtros",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar exportación sensible conforme a la política institucional",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "tipo",
+        "guard": "sí"
+      },
+      {
+        "source": "tipo",
+        "target": "scope",
+        "guard": ""
+      },
+      {
+        "source": "scope",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "generar",
+        "guard": "sí"
+      },
+      {
+        "source": "generar",
+        "target": "ver",
+        "guard": ""
+      },
+      {
+        "source": "ver",
+        "target": "export",
+        "guard": ""
+      },
+      {
+        "source": "export",
+        "target": "fin",
+        "guard": "no"
+      },
+      {
+        "source": "export",
+        "target": "expcheck",
+        "guard": "sí"
+      },
+      {
+        "source": "expcheck",
+        "target": "expok",
+        "guard": ""
+      },
+      {
+        "source": "expok",
+        "target": "noexp",
+        "guard": "no"
+      },
+      {
+        "source": "noexp",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "expok",
+        "target": "archivo",
+        "guard": "sí"
+      },
+      {
+        "source": "archivo",
+        "target": "audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "fin",
+        "guard": ""
+      }
+    ]
+  },
+  {
+    "cu": 23,
+    "suffix": "",
+    "title": "Consultar registros de auditoría",
+    "lanes": [
+      "Auditor / Responsable de seguridad / Administrador",
+      "Sistema SIGH"
+    ],
+    "rf": [
+      "RF-AUD-001",
+      "RF-AUD-002",
+      "RF-AUD-003",
+      "RF-AUD-004",
+      "RN-016"
+    ],
+    "pre": "Sesión y autorización específica de auditoría; registros protegidos.",
+    "post": "Trazabilidad autorizada mostrada en modo consulta y acceso registrado.",
+    "change": "Se explicitan filtros y solo lectura; no se añade modificación o eliminación de auditoría.",
+    "nodes": [
+      {
+        "id": "inicio",
+        "kind": "start",
+        "label": "",
+        "lane": 0
+      },
+      {
+        "id": "pedir",
+        "kind": "action",
+        "label": "Seleccionar la operación y su contexto",
+        "lane": 0
+      },
+      {
+        "id": "autorizar",
+        "kind": "action",
+        "label": "Verificar sesión, rol y permiso en el servidor",
+        "lane": 1
+      },
+      {
+        "id": "permiso",
+        "kind": "decision",
+        "label": "¿Operación autorizada?",
+        "lane": 1
+      },
+      {
+        "id": "denegado",
+        "kind": "action",
+        "label": "Denegar la operación y registrar el intento sin secretos",
+        "lane": 1
+      },
+      {
+        "id": "fin_denegado",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "filtros",
+        "kind": "action",
+        "label": "Definir usuario, periodo, módulo, operación u objeto afectado",
+        "lane": 0
+      },
+      {
+        "id": "val",
+        "kind": "action",
+        "label": "Validar filtros y alcance autorizado de la consulta",
+        "lane": 1
+      },
+      {
+        "id": "ok",
+        "kind": "decision",
+        "label": "¿Filtros y alcance permitidos?",
+        "lane": 1
+      },
+      {
+        "id": "err",
+        "kind": "action",
+        "label": "Rechazar consulta e informar motivo sin exponer información restringida",
+        "lane": 1
+      },
+      {
+        "id": "buscar",
+        "kind": "action",
+        "label": "Consultar registros protegidos; aplicar filtros y permisos",
+        "lane": 1
+      },
+      {
+        "id": "mostrar",
+        "kind": "action",
+        "label": "Mostrar usuario, fecha, operación, objeto y resultado en modo solo lectura",
+        "lane": 1
+      },
+      {
+        "id": "merge_audit",
+        "kind": "merge",
+        "label": "",
+        "lane": 1
+      },
+      {
+        "id": "audit",
+        "kind": "action",
+        "label": "Registrar acceso a auditoría o intento denegado conforme a política",
+        "lane": 1
+      },
+      {
+        "id": "fin",
+        "kind": "end",
+        "label": "",
+        "lane": 1
+      }
+    ],
+    "edges": [
+      {
+        "source": "inicio",
+        "target": "pedir",
+        "guard": ""
+      },
+      {
+        "source": "pedir",
+        "target": "autorizar",
+        "guard": ""
+      },
+      {
+        "source": "autorizar",
+        "target": "permiso",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "denegado",
+        "guard": "no"
+      },
+      {
+        "source": "denegado",
+        "target": "fin_denegado",
+        "guard": ""
+      },
+      {
+        "source": "permiso",
+        "target": "filtros",
+        "guard": "sí"
+      },
+      {
+        "source": "filtros",
+        "target": "val",
+        "guard": ""
+      },
+      {
+        "source": "val",
+        "target": "ok",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "err",
+        "guard": "no"
+      },
+      {
+        "source": "err",
+        "target": "merge_audit",
+        "guard": ""
+      },
+      {
+        "source": "ok",
+        "target": "buscar",
+        "guard": "sí"
+      },
+      {
+        "source": "buscar",
+        "target": "mostrar",
+        "guard": ""
+      },
+      {
+        "source": "mostrar",
+        "target": "merge_audit",
+        "guard": ""
+      },
+      {
+        "source": "audit",
+        "target": "fin",
+        "guard": ""
+      },
+      {
+        "source": "merge_audit",
+        "target": "audit",
+        "guard": ""
+      }
+    ]
+  }
+]
