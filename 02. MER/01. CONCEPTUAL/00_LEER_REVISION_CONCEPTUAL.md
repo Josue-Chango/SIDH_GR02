@@ -8,6 +8,8 @@ La copia corregida está en **CORREGIDO_ERS**, dentro de esta misma carpeta.
 - [Leer hallazgos, correcciones y decisiones](CORREGIDO_ERS/INFORME_REVISION.md)
 - [Comprobar preservación de Seguridad](CORREGIDO_ERS/PRESERVACION_SEGURIDAD.json)
 
-El archivo original permanece intacto. Seguridad y Personal se conservaron byte por byte en la copia, incluyendo PERSONA, que comparten ambas vistas, y sus dependencias. La copia contiene 12 vistas de negocio revisadas y las dos vistas preservadas.
+La copia contiene exactamente las **cuatro vistas originales: Personal, Finanzas, Seguridad y Gestion Hospitalaria**. Las correcciones de negocio se reúnen en Finanzas y Gestion Hospitalaria, conservando sus entidades, atributos y relaciones.
+
+El archivo original permanece intacto. Seguridad y Personal se conservaron byte por byte en la copia, incluyendo PERSONA, que comparten ambas vistas, y sus dependencias. El PDF y el índice visual muestran las dos vistas de negocio revisadas; las cuatro vistas están en el CDM editable.
 
 En PowerDesigner, abra la vista desde el explorador. Use **F8** para centrarla y **F5** para tamaño real.
