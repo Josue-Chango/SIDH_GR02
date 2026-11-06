@@ -1,0 +1,4 @@
+wwwroot\css\estilos.css
+wwwroot\favicon.ico
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\SIDH_GR02.Mvc\wwwroot\css\estilos.css
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\SIDH_GR02.Mvc\wwwroot\favicon.ico

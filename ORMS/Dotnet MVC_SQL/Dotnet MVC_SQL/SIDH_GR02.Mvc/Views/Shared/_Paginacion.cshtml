@@ -1,0 +1,13 @@
+@* Modelo: (ruta, página actual, filas recibidas, búsqueda). Hay página siguiente si se recibieron 20 filas. *@
+@model (string Ruta, int Pagina, int Filas, string? Q)
+<nav class="paginacion" aria-label="Páginas">
+    @if (Model.Pagina > 0)
+    {
+        <a href="@Url.Con(Model.Ruta, ("pagina", (Model.Pagina - 1).ToString()), ("q", Model.Q))">Anterior</a>
+    }
+    <span>Página @(Model.Pagina + 1)</span>
+    @if (Model.Filas == 20)
+    {
+        <a href="@Url.Con(Model.Ruta, ("pagina", (Model.Pagina + 1).ToString()), ("q", Model.Q))">Siguiente</a>
+    }
+</nav>

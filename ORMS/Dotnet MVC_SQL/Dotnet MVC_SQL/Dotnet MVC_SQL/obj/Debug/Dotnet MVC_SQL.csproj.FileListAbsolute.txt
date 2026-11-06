@@ -1,0 +1,18 @@
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\bin\Debug\Dotnet MVC_SQL.exe.config
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\bin\Debug\Dotnet MVC_SQL.exe
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\bin\Debug\Dotnet MVC_SQL.pdb
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet_MVC_SQL.Properties.Resources.resources
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.csproj.GenerateResource.cache
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.exe
+C:\Users\user\Desktop\ESPE\grafica\primer parcial\Examen\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.pdb
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\bin\Debug\Dotnet MVC_SQL.exe.config
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\bin\Debug\Dotnet MVC_SQL.exe
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\bin\Debug\Dotnet MVC_SQL.pdb
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet_MVC_SQL.Properties.Resources.resources
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.csproj.GenerateResource.cache
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.exe
+C:\Users\user\Desktop\ESPE\web avanzada\primer parcial\Dotnet SQLTest1\Dotnet MVC_SQL\Dotnet MVC_SQL\obj\Debug\Dotnet MVC_SQL.pdb

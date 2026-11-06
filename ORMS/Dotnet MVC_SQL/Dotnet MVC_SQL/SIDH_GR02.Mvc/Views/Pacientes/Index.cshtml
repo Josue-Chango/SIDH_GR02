@@ -1,0 +1,63 @@
+@model Listado<Paciente>
+@{ var f0 = Model.Form; }
+<h1>Pacientes</h1>
+<p>Los pacientes identificados requieren nombres, apellidos y documento. Un registro temporal puede completarse posteriormente. El identificador hospitalario se asigna al guardar.</p>
+<h2>@(f0 == null ? "Nuevo paciente" : "Editar paciente")</h2>
+<form action="~/pacientes" method="post" class="editor">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="accion" value="@(f0 == null ? "crear" : "actualizar")">
+    <input type="hidden" name="id" value="@f0?.Id">
+    <label>Tipo de identidad *
+        <select name="tipoIdentidad" required>
+            <option value="IDENTIFICADO" selected="@(f0?.TipoIdentidad == "IDENTIFICADO")">Identificado</option>
+            <option value="TEMPORAL" selected="@(f0?.TipoIdentidad == "TEMPORAL")">Temporal</option>
+        </select>
+    </label>
+    <label>Tipo de documento<input name="tipoDocumento" type="text" maxlength="40" value="@f0?.TipoDocumento"></label>
+    <label>Número de documento<input name="numeroDocumento" type="text" maxlength="200" value="@f0?.NumeroDocumento"></label>
+    <label>Nombres<input name="nombres" type="text" maxlength="200" value="@f0?.Nombres"></label>
+    <label>Apellidos<input name="apellidos" type="text" maxlength="200" value="@f0?.Apellidos"></label>
+    <label>Nacimiento<input name="fechaNacimiento" type="date" value="@f0?.FechaNacimiento.Iso()"></label>
+    <label>Sexo registrado<input name="sexoRegistrado" type="text" maxlength="40" value="@f0?.SexoRegistrado"></label>
+    <label>Dirección<input name="direccion" type="text" maxlength="200" value="@f0?.Direccion"></label>
+    <label>Entidad de cobertura<input name="entidadCobertura" type="text" maxlength="200" value="@f0?.EntidadCobertura"></label>
+    <label>Referencia de cobertura<input name="referenciaCobertura" type="text" maxlength="200" value="@f0?.ReferenciaCobertura"></label>
+    @if (f0 == null)
+    {
+        <label>Responsable del registro *<input name="responsable" maxlength="100" required></label>
+    }
+    <div class="acciones"><button>Guardar</button><a href="~/pacientes">Nuevo / cancelar edición</a></div>
+</form>
+
+<h2>Buscar pacientes</h2>
+<form method="get" class="busqueda">
+    <label>Documento, identificador, nombres o apellidos<input name="q" maxlength="200" value="@Model.Q"></label>
+    <button>Buscar</button>
+</form>
+<div class="tabla">
+    <table>
+        <thead><tr><th>Identificador hospitalario</th><th>Paciente</th><th>Documento</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody>
+            @foreach (var f in Model.Filas)
+            {
+                <tr>
+                    <td>@f.IdentificadorHospitalario</td>
+                    <td>@f.Apellidos @f.Nombres</td>
+                    <td>@f.NumeroDocumento</td>
+                    <td>@f.EstadoRegistro</td>
+                    <td>
+                        <a href="@Url.Con("~/pacientes", ("accion", "editar"), ("id", f.Id))">Editar</a>
+                        <a href="@Url.Con("~/contactos", ("paciente", f.Id))">Contactos</a>
+                        <form action="~/pacientes" method="post" class="enlinea" onsubmit="return confirm('¿Confirmar esta operación?')">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="accion" value="desactivar">
+                            <input type="hidden" name="id" value="@f.Id">
+                            <button class="secundario">Desactivar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@await Html.PartialAsync("_Paginacion", ("~/pacientes", Model.Pagina, Model.Filas.Count, Model.Q))

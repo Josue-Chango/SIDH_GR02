@@ -1,0 +1,55 @@
+@model ContactosVista
+@{ var f0 = Model.Form; var pid = Model.Paciente.Id; }
+<h1>Contactos del paciente</h1>
+<p>@Model.Paciente.IdentificadorHospitalario</p>
+<h2>@(f0 == null ? "Nuevo registro" : "Editar registro")</h2>
+<form action="~/contactos" method="post" class="editor">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="accion" value="@(f0 == null ? "crear" : "actualizar")">
+    <input type="hidden" name="id" value="@f0?.Id">
+    <input type="hidden" name="paciente" value="@pid">
+    <label>Tipo de vínculo *<input name="tipoVinculo" type="text" maxlength="40" value="@f0?.TipoVinculo" required></label>
+    <label>Nombre de contacto<input name="nombreContacto" type="text" maxlength="200" value="@f0?.NombreContacto"></label>
+    <label>Teléfono<input name="telefono" type="text" maxlength="200" value="@f0?.Telefono"></label>
+    <label>Correo<input name="correo" type="email" maxlength="200" value="@f0?.Correo"></label>
+    <label>Parentesco<input name="parentesco" type="text" maxlength="200" value="@f0?.Parentesco"></label>
+    <label>Prioridad<input name="prioridad" type="number" min="0" value="@f0?.Prioridad"></label>
+    <label>Vigente desde<input name="vigenteDesde" type="date" value="@f0?.VigenteDesde.Iso()"></label>
+    <label>Vigente hasta<input name="vigenteHasta" type="date" value="@f0?.VigenteHasta.Iso()"></label>
+    @if (f0 == null)
+    {
+        <label>Responsable del registro *<input name="responsable" maxlength="100" required></label>
+    }
+    <div class="acciones"><button>Guardar</button><a href="@Url.Con("~/contactos", ("paciente", pid))">Nuevo / cancelar edición</a></div>
+</form>
+
+<h2>Registros</h2>
+<p>Se muestran hasta 100 elementos por paciente.</p>
+<div class="tabla">
+    <table>
+        <thead><tr><th>Vínculo</th><th>Nombre</th><th>Teléfono</th><th>Correo</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr></thead>
+        <tbody>
+            @foreach (var f in Model.Filas)
+            {
+                <tr>
+                    <td>@f.TipoVinculo</td>
+                    <td>@f.NombreContacto</td>
+                    <td>@f.Telefono</td>
+                    <td>@f.Correo</td>
+                    <td>@f.VigenteDesde.Iso()</td>
+                    <td>@f.VigenteHasta.Iso()</td>
+                    <td>
+                        <a href="@Url.Con("~/contactos", ("accion", "editar"), ("id", f.Id), ("paciente", pid))">Editar</a>
+                        <form action="~/contactos" method="post" class="enlinea" onsubmit="return confirm('¿Confirmar esta operación?')">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="accion" value="cerrar">
+                            <input type="hidden" name="id" value="@f.Id">
+                            <input type="hidden" name="paciente" value="@pid">
+                            <button class="secundario">Cerrar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

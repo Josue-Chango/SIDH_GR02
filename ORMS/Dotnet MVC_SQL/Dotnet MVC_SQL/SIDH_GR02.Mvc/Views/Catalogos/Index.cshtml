@@ -1,0 +1,47 @@
+@model Listado<Catalogo>
+@{ var f0 = Model.Form; }
+<h1>Catálogos institucionales</h1>
+<p>La desactivación conserva los elementos y sus referencias.</p>
+<h2>@(f0 == null ? "Nuevo catálogo" : "Editar catálogo")</h2>
+<form action="~/catalogos" method="post" class="editor">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="accion" value="@(f0 == null ? "crear" : "actualizar")">
+    <input type="hidden" name="id" value="@f0?.Id">
+    <label>Código *<input name="codigo" type="text" maxlength="40" value="@f0?.Codigo" required></label>
+    <label>Nombre *<input name="nombre" type="text" maxlength="200" value="@f0?.Nombre" required></label>
+    <label>Descripción<input name="descripcion" type="text" maxlength="200" value="@f0?.Descripcion"></label>
+    @if (f0 == null)
+    {
+        <label>Responsable del registro *<input name="responsable" maxlength="100" required></label>
+    }
+    <div class="acciones"><button>Guardar</button><a href="~/catalogos">Nuevo / cancelar edición</a></div>
+</form>
+
+<h2>Registros</h2>
+<div class="tabla">
+    <table>
+        <thead><tr><th>Código</th><th>Nombre</th><th>Descripción</th><th>Estado</th><th>Acciones</th></tr></thead>
+        <tbody>
+            @foreach (var f in Model.Filas)
+            {
+                <tr>
+                    <td>@f.Codigo</td>
+                    <td>@f.Nombre</td>
+                    <td>@f.Descripcion</td>
+                    <td>@f.Estado</td>
+                    <td>
+                        <a href="@Url.Con("~/catalogos", ("accion", "editar"), ("id", f.Id))">Editar</a>
+                        <a href="@Url.Con("~/valores", ("catalogo", f.Id))">Valores</a>
+                        <form action="~/catalogos" method="post" class="enlinea" onsubmit="return confirm('¿Confirmar esta operación?')">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="accion" value="desactivar">
+                            <input type="hidden" name="id" value="@f.Id">
+                            <button class="secundario">Desactivar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@await Html.PartialAsync("_Paginacion", ("~/catalogos", Model.Pagina, Model.Filas.Count, (string?)null))

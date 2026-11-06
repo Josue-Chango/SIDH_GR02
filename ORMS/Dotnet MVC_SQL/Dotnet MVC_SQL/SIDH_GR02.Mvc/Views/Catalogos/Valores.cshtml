@@ -1,0 +1,50 @@
+@model ValoresVista
+@{ var f0 = Model.Form; var cid = Model.Catalogo.Id; }
+<h1>Valores del catálogo</h1>
+<p>@Model.Catalogo.Nombre</p>
+<h2>@(f0 == null ? "Nuevo registro" : "Editar registro")</h2>
+<form action="~/valores" method="post" class="editor">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="accion" value="@(f0 == null ? "crear" : "actualizar")">
+    <input type="hidden" name="id" value="@f0?.Id">
+    <input type="hidden" name="catalogo" value="@cid">
+    <label>Código *<input name="codigo" type="text" maxlength="40" value="@f0?.Codigo" required></label>
+    <label>Descripción *<input name="descripcion" type="text" maxlength="200" value="@f0?.Descripcion" required></label>
+    <label>Vigente desde<input name="vigenteDesde" type="date" value="@f0?.VigenteDesde.Iso()"></label>
+    <label>Vigente hasta<input name="vigenteHasta" type="date" value="@f0?.VigenteHasta.Iso()"></label>
+    @if (f0 == null)
+    {
+        <label>Responsable del registro *<input name="responsable" maxlength="100" required></label>
+    }
+    <div class="acciones"><button>Guardar</button><a href="@Url.Con("~/valores", ("catalogo", cid))">Nuevo / cancelar edición</a></div>
+</form>
+
+<h2>Registros</h2>
+<p>Se muestran hasta 100 elementos por catálogo.</p>
+<div class="tabla">
+    <table>
+        <thead><tr><th>Código</th><th>Descripción</th><th>Estado</th><th>Desde</th><th>Hasta</th><th>Acciones</th></tr></thead>
+        <tbody>
+            @foreach (var f in Model.Filas)
+            {
+                <tr>
+                    <td>@f.Codigo</td>
+                    <td>@f.Descripcion</td>
+                    <td>@f.Estado</td>
+                    <td>@f.VigenteDesde.Iso()</td>
+                    <td>@f.VigenteHasta.Iso()</td>
+                    <td>
+                        <a href="@Url.Con("~/valores", ("accion", "editar"), ("id", f.Id), ("catalogo", cid))">Editar</a>
+                        <form action="~/valores" method="post" class="enlinea" onsubmit="return confirm('¿Confirmar esta operación?')">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="accion" value="desactivar">
+                            <input type="hidden" name="id" value="@f.Id">
+                            <input type="hidden" name="catalogo" value="@cid">
+                            <button class="secundario">Desactivar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

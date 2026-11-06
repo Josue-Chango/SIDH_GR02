@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SIDH GR02</title>
+    <link rel="stylesheet" href="~/css/estilos.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <strong>Monster Salud · SIDH GR02</strong>
+        <nav>
+            <a href="~/">Inicio</a><a href="~/pacientes">Pacientes</a><a href="~/catalogos">Catálogos</a><a href="~/departamentos">Departamentos</a><a href="~/cargos">Cargos</a><a href="~/estados">Estados</a>
+        </nav>
+    </header>
+    <main>
+        @if (TempData["Mensaje"] is string mensaje)
+        {
+            <p class="exito" role="status">@mensaje</p>
+        }
+        @RenderBody()
+    </main>
+    <footer>Proyecto académico · SIDH GR02 · Monster Salud</footer>
+</body>
+</html>
