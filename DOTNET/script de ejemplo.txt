@@ -1,0 +1,59 @@
+USE sigh_gr02;
+GO
+
+SET XACT_ABORT ON;
+BEGIN TRANSACTION;
+
+-- 1. Registrar la persona.
+INSERT INTO dbo.PEPER_PERSO
+(
+    PEPER_CODIGO,
+    PEGEN_CODIGO,
+    PEPER_APELLI,
+    PEPER_NOMBRE,
+    PEPER_CEDULA,
+    PEPER_EMAIL,
+    PEPER_CARFAM
+)
+VALUES
+(
+    'P000000004',
+    'F',
+    'LOPEZ',
+    'ANA',
+    '1712345678',
+    'ana.lopez@example.com',
+    0
+);
+
+-- 2. Crear su cuenta con estado ACTIVO.
+INSERT INTO dbo.XEUSU_USUAR
+(
+    XEUSU_PASWD,
+    XEEST_CODIGO,
+    PEPER_CODIGO,
+    XEUSU_FECCRE
+)
+VALUES
+(
+    'Ana12345',
+    'A',
+    'P000000004',
+    GETDATE()
+);
+
+-- 3. Asignar el perfil USUARIO.
+INSERT INTO dbo.XEUXP_USUPE
+(
+    XEUSU_PASWD,
+    XEPER_CODIGO,
+    XEUXP_FECASI
+)
+VALUES
+(
+    'Ana12345',
+    'USUARIO',
+    GETDATE()
+);
+
+COMMIT TRANSACTION;

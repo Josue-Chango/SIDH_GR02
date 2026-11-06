@@ -1,0 +1,57 @@
+USE sigh_gr02;
+
+START TRANSACTION;
+
+-- 1. Registrar la persona.
+INSERT INTO PEPER_PERSO
+(
+    PEPER_CODIGO,
+    PEGEN_CODIGO,
+    PEPER_APELLI,
+    PEPER_NOMBRE,
+    PEPER_CEDULA,
+    PEPER_EMAIL,
+    PEPER_CARFAM
+)
+VALUES
+(
+    'P000000004',
+    'F',
+    'LOPEZ',
+    'ANA',
+    '1712345678',
+    'ana.lopez@example.com',
+    0
+);
+
+-- 2. Crear la cuenta activa.
+INSERT INTO XEUSU_USUAR
+(
+    XEUSU_PASWD,
+    XEEST_CODIGO,
+    PEPER_CODIGO,
+    XEUSU_FECCRE
+)
+VALUES
+(
+    'Ana12345',
+    'A',
+    'P000000004',
+    NOW()
+);
+
+-- 3. Asignar el perfil.
+INSERT INTO XEUXP_USUPE
+(
+    XEUSU_PASWD,
+    XEPER_CODIGO,
+    XEUXP_FECASI
+)
+VALUES
+(
+    'Ana12345',
+    'USUARIO',
+    NOW()
+);
+
+COMMIT;
