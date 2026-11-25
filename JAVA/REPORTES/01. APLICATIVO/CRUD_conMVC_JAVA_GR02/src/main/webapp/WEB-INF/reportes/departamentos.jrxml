@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaspersoft Studio / JasperReports 7.0.8. Adaptado del ejemplo SIGH GR01 al esquema GR02. -->
+<jasperReport name="departamentos" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenNoDataType="AllSectionsNoDetail" uuid="58a12951-7d9c-4731-9e19-00560dc7fc25">
+<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
+<style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0"/>
+<style name="Celda" style="Base" forecolor="#342D2D" vTextAlign="Middle"><box leftPadding="5" rightPadding="5" topPadding="3" bottomPadding="3"><bottomPen lineWidth="0.4" lineColor="#E1D8CF"/></box></style>
+<style name="Cabecera" style="Celda" bold="true" mode="Opaque" forecolor="#4E0A0B" backcolor="#F1E7DC"/>
+<style name="Seccion" style="Celda" fontSize="10.0" bold="true" mode="Opaque" forecolor="#FFFFFF" backcolor="#4E0A0B"/>
+<style name="Meta" style="Base" forecolor="#6E5A51" fontSize="8.0" vTextAlign="Middle"/>
+<parameter name="USUARIO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+<query language="sql"><![CDATA[SELECT PEDEP_CODIGO, PEDEP_DESCRI FROM PEDEP_DEPAR ORDER BY PEDEP_CODIGO]]></query>
+<field name="PEDEP_CODIGO" class="java.lang.String"/>
+<field name="PEDEP_DESCRI" class="java.lang.String"/>
+<title height="88">
+<element kind="rectangle" uuid="67ab4c0f-21bb-4e90-9863-198db1b9adb0" x="0" y="0" width="555" height="78" mode="Opaque" forecolor="#4E0A0B" backcolor="#4E0A0B"></element>
+<element kind="staticText" uuid="a82e1d92-cdc5-4fd4-a403-63c89a5ca721" x="12" y="7" width="531" height="27" style="Base" fontSize="19.0" bold="true" forecolor="#FFFFFF" vTextAlign="Middle"><text><![CDATA[Reporte de departamentos]]></text></element>
+<element kind="staticText" uuid="82a838ee-6ea0-4cdc-9ce6-bc94eef37702" x="12" y="35" width="531" height="17" style="Base" fontSize="9.0" forecolor="#EAD4BD"><text><![CDATA[SIGH GR02 · Sistema Integral de Gestión Hospitalaria]]></text></element>
+<element kind="textField" uuid="721fd984-a430-4f67-932b-af38ad6aa59b" x="12" y="55" width="315" height="17" style="Base" blankWhenNull="true" fontSize="8.0" forecolor="#FFFFFF" textAdjust="ScaleFont"><expression><![CDATA["Generado por: " + $P{USUARIO}]]></expression></element>
+<element kind="textField" uuid="2ff7d6ab-b393-4e54-a508-a6ffb018a84b" x="335" y="55" width="208" height="17" style="Base" blankWhenNull="true" fontSize="8.0" forecolor="#FFFFFF" hTextAlign="Right"><expression><![CDATA["Fecha: " + java.time.ZonedDateTime.now(java.time.ZoneId.of("America/Guayaquil")).format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))]]></expression></element>
+</title>
+<columnHeader height="27">
+<element kind="staticText" uuid="f8ba0463-0a92-4bf5-9064-4b0f9ef8a336" x="0" y="0" width="90" height="27" style="Cabecera"><text><![CDATA[Código]]></text></element>
+<element kind="staticText" uuid="1be23668-a938-4f34-8124-d9bf3376991b" x="90" y="0" width="465" height="27" style="Cabecera"><text><![CDATA[Descripción]]></text></element>
+</columnHeader>
+<detail><band height="29" splitType="Prevent">
+<element kind="textField" uuid="fa5a9c8e-e463-40a7-ad1b-e8e99b057402" x="0" y="0" width="90" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight" bold="true"><expression><![CDATA[$F{PEDEP_CODIGO}]]></expression></element>
+<element kind="textField" uuid="79a0bf40-9f5b-4ad0-b0ee-3458ce8de6be" x="90" y="0" width="465" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PEDEP_DESCRI}]]></expression></element>
+</band></detail>
+<pageFooter height="25">
+<element kind="staticText" uuid="19c09c45-dfab-4596-8025-86bf9aeb24fc" x="0" y="4" width="340" height="18" style="Meta"><text><![CDATA[SIGH GR02 · Subsistema de Personal]]></text></element>
+<element kind="textField" uuid="ac5dee14-6c50-4e35-b706-4e91bee97be5" x="390" y="4" width="135" height="18" style="Meta" blankWhenNull="true" hTextAlign="Right"><expression><![CDATA["Página " + $V{PAGE_NUMBER} + " de"]]></expression></element>
+<element kind="textField" uuid="c3d35f80-276b-4f87-9c10-a29ad649baa6" x="528" y="4" width="27" height="18" style="Meta" blankWhenNull="true" evaluationTime="Report"><expression><![CDATA[$V{PAGE_NUMBER}]]></expression></element>
+</pageFooter>
+<summary height="48">
+<element kind="textField" uuid="388d457f-8c85-4649-9fb2-beacafe0a0eb" x="0" y="20" width="555" height="24" style="Meta" blankWhenNull="true" bold="true" hTextAlign="Right"><expression><![CDATA["Total de departamentos: " + $V{REPORT_COUNT}]]></expression></element>
+<element kind="staticText" uuid="dd6eb19c-74d6-4749-8c33-8ac3e96e408d" x="0" y="0" width="555" height="20" style="Meta"><printWhenExpression><![CDATA[$V{REPORT_COUNT} == 0]]></printWhenExpression><text><![CDATA[No hay datos para mostrar.]]></text></element>
+</summary>
+</jasperReport>

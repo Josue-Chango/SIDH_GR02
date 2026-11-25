@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaspersoft Studio / JasperReports 7.0.8. Adaptado del ejemplo SIGH GR01 al esquema GR02. -->
+<jasperReport name="empleado_familiares" language="java" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenNoDataType="AllSectionsNoDetail" uuid="36f83bf8-eee3-4b6f-8e7c-43be3fdcfb86">
+<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
+<style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0"/>
+<style name="Celda" style="Base" forecolor="#342D2D" vTextAlign="Middle"><box leftPadding="5" rightPadding="5" topPadding="3" bottomPadding="3"><bottomPen lineWidth="0.4" lineColor="#E1D8CF"/></box></style>
+<style name="Cabecera" style="Celda" bold="true" mode="Opaque" forecolor="#4E0A0B" backcolor="#F1E7DC"/>
+<style name="Seccion" style="Celda" fontSize="10.0" bold="true" mode="Opaque" forecolor="#FFFFFF" backcolor="#4E0A0B"/>
+<style name="Meta" style="Base" forecolor="#6E5A51" fontSize="8.0" vTextAlign="Middle"/>
+<parameter name="EMPLEADO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+<query language="sql"><![CDATA[SELECT PEFAM_PAREN, PEFAM_NOMBRE, PEFAM_FECNAC FROM PEFAM_FAMIL WHERE PEPER_CODIGO = $P{EMPLEADO} ORDER BY PEFAM_CODIGO]]></query>
+<field name="PEFAM_PAREN" class="java.lang.String"/>
+<field name="PEFAM_NOMBRE" class="java.lang.String"/>
+<field name="PEFAM_FECNAC" class="java.sql.Date"/>
+<title height="30"><element kind="staticText" uuid="f6d951cb-478a-42ec-ab26-7065309f8b18" x="0" y="0" width="555" height="24" style="Seccion"><text><![CDATA[DATOS FAMILIARES]]></text></element>
+</title><columnHeader height="27">
+<element kind="staticText" uuid="5b73d420-5c81-45c7-9ad3-819fdc467d35" x="0" y="0" width="105" height="27" style="Cabecera"><text><![CDATA[Parentesco]]></text></element>
+<element kind="staticText" uuid="56b7ba94-60eb-4360-bc62-012066f89dfa" x="105" y="0" width="330" height="27" style="Cabecera"><text><![CDATA[Apellidos y nombres]]></text></element>
+<element kind="staticText" uuid="b11c18dc-fbf8-4528-ae39-4be2c4f69bc7" x="435" y="0" width="120" height="27" style="Cabecera"><text><![CDATA[Nacimiento]]></text></element>
+</columnHeader>
+<detail><band height="29" splitType="Prevent">
+<element kind="textField" uuid="012057c8-ded7-48c6-89eb-d68fda9b2696" x="0" y="0" width="105" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PEFAM_PAREN}]]></expression></element>
+<element kind="textField" uuid="56528255-c6be-4750-b459-e1f157cad1cc" x="105" y="0" width="330" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PEFAM_NOMBRE}]]></expression></element>
+<element kind="textField" uuid="466915c7-2289-4dd2-9b67-700864951e80" x="435" y="0" width="120" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight" pattern="dd/MM/yyyy"><expression><![CDATA[$F{PEFAM_FECNAC}]]></expression></element>
+</band></detail>
+<summary height="22"><element kind="staticText" uuid="9cb7ed88-b964-45d8-980f-0073c5f35c40" x="0" y="0" width="555" height="22" style="Meta"><printWhenExpression><![CDATA[$V{REPORT_COUNT} == 0]]></printWhenExpression><text><![CDATA[Sin datos familiares registrados.]]></text></element>
+</summary></jasperReport>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Jaspersoft Studio / JasperReports 7.0.8. Adaptado del ejemplo SIGH GR01 al esquema GR02. -->
+<jasperReport name="empleado_academicos" language="java" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenNoDataType="AllSectionsNoDetail" uuid="87549461-4ab3-4096-8c88-0dfe08ed0e2c">
+<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
+<style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0"/>
+<style name="Celda" style="Base" forecolor="#342D2D" vTextAlign="Middle"><box leftPadding="5" rightPadding="5" topPadding="3" bottomPadding="3"><bottomPen lineWidth="0.4" lineColor="#E1D8CF"/></box></style>
+<style name="Cabecera" style="Celda" bold="true" mode="Opaque" forecolor="#4E0A0B" backcolor="#F1E7DC"/>
+<style name="Seccion" style="Celda" fontSize="10.0" bold="true" mode="Opaque" forecolor="#FFFFFF" backcolor="#4E0A0B"/>
+<style name="Meta" style="Base" forecolor="#6E5A51" fontSize="8.0" vTextAlign="Middle"/>
+<parameter name="EMPLEADO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+<query language="sql"><![CDATA[SELECT PEACA_NIVEL, PEACA_INSTI, PEACA_TITUL FROM PEACA_ACADE WHERE PEPER_CODIGO = $P{EMPLEADO} ORDER BY PEACA_CODIGO]]></query>
+<field name="PEACA_NIVEL" class="java.lang.String"/>
+<field name="PEACA_INSTI" class="java.lang.String"/>
+<field name="PEACA_TITUL" class="java.lang.String"/>
+<title height="30"><element kind="staticText" uuid="2f0eccd4-1c84-490f-afd1-e1d9fd0ba9c5" x="0" y="0" width="555" height="24" style="Seccion"><text><![CDATA[DATOS ACADÉMICOS]]></text></element>
+</title><columnHeader height="27">
+<element kind="staticText" uuid="05f8c1a4-20bc-4cd9-881d-adadd2ed83b6" x="0" y="0" width="105" height="27" style="Cabecera"><text><![CDATA[Nivel]]></text></element>
+<element kind="staticText" uuid="33a6eec0-f11d-4381-9579-e417e42de041" x="105" y="0" width="225" height="27" style="Cabecera"><text><![CDATA[Institución]]></text></element>
+<element kind="staticText" uuid="37b6d2d2-8e9f-486b-8d4d-ff4793f40df9" x="330" y="0" width="225" height="27" style="Cabecera"><text><![CDATA[Título]]></text></element>
+</columnHeader>
+<detail><band height="29" splitType="Prevent">
+<element kind="textField" uuid="552f4fae-d495-4801-9092-744779994987" x="0" y="0" width="105" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PEACA_NIVEL}]]></expression></element>
+<element kind="textField" uuid="1ec88e86-2edf-4644-8aff-50359e6f0d6f" x="105" y="0" width="225" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PEACA_INSTI}]]></expression></element>
+<element kind="textField" uuid="9ed4a9ed-8e40-4b72-b3ee-92227883d582" x="330" y="0" width="225" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PEACA_TITUL}]]></expression></element>
+</band></detail>
+<summary height="22"><element kind="staticText" uuid="44d2e317-af49-4288-832f-d381f863b465" x="0" y="0" width="555" height="22" style="Meta"><printWhenExpression><![CDATA[$V{REPORT_COUNT} == 0]]></printWhenExpression><text><![CDATA[Sin datos académicos registrados.]]></text></element>
+</summary></jasperReport>
