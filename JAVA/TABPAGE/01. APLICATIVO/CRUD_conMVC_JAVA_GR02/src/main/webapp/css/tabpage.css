@@ -1,0 +1,260 @@
+/*
+ * Estilos del Tab Page de Empleados (réplica Java del Tab Page del
+ * proyecto .NET GR02): marco superior con foto, apellidos y nombres
+ * (fuera del área de pestañas) + menú vertical de pestañas con panel
+ * de contenido y subtablas editables.
+ * Usa la paleta de style_JCH.css: crema #FAEBDD, naranja #E8944A,
+ * vino #4E0A0B, marrón #C39A6B y blanco hueso #F2EEE8.
+ */
+
+/* ============ Marco de la ficha (se ubica fuera del tab page) ============ */
+.tp-marco-cuerpo {
+    display: flex;
+    gap: 22px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.tp-marco-foto {
+    flex: 0 0 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    padding-right: 18px;
+    border-right: 1px solid rgba(232, 148, 74, .45);
+}
+
+.tp-foto {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #E8944A;
+    background: #F2EEE8;
+    box-shadow: 0 6px 14px rgba(78, 10, 11, .18);
+}
+
+.tp-foto-placeholder {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    border: 3px dashed #E8944A;
+    background: rgba(232, 148, 74, .15);
+    color: #7A3B2E;
+    font-weight: bold;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tp-marco-foto input[type="file"] {
+    max-width: 185px;
+    font-size: 12px;
+}
+
+.tp-marco-campos {
+    flex: 1 1 320px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    align-content: start;
+}
+
+.tp-marco-campos .campo { margin-bottom: 0; }
+
+/* Inputs del marco, con el mismo estilo "header-input" del .NET */
+.tp-marco-campos input {
+    font-weight: 600;
+    background: rgba(242, 238, 232, .85);
+    border: 1px solid rgba(232, 148, 74, .55);
+}
+
+/* ============ Tab Page (menú vertical + panel de contenido) ============ */
+.tp-tabpage {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.tp-tabs {
+    flex: 0 0 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tp-pill {
+    text-align: left;
+    padding: 13px 16px;
+    border: 1px solid rgba(232, 148, 74, .45);
+    border-left: 4px solid transparent;
+    border-radius: 10px;
+    background: rgba(242, 238, 232, .7);
+    color: #4E0A0B;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.tp-pill:hover {
+    background: rgba(232, 148, 74, .2);
+    color: #4E0A0B;
+}
+
+/* Estado activo de la pestaña (línea indicadora a la izquierda) */
+.tp-pill.tp-activa {
+    background: rgba(232, 148, 74, .28);
+    border-left: 4px solid #E8944A;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(78, 10, 11, .12);
+}
+
+.tp-contenido {
+    flex: 1 1 340px;
+    min-height: 380px;
+}
+
+.tp-panel {
+    display: none;
+    background: rgba(242, 238, 232, .78);
+    border: 1px solid rgba(232, 148, 74, .4);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 15px rgba(78, 10, 11, .05);
+}
+
+.tp-panel.tp-activa {
+    display: block;
+    animation: tpEntrada .25s ease;
+}
+
+@keyframes tpEntrada {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.tp-panel h3 {
+    margin: 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(232, 148, 74, .45);
+    color: #4E0A0B;
+    font-size: 17px;
+}
+
+.tp-panel .tp-descripcion {
+    margin: 6px 0 14px;
+    color: #7A3B2E;
+    font-size: 12.5px;
+}
+
+.tp-panel .campo { margin-bottom: 12px; }
+
+/* Formularios internos de cada pestaña en grilla flexible */
+.tp-rejilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+}
+
+/* ============ Subtablas (Datos Académicos y Datos Familiares) ============ */
+.tp-grilla {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(250, 235, 221, .6);
+    border: 1px solid rgba(232, 148, 74, .4);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.tp-grilla th {
+    background: rgba(232, 148, 74, .25);
+    color: #4E0A0B;
+    font-size: 12.5px;
+    text-align: left;
+    padding: 8px;
+}
+
+.tp-grilla td {
+    border-top: 1px solid rgba(232, 148, 74, .3);
+    padding: 6px 8px;
+    vertical-align: middle;
+}
+
+.tp-grilla input,
+.tp-grilla select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 1px solid rgba(232, 148, 74, .5);
+    border-radius: 8px;
+    background: #F2EEE8;
+    font-family: inherit;
+    font-size: 13px;
+    color: #4E0A0B;
+}
+
+.tp-grilla td.tp-celda-accion {
+    width: 46px;
+    text-align: center;
+    padding: 6px 4px;
+}
+
+.tp-quitar {
+    background: #B3261E;
+    color: #FFFFFF;
+    border: 1px solid #4E0A0B;
+    border-radius: 8px;
+    padding: 6px 9px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tp-quitar:hover { background: #7A1A15; }
+
+.tp-acciones-grilla { margin-bottom: 12px; }
+
+/* Miniatura de foto en el listado */
+.tp-mini-foto {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #E8944A;
+    background: #F2EEE8;
+    vertical-align: middle;
+}
+
+.tp-mini-placeholder {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px dashed #C39A6B;
+    background: rgba(232, 148, 74, .12);
+    color: #7A3B2E;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.tp-celda-foto { width: 64px; text-align: center; }
+
+/* ============ Adaptación a pantallas pequeñas ============ */
+@media (max-width: 760px) {
+    .tp-tabs { flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; }
+    .tp-pill { flex: 1 1 auto; }
+    .tp-marco-foto { flex: 1 1 100%; border-right: none; padding-right: 0; }
+    .tp-grilla th, .tp-grilla td { font-size: 12px; }
+}
