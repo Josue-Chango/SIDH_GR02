@@ -1,0 +1,14 @@
+Validación del CRUD de cargos — 13 de noviembre de 2026
+
+Compilación Java 11 con JRE 21, Maven 3.9.9 y compilador Eclipse: correcta.
+Se utilizó Eclipse como compilador porque el entorno de revisión no trae javac.
+El pom.xml entregado mantiene el compilador Maven habitual para su JDK.
+Empaquetado WAR con el pom.xml del proyecto: correcto.
+Compilación de las JSP modificadas con Jasper 10.1.34: 0 errores.
+Último ajuste: consultas.jsp compilada; departamentos en combobox y cargos en listbox.
+Pruebas JUnit: 20 ejecutadas, 0 fallos, 0 errores, 0 omitidas.
+- CargoDAOTest: 4 pruebas SQL con H2 en modo MySQL.
+- CargoControllerTest: 16 pruebas de acciones, acceso, validaciones, filtro por departamento y conservación del filtro tras el CRUD.
+
+No se ejecutó Payara ni se conectó con el MySQL del usuario.
+El archivo LEEME_CRUD_CARGOS.md explica la puesta en marcha y la prueba manual.
