@@ -1,0 +1,204 @@
+10 | Normal | INDICE DE IMÁGENES
+112 | Heading 1 | MARCO TEÓRICO
+114 | Heading 2 | INTRODUCCIÓN
+117 | Heading 2 | OBJETIVOS
+118 | Heading 3 | OBJETIVO GENERAL
+120 | Heading 3 | OBJETIVOS ESPECÍFICOS
+121 | List Paragraph | Realizar un estudio del estado del arte en cuanto a los diversos componentes de IDE Netbeans brindad
+122 | List Paragraph | Reconocer uso adecuado de los diferentes TAGS ofrecidas para poder tener un mejor control sobre las 
+123 | List Paragraph | Comprobar estrategias sobre el almacenaje en tiempo de ejecución en aplicaciones web.
+124 | List Paragraph | Investigar sobre las posibilidades que ofrece el IDE Netbeans para la implementación de los puntos a
+125 | List Paragraph | Implementar configuraciones de registros de sesión básicos.
+126 | List Paragraph | Analizar el proceso de archivos XHTML para la generación de CRUDS realizados desde la base de datos 
+127 | Heading 2 | APLICACIÓNES WEB EN IDE NETBEANS
+131 | Imagenes | Figura . Arquitectura de aplicación web
+132 | Heading 3 | JAVA PERSISTENCE API(JPA)
+140 | Tablas | A continuación, se muestra una configuración de JPA:
+141 | Tablas | Tabla . Configuración de JPA
+143 | Heading 4 | 1.3.1.1 COMPONENTE ORM
+147 | Imagenes | Figura . Arquitectura ORM
+148 | Heading 4 | 1.3.1.1 COMPONENTE ENTITYMANAGER (ENTITY BEANS)
+154 | Imagenes | Figura . Funcionamiento de EntityManager
+155 | Heading 3 | POJOS
+162 | Imagenes | Figura . Implementación de Clase POJO
+163 | Heading 3 | FRAMEWORKS DE PERSISTENCIA
+169 | Imagenes | Figura . Framework EclipseLink
+173 | Imagenes | Figura . Framework Hibernate
+176 | Imagenes | Figura . Apache OpenJPA
+177 | Heading 2 | JAVA WEB
+181 | Heading 4 | Expresiones Java y Operadores Java
+184 | Tablas | Tabla . Operadores Java
+186 | Subtitle | Javax
+188 | List Paragraph | Java API for XML Processing, o JAXP: permite parsear documentos XML. Ofrece tres interfaces de parse
+189 | List Paragraph | Java API for XML Messaging, o JAXM: posibilita a las aplicaciones distribuidas comunicarse usando XM
+190 | List Paragraph | Java API for XML-based RPC, o JAX-RPC: permite invocar un servicio web desde una aplicación Java. Pu
+191 | List Paragraph | Java API for XML Registries, o JAXR: define una API estándar para que las aplicaciones puedan accede
+192 | List Paragraph | Java Architecture for XML Binding, o JAXB: permite a los desarrolladores exportar clases Java a repr
+193 | Subtitle | Clases utilizadas en Java Web
+196 | Heading 2 | JAVABEANS
+203 | Heading 2 | ARCHIVOS XHTML
+206 | Imagenes | Figura . Archivos XHTML
+207 | Heading 2 | TAGS JAVASERVER FACES
+209 | Tablas | Tabla . Tags JavaServer Faces
+211 | Heading 2 | MANAGED BEAN
+214 | Heading 3 | 1.8.1 ALCANCES
+215 | Tablas | Tabla . Alcances Managed Bean
+217 | Heading 3 | 1.8.2 SCOPES
+218 | Tablas | Tabla . Scopes Managed Bean
+220 | Heading 2 | COMPONENTES JSF
+222 | Tablas | Tabla . Componentes JSF
+224 | Heading 2 | PERSISTENCIA DE DATOS
+228 | List Paragraph | Compensación (Clearing): Consiste en remover del dispositivo de almacenamiento los datos sensibles, 
+229 | List Paragraph | Purga (Purging): También conocida como higienización (Sanitizing), la purga consiste en remover los 
+230 | List Paragraph | Destrucción (Destruction): Consiste en la destrucción física del medio de almacenamiento, utilizando
+234 | Heading 2 | JNDI
+239 | Imagenes | Figura . Componentes JNDI Java
+240 | Heading 2 | BASES DE DATOS
+244 | List Paragraph | Bases de datos estáticas. Típicas de la inteligencia empresarial y otras áreas de análisis histórico
+245 | List Paragraph | Bases de datos dinámicas. Aparte de las operaciones básicas de consulta, estas bases de datos maneja
+246 | List Paragraph | Bibliográficas. Contienen diverso material de lectura (libros, revistas, etc.) ordenado a partir de 
+247 | List Paragraph | De texto completo. Se manejan con textos históricos o documentales, cuya preservación debe ser a tod
+248 | List Paragraph | Directorios. Listados enormes de datos personalizados o de direcciones de correo electrónico, número
+249 | List Paragraph | Especializadas. Bases de datos de información hiperespecializada o técnica, pensadas a partir de las
+251 | Imagenes | Figura . Sistema Gestor de Bases de Datos
+252 | Heading 2 | CRUD DE UNA BASE DE DATOS
+260 | Imagenes | Figura . CRUD Base de datos
+261 | Heading 2 | TABLAS EN UNA BASE DE DATOS
+264 | Imagenes | Figura . Tabla de base de datos de ORACLE
+267 | Heading 2 | RELACIONES ENTRE TABLAS DE BASES DE DATOS
+273 | Imagenes | Figura . Relaciones entre tablas de bases de datos
+274 | Heading 2 | DISPARADORES DE BASES DE DATOS
+283 | Imagenes | Figura . Uso triggers base de datos
+284 | Heading 2 | SCRIPTS DE BASES DE DATOS
+295 | Heading 2 | OPERACIONES EN UNA BASE DE DATOS
+300 | Heading 2 | ARQUITECTURA DE UN DISEÑO DE BASE DE DATOS
+304 | Imagenes | Figura . Arquitectura de una BD
+305 | Heading 2 | TIPOS DE BASES DE DATOS
+306 | Heading 3 | 1.20.1 Base de datos relacional
+309 | Heading 3 | 1.20.2 Base de datos Distribuida
+313 | Heading 3 | 1.20.3 Base de datos NoSQL
+316 | Heading 3 | 1.20.4 Base de datos Orientada a Objetos
+319 | Heading 3 | 1.20.4 Base de datos Gráfica
+322 | Imagenes | Figura . Tipos de bases de datos
+323 | Heading 2 | USING BEAN VALIDATION
+328 | Tablas | Tabla . BeanValidations utilizados
+330 | Heading 2 | PERSISTENCE UNIT
+333 | Imagenes | Figura . PersistenceUnit Java
+335 | Heading 2 | JAXB ANOTATIONS
+337 | Tablas | Tabla . Anotaciones JAXB
+339 | Heading 2 | PATRONES DE DISEÑO
+342 | List Paragraph | Patrones creacionales
+343 | List Paragraph | Patrones estructurales
+344 | Heading 4 | Patrones de comportamiento
+345 | Heading 5 | Modelo-Vista-Controlador (MVC)
+348 | List Paragraph | Modelo: Maneja datos y lógica de negocios.
+349 | List Paragraph | Vista: Se encarga del diseño y presentación.
+350 | List Paragraph | Controlador: Enruta comandos a los modelos y vistas.
+351 | Heading 2 | MÉTODOS GETTERS Y SETTERS
+353 | List Paragraph | Setters: Del inglés Set, que significa establecer, pues nos sirve para asignar un valor inicial a un
+354 | List Paragraph | Getters: Del inglés Get, que significa obtener, pues nos sirve para obtener (recuperar o acceder) el
+355 | Heading 1 | PARTE PRÁCTICA
+359 | Imagenes | Figura . Apertura del IDE Netbeans 8.2
+360 | Heading 2 | CREACIÓN DEL PROYECTO
+363 | Imagenes | Figura . Creación de Aplicación Web en Netbeans
+366 | Imagenes | Figura . Nombramiento de la aplicación
+371 | Imagenes | Figura . Selección de JAVA EE Version
+374 | Imagenes | Figura . Selección de Framework de desarollo
+378 | Imagenes | Figura . Generación de aplicativo
+380 | Heading 2 | CREACIÓN DE POOL A BASE DE DATOS
+383 | Imagenes | Figura . Creacion de base de datos
+386 | Imagenes | Figura . Creación de DB y conectividad
+389 | Imagenes | Figura . Ejecución archivo script.sql
+392 | Imagenes | Figura . Creación de tablas a partir de script
+393 | Heading 2 | CREACIÓN DE PAQUETES
+396 | Imagenes | Figura . Creación de paquetes
+399 | Imagenes | Figura . Nombramiento del paquete Modelo
+402 | Imagenes | Figura . Creación del paquete vista
+405 | Imagenes | Figura . Nombramiento del paquete vista
+408 | Imagenes | Figura . Creación del paquete Controlador
+411 | Imagenes | Figura . Nombramiento del paquete controlador
+412 | Heading 2 | CREACIÓN DE ENTITY CLASS FROM DATABASE
+415 | Imagenes | Figura . Creación de nuevo archivo
+418 | Imagenes | Figura . Creación de EntityClass from Database
+421 | Imagenes | Figura . Creación de un nuevo DataSource
+424 | Imagenes | Figura . Selección de todo el paquete Modelo
+427 | Imagenes | Figura . Generación de clases en el paquete Modelo
+431 | Imagenes | Figura . Valores por defecto de las tablas
+434 | Imagenes | Figura . Estructura de la aplicación
+436 | Heading 2 | CREACIÓN DE JSF PAGES FROM ENTITY CLASSES
+439 | Imagenes | Figura . Creación de JSF Pages From Entity Classes
+442 | Imagenes | Figura . Clases localizadas en el modelo
+447 | Imagenes | Figura . Paso de clases  al controlador
+450 | Imagenes | Figura . Generar las clases controlador
+457 | Imagenes | Figura . Vista final de la aplicación con las clases generadas
+458 | Heading 2 | CODIFICACIÓN DE ARCHIVOS .XHTML
+460 | Heading 3 | 2.5.1. CODIFICACIÓN DEL ARCHIVO .XHTML DE LA CARPETA ALUMNO CREATE.XHTML
+463 | Tablas | Tabla . Codificación del archivo Create.xhtml
+464 | Heading 3 | 2.5.2. CODIFICACIÓN DEL ARCHIVO .XHTML DE LA CARPETA ALUMNO EDIT.XHTML
+468 | Tablas | Tabla . Codificación de edit
+471 | Heading 3 | 2.5.3. CODIFICACIÓN DEL ARCHIVO LIST.XHTML
+475 | Tablas | Tabla . Codificación del archivo List.xhtml
+477 | Heading 3 | 2.5.4. CODIFICACIÓN DEL ARCHIVO VIEW.XHTML
+485 | Tablas | Tabla . Codificación del archivo View.xhtml
+487 | Heading 2 | FUNCIONALIDAD
+488 | Heading 3 | ESTRUCTURA DE LA APLICACIÓN
+490 | Imagenes | Figura . Estructura final de la aplicación
+491 | Heading 2 | DESEMPEÑO DE LA APLICACIÓN
+495 | Imagenes | Figura . Vista general
+498 | Imagenes | Figura . Vista de todos los alumnos
+501 | Imagenes | Figura . Creacion de nuevo alumno
+505 | Imagenes | Figura . Edicion de alumno
+508 | Imagenes | Figura . Eliminacion de alumno EduardoC
+510 | Imagenes | Figura . Alumno EduardoC eliminado exitosamente
+511 | Heading 1 | CRUD DE LA TABLA DEPARTAMENTO (SIGH GR02)
+513 | Heading 2 | CREACIÓN DEL PROYECTO
+516 | Tablas | Tabla 13. Fragmento del pom.xml con las dependencias del proyecto
+517 | Heading 2 | IMPLEMENTACIÓN DE LA BASE DE DATOS
+522 | Tablas | Tabla 14. Definición de la tabla DEPARTAMENTO (PEDEP_DEPAR)
+524 | Heading 2 | CREACIÓN DE PAQUETES
+530 | Heading 2 | CAPA MODELO: ENTIDAD Y DAO
+533 | Tablas | Tabla 15. Sentencias SQL del DAO asociadas a las operaciones CRUD
+534 | Heading 2 | CAPA CONTROLADOR: SERVLET DEL CRUD
+536 | Heading 2 | CODIFICACIÓN DE ARCHIVOS DEL CRUD
+538 | Heading 3 | 31. CODIFICACIÓN DE LA VISTA departamento.jsp
+540 | Tablas | Tabla 16. Codificación de la vista departamento.jsp
+541 | Heading 3 | 32. CODIFICACIÓN DEL CONTROLADOR DepartamentoController.java
+543 | Tablas | Tabla 17. Codificación del controlador DepartamentoController.java
+544 | Heading 3 | 33. CODIFICACIÓN DEL DAO DepartamentoDAO.java
+546 | Tablas | Tabla 18. Codificación del DAO DepartamentoDAO.java
+547 | Heading 3 | 34. CODIFICACIÓN DE LA CONEXIÓN (db.properties y ConexionBD.java)
+549 | Tablas | Tabla 19. Codificación de la conexión ConexionBD.java
+550 | Heading 2 | FUNCIONALIDAD
+552 | Heading 2 | DESPLEGUE Y PRUEBAS DEL CRUD
+556 | Imagenes | Figura 53. Vista del CRUD de departamentos (departamento.jsp)
+558 | Tablas | Tabla 20. Casos de prueba del CRUD de departamentos
+559 | Heading 1 | CONSULTA DE CARGOS Y DEPARTAMENTOS (SIGH GR02)
+561 | Heading 2 | IMPLEMENTACIÓN DE LA BASE DE DATOS
+563 | Tablas | Tabla 21. Definición de la tabla CARGO (PECAR_CARGO)
+565 | Heading 2 | CREACIÓN DE PAQUETES
+567 | Tablas | Tabla 22. Clases nuevas del apartado de consulta
+569 | Heading 2 | CAPA MODELO: ENTIDAD CARGO Y DAO CARGODAO
+571 | Tablas | Tabla 23. Sentencias SQL del DAO CargoDAO
+573 | Tablas | Tabla 24. Codificación de la entidad Cargo.java
+574 | Tablas | Tabla 25. Codificación del DAO CargoDAO.java
+575 | Heading 2 | CAPA CONTROLADOR: SERVLET DE CONSULTAS
+577 | Tablas | Tabla 26. Codificación del controlador ConsultasController.java
+578 | Heading 2 | CODIFICACIÓN DE LA VISTA consultas.jsp
+580 | Tablas | Tabla 27. Codificación de la vista consultas.jsp
+581 | Heading 2 | FUNCIONALIDAD
+583 | Heading 2 | DESPLEGUE Y PRUEBAS DEL APARTADO
+587 | Imagenes | Figura 54. Enlace del nuevo módulo en la página de bienvenida
+589 | Imagenes | Figura 55. Vista del apartado de consulta con todos los cargos (/ConsultasController)
+591 | Imagenes | Figura 56. Consulta filtrada por el departamento 001 (Medicina)
+592 | Tablas | Tabla 28. Casos de prueba del apartado de consulta
+593 | Heading 1 | CONCLUSIONES
+594 | List Paragraph | El manejo de EntityClass y JPA permiten que Java a partir de Netbeans pueda realizar  persistencia d
+595 | List Paragraph | En conclusión, el uso de JPA con las bases de datos en aplicaciones web es muy importante ya que de 
+596 | List Paragraph | Se comprobó la importancia que tiene en una aplicación tener separaciones al momento de querer resol
+597 | Heading 1 | RECOMENDACIONES
+598 | List Paragraph | Se recomienda actualizar a la versión correspondiente cada cierto tiempo. Desde el propio Panel de C
+599 | List Paragraph | Se sugiere evitar ejecutar aplicaciones desconocidas, ya que lo mejor es no aceptar un applet con un
+600 | List Paragraph | Se recomienda estar actualizado sobre los nuevos parches o las nuevas actualizaciones de cada versio
+601 | List Paragraph | Se recomienda que se sigan revisando más a profundidad los contenidos de la clase referentes a JAVA 
+602 | List Paragraph | Se recomienda verificar y utilizar la mayor parte del tiempo plantillas puesto que su modificación o
+603 | Heading 1 | REFERENCIAS

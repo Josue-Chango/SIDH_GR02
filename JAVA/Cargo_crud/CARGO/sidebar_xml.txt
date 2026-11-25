@@ -1,0 +1,63 @@
+﻿--- para 0
+<a:p xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+  <a:pPr algn="l">
+    <a:lnSpc>
+      <a:spcPts val="2039"/>
+    </a:lnSpc>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="en-US" sz="1700" b="1">
+      <a:solidFill>
+        <a:srgbClr val="FFC000"/>
+      </a:solidFill>
+      <a:latin typeface="Calibri (MS) Bold"/>
+      <a:ea typeface="Calibri (MS) Bold"/>
+      <a:cs typeface="Calibri (MS) Bold"/>
+      <a:sym typeface="Calibri (MS) Bold"/>
+    </a:rPr>
+    <a:t>?  &#10003;  INTRODUCCI&#211;N</a:t>
+  </a:r>
+</a:p>
+
+--- para 1
+<a:p xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+  <a:pPr algn="l">
+    <a:lnSpc>
+      <a:spcPts val="2039"/>
+    </a:lnSpc>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="en-US" sz="1700" b="1">
+      <a:solidFill>
+        <a:srgbClr val="FFFFFF"/>
+      </a:solidFill>
+      <a:latin typeface="Calibri (MS) Bold"/>
+      <a:ea typeface="Calibri (MS) Bold"/>
+      <a:cs typeface="Calibri (MS) Bold"/>
+      <a:sym typeface="Calibri (MS) Bold"/>
+    </a:rPr>
+    <a:t>?  &#9633;  OBJETIVOS</a:t>
+  </a:r>
+</a:p>
+
+--- para 2
+<a:p xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+  <a:pPr algn="l">
+    <a:lnSpc>
+      <a:spcPts val="2039"/>
+    </a:lnSpc>
+  </a:pPr>
+  <a:r>
+    <a:rPr lang="en-US" sz="1700" b="1">
+      <a:solidFill>
+        <a:srgbClr val="FFFFFF"/>
+      </a:solidFill>
+      <a:latin typeface="Calibri (MS) Bold"/>
+      <a:ea typeface="Calibri (MS) Bold"/>
+      <a:cs typeface="Calibri (MS) Bold"/>
+      <a:sym typeface="Calibri (MS) Bold"/>
+    </a:rPr>
+    <a:t>?  &#9633;  MARCO TE&#211;RICO</a:t>
+  </a:r>
+</a:p>
+

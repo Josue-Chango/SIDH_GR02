@@ -1,0 +1,18 @@
+﻿Imagen 23 -> rId6
+<p:blipFill xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <a:blip r:embed="rId6"/>
+  <a:srcRect r="54635"/>
+  <a:stretch>
+    <a:fillRect/>
+  </a:stretch>
+</p:blipFill>
+
+Imagen 32 -> rId7
+<p:blipFill xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <a:srcRect r="55689"/>
+  <a:blip r:embed="rId7"/>
+  <a:stretch>
+    <a:fillRect/>
+  </a:stretch>
+</p:blipFill>
+

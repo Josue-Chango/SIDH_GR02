@@ -1051,8 +1051,8 @@ PreserveMode=Yes</a:ModelOptionsText>
 <c:GenerationOrigins>
 <o:Shortcut Id="o5">
 <a:ObjectID>6B65B29D-64EB-4B66-A5A6-9C19B20A79B7</a:ObjectID>
-<a:Name>SIDH_GR02_Conceptual_CORREGIDO</a:Name>
-<a:Code>SIDH_GR02_CONCEPTUAL_CORREGIDO</a:Code>
+<a:Name>SIDH_GR02_Conceptual</a:Name>
+<a:Code>SIDH_GR02_CONCEPTUAL</a:Code>
 <a:CreationDate>1793761320</a:CreationDate>
 <a:Creator>josue</a:Creator>
 <a:ModificationDate>1793761320</a:ModificationDate>
@@ -33310,16 +33310,16 @@ DAT 1793761319</a:History>
 <c:TargetModels>
 <o:TargetModel Id="o1451">
 <a:ObjectID>F8BDE08E-359E-4C1E-AD04-F87E1C4BD4D8</a:ObjectID>
-<a:Name>SIDH_GR02_Conceptual_CORREGIDO</a:Name>
-<a:Code>SIDH_GR02_CONCEPTUAL_CORREGIDO</a:Code>
+<a:Name>SIDH_GR02_Conceptual</a:Name>
+<a:Code>SIDH_GR02_CONCEPTUAL</a:Code>
 <a:CreationDate>1793761319</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793761319</a:ModificationDate>
+<a:ModificationDate>1793765481</a:ModificationDate>
 <a:Modifier>josue</a:Modifier>
-<a:TargetModelURL>file:///C|/Users/josue/Documents/GITHUB/SIDH_GR02/02. MER/01. CONCEPTUAL/SIDH_GR02_Conceptual_CORREGIDO.cdm</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/Users/josue/Documents/GITHUB/SIDH_GR02/02. MER/01. CONCEPTUAL/SIDH_GR02_Conceptual.cdm</a:TargetModelURL>
 <a:TargetModelID>E19A1220-A4C5-5A6D-9660-A45343DF2F93</a:TargetModelID>
 <a:TargetModelClassID>1E597170-9350-11D1-AB3C-0020AF71E433</a:TargetModelClassID>
-<a:TargetModelLastModificationDate>1793762851</a:TargetModelLastModificationDate>
+<a:TargetModelLastModificationDate>1793765481</a:TargetModelLastModificationDate>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o5"/>
 </c:SessionShortcuts>
@@ -33330,12 +33330,12 @@ DAT 1793761319</a:History>
 <a:Code>SIDH_GR02_FISICO_MYSQL</a:Code>
 <a:CreationDate>1793763132</a:CreationDate>
 <a:Creator>josue</a:Creator>
-<a:ModificationDate>1793763295</a:ModificationDate>
+<a:ModificationDate>1793764049</a:ModificationDate>
 <a:Modifier>josue</a:Modifier>
 <a:TargetModelURL>file:///C|/Users/josue/Documents/GITHUB/SIDH_GR02/02. MER/03. FÍSICO/01. MySQL/SIDH_GR02_Fisico_MySQL.pdm</a:TargetModelURL>
 <a:TargetModelID>8A55DD1F-885B-4F30-808B-4525BC89CAAC</a:TargetModelID>
 <a:TargetModelClassID>CDE44E21-9669-11D1-9914-006097355D9B</a:TargetModelClassID>
-<a:TargetModelLastModificationDate>1793763602</a:TargetModelLastModificationDate>
+<a:TargetModelLastModificationDate>1793764049</a:TargetModelLastModificationDate>
 <c:SessionShortcuts>
 <o:Shortcut Ref="o3"/>
 </c:SessionShortcuts>
