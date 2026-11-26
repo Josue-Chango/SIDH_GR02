@@ -1,0 +1,10 @@
+{
+  "pasos": 20,
+  "capturas": 20,
+  "figuras": "67–86",
+  "nodos_originales_conservados": 773,
+  "nodos_añadidos": 92,
+  "componentes_sin_cambios": 82,
+  "sha256_original": "529f2709de3719d043e2658e860b4baf06e4f2f915f616966ecd9f60d0b132f4",
+  "sha256_actualizado": "aa80697aa35d013830db504b12d9aab87a87678ffcebaa8add53df3b5949e664"
+}

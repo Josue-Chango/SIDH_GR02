@@ -164,3 +164,15 @@ Si aparece otra vez:
 Las pruebas de caída de BD usan un error y un driver inexistente de forma
 deliberada. Esas trazas se silencian solo durante las dos pruebas que las
 provocan; los errores reales del aplicativo se siguen registrando.
+
+
+DISEÑO INSTITUCIONAL DE REPORTES
+
+Los seis JRXML utilizan blanco, azul profundo, verde petróleo y grises claros,
+con encabezado institucional, tablas de filas alternadas, separadores discretos,
+totales destacados y encabezados de continuación para documentos de varias páginas.
+Se conserva la información, las consultas, los parámetros, los filtros, la foto,
+las firmas y los cálculos de los diseños anteriores.
+
+Puede personalizar Base, Celda, Cabecera, Seccion, Etiqueta, Meta y Total en
+Outline / Styles de Jaspersoft Studio. Las filas se adaptan a los textos largos.

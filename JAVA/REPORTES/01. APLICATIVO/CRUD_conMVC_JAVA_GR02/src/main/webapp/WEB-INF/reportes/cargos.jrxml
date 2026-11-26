@@ -1,51 +1,151 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Jaspersoft Studio / JasperReports 7.0.8. Adaptado del ejemplo SIGH GR01 al esquema GR02. -->
+<?xml version='1.0' encoding='UTF-8'?>
 <jasperReport name="cargos" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenNoDataType="AllSectionsNoDetail" uuid="a9482b21-8da7-4361-a01d-736b27f1f6b1">
-<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
-<style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0"/>
-<style name="Celda" style="Base" forecolor="#342D2D" vTextAlign="Middle"><box leftPadding="5" rightPadding="5" topPadding="3" bottomPadding="3"><bottomPen lineWidth="0.4" lineColor="#E1D8CF"/></box></style>
-<style name="Cabecera" style="Celda" bold="true" mode="Opaque" forecolor="#4E0A0B" backcolor="#F1E7DC"/>
-<style name="Seccion" style="Celda" fontSize="10.0" bold="true" mode="Opaque" forecolor="#FFFFFF" backcolor="#4E0A0B"/>
-<style name="Meta" style="Base" forecolor="#6E5A51" fontSize="8.0" vTextAlign="Middle"/>
-<parameter name="USUARIO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
-<parameter name="DEPARTAMENTO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
-<query language="sql"><![CDATA[SELECT c.PEDEP_CODIGO, d.PEDEP_DESCRI, c.PECAR_CODIGO, c.PECAR_DESCRI
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
+    <style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0" forecolor="#2B4354"/>
+    <style name="Celda" style="Base" mode="Opaque" backcolor="#FFFFFF" vTextAlign="Middle">
+        <box leftPadding="8" rightPadding="8" topPadding="4" bottomPadding="4">
+            <bottomPen lineWidth="0.45" lineColor="#DCE6EC"/>
+        </box>
+        <conditionalStyle backcolor="#F7FAFC">
+            <conditionExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></conditionExpression>
+        </conditionalStyle>
+    </style>
+    <style name="Cabecera" style="Base" fontSize="8.3" bold="true" mode="Opaque" forecolor="#17374D" backcolor="#F1F6F9" vTextAlign="Middle">
+        <box leftPadding="8" rightPadding="8" topPadding="4" bottomPadding="4">
+            <bottomPen lineWidth="0.45" lineColor="#BCCFD9"/>
+        </box>
+    </style>
+    <style name="Seccion" style="Base" fontSize="9.5" bold="true" mode="Opaque" forecolor="#175D68" backcolor="#EAF4F5" vTextAlign="Middle">
+        <box leftPadding="10" rightPadding="10" topPadding="4" bottomPadding="4">
+            <leftPen lineWidth="3.0" lineColor="#137D88"/>
+        </box>
+    </style>
+    <style name="Etiqueta" style="Base" fontSize="8.3" bold="true" mode="Opaque" forecolor="#526D7D" backcolor="#F3F7FA" vTextAlign="Middle">
+        <box leftPadding="8" rightPadding="8" topPadding="4" bottomPadding="4">
+            <bottomPen lineWidth="0.45" lineColor="#DCE6EC"/>
+        </box>
+    </style>
+    <style name="Meta" style="Base" fontSize="8.0" forecolor="#657D8B" vTextAlign="Middle"/>
+    <style name="Total" style="Base" fontSize="9.5" bold="true" forecolor="#17374D" vTextAlign="Middle">
+        <box leftPadding="9" rightPadding="9" topPadding="4" bottomPadding="4"/>
+    </style>
+    <parameter name="USUARIO" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+    <parameter name="DEPARTAMENTO" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+    <query language="sql"><![CDATA[SELECT c.PEDEP_CODIGO, d.PEDEP_DESCRI, c.PECAR_CODIGO, c.PECAR_DESCRI
 FROM PECAR_CARGO c JOIN PEDEP_DEPAR d ON d.PEDEP_CODIGO = c.PEDEP_CODIGO
 WHERE $P{DEPARTAMENTO} = '' OR c.PEDEP_CODIGO = $P{DEPARTAMENTO}
 ORDER BY c.PEDEP_CODIGO, c.PECAR_CODIGO]]></query>
-<field name="PEDEP_CODIGO" class="java.lang.String"/>
-<field name="PEDEP_DESCRI" class="java.lang.String"/>
-<field name="PECAR_CODIGO" class="java.lang.String"/>
-<field name="PECAR_DESCRI" class="java.lang.String"/>
-<group name="Departamento" reprintHeaderOnEachPage="true" minHeightToStartNewPage="70">
-<expression><![CDATA[$F{PEDEP_CODIGO}]]></expression>
-<groupHeader><band height="30"><element kind="textField" uuid="6dac8b3f-75ca-4a83-9eb2-505c65904a8a" x="0" y="3" width="555" height="24" style="Seccion" blankWhenNull="true" textAdjust="ScaleFont"><expression><![CDATA[$F{PEDEP_CODIGO} + " - " + $F{PEDEP_DESCRI}]]></expression></element>
-</band></groupHeader>
-<groupFooter><band height="26"><element kind="textField" uuid="e32089cc-32c5-4009-b9fb-097bb9f66b5e" x="0" y="0" width="555" height="22" style="Meta" blankWhenNull="true" hTextAlign="Right" bold="true"><expression><![CDATA["Cargos en el departamento: " + $V{Departamento_COUNT}]]></expression></element>
-</band></groupFooter></group>
-<title height="112">
-<element kind="rectangle" uuid="28ec602f-3156-4c75-9017-9932bc6db22b" x="0" y="0" width="555" height="78" mode="Opaque" forecolor="#4E0A0B" backcolor="#4E0A0B"></element>
-<element kind="staticText" uuid="183d939f-7dae-46ae-a446-6b646389825e" x="12" y="7" width="531" height="27" style="Base" fontSize="19.0" bold="true" forecolor="#FFFFFF" vTextAlign="Middle"><text><![CDATA[Reporte de cargos]]></text></element>
-<element kind="staticText" uuid="73e7a6d7-1458-426c-9ff8-750807882f67" x="12" y="35" width="531" height="17" style="Base" fontSize="9.0" forecolor="#EAD4BD"><text><![CDATA[SIGH GR02 · Sistema Integral de Gestión Hospitalaria]]></text></element>
-<element kind="textField" uuid="ca6f37fe-2ac3-47cf-a34f-a4f5dffc4f78" x="12" y="55" width="315" height="17" style="Base" blankWhenNull="true" fontSize="8.0" forecolor="#FFFFFF" textAdjust="ScaleFont"><expression><![CDATA["Generado por: " + $P{USUARIO}]]></expression></element>
-<element kind="textField" uuid="cfd39b26-22b9-4265-880e-7cc206dc4776" x="335" y="55" width="208" height="17" style="Base" blankWhenNull="true" fontSize="8.0" forecolor="#FFFFFF" hTextAlign="Right"><expression><![CDATA["Fecha: " + java.time.ZonedDateTime.now(java.time.ZoneId.of("America/Guayaquil")).format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))]]></expression></element>
-<element kind="textField" uuid="092b518c-b625-4e9d-9f76-869f2d6d91d1" x="0" y="82" width="555" height="22" style="Meta" blankWhenNull="true" bold="true"><expression><![CDATA[$P{DEPARTAMENTO}.isEmpty() ? "Todos los departamentos" : "Departamento seleccionado: " + $P{DEPARTAMENTO}]]></expression></element>
-</title>
-<columnHeader height="27">
-<element kind="staticText" uuid="2efaec64-2dc4-4284-b904-5dcec972fea3" x="0" y="0" width="110" height="27" style="Cabecera"><text><![CDATA[Depto. / Cargo]]></text></element>
-<element kind="staticText" uuid="8441ff65-8b94-431a-a3fd-a294e6131773" x="110" y="0" width="445" height="27" style="Cabecera"><text><![CDATA[Descripción del cargo]]></text></element>
-</columnHeader>
-<detail><band height="29" splitType="Prevent">
-<element kind="textField" uuid="8c25e3dc-474e-4b8f-b47f-69e24be8f4b1" x="0" y="0" width="110" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight" bold="true"><expression><![CDATA[$F{PEDEP_CODIGO} + " / " + $F{PECAR_CODIGO}]]></expression></element>
-<element kind="textField" uuid="f1a26912-5ca7-4b7e-8c59-0f803e36f12a" x="110" y="0" width="445" height="29" style="Celda" blankWhenNull="true" textAdjust="StretchHeight"><expression><![CDATA[$F{PECAR_DESCRI}]]></expression></element>
-</band></detail>
-<pageFooter height="25">
-<element kind="staticText" uuid="3da00abc-9ad7-4554-bcbc-2925caef9473" x="0" y="4" width="340" height="18" style="Meta"><text><![CDATA[SIGH GR02 · Subsistema de Personal]]></text></element>
-<element kind="textField" uuid="41b2cb77-20fa-4e88-972d-74943f6e7441" x="390" y="4" width="135" height="18" style="Meta" blankWhenNull="true" hTextAlign="Right"><expression><![CDATA["Página " + $V{PAGE_NUMBER} + " de"]]></expression></element>
-<element kind="textField" uuid="36b33175-590c-42ba-b9e1-b16761ec3d38" x="528" y="4" width="27" height="18" style="Meta" blankWhenNull="true" evaluationTime="Report"><expression><![CDATA[$V{PAGE_NUMBER}]]></expression></element>
-</pageFooter>
-<summary height="48">
-<element kind="textField" uuid="0e6076df-f59f-43e3-b19b-335a575bdcb6" x="0" y="20" width="555" height="24" style="Meta" blankWhenNull="true" bold="true" hTextAlign="Right"><expression><![CDATA["Total de cargos: " + $V{REPORT_COUNT}]]></expression></element>
-<element kind="staticText" uuid="77d7d5d7-8d7e-4b4f-8fd0-b4339ec2eb09" x="0" y="0" width="555" height="20" style="Meta"><printWhenExpression><![CDATA[$V{REPORT_COUNT} == 0]]></printWhenExpression><text><![CDATA[No hay datos para mostrar.]]></text></element>
-</summary>
+    <field name="PEDEP_CODIGO" class="java.lang.String"/>
+    <field name="PEDEP_DESCRI" class="java.lang.String"/>
+    <field name="PECAR_CODIGO" class="java.lang.String"/>
+    <field name="PECAR_DESCRI" class="java.lang.String"/>
+    <group name="Departamento" reprintHeaderOnEachPage="true" minHeightToStartNewPage="70">
+        <expression><![CDATA[$F{PEDEP_CODIGO}]]></expression>
+        <groupHeader>
+            <band height="36">
+                <element kind="textField" uuid="6dac8b3f-75ca-4a83-9eb2-505c65904a8a" x="0" y="5" width="555" height="27" style="Seccion" blankWhenNull="true" textAdjust="ScaleFont">
+                    <expression><![CDATA[$F{PEDEP_CODIGO} + " - " + $F{PEDEP_DESCRI}]]></expression>
+                </element>
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="26">
+                <element kind="textField" uuid="e32089cc-32c5-4009-b9fb-097bb9f66b5e" x="0" y="2" width="555" height="22" style="Meta" blankWhenNull="true" hTextAlign="Right" bold="true" fontSize="8.2" forecolor="#657D8B">
+                    <expression><![CDATA["Cargos en el departamento: " + $V{Departamento_COUNT}]]></expression>
+                </element>
+            </band>
+        </groupFooter>
+    </group>
+    <title height="128">
+        <element kind="rectangle" uuid="86bca9b2-f7f1-4875-8372-b1c4121c430a" x="0" y="8" width="34" height="34" forecolor="#137D88" backcolor="#137D88" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#137D88"/>
+        </element>
+        <element kind="rectangle" uuid="05b221fc-dec1-47b7-8b30-74787b605e81" x="8" y="23" width="18" height="4" forecolor="#FFFFFF" backcolor="#FFFFFF" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#FFFFFF"/>
+        </element>
+        <element kind="rectangle" uuid="b523c383-e6b6-4cfd-8ebd-c55e4f95ebfc" x="15" y="16" width="4" height="18" forecolor="#FFFFFF" backcolor="#FFFFFF" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#FFFFFF"/>
+        </element>
+        <element kind="staticText" uuid="73e7a6d7-1458-426c-9ff8-750807882f67" x="46" y="1" width="509" height="17" style="Meta" fontSize="8.4" forecolor="#657D8B" vTextAlign="Middle">
+            <text><![CDATA[SIGH GR02 · Sistema Integral de Gestión Hospitalaria]]></text>
+        </element>
+        <element kind="staticText" uuid="183d939f-7dae-46ae-a446-6b646389825e" x="46" y="20" width="509" height="31" style="Base" fontSize="21.0" bold="true" forecolor="#17374D" vTextAlign="Middle">
+            <text><![CDATA[Reporte de cargos]]></text>
+        </element>
+        <element kind="rectangle" uuid="31f4af22-c83e-4a55-ab96-b39096a6d72b" x="0" y="62" width="555" height="29" forecolor="#F1F6F9" backcolor="#F1F6F9" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#F1F6F9"/>
+        </element>
+        <element kind="textField" uuid="ca6f37fe-2ac3-47cf-a34f-a4f5dffc4f78" x="10" y="68" width="315" height="17" style="Meta" blankWhenNull="true" fontSize="8.0" forecolor="#2B4354" textAdjust="ScaleFont">
+            <expression><![CDATA["Generado por: " + $P{USUARIO}]]></expression>
+        </element>
+        <element kind="textField" uuid="cfd39b26-22b9-4265-880e-7cc206dc4776" x="333" y="68" width="212" height="17" style="Meta" blankWhenNull="true" fontSize="8.0" forecolor="#657D8B" hTextAlign="Right">
+            <expression><![CDATA["Fecha: " + java.time.ZonedDateTime.now(java.time.ZoneId.of("America/Guayaquil")).format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))]]></expression>
+        </element>
+        <element kind="line" uuid="d5f80a69-44f0-4da6-863c-80c7b8d9a407" x="0" y="97" width="555" height="1" forecolor="#DCE6EC">
+            <pen lineWidth="0.6" lineColor="#DCE6EC"/>
+        </element>
+        <element kind="textField" uuid="092b518c-b625-4e9d-9f76-869f2d6d91d1" x="0" y="102" width="555" height="22" style="Meta" blankWhenNull="true" bold="true" fontSize="8.5" forecolor="#175D68">
+            <expression><![CDATA[$P{DEPARTAMENTO}.isEmpty() ? "Todos los departamentos" : "Departamento seleccionado: " + $P{DEPARTAMENTO}]]></expression>
+        </element>
+    </title>
+    <pageHeader height="29">
+        <printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+        <element kind="staticText" uuid="bfa8ae13-449c-42c0-bf23-3ff32e332b1b" x="0" y="0" width="330" height="20" style="Base" fontSize="10.0" bold="true" forecolor="#17374D">
+            <text><![CDATA[Reporte de cargos]]></text>
+        </element>
+        <element kind="staticText" uuid="b10210ca-8bbc-43c0-8e88-516cfcde715c" x="335" y="0" width="220" height="20" style="Meta" hTextAlign="Right">
+            <text><![CDATA[SIGH GR02 · Subsistema de Personal]]></text>
+        </element>
+        <element kind="line" uuid="e0d2e544-fd53-407a-b90d-9b98d5667127" x="0" y="24" width="555" height="1" forecolor="#DCE6EC">
+            <pen lineWidth="0.6" lineColor="#DCE6EC"/>
+        </element>
+    </pageHeader>
+    <columnHeader height="28">
+        <element kind="staticText" uuid="2efaec64-2dc4-4284-b904-5dcec972fea3" x="0" y="0" width="110" height="28" style="Cabecera">
+            <text><![CDATA[Depto. / Cargo]]></text>
+        </element>
+        <element kind="staticText" uuid="8441ff65-8b94-431a-a3fd-a294e6131773" x="110" y="0" width="445" height="28" style="Cabecera">
+            <text><![CDATA[Descripción del cargo]]></text>
+        </element>
+    </columnHeader>
+    <detail>
+        <band height="30" splitType="Prevent">
+            <element kind="textField" uuid="8c25e3dc-474e-4b8f-b47f-69e24be8f4b1" x="0" y="0" width="110" height="30" style="Celda" blankWhenNull="true" textAdjust="StretchHeight" bold="true" stretchType="ContainerHeight">
+                <expression><![CDATA[$F{PEDEP_CODIGO} + " / " + $F{PECAR_CODIGO}]]></expression>
+            </element>
+            <element kind="textField" uuid="f1a26912-5ca7-4b7e-8c59-0f803e36f12a" x="110" y="0" width="445" height="30" style="Celda" blankWhenNull="true" textAdjust="StretchHeight" stretchType="ContainerHeight">
+                <expression><![CDATA[$F{PECAR_DESCRI}]]></expression>
+            </element>
+        </band>
+    </detail>
+    <pageFooter height="28">
+        <element kind="line" uuid="7baf4c62-6aae-4bee-b4fa-e1f262f66043" x="0" y="1" width="555" height="1" forecolor="#DCE6EC">
+            <pen lineWidth="0.6" lineColor="#DCE6EC"/>
+        </element>
+        <element kind="staticText" uuid="3da00abc-9ad7-4554-bcbc-2925caef9473" x="0" y="7" width="340" height="18" style="Meta">
+            <text><![CDATA[SIGH GR02 · Subsistema de Personal]]></text>
+        </element>
+        <element kind="textField" uuid="41b2cb77-20fa-4e88-972d-74943f6e7441" x="390" y="7" width="135" height="18" style="Meta" blankWhenNull="true" hTextAlign="Right">
+            <expression><![CDATA["Página " + $V{PAGE_NUMBER} + " de"]]></expression>
+        </element>
+        <element kind="textField" uuid="36b33175-590c-42ba-b9e1-b16761ec3d38" x="528" y="7" width="27" height="18" style="Meta" blankWhenNull="true" evaluationTime="Report">
+            <expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+        </element>
+    </pageFooter>
+    <summary height="62">
+        <element kind="rectangle" uuid="d573616c-0e78-45ee-98aa-2e063a5c21d0" x="345" y="28" width="210" height="30" forecolor="#F1F6F9" backcolor="#F1F6F9" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#F1F6F9"/>
+        </element>
+        <element kind="textField" uuid="0e6076df-f59f-43e3-b19b-335a575bdcb6" x="351" y="31" width="198" height="24" style="Total" blankWhenNull="true" bold="true" hTextAlign="Right">
+            <expression><![CDATA["Total de cargos: " + $V{REPORT_COUNT}]]></expression>
+        </element>
+        <element kind="staticText" uuid="77d7d5d7-8d7e-4b4f-8fd0-b4339ec2eb09" x="0" y="0" width="555" height="22" style="Meta">
+            <printWhenExpression><![CDATA[$V{REPORT_COUNT} == 0]]></printWhenExpression>
+            <text><![CDATA[No hay datos para mostrar.]]></text>
+        </element>
+    </summary>
 </jasperReport>

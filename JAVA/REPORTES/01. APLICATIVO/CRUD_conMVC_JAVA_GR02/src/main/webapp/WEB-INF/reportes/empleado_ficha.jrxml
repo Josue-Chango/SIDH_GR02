@@ -1,74 +1,205 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Jaspersoft Studio / JasperReports 7.0.8. Adaptado del ejemplo SIGH GR01 al esquema GR02. -->
-<jasperReport name="empleado_ficha" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenNoDataType="AllSectionsNoDetail" uuid="36020f4c-d149-4567-a64c-b7db19368356">
-<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
-<style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0"/>
-<style name="Celda" style="Base" forecolor="#342D2D" vTextAlign="Middle"><box leftPadding="5" rightPadding="5" topPadding="3" bottomPadding="3"><bottomPen lineWidth="0.4" lineColor="#E1D8CF"/></box></style>
-<style name="Cabecera" style="Celda" bold="true" mode="Opaque" forecolor="#4E0A0B" backcolor="#F1E7DC"/>
-<style name="Seccion" style="Celda" fontSize="10.0" bold="true" mode="Opaque" forecolor="#FFFFFF" backcolor="#4E0A0B"/>
-<style name="Meta" style="Base" forecolor="#6E5A51" fontSize="8.0" vTextAlign="Middle"/>
-<parameter name="USUARIO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
-<parameter name="EMPLEADO" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
-<parameter name="FOTO" class="java.awt.Image"></parameter>
-<parameter name="ACADEMICOS_REPORTE" class="net.sf.jasperreports.engine.JasperReport"></parameter>
-<parameter name="FAMILIARES_REPORTE" class="net.sf.jasperreports.engine.JasperReport"></parameter>
-<query language="sql"><![CDATA[SELECT p.PEPER_CODIGO, p.PEPER_APELLI, p.PEPER_NOMBRE, p.PEPER_FECNAC,
+<?xml version='1.0' encoding='UTF-8'?>
+<jasperReport name="empleado_ficha" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenNoDataType="AllSectionsNoDetail" uuid="36020f4c-d149-4567-a64c-b7db19368356" summaryWithPageHeaderAndFooter="true">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIGH_GR02"/>
+    <style name="Base" default="true" fontName="DejaVu Sans" fontSize="9.0" forecolor="#2B4354"/>
+    <style name="Celda" style="Base" mode="Opaque" backcolor="#FFFFFF" vTextAlign="Middle">
+        <box leftPadding="8" rightPadding="8" topPadding="4" bottomPadding="4">
+            <bottomPen lineWidth="0.45" lineColor="#DCE6EC"/>
+        </box>
+        <conditionalStyle backcolor="#F7FAFC">
+            <conditionExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></conditionExpression>
+        </conditionalStyle>
+    </style>
+    <style name="Cabecera" style="Base" fontSize="8.3" bold="true" mode="Opaque" forecolor="#17374D" backcolor="#F1F6F9" vTextAlign="Middle">
+        <box leftPadding="8" rightPadding="8" topPadding="4" bottomPadding="4">
+            <bottomPen lineWidth="0.45" lineColor="#BCCFD9"/>
+        </box>
+    </style>
+    <style name="Seccion" style="Base" fontSize="9.5" bold="true" mode="Opaque" forecolor="#175D68" backcolor="#EAF4F5" vTextAlign="Middle">
+        <box leftPadding="10" rightPadding="10" topPadding="4" bottomPadding="4">
+            <leftPen lineWidth="3.0" lineColor="#137D88"/>
+        </box>
+    </style>
+    <style name="Etiqueta" style="Base" fontSize="8.3" bold="true" mode="Opaque" forecolor="#526D7D" backcolor="#F3F7FA" vTextAlign="Middle">
+        <box leftPadding="8" rightPadding="8" topPadding="4" bottomPadding="4">
+            <bottomPen lineWidth="0.45" lineColor="#DCE6EC"/>
+        </box>
+    </style>
+    <style name="Meta" style="Base" fontSize="8.0" forecolor="#657D8B" vTextAlign="Middle"/>
+    <style name="Total" style="Base" fontSize="9.5" bold="true" forecolor="#17374D" vTextAlign="Middle">
+        <box leftPadding="9" rightPadding="9" topPadding="4" bottomPadding="4"/>
+    </style>
+    <parameter name="USUARIO" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+    <parameter name="EMPLEADO" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+    <parameter name="FOTO" class="java.awt.Image"/>
+    <parameter name="ACADEMICOS_REPORTE" class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="FAMILIARES_REPORTE" class="net.sf.jasperreports.engine.JasperReport"/>
+    <query language="sql"><![CDATA[SELECT p.PEPER_CODIGO, p.PEPER_APELLI, p.PEPER_NOMBRE, p.PEPER_FECNAC,
 g.PEGEN_DESCRI, e.PEESC_DESCRI, p.PEPER_PESO, p.PEPER_TIPSANG
 FROM peper_perso p
 LEFT JOIN PEGEN_GENERO g ON g.PEGEN_CODIGO = p.PEGEN_CODIGO
 LEFT JOIN PEESC_ESTCIV e ON e.PEESC_CODIGO = p.PEESC_CODIGO WHERE p.PEPER_CODIGO = $P{EMPLEADO}]]></query>
-<field name="PEPER_CODIGO" class="java.lang.String"/>
-<field name="PEPER_APELLI" class="java.lang.String"/>
-<field name="PEPER_NOMBRE" class="java.lang.String"/>
-<field name="PEGEN_DESCRI" class="java.lang.String"/>
-<field name="PEESC_DESCRI" class="java.lang.String"/>
-<field name="PEPER_TIPSANG" class="java.lang.String"/>
-<field name="PEPER_FECNAC" class="java.sql.Date"/>
-<field name="PEPER_PESO" class="java.math.BigDecimal"/>
-<title height="88">
-<element kind="rectangle" uuid="3addafed-225e-4024-af19-a7989dfa47bd" x="0" y="0" width="555" height="78" mode="Opaque" forecolor="#4E0A0B" backcolor="#4E0A0B"></element>
-<element kind="staticText" uuid="1358f295-2525-47df-9c68-ad52644a3030" x="12" y="7" width="531" height="27" style="Base" fontSize="19.0" bold="true" forecolor="#FFFFFF" vTextAlign="Middle"><text><![CDATA[Ficha del empleado]]></text></element>
-<element kind="staticText" uuid="a058747f-59cf-48c3-9d6d-d571ee429457" x="12" y="35" width="531" height="17" style="Base" fontSize="9.0" forecolor="#EAD4BD"><text><![CDATA[SIGH GR02 · Sistema Integral de Gestión Hospitalaria]]></text></element>
-<element kind="textField" uuid="76186821-edff-406d-88be-d636b2e7edde" x="12" y="55" width="315" height="17" style="Base" blankWhenNull="true" fontSize="8.0" forecolor="#FFFFFF" textAdjust="ScaleFont"><expression><![CDATA["Generado por: " + $P{USUARIO}]]></expression></element>
-<element kind="textField" uuid="0f50a341-275e-4f4c-8069-31fc0852304c" x="335" y="55" width="208" height="17" style="Base" blankWhenNull="true" fontSize="8.0" forecolor="#FFFFFF" hTextAlign="Right"><expression><![CDATA["Fecha: " + java.time.ZonedDateTime.now(java.time.ZoneId.of("America/Guayaquil")).format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))]]></expression></element>
-</title>
-<detail><band height="273" splitType="Prevent">
-<element kind="staticText" uuid="082db95f-6a6e-438e-b7e0-6e21210c62eb" x="0" y="0" width="555" height="24" style="Seccion"><text><![CDATA[DATOS PRINCIPALES]]></text></element>
-<element kind="staticText" uuid="53987f5e-00ef-4ddc-bea6-9eb1633fedad" x="0" y="31" width="90" height="29" style="Cabecera"><text><![CDATA[Código]]></text></element>
-<element kind="textField" uuid="c4cd5363-93ca-44a4-a6db-34507e362926" x="90" y="31" width="315" height="29" style="Celda" blankWhenNull="true" textAdjust="ScaleFont"><expression><![CDATA[$F{PEPER_CODIGO}]]></expression></element>
-<element kind="staticText" uuid="92e46dc7-10a2-4711-8897-7d02cc88faf8" x="0" y="63" width="90" height="29" style="Cabecera"><text><![CDATA[Apellidos]]></text></element>
-<element kind="textField" uuid="de099f7c-a239-4aa7-a816-33ef193662b9" x="90" y="63" width="315" height="29" style="Celda" blankWhenNull="true" textAdjust="ScaleFont"><expression><![CDATA[$F{PEPER_APELLI}]]></expression></element>
-<element kind="staticText" uuid="c75ba186-884c-48bf-9802-8d08ffe9b4dd" x="0" y="95" width="90" height="29" style="Cabecera"><text><![CDATA[Nombres]]></text></element>
-<element kind="textField" uuid="b1825cf7-ede4-449c-8b66-ee3414a775c2" x="90" y="95" width="315" height="29" style="Celda" blankWhenNull="true" textAdjust="ScaleFont"><expression><![CDATA[$F{PEPER_NOMBRE}]]></expression></element>
-<element kind="image" uuid="8690c22f-6b25-4642-86bb-a43d7fbf3b20" x="425" y="32" width="125" height="92" scaleImage="RetainShape" hImageAlign="Center" vImageAlign="Middle" onErrorType="Blank"><expression><![CDATA[$P{FOTO}]]></expression></element>
-<element kind="staticText" uuid="549d0b3e-bc46-475f-b202-ecc07ec19cb8" x="425" y="68" width="125" height="22" style="Meta" hTextAlign="Center"><printWhenExpression><![CDATA[$P{FOTO} == null]]></printWhenExpression><text><![CDATA[Sin fotografía]]></text></element>
-<element kind="staticText" uuid="65c59ddf-7842-408c-aed1-924c6b1735fc" x="0" y="137" width="555" height="24" style="Seccion"><text><![CDATA[DATOS GENERALES]]></text></element>
-<element kind="staticText" uuid="3729bd8e-75e0-4776-829a-c2b4818e9a27" x="0" y="168" width="130" height="29" style="Cabecera"><text><![CDATA[Fecha de nacimiento]]></text></element>
-<element kind="textField" uuid="782b2e36-0f88-476d-a644-785112c3982b" x="130" y="168" width="150" height="29" style="Celda" blankWhenNull="true" pattern="dd/MM/yyyy"><expression><![CDATA[$F{PEPER_FECNAC}]]></expression></element>
-<element kind="staticText" uuid="ca2c3d3a-0778-4ced-982f-1957b674099b" x="0" y="200" width="130" height="29" style="Cabecera"><text><![CDATA[Sexo]]></text></element>
-<element kind="textField" uuid="9964a6c1-e7de-4cfd-b285-04ef28d0c9b0" x="130" y="200" width="150" height="29" style="Celda" blankWhenNull="true"><expression><![CDATA[$F{PEGEN_DESCRI}]]></expression></element>
-<element kind="staticText" uuid="03e2cbcc-54ac-4d94-b081-d9128beb331d" x="0" y="232" width="130" height="29" style="Cabecera"><text><![CDATA[Estado civil]]></text></element>
-<element kind="textField" uuid="b000528f-eff0-4414-a1ab-1e5781c349b9" x="130" y="232" width="150" height="29" style="Celda" blankWhenNull="true"><expression><![CDATA[$F{PEESC_DESCRI}]]></expression></element>
-<element kind="staticText" uuid="ae33068f-bfa3-45a2-8057-9bf112950a00" x="290" y="168" width="115" height="29" style="Cabecera"><text><![CDATA[Peso (kg)]]></text></element>
-<element kind="textField" uuid="2f69c2c5-b395-42a9-b422-29d8820b56c7" x="405" y="168" width="150" height="29" style="Celda" blankWhenNull="true" pattern="#,##0.00"><expression><![CDATA[$F{PEPER_PESO}]]></expression></element>
-<element kind="staticText" uuid="a3a7e023-173a-4f02-adb8-b45d03822ae7" x="290" y="200" width="115" height="29" style="Cabecera"><text><![CDATA[Tipo de sangre]]></text></element>
-<element kind="textField" uuid="0685a580-fa16-48d5-a2d2-2821bd1875dd" x="405" y="200" width="150" height="29" style="Celda" blankWhenNull="true"><expression><![CDATA[$F{PEPER_TIPSANG}]]></expression></element>
-</band>
-<band height="80" splitType="Stretch">
-<element kind="subreport" uuid="9ccbad9d-40a0-4556-9e9d-bdfb9308d482" x="0" y="0" width="555" height="80"><connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression><expression><![CDATA[$P{ACADEMICOS_REPORTE} == null ? "empleado_academicos.jasper" : $P{ACADEMICOS_REPORTE}]]></expression><parameter name="EMPLEADO"><expression><![CDATA[$P{EMPLEADO}]]></expression></parameter></element>
-</band>
-<band height="80" splitType="Stretch">
-<element kind="subreport" uuid="f91e020e-b285-4a8b-8900-3b90d7beb0e0" x="0" y="0" width="555" height="80"><connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression><expression><![CDATA[$P{FAMILIARES_REPORTE} == null ? "empleado_familiares.jasper" : $P{FAMILIARES_REPORTE}]]></expression><parameter name="EMPLEADO"><expression><![CDATA[$P{EMPLEADO}]]></expression></parameter></element>
-</band>
-</detail>
-<pageFooter height="25">
-<element kind="staticText" uuid="bf80255d-de8e-4622-bcff-ad89b5ba3a74" x="0" y="4" width="340" height="18" style="Meta"><text><![CDATA[SIGH GR02 · Subsistema de Personal]]></text></element>
-<element kind="textField" uuid="44923fd4-8a9b-40f5-a1fa-80679dc613be" x="390" y="4" width="135" height="18" style="Meta" blankWhenNull="true" hTextAlign="Right"><expression><![CDATA["Página " + $V{PAGE_NUMBER} + " de"]]></expression></element>
-<element kind="textField" uuid="48cef7f2-605e-4a80-929a-80bcbca9b2b6" x="528" y="4" width="27" height="18" style="Meta" blankWhenNull="true" evaluationTime="Report"><expression><![CDATA[$V{PAGE_NUMBER}]]></expression></element>
-</pageFooter>
-<summary height="72"><element kind="line" uuid="345a92f4-e296-46c1-b0cd-3ba31b708c07" x="40" y="40" width="200" height="1" forecolor="#6E5A51"></element>
-<element kind="line" uuid="29e6ee01-43fd-426c-89a6-676efa8f1fde" x="315" y="40" width="200" height="1" forecolor="#6E5A51"></element>
-<element kind="staticText" uuid="443ee210-f7eb-4a5c-9074-07c1764538ee" x="40" y="44" width="200" height="20" style="Meta" hTextAlign="Center"><text><![CDATA[Firma del empleado]]></text></element>
-<element kind="staticText" uuid="2f62f9d6-276f-48f2-bdf6-014d04c11b9b" x="315" y="44" width="200" height="20" style="Meta" hTextAlign="Center"><text><![CDATA[Firma del responsable]]></text></element>
-</summary>
+    <field name="PEPER_CODIGO" class="java.lang.String"/>
+    <field name="PEPER_APELLI" class="java.lang.String"/>
+    <field name="PEPER_NOMBRE" class="java.lang.String"/>
+    <field name="PEGEN_DESCRI" class="java.lang.String"/>
+    <field name="PEESC_DESCRI" class="java.lang.String"/>
+    <field name="PEPER_TIPSANG" class="java.lang.String"/>
+    <field name="PEPER_FECNAC" class="java.sql.Date"/>
+    <field name="PEPER_PESO" class="java.math.BigDecimal"/>
+    <title height="101">
+        <element kind="rectangle" uuid="0ee791a0-641d-4a33-a052-6ed3a549316e" x="0" y="8" width="34" height="34" forecolor="#137D88" backcolor="#137D88" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#137D88"/>
+        </element>
+        <element kind="rectangle" uuid="b8af86fb-7b86-41c6-8dcf-4bbc0e823d68" x="8" y="23" width="18" height="4" forecolor="#FFFFFF" backcolor="#FFFFFF" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#FFFFFF"/>
+        </element>
+        <element kind="rectangle" uuid="172c7660-1fc7-4ffa-a366-0b82cf229017" x="15" y="16" width="4" height="18" forecolor="#FFFFFF" backcolor="#FFFFFF" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#FFFFFF"/>
+        </element>
+        <element kind="staticText" uuid="a058747f-59cf-48c3-9d6d-d571ee429457" x="46" y="1" width="509" height="17" style="Meta" fontSize="8.4" forecolor="#657D8B" vTextAlign="Middle">
+            <text><![CDATA[SIGH GR02 · Sistema Integral de Gestión Hospitalaria]]></text>
+        </element>
+        <element kind="staticText" uuid="1358f295-2525-47df-9c68-ad52644a3030" x="46" y="20" width="509" height="31" style="Base" fontSize="21.0" bold="true" forecolor="#17374D" vTextAlign="Middle">
+            <text><![CDATA[Ficha del empleado]]></text>
+        </element>
+        <element kind="rectangle" uuid="30a103cd-b82e-4e76-bb31-ba34fafc0e34" x="0" y="62" width="555" height="29" forecolor="#F1F6F9" backcolor="#F1F6F9" mode="Opaque">
+            <pen lineWidth="0.0" lineColor="#F1F6F9"/>
+        </element>
+        <element kind="textField" uuid="76186821-edff-406d-88be-d636b2e7edde" x="10" y="68" width="315" height="17" style="Meta" blankWhenNull="true" fontSize="8.0" forecolor="#2B4354" textAdjust="ScaleFont">
+            <expression><![CDATA["Generado por: " + $P{USUARIO}]]></expression>
+        </element>
+        <element kind="textField" uuid="0f50a341-275e-4f4c-8069-31fc0852304c" x="333" y="68" width="212" height="17" style="Meta" blankWhenNull="true" fontSize="8.0" forecolor="#657D8B" hTextAlign="Right">
+            <expression><![CDATA["Fecha: " + java.time.ZonedDateTime.now(java.time.ZoneId.of("America/Guayaquil")).format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"))]]></expression>
+        </element>
+        <element kind="line" uuid="4747ea71-ff67-4976-9983-85b9a51c387e" x="0" y="97" width="555" height="1" forecolor="#DCE6EC">
+            <pen lineWidth="0.6" lineColor="#DCE6EC"/>
+        </element>
+    </title>
+    <pageHeader height="29">
+        <printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+        <element kind="staticText" uuid="326faffa-a454-44ba-8d5b-223632bab3e8" x="0" y="0" width="330" height="20" style="Base" fontSize="10.0" bold="true" forecolor="#17374D">
+            <text><![CDATA[Ficha del empleado]]></text>
+        </element>
+        <element kind="textField" uuid="ea3dd76e-062d-486e-b223-2b130682d43d" x="335" y="0" width="220" height="20" blankWhenNull="true" style="Meta" hTextAlign="Right">
+            <expression><![CDATA["Código: " + $P{EMPLEADO}]]></expression>
+        </element>
+        <element kind="line" uuid="a52d6832-5de7-44cb-9e2c-58e6aee9a1e6" x="0" y="24" width="555" height="1" forecolor="#DCE6EC">
+            <pen lineWidth="0.6" lineColor="#DCE6EC"/>
+        </element>
+    </pageHeader>
+    <detail>
+        <band height="282" splitType="Prevent">
+            <element kind="staticText" uuid="082db95f-6a6e-438e-b7e0-6e21210c62eb" x="0" y="0" width="555" height="25" style="Seccion">
+                <text><![CDATA[DATOS PRINCIPALES]]></text>
+            </element>
+            <element kind="rectangle" uuid="c181b723-dc8f-4c14-8999-722a45912400" x="420" y="28" width="135" height="102" forecolor="#DCE6EC" backcolor="#FFFFFF" mode="Opaque">
+                <pen lineWidth="0.5" lineColor="#DCE6EC"/>
+            </element>
+            <element kind="staticText" uuid="53987f5e-00ef-4ddc-bea6-9eb1633fedad" x="0" y="32" width="90" height="29" style="Etiqueta">
+                <text><![CDATA[Código]]></text>
+            </element>
+            <element kind="textField" uuid="c4cd5363-93ca-44a4-a6db-34507e362926" x="90" y="32" width="315" height="29" style="Celda" blankWhenNull="true" textAdjust="ScaleFont">
+                <expression><![CDATA[$F{PEPER_CODIGO}]]></expression>
+            </element>
+            <element kind="staticText" uuid="92e46dc7-10a2-4711-8897-7d02cc88faf8" x="0" y="64" width="90" height="29" style="Etiqueta">
+                <text><![CDATA[Apellidos]]></text>
+            </element>
+            <element kind="textField" uuid="de099f7c-a239-4aa7-a816-33ef193662b9" x="90" y="64" width="315" height="29" style="Celda" blankWhenNull="true" textAdjust="ScaleFont">
+                <expression><![CDATA[$F{PEPER_APELLI}]]></expression>
+            </element>
+            <element kind="staticText" uuid="c75ba186-884c-48bf-9802-8d08ffe9b4dd" x="0" y="96" width="90" height="29" style="Etiqueta">
+                <text><![CDATA[Nombres]]></text>
+            </element>
+            <element kind="textField" uuid="b1825cf7-ede4-449c-8b66-ee3414a775c2" x="90" y="96" width="315" height="29" style="Celda" blankWhenNull="true" textAdjust="ScaleFont">
+                <expression><![CDATA[$F{PEPER_NOMBRE}]]></expression>
+            </element>
+            <element kind="image" uuid="8690c22f-6b25-4642-86bb-a43d7fbf3b20" x="425" y="33" width="125" height="92" scaleImage="RetainShape" hImageAlign="Center" vImageAlign="Middle" onErrorType="Blank">
+                <expression><![CDATA[$P{FOTO}]]></expression>
+            </element>
+            <element kind="staticText" uuid="549d0b3e-bc46-475f-b202-ecc07ec19cb8" x="425" y="69" width="125" height="22" style="Meta" hTextAlign="Center">
+                <printWhenExpression><![CDATA[$P{FOTO} == null]]></printWhenExpression>
+                <text><![CDATA[Sin fotografía]]></text>
+            </element>
+            <element kind="staticText" uuid="65c59ddf-7842-408c-aed1-924c6b1735fc" x="0" y="140" width="555" height="25" style="Seccion">
+                <text><![CDATA[DATOS GENERALES]]></text>
+            </element>
+            <element kind="staticText" uuid="3729bd8e-75e0-4776-829a-c2b4818e9a27" x="0" y="173" width="130" height="29" style="Etiqueta">
+                <text><![CDATA[Fecha de nacimiento]]></text>
+            </element>
+            <element kind="textField" uuid="782b2e36-0f88-476d-a644-785112c3982b" x="130" y="173" width="150" height="29" style="Celda" blankWhenNull="true" pattern="dd/MM/yyyy">
+                <expression><![CDATA[$F{PEPER_FECNAC}]]></expression>
+            </element>
+            <element kind="staticText" uuid="ca2c3d3a-0778-4ced-982f-1957b674099b" x="0" y="207" width="130" height="29" style="Etiqueta">
+                <text><![CDATA[Sexo]]></text>
+            </element>
+            <element kind="textField" uuid="9964a6c1-e7de-4cfd-b285-04ef28d0c9b0" x="130" y="207" width="150" height="29" style="Celda" blankWhenNull="true">
+                <expression><![CDATA[$F{PEGEN_DESCRI}]]></expression>
+            </element>
+            <element kind="staticText" uuid="03e2cbcc-54ac-4d94-b081-d9128beb331d" x="0" y="241" width="130" height="29" style="Etiqueta">
+                <text><![CDATA[Estado civil]]></text>
+            </element>
+            <element kind="textField" uuid="b000528f-eff0-4414-a1ab-1e5781c349b9" x="130" y="241" width="150" height="29" style="Celda" blankWhenNull="true">
+                <expression><![CDATA[$F{PEESC_DESCRI}]]></expression>
+            </element>
+            <element kind="staticText" uuid="ae33068f-bfa3-45a2-8057-9bf112950a00" x="290" y="173" width="115" height="29" style="Etiqueta">
+                <text><![CDATA[Peso (kg)]]></text>
+            </element>
+            <element kind="textField" uuid="2f69c2c5-b395-42a9-b422-29d8820b56c7" x="405" y="173" width="150" height="29" style="Celda" blankWhenNull="true" pattern="#,##0.00">
+                <expression><![CDATA[$F{PEPER_PESO}]]></expression>
+            </element>
+            <element kind="staticText" uuid="a3a7e023-173a-4f02-adb8-b45d03822ae7" x="290" y="207" width="115" height="29" style="Etiqueta">
+                <text><![CDATA[Tipo de sangre]]></text>
+            </element>
+            <element kind="textField" uuid="0685a580-fa16-48d5-a2d2-2821bd1875dd" x="405" y="207" width="150" height="29" style="Celda" blankWhenNull="true">
+                <expression><![CDATA[$F{PEPER_TIPSANG}]]></expression>
+            </element>
+        </band>
+        <band height="80" splitType="Stretch">
+            <element kind="subreport" uuid="9ccbad9d-40a0-4556-9e9d-bdfb9308d482" x="0" y="0" width="555" height="80">
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <expression><![CDATA[$P{ACADEMICOS_REPORTE} == null ? "empleado_academicos.jasper" : $P{ACADEMICOS_REPORTE}]]></expression>
+                <parameter name="EMPLEADO">
+                    <expression><![CDATA[$P{EMPLEADO}]]></expression>
+                </parameter>
+            </element>
+        </band>
+        <band height="80" splitType="Stretch">
+            <element kind="subreport" uuid="f91e020e-b285-4a8b-8900-3b90d7beb0e0" x="0" y="0" width="555" height="80">
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <expression><![CDATA[$P{FAMILIARES_REPORTE} == null ? "empleado_familiares.jasper" : $P{FAMILIARES_REPORTE}]]></expression>
+                <parameter name="EMPLEADO">
+                    <expression><![CDATA[$P{EMPLEADO}]]></expression>
+                </parameter>
+            </element>
+        </band>
+    </detail>
+    <pageFooter height="28">
+        <element kind="line" uuid="297e405f-f32f-4ead-8423-a5f35706bde9" x="0" y="1" width="555" height="1" forecolor="#DCE6EC">
+            <pen lineWidth="0.6" lineColor="#DCE6EC"/>
+        </element>
+        <element kind="staticText" uuid="bf80255d-de8e-4622-bcff-ad89b5ba3a74" x="0" y="7" width="340" height="18" style="Meta">
+            <text><![CDATA[SIGH GR02 · Subsistema de Personal]]></text>
+        </element>
+        <element kind="textField" uuid="44923fd4-8a9b-40f5-a1fa-80679dc613be" x="390" y="7" width="135" height="18" style="Meta" blankWhenNull="true" hTextAlign="Right">
+            <expression><![CDATA["Página " + $V{PAGE_NUMBER} + " de"]]></expression>
+        </element>
+        <element kind="textField" uuid="48cef7f2-605e-4a80-929a-80bcbca9b2b6" x="528" y="7" width="27" height="18" style="Meta" blankWhenNull="true" evaluationTime="Report">
+            <expression><![CDATA[$V{PAGE_NUMBER}]]></expression>
+        </element>
+    </pageFooter>
+    <summary height="70">
+        <element kind="line" uuid="345a92f4-e296-46c1-b0cd-3ba31b708c07" x="40" y="43" width="200" height="1" forecolor="#A6B9C5"/>
+        <element kind="line" uuid="29e6ee01-43fd-426c-89a6-676efa8f1fde" x="315" y="43" width="200" height="1" forecolor="#A6B9C5"/>
+        <element kind="staticText" uuid="443ee210-f7eb-4a5c-9074-07c1764538ee" x="40" y="47" width="200" height="20" style="Meta" hTextAlign="Center">
+            <text><![CDATA[Firma del empleado]]></text>
+        </element>
+        <element kind="staticText" uuid="2f62f9d6-276f-48f2-bdf6-014d04c11b9b" x="315" y="47" width="200" height="20" style="Meta" hTextAlign="Center">
+            <text><![CDATA[Firma del responsable]]></text>
+        </element>
+    </summary>
 </jasperReport>
