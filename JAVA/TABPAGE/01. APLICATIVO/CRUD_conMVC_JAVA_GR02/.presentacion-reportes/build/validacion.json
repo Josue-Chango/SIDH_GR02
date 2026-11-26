@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "presentation-finalization.v1",
+  "finalSha256": "14d83cf5ee76b5573a4fc87cb45d835dd1d85f2c07ae250ebea4a33b64b7418d",
+  "byteCount": 4214886,
+  "packageIntegrity": {
+    "chart_count": 0,
+    "claim_boundary": "Structural package checks only; no slide text, notes, formulas, chart values, or native PowerPoint execution were inspected.",
+    "finding_count": 0,
+    "findings": [],
+    "notes_parts_skipped": 16,
+    "relationship_part_count": 47,
+    "slide_count": 16,
+    "status": "pass",
+    "exitCode": 0,
+    "findingCount": 0,
+    "warnings": []
+  },
+  "presentationLayout": {
+    "finding_count": 0,
+    "findings": [],
+    "font_policy": {
+      "checked_text_script_count": 587,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "Calibri (MS)",
+        "Calibri (MS) Bold",
+        "Calibri (MS) Italics"
+      ],
+      "observed_font_use_counts": {
+        "Calibri (MS)": 75,
+        "Calibri (MS) Bold": 510,
+        "Calibri (MS) Italics": 2
+      },
+      "passed": true,
+      "performed": true
+    },
+    "slide_count": 16,
+    "slide_size_in": [
+      20,
+      11.25
+    ],
+    "warning_count": 0,
+    "warnings": [],
+    "exitCode": 0,
+    "findingCount": 0,
+    "fontPolicy": {
+      "checked_text_script_count": 587,
+      "native_font_rendering_verified": false,
+      "observed_font_families": [
+        "Calibri (MS)",
+        "Calibri (MS) Bold",
+        "Calibri (MS) Italics"
+      ],
+      "observed_font_use_counts": {
+        "Calibri (MS)": 75,
+        "Calibri (MS) Bold": 510,
+        "Calibri (MS) Italics": 2
+      },
+      "passed": true,
+      "performed": true
+    }
+  },
+  "fontSelection": {
+    "basis": "reference",
+    "approvedFamilies": [
+      "Arial",
+      "Calibri (MS)",
+      "Calibri (MS) Bold",
+      "Calibri (MS) Italics",
+      "Courier New"
+    ],
+    "scriptFonts": {},
+    "referenceSha256": "b219d7e9790d88a9f7b050c233dd6a7adc518f56597b489a057ca7f59cf9ed9d",
+    "referenceFontsVerifiedInEncodedText": true,
+    "checked_text_script_count": 587,
+    "native_font_rendering_verified": false,
+    "observed_font_families": [
+      "Calibri (MS)",
+      "Calibri (MS) Bold",
+      "Calibri (MS) Italics"
+    ],
+    "observed_font_use_counts": {
+      "Calibri (MS)": 75,
+      "Calibri (MS) Bold": 510,
+      "Calibri (MS) Italics": 2
+    },
+    "passed": true,
+    "performed": true
+  },
+  "firstPartyImport": {
+    "performed": true,
+    "passed": true,
+    "slideCount": 16,
+    "sha256": "14d83cf5ee76b5573a4fc87cb45d835dd1d85f2c07ae250ebea4a33b64b7418d",
+    "runtimeNodeModules": "C:/Program Files/WindowsApps/OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt/dependencies/node/node_modules",
+    "nodeExecutable": "C:\\Program Files\\WindowsApps\\OpenAI.CodexPrimaryRuntime.v26-1123-915-0_26.1123.915.0_x64__3k8sg7r9htsxt\\dependencies\\node\\bin\\node.exe"
+  },
+  "nativeTableArithmetic": {
+    "performed": true,
+    "checked_column_count": 0,
+    "checks": [],
+    "claim_boundary": "Displayed-value arithmetic with rounding tolerance; not source-data verification.",
+    "eligible_table_count": 0,
+    "finding_count": 0,
+    "findings": [],
+    "native_table_count": 0,
+    "passed": true,
+    "schema_version": "presentation-native-table-arithmetic.v1",
+    "skipped_tables": [],
+    "slide_count": 16,
+    "warning_count": 0,
+    "warnings": []
+  },
+  "nativeChartTitles": {
+    "performed": true,
+    "checks": [],
+    "finding_count": 0,
+    "findings": [],
+    "native_chart_count": 0,
+    "native_powerpoint_verified": false,
+    "passed": true,
+    "presentation_sha256": "14d83cf5ee76b5573a4fc87cb45d835dd1d85f2c07ae250ebea4a33b64b7418d",
+    "schema_version": "presentation-native-chart-titles.v1",
+    "slide_count": 16,
+    "source_text_emitted": false,
+    "unresolved_linked_title_count": 0
+  },
+  "sourceDerivedPolicyFlags": [
+    "--expected-slide-size-emu",
+    "18288000,10287000",
+    "--validate-bullet-geometry",
+    "--validate-heading-fit",
+    "--cover-role",
+    "none",
+    "--expected-slide-count",
+    "16",
+    "--approved-font-family",
+    "Arial",
+    "--approved-font-family",
+    "Calibri (MS)",
+    "--approved-font-family",
+    "Calibri (MS) Bold",
+    "--approved-font-family",
+    "Calibri (MS) Italics",
+    "--approved-font-family",
+    "Courier New"
+  ],
+  "nativeChartValidation": {
+    "detectedOwnerSlides": [],
+    "detectedChartCount": 0,
+    "targetApplication": "portable",
+    "sourceChartOwnersExplicitlyDeclared": true,
+    "validatorRan": false,
+    "passed": true
+  }
+}
