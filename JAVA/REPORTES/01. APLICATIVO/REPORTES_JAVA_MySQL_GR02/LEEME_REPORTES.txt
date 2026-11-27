@@ -1,0 +1,250 @@
+REPORTES JASPERREPORTS - SIGH GR02
+================================
+
+IMPLEMENTACIÓN
+
+Se adaptaron los cuatro reportes del proyecto SIGH_JAVA_MySQL_GR01 recibido
+en el RAR a los módulos existentes de este proyecto:
+
+1. Departamentos: código, descripción y total.
+2. Cargos: todos o únicamente el departamento seleccionado en el buscador,
+   agrupación por departamento, subtotales y total. Se muestran ambos códigos
+   de la clave compuesta (departamento / cargo).
+3. Empleados: código, apellidos y nombres, nacimiento, sexo, estado civil y total.
+4. Ficha individual: foto, datos principales, generales, académicos y familiares,
+   con espacios para firmas. Los detalles continúan en otras páginas si hace falta.
+
+Los PDF incluyen usuario, fecha de Ecuador, numeración de páginas y fuentes
+incrustadas que admiten tildes y ñ. Si no hay datos se muestra un mensaje.
+
+USO EN EL APLICATIVO
+
+- En la bienvenida se añadió el apartado «Reportes PDF».
+- Departamentos y Empleados tienen un botón «Reporte PDF» junto al listado.
+- En Cargos, seleccione el departamento y luego pulse el botón del reporte.
+  «Todos los departamentos» genera el informe completo.
+- Cada empleado tiene «Ficha PDF». Al editar también aparece «Ficha PDF guardada»:
+  el PDF consulta la información guardada; guarde primero los cambios del formulario.
+- Los PDF se abren en otra pestaña y pueden descargarse o imprimirse desde el visor.
+- Se exige sesión iniciada, con la misma política de acceso que los módulos actuales.
+
+CONFIGURACIÓN Y EJECUCIÓN
+
+1. Revise src/main/resources/db.properties (o sus variables de entorno DB_*).
+   Los reportes usan ConexionBD y la misma base del resto del aplicativo.
+2. Abra esta carpeta (la que contiene pom.xml) en NetBeans.
+3. Utilice JDK 21 y el servidor Jakarta EE 10 / Payara 6 configurado para el proyecto.
+4. Ejecute Limpiar y construir y luego Ejecutar. Inicie sesión y abra un reporte.
+
+Se añadieron las dependencias jasperreports, jasperreports-pdf, jasperreports-fonts
+y jasperreports-jdt, versión 7.0.8. Maven las incluye en el WAR.
+No hace falta instalar JasperReports Server ni copiar JAR al servidor manualmente.
+
+Se actualizó dist/LOGIN_conMVC_JAVA_GR02.war con la compilación verificada.
+Se conserva el nombre/contexto de despliegue que ya tenía el proyecto.
+Si cambia db.properties, reconstruya antes de desplegar ese WAR.
+
+No se necesitan tablas nuevas para los reportes. Se usan PEDEP_DEPAR,
+PECAR_CARGO y las tablas del mantenimiento de empleados peper_perso,
+PEACA_ACADE, PEFAM_FAMIL, PEGEN_GENERO y PEESC_ESTCIV.
+Si todavía no tiene las tablas de Empleados, su creación ya está en el script
+database/05_personal_empleado_tabpage.sql del módulo existente; revise ese script
+antes de ejecutarlo, porque también carga datos de ejemplo.
+
+EDITAR EN SU JASPERSOFT STUDIO
+
+Instalación verificada:
+C:\Users\Usuario\Desktop\Web Avanzada\jaspersoftstudio\Jaspersoft Studio.exe
+
+Los diseños editables se encuentran en src/main/webapp/WEB-INF/reportes:
+
+  departamentos.jrxml
+  cargos.jrxml
+  empleados.jrxml
+  empleado_ficha.jrxml
+  empleado_academicos.jrxml   (subreporte de estudios)
+  empleado_familiares.jrxml   (subreporte de familiares)
+
+1. Abra Jaspersoft Studio 7.0.8. Cree un proyecto JasperReports e importe
+   los seis archivos a la misma carpeta del proyecto, o abra los JRXML desde Archivo.
+2. Para Preview, cree un Data Adapter JDBC llamado SIGH_GR02 con la conexión
+   de su base. Use el controlador com.mysql.cj.jdbc.Driver y agregue el JAR
+   mysql-connector-j que Maven descargó o el de target/LOGIN_conMVC_JAVA_GR02/WEB-INF/lib.
+   Configure las credenciales en Studio sin incorporarlas al diseño JRXML.
+3. En cargos, DEPARTAMENTO vacío muestra todos; un código de tres caracteres filtra.
+4. Para la ficha, compile primero empleado_academicos y empleado_familiares
+   dejando sus .jasper junto al .jasper de empleado_ficha. En Preview proporcione
+   EMPLEADO (código de persona existente, por ejemplo P000000001). La aplicación proporciona los
+   subreportes automáticamente y carga la foto desde /resource; el Preview de
+   Studio muestra «Sin fotografía» salvo que se proporcione el parámetro FOTO.
+5. Después de modificar un diseño, reconstruya y vuelva a desplegar el aplicativo.
+   Las plantillas se compilan la primera vez y se conservan en memoria hasta el
+   siguiente despliegue. No copie .jasper antiguos del proyecto GR01 al aplicativo.
+
+Se utiliza el formato JRXML de la versión 7 para coincidir con su Studio.
+El ejemplo del RAR utilizaba el formato de JasperReports 6.21.3.
+Las consultas se adaptaron a los nombres de tablas y columnas GR02; por ejemplo,
+PEDEP_DESCRI y peper_perso, que difieren de los usados por GR01.
+
+RUTAS (RELATIVAS AL CONTEXTO DEL APLICATIVO)
+
+  /ReporteController?r=departamentos
+  /ReporteController?r=cargos
+  /ReporteController?r=cargos&departamento=SIS
+  /ReporteController?r=empleados
+  /ReporteController?r=ficha&codigo=P000000001
+
+También se admite /reporte, como en el ejemplo GR01.
+Los códigos anteriores son ejemplos: use los existentes en su base.
+
+VALIDACIÓN REALIZADA
+
+- Compilación y empaquetado Maven: correctos.
+- 47 pruebas sin fallos (20 existentes y 27 nuevas).
+- Las pruebas nuevas ejecutan los JRXML contra H2 aislado, exportan PDF y
+  comprueban filtros, clave compuesta, subtotales, acentos, catálogos opcionales,
+  ficha con/sin foto, detalles vacíos, ficha de varias páginas, Preview con
+  subreportes, sesión, parámetros inválidos, empleado inexistente y caída de BD.
+- Se renderizaron y revisaron visualmente los PDF de prueba.
+- Compilación de las cuatro JSP modificadas: correcta.
+- Compilación de las seis plantillas con las bibliotecas y el JDK incluidos
+  en su instalación de Jaspersoft Studio 7.0.8: correcta.
+- Se comprobó la conexión a MySQL y el esquema real de sigh_gr02. Empleados
+  usa peper_perso, la misma tabla referenciada por peaca_acade y pefam_famil.
+  La consulta del listado y la ficha con sus detalles funcionaron, y se generaron
+  los cuatro reportes y el reporte de cargos filtrado mediante lecturas de MySQL.
+  No se modificaron datos en la base real. Falta volver a desplegar en Payara
+  para que la aplicación cargue las clases y plantillas actualizadas.
+
+Puede repetir las pruebas con Maven: mvn package
+En este equipo la caché descargada durante la implementación está en .build/m2.
+Desde PowerShell, en la raíz del proyecto, puede reutilizarla con:
+
+  $env:JAVA_HOME = 'C:\Program Files\Java\jdk-21'
+  & 'C:\Program Files\Apache NetBeans\java\maven\bin\mvn.cmd' '-Dmaven.repo.local=.build/m2' package
+
+Si este equipo muestra un error de certificados PKIX al descargar dependencias,
+configure en esa consola los certificados de confianza de Windows y repita:
+
+  $env:MAVEN_OPTS = '-Djavax.net.ssl.trustStoreType=Windows-ROOT -Djavax.net.ssl.trustStore=NONE'
+
+Los PDF de prueba están en target/reportes-prueba y contienen datos ficticios.
+Los PDF de la comprobación de solo lectura de MySQL están en target/reportes-mysql.
+
+CORRECCIÓN DEL NOMBRE DE TABLA
+
+Se confirmó en information_schema que la tabla de la base actual es
+peper_perso (sin «n» final). El CRUD, la consulta de la foto, los JRXML,
+las pruebas y el script opcional 05 usan ese nombre.
+No necesita renombrar tablas ni ejecutar un script para aplicar esta corrección.
+
+Al crear una persona, el aplicativo proporciona los campos obligatorios que no
+se capturan en la ficha: PEPER_CARFAM=0 y PEPER_DISC='N'. Una foto ausente se
+guarda como cadena vacía, porque PEPER_FOTO no admite NULL. Sexo es obligatorio.
+PEPER_CODIGO admite los códigos alfanuméricos existentes (por ejemplo P000000001);
+no se interpreta como una cédula ni se exige que contenga solo diez dígitos.
+Al editar se conservan la cédula, el correo, las cargas familiares, la discapacidad
+y los demás datos de la persona que no aparecen en este formulario.
+
+SI NETBEANS FALLA AL CREAR EL WAR EN WINDOWS
+
+El mensaje «La operación solicitada no se puede realizar en un archivo con
+una sección asignada a usuario abierta» indica que Windows no permite
+sobrescribir target/LOGIN_conMVC_JAVA_GR02.war porque tiene una sección
+del archivo abierta o mapeada en memoria. No indica un error de los JRXML.
+
+Si aparece otra vez:
+1. Espere a que termine cualquier ejecución/compilación anterior.
+2. Cierre cualquier visor o programa que tenga abierto ese WAR. Si está
+   desplegado, detenga Payara desde Servicios/Servidores en NetBeans.
+3. Ejecute Limpiar y construir y luego Ejecutar.
+4. Si persiste, cierre y vuelva a abrir NetBeans para liberar sus archivos,
+   y repita Limpiar y construir.
+
+Las pruebas de caída de BD usan un error y un driver inexistente de forma
+deliberada. Esas trazas se silencian solo durante las dos pruebas que las
+provocan; los errores reales del aplicativo se siguen registrando.
+
+
+DISEÑO INSTITUCIONAL DE REPORTES
+
+Los seis JRXML utilizan blanco, azul profundo, verde petróleo y grises claros,
+con encabezado institucional, tablas de filas alternadas, separadores discretos,
+totales destacados y encabezados de continuación para documentos de varias páginas.
+Se conserva la información, las consultas, los parámetros, los filtros, la foto,
+las firmas y los cálculos de los diseños anteriores.
+
+Puede personalizar Base, Celda, Cabecera, Seccion, Etiqueta, Meta y Total en
+Outline / Styles de Jaspersoft Studio. Las filas se adaptan a los textos largos.
+
+CÓDIGO AUTOMÁTICO DE PERSONA
+
+En Nueva ficha, Código de persona es de solo lectura. Se consulta peper_perso
+y se muestra el primer código libre de P000000001 a P999999999. Por ejemplo,
+si existen P000000001 y P000000003, se propone P000000002. Las cédulas y otros
+códigos antiguos se conservan y no alteran esa secuencia.
+
+Al guardar se vuelve a consultar la base y se ignora cualquier código enviado
+manualmente. Si otra alta ocupa el código al mismo tiempo, se busca uno libre
+y se reintenta sin duplicar personas ni perder sus detalles. Al editar una ficha
+se mantiene su código original. Consultar una nueva ficha no reserva códigos.
+Las fotos de las nuevas fichas usan nombres únicos para evitar sobrescribir
+la foto de otra alta mientras se asigna el código definitivo.
+
+No necesita ejecutar SQL ni modificar la estructura de la base. Las 62 pruebas
+automatizadas pasan, incluidas las altas simultáneas y los huecos en la secuencia.
+Reconstruya y vuelva a desplegar en Payara para cargar este cambio.
+
+CAMBIAR LA FOTO DE UNA FICHA
+
+Abra Editar, elija una foto JPEG (JPG/JFIF) o PNG de hasta 5 MB y pulse «Guardar cambios
+de la ficha». La vista previa indica que el cambio todavía debe guardarse.
+Después de guardar se abre la misma ficha con la foto actualizada.
+
+Cada carga, tanto al crear como al editar, recibe una ruta nueva para evitar
+que el navegador muestre la versión anterior de su caché. Se valida la firma
+binaria y se guardan los bytes originales completos; los PNG conservan su
+transparencia. Se comprueba que el archivo se haya escrito. Sin una carga nueva se conserva la foto consultada
+en la base, aunque se haya abierto el formulario antes de otro cambio.
+
+La foto anterior solo se elimina tras confirmar el guardado en la base de
+datos. Si el guardado falla, se conserva la anterior y se retira el archivo
+nuevo. Las imágenes originales de /resource que ya venían con el proyecto
+se conservan.
+
+Validación: 86 pruebas Java correctas, incluyendo cargas reales de JPG y PNG
+con transparencia, cambios repetidos, archivos vacíos, formatos renombrados,
+fotos incrustadas en el PDF y fallos de base de datos; 9 pruebas de
+la vista previa JavaScript correctas. Para repetir estas últimas:
+
+  node --test src/test/js/tabpage.test.cjs
+
+El WAR actualizado se entrega en dist/LOGIN_conMVC_JAVA_GR02.war.
+Vuelva a desplegarlo en Payara para aplicar el cambio.
+
+ADAPTACIÓN DE CAMBIOS_FOTOS_PERFIL.md DE .NET A JAVA
+
+Se incorporó la validación por firma real de JPEG/JFIF y PNG. Se informa si el
+archivo es WebP, HEIC/AVIF, GIF, BMP, vacío o ilegible. Renombrar una imagen a
+.jpg no la convierte: ábrala en Paint y guárdela como JPEG o PNG. El controlador
+muestra ese diagnóstico concreto, sin sustituirlo por un error genérico.
+
+Java lee la carga una sola vez a un arreglo de bytes limitado a 5 MB. La
+escritura usa ese arreglo y no intenta volver a leer el stream ya cerrado,
+evitando archivos de cero bytes. El navegador también revisa la firma real;
+el MIME o la extensión JFIF no provocan por sí solos un rechazo.
+
+Adaptaciones propias de Java: se usa /resource/fotos_empleados (singular), que
+es la carpeta web existente, y se mantienen los nombres únicos por versión
+para evitar caché y permitir retirar una carga fallida sin sobrescribir la
+anterior. PEPER_FOTO conserva la ruta relativa y se elimina el JPG o PNG subido
+cuando se reemplaza la foto o se elimina el empleado. El código automático de
+persona se mantiene.
+
+La ficha PDF se genera con JasperReports, no con HTML/CSS. El cambio de clases
+rp-ficha del ejemplo .NET no corresponde a este proyecto. Se verificó que el
+controlador lea la ruta guardada en PEPER_FOTO e incruste tanto JPG como PNG
+en el PDF. No se necesita modificar las tablas ni ejecutar SQL.
+
+Copiar una foto a src/main/resources no cambia la foto del empleado: para
+actualizar PEPER_FOTO, selecciónela en la ficha y guarde los cambios.
