@@ -1,0 +1,74 @@
+@model System.Data.DataSet
+@{
+    Layout = null;
+
+    // Reporte de EMPLEADOS. Equivalente a empleados.jrxml del
+    // proyecto Java (FabricaReportes.ConstruirEmpleados).
+    System.Data.DataTable tabla = Model.Tables["Empleados"];
+    string usuario = ViewBag.Usuario as string ?? "";
+    string fecha = ViewBag.Fecha as string ?? "";
+    int total = ViewBag.Total ?? tabla.Rows.Count;
+    string mensajeTotal = total == 0
+        ? "No hay datos para mostrar."
+        : "Empleados: " + total.ToString("N0");
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte de empleados | SIGH</title>
+    <link href="@Url.Content("~/Content/reportes.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="rp-acciones">
+        <button type="button" class="btn-guardar" onclick="window.print();">Imprimir / Guardar PDF</button>
+        <a class="btn-secundario" href="@Url.Action("Index", "Reporte")">Volver a reportes</a>
+    </div>
+
+    <div class="rp-pagina">
+        <header class="rp-cabecera">
+            <h1>Reporte de empleados</h1>
+            <p class="rp-eslogan">SIGH GR02 &middot; Sistema Integral de Gestión Hospitalaria</p>
+            <div class="rp-meta">
+                <span>Generado por: @usuario</span>
+                <span>Fecha: @fecha</span>
+            </div>
+        </header>
+
+        <table class="rp-tabla">
+            <thead>
+                <tr>
+                    <th style="width: 17%;">Código</th>
+                    <th style="width: 36%;">Apellidos y nombres</th>
+                    <th style="width: 15%;">Nacimiento</th>
+                    <th style="width: 15%;">Sexo</th>
+                    <th>Estado civil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow fila in tabla.Rows)
+                {
+                    <tr>
+                        <td><strong>@fila["PEPER_CODIGO"]</strong></td>
+                        <td>@fila["PEPER_APELLI"] @fila["PEPER_NOMBRE"]</td>
+                        <td>@fila["FECNAC"]</td>
+                        <td>@fila["PEGEN_DESCRI"]</td>
+                        <td>@fila["PEESC_DESCRI"]</td>
+                    </tr>
+                }
+                @if (total == 0)
+                {
+                    <tr><td colspan="5" class="tabla-vacia">No hay empleados registrados.</td></tr>
+                }
+            </tbody>
+        </table>
+
+        <p class="rp-resumen">@mensajeTotal</p>
+
+        <footer class="rp-pie">
+            <span>SIGH GR02 &middot; Subsistema de Personal</span>
+            <span>Reporte generado desde SQL Server (PEPER_PERSO)</span>
+        </footer>
+    </div>
+</body>
+</html>

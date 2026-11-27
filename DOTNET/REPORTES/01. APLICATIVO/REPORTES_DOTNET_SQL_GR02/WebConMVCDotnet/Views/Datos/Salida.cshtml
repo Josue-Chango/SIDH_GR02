@@ -1,0 +1,100 @@
+﻿@model WebConMVCDotnet.Models.DatosEncuesta
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Reporte de Formulario</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/style_JCH.css")" />
+</head>
+<body>
+    <h1>HOLA GENTE</h1>
+    <div class="encabezado">
+        <div class="titulo">
+            Formulario realizado con MVC
+        </div>
+        <div class="texto">
+            Resultados finales del formulario
+        </div>
+    </div>
+
+    <div class="parent">
+        <div class="div1"></div>
+
+        <div class="div2">
+            <table>
+                <thead>
+                    <tr>
+                        <td colspan="2">Datos personales</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Nombres</td>
+                        <td>@Model.nombre</td>
+                    </tr>
+
+                    <tr>
+                        <td>Apellidos</td>
+                        <td>@Model.apellido</td>
+                    </tr>
+
+                    <!-- LENGUAJES -->
+                    <tr>
+                        <th colspan="2">Lenguajes de Programación</th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <ul>
+                                @if (Model.progleng != null && Model.progleng.Length > 0)
+                                {
+                                    foreach (string l in Model.progleng)
+                                    {
+                                        <li>@l</li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li>No seleccionó lenguajes</li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+
+                    <!-- IMAGEN -->
+                    <tr>
+                        <th colspan="2">Archivo</th>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2" align="center">
+                            @if (!string.IsNullOrEmpty(Model.foto))
+                            {
+                                <img src="@Url.Content("~/resources/" + Model.foto)" width="250" />
+                            }
+                            else
+                            {
+                                <text>No se seleccionó imagen</text>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <form action="@Url.Action("Index", "Datos")" method="get">
+                <input type="submit" value="Volver al formulario" />
+            </form>
+        </div>
+
+        <div class="div3"></div>
+    </div>
+</body>
+</html>

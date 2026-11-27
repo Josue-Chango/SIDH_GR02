@@ -1,0 +1,350 @@
+@using WebConMVCDotnet.Models
+@{
+    Layout = null;
+
+    // Mantenimiento de Empleados con Tab Page (marco + 3 pestañas).
+    // Equivalente a empleado.jsp del proyecto Java.
+
+    bool edicion = ViewBag.ModoEdicion ?? false;
+    Empleado formulario = ViewBag.Empleado as Empleado ?? new Empleado();
+    List<Catalogo> generos = ViewBag.Generos as List<Catalogo> ?? new List<Catalogo>();
+    List<Catalogo> estadosCiviles = ViewBag.EstadosCiviles as List<Catalogo> ?? new List<Catalogo>();
+    List<EmpleadoAcademico> academicos = formulario.Academicos ?? new List<EmpleadoAcademico>();
+    List<EmpleadoFamiliar> familiares = formulario.Familiares ?? new List<EmpleadoFamiliar>();
+    List<Empleado> empleados = ViewBag.Empleados as List<Empleado> ?? new List<Empleado>();
+
+    string[] tiposSangre = { "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-" };
+    var parentescos = new Dictionary<string, string>
+    {
+        { "PADRE", "Padre" },
+        { "MADRE", "Madre" },
+        { "CONYUGE", "Cónyuge" },
+        { "HIJO/A", "Hijo/a" },
+        { "HERMANO/A", "Hermano/a" },
+        { "OTRO", "Otro" }
+    };
+    string fotoActual = formulario.Foto ?? "";
+    bool tieneFoto = fotoActual.Length > 0;
+
+    string mensajeExito = ViewBag.MensajeExito as string;
+    string mensajeError = ViewBag.MensajeError as string;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empleados | SIGH</title>
+    <link href="@Url.Content("~/Content/style_JCH.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/tabpage.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header class="encabezado">
+        <div class="bienvenida">SUBSISTEMA DE PERSONAL</div>
+        <div class="titulo">Mantenimiento de Empleados</div>
+        <div class="texto">Ficha con Tab Page &middot; SIGH</div>
+    </header>
+
+    <main class="crud-page">
+        @if (!string.IsNullOrEmpty(mensajeExito))
+        {
+            <div class="alerta-exito" role="status">@mensajeExito</div>
+        }
+
+        @if (!string.IsNullOrEmpty(mensajeError))
+        {
+            <div class="alerta-error" role="alert">@mensajeError</div>
+        }
+
+        <!-- ================= MARCO DE LA FICHA (fuera del tab page) ================= -->
+        <section class="crud-card" aria-labelledby="tituloMarco">
+            <h2 id="tituloMarco">@(edicion ? "Editar ficha del empleado" : "Nueva ficha de empleado")</h2>
+            <p class="tp-descripcion">Marco de página: identificación del empleado con foto, apellidos y
+                nombres. El detalle se organiza en pestañas más abajo.</p>
+
+            <form action="@Url.Action("Guardar", "Empleado")" method="post"
+                  enctype="multipart/form-data" class="crud-form">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="modo" value="@(edicion ? "editar" : "nuevo")" />
+                <input type="hidden" name="fotoActual" value="@fotoActual" />
+
+                <div class="tp-marco-cuerpo">
+                    <div class="tp-marco-foto">
+                        @if (tieneFoto)
+                        {
+                            <img class="tp-foto" id="tpFotoImg"
+                                 src="@Url.Content("~/resources/" + fotoActual)" alt="Foto del empleado" />
+                            <div class="tp-foto-placeholder" id="tpFotoSf" aria-hidden="true" style="display:none;">S/F</div>
+                        }
+                        else
+                        {
+                            <div class="tp-foto-placeholder" id="tpFotoSf" aria-hidden="true">S/F</div>
+                            <img class="tp-foto" id="tpFotoImg" src="" alt="" style="display:none;" />
+                        }
+                        <label for="tpFotoInput">Foto de perfil (opcional)</label>
+                        <input type="file" id="tpFotoInput" name="foto" accept="image/*" />
+                        <small class="ayuda-campo">JPG o PNG. Se guarda con el código de la persona como nombre.</small>
+                    </div>
+                    <div class="tp-marco-campos">
+                        <div class="campo">
+                            <label for="codigo">Código de persona</label>
+                            <input type="text" id="codigo" name="txtCodigo" minlength="1" maxlength="10" required
+                                   pattern="[A-Za-z0-9\-]{1,10}" value="@formulario.Codigo"
+                                   @(edicion ? Html.Raw("readonly") : Html.Raw("")) placeholder="Ej.: P000000001" />
+                            <small class="ayuda-campo">Hasta 10 letras, números o guiones.@(edicion ? " El código no se puede modificar." : "")</small>
+                        </div>
+                        <div class="campo">
+                            <label for="apellidos">Apellidos</label>
+                            <input type="text" id="apellidos" name="txtApellidos" maxlength="50" required
+                                   value="@formulario.Apellidos" placeholder="Apellidos completos" />
+                        </div>
+                        <div class="campo">
+                            <label for="nombres">Nombres</label>
+                            <input type="text" id="nombres" name="txtNombres" maxlength="50" required
+                                   value="@formulario.Nombres" placeholder="Nombres completos" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= TAB PAGE (3 pestañas) ================= -->
+                <div class="tp-tabpage">
+                    <nav class="tp-tabs" role="tablist" aria-label="Secciones de la ficha">
+                        <button type="button" class="tp-pill tp-activa" data-panel="panelGenerales" role="tab">
+                            Datos Generales
+                        </button>
+                        <button type="button" class="tp-pill" data-panel="panelAcademicos" role="tab">
+                            Datos Académicos
+                        </button>
+                        <button type="button" class="tp-pill" data-panel="panelFamiliares" role="tab">
+                            Datos Familiares
+                        </button>
+                    </nav>
+
+                    <div class="tp-contenido">
+                        <!-- ---- Pestaña 1: Datos Generales ---- -->
+                        <section id="panelGenerales" class="tp-panel tp-activa" role="tabpanel">
+                            <h3>Datos Generales</h3>
+                            <p class="tp-descripcion">Sexo, peso, estado civil y tipo de sangre del empleado.</p>
+                            <div class="tp-rejilla">
+                                <div class="campo">
+                                    <label for="fechaNacimiento">Fecha de nacimiento <span class="obligatorio">*</span></label>
+                                    <input type="date" id="fechaNacimiento" name="txtFechaNacimiento" required
+                                           value="@(formulario.FechaNacimiento.HasValue ? formulario.FechaNacimiento.Value.ToString("yyyy-MM-dd") : "")" />
+                                </div>
+                                <div class="campo">
+                                    <label for="genero">Sexo <span class="obligatorio">*</span></label>
+                                    <select id="genero" name="cboGenero" required>
+                                        <option value="">-- Seleccione --</option>
+                                        @foreach (Catalogo genero in generos)
+                                        {
+                                            <option value="@genero.Codigo" @(genero.Codigo == formulario.CodigoGenero ? Html.Raw("selected") : Html.Raw(""))>
+                                                @genero.Descri
+                                            </option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <label for="peso">Peso (kg)</label>
+                                    <input type="number" id="peso" name="txtPeso" min="1" max="500" step="0.01"
+                                           value="@(formulario.Peso > 0 ? formulario.Peso.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture) : "")"
+                                           placeholder="Ej.: 68.5" />
+                                </div>
+                                <div class="campo">
+                                    <label for="estadoCivil">Estado civil</label>
+                                    <select id="estadoCivil" name="cboEstadoCivil">
+                                        <option value="">-- Seleccione --</option>
+                                        @foreach (Catalogo estado in estadosCiviles)
+                                        {
+                                            <option value="@estado.Codigo" @(estado.Codigo == formulario.CodigoEstadoCivil ? Html.Raw("selected") : Html.Raw(""))>
+                                                @estado.Descri
+                                            </option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="campo">
+                                    <label for="tipoSangre">Tipo de sangre</label>
+                                    <select id="tipoSangre" name="txtTipoSangre">
+                                        <option value="">-- Seleccione --</option>
+                                        @foreach (string tipo in tiposSangre)
+                                        {
+                                            <option value="@tipo" @(tipo == formulario.TipoSangre ? Html.Raw("selected") : Html.Raw(""))>@tipo</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- ---- Pestaña 2: Datos Académicos (subtabla) ---- -->
+                        <section id="panelAcademicos" class="tp-panel" role="tabpanel">
+                            <h3>Datos Académicos</h3>
+                            <p class="tp-descripcion">Subtabla de estudios del empleado: agregue una fila por
+                                cada nivel, institución y título.</p>
+                            <table class="tp-grilla">
+                                <thead>
+                                    <tr><th>Nivel</th><th>Institución</th><th>Título</th><th></th></tr>
+                                </thead>
+                                <tbody id="cuerpoAcademica" data-plantilla="plantillaAcademica">
+                                    @foreach (EmpleadoAcademico academico in academicos)
+                                    {
+                                        <tr>
+                                            <td><input type="text" name="acaNivel" maxlength="50" value="@academico.Nivel" placeholder="Ej.: Licenciado" /></td>
+                                            <td><input type="text" name="acaInstitucion" maxlength="100" value="@academico.Institucion" placeholder="Ej.: Escuela Politécnica Nacional" /></td>
+                                            <td><input type="text" name="acaTitulo" maxlength="100" value="@academico.Titulo" placeholder="Ej.: Licenciado en Informática" /></td>
+                                            <td class="tp-celda-accion"><button type="button" class="tp-quitar" title="Quitar fila">X</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <template id="plantillaAcademica">
+                                <tr>
+                                    <td><input type="text" name="acaNivel" maxlength="50" placeholder="Ej.: Licenciado" /></td>
+                                    <td><input type="text" name="acaInstitucion" maxlength="100" placeholder="Ej.: Escuela Politécnica Nacional" /></td>
+                                    <td><input type="text" name="acaTitulo" maxlength="100" placeholder="Ej.: Licenciado en Informática" /></td>
+                                    <td class="tp-celda-accion"><button type="button" class="tp-quitar" title="Quitar fila">X</button></td>
+                                </tr>
+                            </template>
+                            <div class="tp-acciones-grilla">
+                                <button type="button" class="btn-secundario tp-agregar"
+                                        data-grilla="cuerpoAcademica" data-plantilla="plantillaAcademica">+ Agregar estudio</button>
+                            </div>
+                        </section>
+
+                        <!-- ---- Pestaña 3: Datos Familiares (subtabla) ---- -->
+                        <section id="panelFamiliares" class="tp-panel" role="tabpanel">
+                            <h3>Datos Familiares</h3>
+                            <p class="tp-descripcion">Subtabla de familiares: persona (parentesco), apellidos
+                                y nombres, y fecha de nacimiento.</p>
+                            <table class="tp-grilla">
+                                <thead>
+                                    <tr><th>Persona</th><th>Apellidos y nombres</th><th>Fecha de nacimiento</th><th></th></tr>
+                                </thead>
+                                <tbody id="cuerpoFamilia" data-plantilla="plantillaFamilia">
+                                    @foreach (EmpleadoFamiliar familiar in familiares)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <select name="famPersona">
+                                                    @foreach (var parentesco in parentescos)
+                                                    {
+                                                        <option value="@parentesco.Key" @(parentesco.Key == familiar.Persona ? Html.Raw("selected") : Html.Raw(""))>
+                                                            @parentesco.Value
+                                                        </option>
+                                                    }
+                                                </select>
+                                            </td>
+                                            <td><input type="text" name="famNombres" maxlength="100" value="@familiar.Nombres" placeholder="Ej.: PERALTA LÓPEZ CARLOS" /></td>
+                                            <td><input type="date" name="famFecha"
+                                                       value="@(familiar.FechaNacimiento.HasValue ? familiar.FechaNacimiento.Value.ToString("yyyy-MM-dd") : "")" /></td>
+                                            <td class="tp-celda-accion"><button type="button" class="tp-quitar" title="Quitar fila">X</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <template id="plantillaFamilia">
+                                <tr>
+                                    <td>
+                                        <select name="famPersona">
+                                            <option value="">-- Seleccione --</option>
+                                            <option value="PADRE">Padre</option>
+                                            <option value="MADRE">Madre</option>
+                                            <option value="CONYUGE">Cónyuge</option>
+                                            <option value="HIJO/A">Hijo/a</option>
+                                            <option value="HERMANO/A">Hermano/a</option>
+                                            <option value="OTRO">Otro</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="text" name="famNombres" maxlength="100" placeholder="Ej.: PERALTA LÓPEZ CARLOS" /></td>
+                                    <td><input type="date" name="famFecha" /></td>
+                                    <td class="tp-celda-accion"><button type="button" class="tp-quitar" title="Quitar fila">X</button></td>
+                                </tr>
+                            </template>
+                            <div class="tp-acciones-grilla">
+                                <button type="button" class="btn-secundario tp-agregar"
+                                        data-grilla="cuerpoFamilia" data-plantilla="plantillaFamilia">+ Agregar familiar</button>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="form-acciones">
+                    <button class="btn-guardar" type="submit">@(edicion ? "Guardar cambios de la ficha" : "Guardar ficha")</button>
+                    <a class="btn-secundario" href="@Url.Action("Index", "Empleado")">Cancelar</a>
+                    @if (edicion)
+                    {
+                        <a class="btn-reporte" target="_blank" rel="noopener"
+                           href="@Url.Action("Ficha", "Reporte", new { codigo = formulario.Codigo })">Ficha PDF guardada</a>
+                    }
+                </div>
+            </form>
+        </section>
+
+        <!-- ================= LISTADO DE EMPLEADOS ================= -->
+        <section class="crud-card" aria-labelledby="tituloListado">
+            <h2 id="tituloListado">Empleados registrados</h2>
+            <div class="acciones-reportes">
+                <a class="btn-reporte" href="@Url.Action("Empleados", "Reporte")" target="_blank" rel="noopener">Reporte PDF de empleados</a>
+            </div>
+            <p role="status">@empleados.Count empleado(s) encontrado(s).</p>
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Código</th>
+                            <th>Apellidos y nombres</th>
+                            <th>Sexo</th>
+                            <th>Estado civil</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (empleados.Count == 0)
+                        {
+                            <tr><td colspan="6" class="tabla-vacia">No hay empleados registrados.</td></tr>
+                        }
+                        else
+                        {
+                            foreach (Empleado empleadoFila in empleados)
+                            {
+                                string fotoFila = empleadoFila.Foto ?? "";
+                                <tr>
+                                    <td class="tp-celda-foto">
+                                        @if (!string.IsNullOrWhiteSpace(fotoFila))
+                                        {
+                                            <img class="tp-mini-foto" src="@Url.Content("~/resources/" + fotoFila)" alt="Foto de @empleadoFila.Nombres" />
+                                        }
+                                        else
+                                        {
+                                            <span class="tp-mini-placeholder">S/F</span>
+                                        }
+                                    </td>
+                                    <td>@empleadoFila.Codigo</td>
+                                    <td><strong>@empleadoFila.Apellidos</strong>, @empleadoFila.Nombres</td>
+                                    <td>@(string.IsNullOrEmpty(empleadoFila.DescriGenero) ? "—" : empleadoFila.DescriGenero)</td>
+                                    <td>@(string.IsNullOrEmpty(empleadoFila.DescriEstadoCivil) ? "—" : empleadoFila.DescriEstadoCivil)</td>
+                                    <td class="celda-acciones">
+                                        <a class="btn-editar"
+                                           href="@Url.Action("Index", "Empleado", new { accion = "editar", codigo = empleadoFila.Codigo })">Editar</a>
+                                        <a class="btn-reporte"
+                                           href="@Url.Action("Ficha", "Reporte", new { codigo = empleadoFila.Codigo })"
+                                           target="_blank" rel="noopener">Ficha PDF</a>
+                                        <form action="@Url.Action("Eliminar", "Empleado")" method="post" class="form-eliminar"
+                                              onsubmit="return confirm('¿Eliminar este empleado y sus datos académicos y familiares?');">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="codigo" value="@empleadoFila.Codigo" />
+                                            <button type="submit" class="btn-eliminar">Eliminar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <p class="volver-inicio"><a href="@Url.Action("Index", "Bienvenida")">&larr; Volver al inicio</a></p>
+    </main>
+    <script src="@Url.Content("~/Scripts/tabpage.js")"></script>
+</body>
+</html>

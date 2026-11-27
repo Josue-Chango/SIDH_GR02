@@ -1,0 +1,120 @@
+@using WebConMVCDotnet.Models
+@model WebConMVCDotnet.Models.Usuario
+@{
+    Layout = null;
+
+    Persona persona = Model != null ? Model.Persona : null;
+    List<Perfil> perfiles = Model != null && Model.Perfiles != null ? Model.Perfiles : new List<Perfil>();
+
+    string foto = persona != null && persona.Foto != null ? persona.Foto : string.Empty;
+    bool tieneFoto = !string.IsNullOrWhiteSpace(foto);
+    string fechaCrea = Model != null && Model.FechaCrea.HasValue
+        ? Model.FechaCrea.Value.ToString("dd/MM/yyyy HH:mm")
+        : "No registrada";
+    string estado = Model != null && Model.DescEstado != null ? Model.DescEstado : "SIN ESTADO";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bienvenido | SIGH</title>
+    <link href="@Url.Content("~/Content/style_JCH.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header class="encabezado">
+        <div class="bienvenida">SESIÓN INICIADA CORRECTAMENTE</div>
+        <div class="titulo">Bienvenido/a, @Html.Encode(persona != null ? persona.NombreCompleto : "")</div>
+        <div class="texto">Subsistema de Seguridad &middot; SIGH</div>
+    </header>
+
+    <main class="dashboard">
+        <section class="info-card" aria-labelledby="tituloPersona">
+            <h2 id="tituloPersona">Datos de la persona</h2>
+
+            <div class="persona-resumen">
+                @if (tieneFoto)
+                {
+                    <img class="foto-perfil"
+                         src="@Url.Content("~/resources/" + HttpUtility.HtmlEncode(foto))"
+                         alt="Foto de @Html.Encode(persona != null ? persona.NombreCompleto : "")" />
+                }
+                else
+                {
+                    <div class="foto-perfil foto-placeholder" aria-hidden="true">S/F</div>
+                }
+
+                <dl class="dl-usuario">
+                    <dt>Nombres</dt>
+                    <dd>@Html.Encode(persona != null ? persona.NombresPersona : "")</dd>
+
+                    <dt>Apellidos</dt>
+                    <dd>@Html.Encode(persona != null ? persona.ApellidosPersona : "")</dd>
+
+                    <dt>Cédula</dt>
+                    <dd>@Html.Encode(persona != null ? persona.Cedula : "")</dd>
+
+                    <dt>Pasaporte</dt>
+                    <dd>@Html.Encode(persona != null ? persona.Pasaporte : "")</dd>
+
+                    <dt>Correo</dt>
+                    <dd>@Html.Encode(persona != null ? persona.Email : "")</dd>
+                </dl>
+            </div>
+        </section>
+
+        <section class="info-card" aria-labelledby="tituloCuenta">
+            <h2 id="tituloCuenta">Cuenta de usuario</h2>
+
+            <dl class="dl-usuario">
+                <dt>Código</dt>
+                <dd>@Html.Encode(persona != null ? persona.CodigoPersona : "")</dd>
+
+                <dt>Estado</dt>
+                <dd>
+                    <span class="estado-badge @(Model != null && Model.Activo ? "estado-activo" : "estado-inactivo")">
+                        @Html.Encode(estado)
+                    </span>
+                </dd>
+
+                <dt>Creado el</dt>
+                <dd>@Html.Encode(fechaCrea)</dd>
+            </dl>
+
+            <h3>Perfiles asignados</h3>
+            <ul class="perfil-list">
+                @if (perfiles.Count == 0)
+                {
+                    <li class="sin-perfiles">Sin perfiles asignados</li>
+                }
+                else
+                {
+                    foreach (Perfil perfil in perfiles)
+                    {
+                        <li>
+                            <strong>@Html.Encode(perfil.DescPerfil)</strong>
+                            <small>@Html.Encode(perfil.CodPerfil)</small>
+                        </li>
+                    }
+                }
+            </ul>
+
+            <h3>Módulos</h3>
+            <ul class="modulo-list">
+                <li>
+                    <a class="enlace-modulo" href="@Url.Action("Index", "Cargo")">
+                        Gestión de Cargos (Personal)
+                    </a>
+                </li>
+                <li>
+                    <a class="enlace-modulo" href="@Url.Action("Index", "Departamento")">
+                        Gestión de Departamentos (Personal)
+                    </a>
+                </li>
+            </ul>
+
+            <a class="btn-logout" href="@Url.Action("Logout", "Account")">Cerrar sesión</a>
+        </section>
+    </main>
+</body>
+</html>

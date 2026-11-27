@@ -1,0 +1,56 @@
+@{
+    Layout = null;
+
+    // Menú de reportes. Equivalente de los enlaces que el proyecto Java
+    // expone hacia /reporte (ReporteController).
+    string error = ViewBag.Error as string;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reportes | SIGH</title>
+    <link href="@Url.Content("~/Content/style_JCH.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header class="encabezado">
+        <div class="bienvenida">SUBSISTEMA DE PERSONAL</div>
+        <div class="titulo">Reportes</div>
+        <div class="texto">Salidas PDF de los módulos &middot; SIGH</div>
+    </header>
+
+    <main class="crud-page">
+        @if (!string.IsNullOrEmpty(error))
+        {
+            <div class="alerta-error" role="alert">@error</div>
+        }
+
+        <section class="crud-card">
+            <h2>Reportes disponibles</h2>
+            <p>Se abren en una pestaña nueva con el mismo diseño de los PDF del
+               proyecto Java; para obtener el PDF use el diálogo de impresión
+               del navegador (Ctrl+P → "Guardar como PDF").</p>
+            <ul class="modulo-list">
+                <li><a class="enlace-modulo" href="@Url.Action("Departamentos", "Reporte")" target="_blank" rel="noopener">Reporte de departamentos</a></li>
+                <li><a class="enlace-modulo" href="@Url.Action("Cargos", "Reporte")" target="_blank" rel="noopener">Reporte de cargos</a></li>
+                <li><a class="enlace-modulo" href="@Url.Action("Empleados", "Reporte")" target="_blank" rel="noopener">Reporte de empleados</a></li>
+            </ul>
+            <h3>Fichas individuales</h3>
+            <p>Escriba el código de persona del empleado (por ejemplo, <code>P000000001</code>).</p>
+            <form action="@Url.Action("Ficha", "Reporte")" method="get" class="crud-form" target="_blank" rel="noopener">
+                <div class="campo">
+                    <label for="codigo">Código del empleado</label>
+                    <input type="text" id="codigo" name="codigo" maxlength="10" required
+                           placeholder="Ej.: P000000001" />
+                </div>
+                <div class="form-acciones">
+                    <button type="submit" class="btn-guardar">Abrir ficha</button>
+                </div>
+            </form>
+        </section>
+
+        <p class="volver-inicio"><a href="@Url.Action("Index", "Bienvenida")">&larr; Volver al inicio</a></p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,751 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 12 abr 2026, 20:03:17
+    Author     : Master Monster
+*/
+
+/* CENTRAR TODO EN PANTALLA */
+
+/* ====== GENERAL ====== */
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center; /* centra textos superiores */
+    font-family: "Trebuchet MS", "Verdana", sans-serif;
+    color: #4E0A0B;
+    background-color: #FAEBDD;
+    background-image:
+        radial-gradient(circle at 20px 20px, rgba(232, 148, 74, 0.20) 2px, transparent 0),
+        radial-gradient(circle at 60px 60px, rgba(195, 154, 107, 0.18) 3px, transparent 0);
+    background-size: 80px 80px;
+}
+
+/* ====== ENCABEZADO ====== */
+.encabezado {
+    text-align: center;
+    margin: 18px auto 22px;
+    max-width: 980px;
+    background: linear-gradient(90deg, rgba(232, 148, 74, 0.25), rgba(250, 235, 221, 0.95));
+    border: 2px solid #E8944A;
+    border-radius: 18px;
+    padding: 14px 10px;
+    box-shadow: 0 8px 20px rgba(78, 10, 11, 0.14);
+}
+
+.bienvenida {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.titulo {
+    font-size: 31px;
+    font-weight: bold;
+    color: #E8944A;
+    text-shadow: 1px 1px 0 #FAEBDD, 2px 2px 0 rgba(78, 10, 11, 0.2);
+}
+
+.texto {
+    font-size: 16px;
+    color: #4E0A0B;
+}
+
+/* ====== DISTRIBUCIÓN (GRID) ====== */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 1180px;
+    margin: 0 auto 26px;
+    align-items: start;
+}
+
+.div1 {
+    grid-row: span 5;
+    min-width: 0;
+}
+
+.div2 {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch;
+    min-width: 0;
+}
+
+.div2 form {
+    width: 100%;
+}
+
+.div3 {
+    grid-column-start: 5;
+    grid-row: span 5;
+    min-width: 0;
+}
+
+.lateral-panel {
+    background: rgba(195, 154, 107, 0.92);
+    border: 2px solid #4E0A0B;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 8px 18px rgba(78, 10, 11, 0.12);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.lateral-panel h3 {
+    margin: 0 0 10px;
+    color: #F2EEE8;
+    font-size: clamp(13px, 1.2vw, 20px);
+    line-height: 1.25;
+    max-width: 100%;
+    width: 100%;
+    padding: 0 6px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-wrap: balance;
+}
+
+.photo-stack {
+    display: grid;
+    gap: 10px;
+}
+
+.photo-stack img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #C39A6B;
+    box-shadow: 0 4px 10px rgba(78, 10, 11, 0.2);
+}
+
+/* ====== TABLA ====== */
+table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    background: rgba(250, 235, 221, 0.95);
+    border: 2px solid #E8944A;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 24px rgba(78, 10, 11, 0.16);
+}
+
+th,
+td {
+    border-bottom: 1px solid rgba(232, 148, 74, 0.35);
+    padding: 10px;
+}
+
+thead td,
+th {
+    background-color: rgba(232, 148, 74, 0.2);
+    color: #4E0A0B;
+    font-weight: bold;
+}
+
+/* ====== INPUTS ====== */
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #C39A6B;
+    border-radius: 8px;
+    background: #fffdfb;
+}
+
+input[type="file"] {
+    max-width: 95%;
+    color: #4E0A0B;
+}
+
+/* ====== BOTONES ====== */
+input[type="submit"] {
+    width: auto; /* evita que se estire */
+    padding: 9px 16px;
+    cursor: pointer;
+    border: 1px solid #4E0A0B;
+    border-radius: 8px;
+    background: #E8944A;
+    color: #F2EEE8;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background: #4E0A0B;
+}
+
+/* ====== LISTA ====== */
+ul {
+    list-style-type: square;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.form-error {
+    min-height: 22px;
+    color: #4E0A0B;
+    font-weight: bold;
+    background: rgba(232, 148, 74, 0.18);
+    border-radius: 8px;
+    margin-top: 4px;
+    padding: 4px 8px;
+}
+
+@media (max-width: 900px) {
+    .parent {
+        grid-template-columns: 1fr;
+    }
+
+    .div2,
+    .div3 {
+        grid-column: auto;
+        grid-column-start: auto;
+    }
+
+    .photo-stack {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    table {
+        width: 95%;
+    }
+}
+
+/* ============================================================
+   LOGIN Y PÁGINA PRIVADA
+   ============================================================ */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    width: min(460px, 100%);
+    background: rgba(250, 235, 221, 0.97);
+    border: 2px solid #E8944A;
+    border-radius: 22px;
+    box-shadow: 0 18px 42px rgba(78, 10, 11, 0.22);
+    padding: 30px 30px 24px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.login-brand {
+    display: table;
+    margin: 0 auto 14px;
+    padding: 8px 22px;
+    border-radius: 999px;
+    background: #4E0A0B;
+    color: #FAEBDD;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    box-shadow: 0 5px 12px rgba(78, 10, 11, 0.24);
+}
+
+.login-card h1 {
+    margin: 0;
+    color: #4E0A0B;
+    font-size: 27px;
+    text-align: center;
+}
+
+.login-subtitle {
+    margin: 8px 0 18px;
+    color: #7A3B2E;
+    font-size: 14px;
+    text-align: center;
+}
+
+.login-card label {
+    display: block;
+    margin: 15px 0 6px;
+    color: #4E0A0B;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"],
+.login-card input[type="email"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 13px;
+    border: 1px solid #C39A6B;
+    border-radius: 10px;
+    background: #fffdfb;
+    color: #4E0A0B;
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus,
+.login-card input[type="email"]:focus {
+    outline: none;
+    border-color: #E8944A;
+    box-shadow: 0 0 0 3px rgba(232, 148, 74, 0.28);
+}
+
+.btn-login {
+    width: 100%;
+    margin-top: 22px;
+    padding: 12px 16px;
+    border: 1px solid #4E0A0B;
+    border-radius: 10px;
+    background: #E8944A;
+    color: #F2EEE8;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-login:hover {
+    background: #4E0A0B;
+}
+
+.btn-login:active {
+    transform: translateY(1px);
+}
+
+.alerta-error {
+    margin: 0 0 4px;
+    padding: 10px 12px;
+    border-left: 4px solid #B3261E;
+    border-radius: 8px;
+    background: rgba(179, 38, 30, 0.10);
+    color: #7A1A15;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+}
+
+.login-hint {
+    margin: 18px 0 0;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(195, 154, 107, 0.75);
+    color: #7A3B2E;
+    font-size: 12.5px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* ====== PÁGINA PRIVADA ====== */
+.dashboard {
+    max-width: 1040px;
+    margin: 0 auto 34px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.info-card {
+    background: rgba(250, 235, 221, 0.96);
+    border: 2px solid #E8944A;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 26px rgba(78, 10, 11, 0.15);
+    box-sizing: border-box;
+}
+
+.info-card h2 {
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(232, 148, 74, 0.35);
+    color: #4E0A0B;
+    font-size: 20px;
+}
+
+.info-card h3 {
+    margin: 22px 0 10px;
+    color: #4E0A0B;
+    font-size: 16px;
+}
+
+.persona-resumen {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.foto-perfil {
+    width: 108px;
+    height: 108px;
+    min-width: 108px;
+    object-fit: cover;
+    border: 3px solid #C39A6B;
+    border-radius: 50%;
+    box-shadow: 0 5px 14px rgba(78, 10, 11, 0.22);
+    background: #FAEBDD;
+}
+
+.foto-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7A3B2E;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.dl-usuario {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 9px 14px;
+    margin: 0;
+    width: 100%;
+}
+
+.dl-usuario dt {
+    color: #7A3B2E;
+    font-weight: bold;
+}
+
+.dl-usuario dd {
+    margin: 0;
+    color: #4E0A0B;
+    overflow-wrap: anywhere;
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+}
+
+.estado-activo {
+    background: #3F7D3A;
+}
+
+.estado-inactivo {
+    background: #B3261E;
+}
+
+.perfil-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.perfil-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 9px 14px;
+    border: 1px solid #C39A6B;
+    border-radius: 12px;
+    background: rgba(232, 148, 74, 0.15);
+    color: #4E0A0B;
+}
+
+.perfil-list li small {
+    color: #7A3B2E;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.perfil-list li.sin-perfiles {
+    border-style: dashed;
+    font-style: italic;
+    color: #7A3B2E;
+}
+
+.form-logout {
+    margin-top: 24px;
+    text-align: right;
+}
+
+.btn-logout {
+    padding: 10px 20px;
+    border: 1px solid #4E0A0B;
+    border-radius: 9px;
+    background: #4E0A0B;
+    color: #FAEBDD;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-logout:hover {
+    background: #E8944A;
+    color: #4E0A0B;
+}
+
+@media (max-width: 620px) {
+    .login-card {
+        padding: 24px 20px 20px;
+    }
+
+    .persona-resumen {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dl-usuario {
+        grid-template-columns: 1fr;
+        gap: 3px;
+    }
+
+    .dl-usuario dd {
+        margin-bottom: 8px;
+    }
+
+    .form-logout {
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   CRUD DEPARTAMENTO (módulo de Personal)
+   ============================================================ */
+
+.crud-page {
+    max-width: 1040px;
+    margin: 0 auto 34px;
+    padding: 0 16px;
+    text-align: left;
+}
+
+.crud-card {
+    background: rgba(250, 235, 221, 0.96);
+    border: 2px solid #E8944A;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 26px rgba(78, 10, 11, 0.15);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.crud-card h2 {
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(232, 148, 74, 0.35);
+    color: #4E0A0B;
+    font-size: 20px;
+}
+
+.alerta-exito {
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border-left: 4px solid #3F7D3A;
+    border-radius: 8px;
+    background: rgba(63, 125, 58, 0.12);
+    color: #274D24;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* El CRUD reutiliza .alerta-error definido en la sección del login. */
+
+.crud-form .campo {
+    margin-bottom: 14px;
+}
+
+.crud-form label {
+    display: block;
+    margin: 0 0 6px;
+    color: #4E0A0B;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.crud-form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #C39A6B;
+    border-radius: 10px;
+    background: #fffdfb;
+    color: #4E0A0B;
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.crud-form input[type="text"]:focus {
+    outline: none;
+    border-color: #E8944A;
+    box-shadow: 0 0 0 3px rgba(232, 148, 74, 0.28);
+}
+
+.campo-codigo input[type="text"] {
+    max-width: 140px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.ayuda-campo {
+    display: block;
+    margin-top: 4px;
+    color: #7A3B2E;
+    font-size: 12px;
+}
+
+.form-acciones {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.btn-guardar,
+.btn-secundario,
+.btn-editar,
+.btn-eliminar {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 1px solid #4E0A0B;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-guardar {
+    background: #E8944A;
+    color: #F2EEE8;
+}
+
+.btn-guardar:hover {
+    background: #4E0A0B;
+}
+
+.btn-secundario {
+    background: #FAEBDD;
+    color: #4E0A0B;
+}
+
+.btn-secundario:hover {
+    background: #C39A6B;
+}
+
+.btn-editar {
+    background: rgba(232, 148, 74, 0.18);
+    color: #4E0A0B;
+    border-color: #C39A6B;
+}
+
+.btn-editar:hover {
+    background: #E8944A;
+    color: #F2EEE8;
+}
+
+.btn-eliminar {
+    background: #B3261E;
+    color: #FFFFFF;
+}
+
+.btn-eliminar:hover {
+    background: #7A1A15;
+}
+
+.celda-acciones {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.form-eliminar {
+    display: inline;
+    margin: 0;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+}
+
+.tabla-vacia {
+    text-align: center;
+    font-style: italic;
+    color: #7A3B2E;
+}
+
+.volver-inicio {
+    text-align: center;
+    margin: 26px 0 10px;
+}
+
+.volver-inicio a {
+    color: #4E0A0B;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px dashed #C39A6B;
+}
+
+.volver-inicio a:hover {
+    color: #E8944A;
+}
+
+.modulo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.enlace-modulo {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid #C39A6B;
+    border-radius: 12px;
+    background: rgba(232, 148, 74, 0.15);
+    color: #4E0A0B;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.enlace-modulo:hover {
+    background: #E8944A;
+    color: #F2EEE8;
+}
+
+@media (max-width: 620px) {
+    .celda-acciones {
+        flex-direction: column;
+    }
+
+    .form-acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-acciones .btn-guardar,
+    .form-acciones .btn-secundario {
+        width: 100%;
+        text-align: center;
+    }
+
+    .campo-codigo input[type="text"] {
+        max-width: none;
+    }
+}

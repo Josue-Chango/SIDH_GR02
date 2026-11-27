@@ -1,0 +1,68 @@
+@model System.Data.DataSet
+@{
+    Layout = null;
+
+    // Reporte de DEPARTAMENTOS. Equivalente a departamentos.jrxml del
+    // proyecto Java (y a FabricaReportes.ConstruirDepartamentos).
+    System.Data.DataTable tabla = Model.Tables["Departamentos"];
+    string usuario = ViewBag.Usuario as string ?? "";
+    string fecha = ViewBag.Fecha as string ?? "";
+    int total = ViewBag.Total ?? tabla.Rows.Count;
+    string mensajeTotal = total == 0
+        ? "No hay datos para mostrar."
+        : "Departamentos: " + total.ToString("N0");
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte de departamentos | SIGH</title>
+    <link href="@Url.Content("~/Content/reportes.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="rp-acciones">
+        <button type="button" class="btn-guardar" onclick="window.print();">Imprimir / Guardar PDF</button>
+        <a class="btn-secundario" href="@Url.Action("Index", "Reporte")">Volver a reportes</a>
+    </div>
+
+    <div class="rp-pagina">
+        <header class="rp-cabecera">
+            <h1>Reporte de departamentos</h1>
+            <p class="rp-eslogan">SIGH GR02 &middot; Sistema Integral de Gestión Hospitalaria</p>
+            <div class="rp-meta">
+                <span>Generado por: @usuario</span>
+                <span>Fecha: @fecha</span>
+            </div>
+        </header>
+
+        <table class="rp-tabla">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Código</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow fila in tabla.Rows)
+                {
+                    <tr>
+                        <td><strong>@fila["PEDEP_CODIGO"]</strong></td>
+                        <td>@fila["PEDEP_DESCRI"]</td>
+                    </tr>
+                }
+                @if (total == 0)
+                {
+                    <tr><td colspan="2" class="tabla-vacia">No hay departamentos registrados.</td></tr>
+                }
+            </tbody>
+        </table>
+
+        <p class="rp-resumen">@mensajeTotal</p>
+
+        <footer class="rp-pie">
+            <span>SIGH GR02 &middot; Subsistema de Personal</span>
+            <span>Reporte generado desde SQL Server (PEDEP_DEPAR)</span>
+        </footer>
+    </div>
+</body>
+</html>

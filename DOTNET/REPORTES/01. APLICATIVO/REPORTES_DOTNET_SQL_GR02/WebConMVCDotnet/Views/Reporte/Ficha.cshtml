@@ -1,0 +1,151 @@
+@model System.Data.DataSet
+@{
+    Layout = null;
+
+    // Ficha completa del empleado con foto, datos generales y los dos
+    // "subreportes" (Datos Académicos y Datos Familiares).
+    // Equivalente a empleado_ficha.jrxml del proyecto Java
+    // (FabricaReportes.ConstruirFicha + parámetro EMPLEADO).
+    System.Data.DataTable tabla = Model.Tables["Empleados"];
+    System.Data.DataTable academicos = Model.Tables["Academicos"];
+    System.Data.DataTable familiares = Model.Tables["Familiares"];
+    string usuario = ViewBag.Usuario as string ?? "";
+    string fecha = ViewBag.Fecha as string ?? "";
+
+    // Solo recursos locales del aplicativo (igual que foto() del Java):
+    // rutas relativas de texto seguro bajo /resource.
+    string rutaFoto = tabla.Rows.Count > 0
+        ? Convert.ToString(tabla.Rows[0]["PEPER_FOTO"]) ?? ""
+        : "";
+    bool fotoValida = System.Text.RegularExpressions.Regex.IsMatch(
+        rutaFoto, "^(fotos_empleados/)?[A-Za-z0-9][A-Za-z0-9_.-]{0,99}$");
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Ficha del empleado | SIGH</title>
+    <link href="@Url.Content("~/Content/reportes.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="rp-acciones">
+        <button type="button" class="btn-guardar" onclick="window.print();">Imprimir / Guardar PDF</button>
+        <a class="btn-secundario" href="@Url.Action("Index", "Reporte")">Volver a reportes</a>
+    </div>
+
+    <div class="rp-pagina">
+        <header class="rp-cabecera">
+            <h1>Ficha del empleado</h1>
+            <p class="rp-eslogan">SIGH GR02 &middot; Sistema Integral de Gestión Hospitalaria</p>
+            <div class="rp-meta">
+                <span>Generado por: @usuario</span>
+                <span>Fecha: @fecha</span>
+            </div>
+        </header>
+
+        @if (tabla.Rows.Count > 0)
+        {
+            System.Data.DataRow persona = tabla.Rows[0];
+
+            <!-- ---- Marco: foto + datos generales ---- -->
+            <div class="rp-ficha">
+                @if (fotoValida)
+                {
+                    <img class="rp-ficha-foto" src="@Url.Content("~/resources/" + rutaFoto)" alt="Foto del empleado" />
+                }
+                else
+                {
+                    <div class="rp-ficha-foto rp-marcador" aria-hidden="true">S/F</div>
+                }
+                <div>
+                    <h2 style="margin: 0 0 10px 0;">@persona["PEPER_APELLI"] @persona["PEPER_NOMBRE"]</h2>
+                    <dl class="rp-ficha">
+                        <dt>Código de persona:</dt>
+                        <dd>@persona["PEPER_CODIGO"]</dd>
+                        <dt>Fecha de nacimiento:</dt>
+                        <dd>@persona["FECNAC"]</dd>
+                        <dt>Sexo:</dt>
+                        <dd>@persona["PEGEN_DESCRI"]</dd>
+                        <dt>Estado civil:</dt>
+                        <dd>@persona["PEESC_DESCRI"]</dd>
+                        <dt>Peso:</dt>
+                        <dd>@persona["PESO"] kg</dd>
+                        <dt>Tipo de sangre:</dt>
+                        <dd>@persona["PEPER_TIPSANG"]</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- ---- Subreporte 1: Datos Académicos ---- -->
+            <h3 class="rp-seccion">DATOS ACADÉMICOS</h3>
+            <table class="rp-tabla">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Nivel</th>
+                        <th style="width: 45%;">Institución</th>
+                        <th>Título</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (System.Data.DataRow fila in academicos.Rows)
+                    {
+                        <tr>
+                            <td>@fila["PEACA_NIVEL"]</td>
+                            <td>@fila["PEACA_INSTI"]</td>
+                            <td>@fila["PEACA_TITUL"]</td>
+                        </tr>
+                    }
+                    @if (academicos.Rows.Count == 0)
+                    {
+                        <tr><td colspan="3" class="tabla-vacia">Sin datos académicos registrados.</td></tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- ---- Subreporte 2: Datos Familiares ---- -->
+            <h3 class="rp-seccion">DATOS FAMILIARES</h3>
+            <table class="rp-tabla">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">Persona</th>
+                        <th style="width: 55%;">Apellidos y nombres</th>
+                        <th>Fecha de nacimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (System.Data.DataRow fila in familiares.Rows)
+                    {
+                        <tr>
+                            <td>@fila["PAREN"]</td>
+                            <td>@fila["PEFAM_NOMBRE"]</td>
+                            <td>@fila["FECNAC"]</td>
+                        </tr>
+                    }
+                    @if (familiares.Rows.Count == 0)
+                    {
+                        <tr><td colspan="3" class="tabla-vacia">Sin datos familiares registrados.</td></tr>
+                    }
+                </tbody>
+            </table>
+
+            <!-- ---- Espacios para firmas ---- -->
+            <div class="rp-firmas">
+                <div class="rp-firma">
+                    <div class="rp-linea"></div>
+                    Firma del empleado
+                </div>
+                <div class="rp-firma">
+                    <div class="rp-linea"></div>
+                    Firma del responsable de RR. HH.
+                </div>
+            </div>
+        }
+
+        <footer class="rp-pie">
+            <span>SIGH GR02 &middot; Subsistema de Personal</span>
+            <span>Ficha generada desde SQL Server (PEPER_PERSO + PEACA_ACADE + PEFAM_FAMIL)</span>
+        </footer>
+    </div>
+</body>
+</html>
+

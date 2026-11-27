@@ -1,0 +1,119 @@
+﻿@model WebConMVCDotnet.Models.DatosEncuesta
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="color-scheme" content="only light" />
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/style_JCH.css")">
+</head>
+<body>
+    <h1>HOLA GENTE</h1>
+    <div class="encabezado">
+        <div class="bienvenida">¡BIENVENIDO SEAN A ÉSTE FORMULARIO!</div>
+        <div class="titulo">¡Formulario Web realizado con MVC!</div>
+        <div class="texto">Indique los Lenguajes de Programación con los que Ud. está familiarizado</div>
+    </div>
+    <div class="parent">
+        <div class="div1">
+            <div class="lateral-panel">
+                <h3>MIS FOTOS</h3>
+                <div class="photo-stack">
+                    <img src="../resources/josue1.jpeg" alt="Foto lateral 1" style="object-position: 100% center;">
+                    <img src="../resources/josue2.jpeg" alt="Foto lateral 2" style="object-position: 75% center">
+                </div>
+            </div>
+        </div>
+        <div class="div2">
+            <form action="@Url.Action("Salida", "Datos")" method="post" enctype="multipart/form-data">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Datos personales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nombre:</td>
+                            <td>
+                                <input style="background-color: #c3f8ff" type="text" name="txtNombre" value="" required="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Apellido:</td>
+                            <td>
+                                <input style="background-color: #c3f8ff" type="text" name="txtApellido" value="" required="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                Lenguajes de programación
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>Java</td>
+                            <td>
+                                <input type="checkbox" name="chkProgLen" value="java" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>PHP</td>
+                            <td>
+                                <input type="checkbox" name="chkProgLen" value="php" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ruby</td>
+                            <td>
+                                <input type="checkbox" name="chkProgLen" value="Ruby" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phyton</td>
+                            <td>
+                                <input type="checkbox" name="chkProgLen" value="python" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                Archivos
+                            </th>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <label for="foto">
+                                    Seleccionar archivo:
+                                </label>
+                                <br>
+                                <input type="file" id="foto" name="Foto" accept=".jpeg, .jpg, .png, image/jpeg, image/png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <input type="submit" value="Enviar" name="btnEnviar" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+            <div class="div3">
+                <div class="lateral-panel">
+                    <h3>MIS FOTOS</h3>
+                    <div class="photo-stack">
+                        <img src="../resources/josue3.jpeg" alt="Foto lateral 1" style="object-position: 100% center">
+                        <img src="../resources/josue4.jpeg" alt="Foto lateral 2" style="object-position: 0% center">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</body>
+</html>

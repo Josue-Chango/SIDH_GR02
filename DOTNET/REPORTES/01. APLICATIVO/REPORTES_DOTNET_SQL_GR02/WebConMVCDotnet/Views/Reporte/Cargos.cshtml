@@ -1,0 +1,99 @@
+@model System.Data.DataSet
+@{
+    Layout = null;
+
+    // Reporte de CARGOS, agrupado por departamento con subtotales.
+    // Equivalente a cargos.jrxml del proyecto Java
+    // (FabricaReportes.ConstruirCargos + parámetro DEPARTAMENTO).
+    System.Data.DataTable tabla = Model.Tables["Cargos"];
+    string usuario = ViewBag.Usuario as string ?? "";
+    string fecha = ViewBag.Fecha as string ?? "";
+    string subtitulo = ViewBag.Subtitulo as string ?? "";
+    string filtro = ViewBag.FiltroDepartamento as string ?? "";
+    int total = ViewBag.Total ?? tabla.Rows.Count;
+    string mensajeTotal = total == 0
+        ? "No hay datos para mostrar."
+        : "Cargos: " + total.ToString("N0");
+
+    // Conteo por grupo para los subtotales (como TotalType.Count del Jasper).
+    var conteos = new Dictionary<string, int>();
+    foreach (System.Data.DataRow fila in tabla.Rows)
+    {
+        string grupo = Convert.ToString(fila["PEDEP_CODIGO"]);
+        conteos[grupo] = (conteos.ContainsKey(grupo) ? conteos[grupo] : 0) + 1;
+    }
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte de cargos | SIGH</title>
+    <link href="@Url.Content("~/Content/reportes.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="rp-acciones">
+        <button type="button" class="btn-guardar" onclick="window.print();">Imprimir / Guardar PDF</button>
+        <a class="btn-secundario" href="@Url.Action("Index", "Reporte")">Volver a reportes</a>
+    </div>
+
+    <div class="rp-pagina">
+        <header class="rp-cabecera">
+            <h1>Reporte de cargos</h1>
+            <p class="rp-eslogan">SIGH GR02 &middot; Sistema Integral de Gestión Hospitalaria</p>
+            <div class="rp-meta">
+                <span>Generado por: @usuario</span>
+                <span>Fecha: @fecha</span>
+            </div>
+        </header>
+
+        <p class="rp-subtitulo">@subtitulo</p>
+
+        <table class="rp-tabla">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Depto. / Cargo</th>
+                    <th>Descripción del cargo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    string grupoActual = null;
+                }
+                @foreach (System.Data.DataRow fila in tabla.Rows)
+                {
+                    string grupo = Convert.ToString(fila["PEDEP_CODIGO"]);
+                    if (grupo != grupoActual)
+                    {
+                        grupoActual = grupo;
+                        <tr class="rp-grupo">
+                            <td colspan="2">@grupo — @fila["PEDEP_DESCRI"]</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><strong>@fila["PEDEP_CODIGO"]</strong> / @fila["PECAR_CODIGO"]</td>
+                        <td>@fila["PECAR_DESCRI"]</td>
+                    </tr>
+                    if (tabla.Rows.IndexOf(fila) == tabla.Rows.Count - 1
+                        || Convert.ToString(tabla.Rows[tabla.Rows.IndexOf(fila) + 1]["PEDEP_CODIGO"]) != grupo)
+                    {
+                        <tr class="rp-subtotal">
+                            <td colspan="2">Cargos en el departamento: @conteos[grupo]</td>
+                        </tr>
+                    }
+                }
+                @if (total == 0)
+                {
+                    <tr><td colspan="2" class="tabla-vacia">No hay cargos registrados.</td></tr>
+                }
+            </tbody>
+        </table>
+
+        <p class="rp-resumen">@mensajeTotal</p>
+
+        <footer class="rp-pie">
+            <span>SIGH GR02 &middot; Subsistema de Personal</span>
+            <span>Reporte generado desde SQL Server (PECAR_CARGO)</span>
+        </footer>
+    </div>
+</body>
+</html>

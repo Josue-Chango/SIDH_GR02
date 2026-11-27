@@ -1,0 +1,21 @@
+@{
+    Layout = null;
+
+    // Vista de error de los reportes: la base no respondió.
+    string error = ViewBag.Error as string;
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte no disponible | SIGH</title>
+    <link href="@Url.Content("~/Content/style_JCH.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <main class="crud-page">
+        <div class="rp-error" role="alert">@error</div>
+        <p class="volver-inicio"><a href="@Url.Action("Index", "Reporte")">&larr; Volver a reportes</a></p>
+    </main>
+</body>
+</html>

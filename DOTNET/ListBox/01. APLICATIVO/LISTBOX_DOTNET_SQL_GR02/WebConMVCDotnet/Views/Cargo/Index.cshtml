@@ -1,0 +1,199 @@
+@using WebConMVCDotnet.Models
+@{
+    Layout = null;
+
+    // CRUD de la tabla CARGO (PECAR_CARGO) del diagrama de Personal.
+    // Equivalente a cargo.jsp del proyecto Java.
+
+    string filtro = ViewBag.FiltroDepartamento as string ?? string.Empty;
+    bool edicion = ViewBag.ModoEdicion != null && (bool)ViewBag.ModoEdicion;
+    Cargo formulario = ViewBag.Cargo as Cargo ?? new Cargo();
+    bool noDisponible = ViewBag.DatosNoDisponibles != null && (bool)ViewBag.DatosNoDisponibles;
+    List<Departamento> departamentos = ViewBag.Departamentos as List<Departamento> ?? new List<Departamento>();
+    List<Cargo> cargos = ViewBag.Cargos as List<Cargo> ?? new List<Cargo>();
+    string mensajeExito = ViewBag.MensajeExito as string;
+    string mensajeError = ViewBag.MensajeError as string;
+    bool sinDepartamentos = departamentos.Count == 0;
+
+    string urlListado = string.IsNullOrEmpty(filtro)
+        ? Url.Action("Index", "Cargo")
+        : Url.Action("Index", "Cargo", new { filtroDepartamento = filtro });
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cargos | SIGH</title>
+    <link href="@Url.Content("~/Content/style_JCH.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header class="encabezado">
+        <div class="bienvenida">SUBSISTEMA DE PERSONAL</div>
+        <div class="titulo">Gestión de Cargos</div>
+        <div class="texto">Cargos y departamentos &middot; SIGH</div>
+    </header>
+
+    <main class="crud-page">
+        @if (!string.IsNullOrEmpty(mensajeExito))
+        {
+            <div class="alerta-exito" role="status">@Html.Encode(mensajeExito)</div>
+        }
+        @if (!string.IsNullOrEmpty(mensajeError))
+        {
+            <div class="alerta-error" role="alert">@Html.Encode(mensajeError)</div>
+        }
+
+        @if (noDisponible)
+        {
+            <p><a class="btn-secundario" href="@urlListado">Reintentar</a></p>
+        }
+        else
+        {
+            <section class="crud-card" aria-labelledby="tituloFormulario">
+                <h2 id="tituloFormulario">@(edicion ? "Editar cargo" : "Nuevo cargo")</h2>
+
+                @if (sinDepartamentos)
+                {
+                    <p>Primero <a href="@Url.Action("Index", "Departamento")">registre un departamento</a> para crear cargos.</p>
+                }
+
+                <form action="@Url.Action("Guardar", "Cargo")" method="post" class="crud-form">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="filtroDepartamento" value="@Html.Encode(filtro)" />
+                    <input type="hidden" name="modo" value="@(edicion ? "editar" : "nuevo")" />
+
+                    <div class="campo">
+                        <label for="departamento">Departamento</label>
+                        @if (edicion)
+                        {
+                            <input type="hidden" name="departamento" value="@Html.Encode(formulario.CodigoDepart)" />
+                            <input id="departamento" type="text" readonly value="@Html.Encode(formulario.CodigoDepart)" />
+                        }
+                        else
+                        {
+                            <select id="departamento" name="departamento" required @(sinDepartamentos ? "disabled" : "")>
+                                <option value="">Seleccione un departamento</option>
+                                @foreach (Departamento dep in departamentos)
+                                {
+                                    <option value="@Html.Encode(dep.CodigoDepart)"
+                                            @(dep.CodigoDepart == formulario.CodigoDepart ? "selected" : "")>
+                                        @Html.Encode(dep.CodigoDepart) — @Html.Encode(dep.DescriDeparta)
+                                    </option>
+                                }
+                            </select>
+                        }
+                    </div>
+
+                    <div class="campo campo-codigo">
+                        <label for="codigo">Código del cargo</label>
+                        <input type="text" id="codigo" name="codigo" minlength="3" maxlength="3" required
+                               value="@Html.Encode(formulario.CodigoCargo)"
+                               @(edicion ? "readonly" : "")
+                               placeholder="Ej.: ADM" />
+                        <small class="ayuda-campo">3 caracteres. El código puede repetirse en otro departamento.</small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" id="descripcion" name="descripcion" maxlength="50" required
+                               value="@Html.Encode(formulario.DescriCargo)"
+                               placeholder="Ej.: Administrador" />
+                        <small class="ayuda-campo">Máximo 50 caracteres.@(edicion ? " El departamento y el código se conservan." : "")</small>
+                    </div>
+
+                    <div class="form-acciones">
+                        <button type="submit" class="btn-guardar" @(sinDepartamentos ? "disabled" : "")>
+                            @(edicion ? "Guardar cambios" : "Guardar cargo")
+                        </button>
+                        @if (edicion)
+                        {
+                            <a class="btn-secundario" href="@urlListado">Cancelar</a>
+                        }
+                    </div>
+                </form>
+            </section>
+
+            <section class="crud-card" aria-labelledby="tituloListado">
+                <h2 id="tituloListado">Cargos registrados</h2>
+
+                <form action="@Url.Action("Index", "Cargo")" method="get" class="crud-form" role="search">
+                    <div class="campo">
+                        <label for="filtroDepartamento">Buscar cargos por departamento</label>
+                        <select id="filtroDepartamento" name="filtroDepartamento" onchange="this.form.requestSubmit()">
+                            <option value="">Todos los departamentos</option>
+                            @foreach (Departamento dep in departamentos)
+                            {
+                                <option value="@Html.Encode(dep.CodigoDepart)"
+                                        @(dep.CodigoDepart == filtro ? "selected" : "")>
+                                    @Html.Encode(dep.CodigoDepart) — @Html.Encode(dep.DescriDeparta)
+                                </option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-acciones">
+                        <button type="submit" class="btn-guardar">Consultar</button>
+                    </div>
+                </form>
+
+                <p role="status">@cargos.Count cargo(s) encontrado(s).</p>
+
+                <div class="tabla-contenedor">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Departamento</th>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (cargos.Count == 0)
+                            {
+                                <tr>
+                                    <td colspan="4" class="tabla-vacia">
+                                        @(string.IsNullOrEmpty(filtro)
+                                            ? "No hay cargos registrados."
+                                            : "No hay cargos registrados en el departamento seleccionado.")
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                foreach (Cargo cargo in cargos)
+                                {
+                                    <tr>
+                                        <td>@Html.Encode(cargo.CodigoDepart) — @Html.Encode(cargo.DescriDepart)</td>
+                                        <td>@Html.Encode(cargo.CodigoCargo)</td>
+                                        <td>@Html.Encode(cargo.DescriCargo)</td>
+                                        <td class="celda-acciones">
+                                            <a class="btn-editar"
+                                               href="@Url.Action("Editar", "Cargo", new {
+                                                   departamento = cargo.CodigoDepart,
+                                                   codigo = cargo.CodigoCargo,
+                                                   filtroDepartamento = filtro
+                                               })">Editar</a>
+
+                                            <form action="@Url.Action("Eliminar", "Cargo")" method="post" class="form-eliminar"
+                                                  onsubmit="return confirm('¿Eliminar este cargo?');">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="filtroDepartamento" value="@Html.Encode(filtro)" />
+                                                <input type="hidden" name="departamento" value="@Html.Encode(cargo.CodigoDepart)" />
+                                                <input type="hidden" name="codigo" value="@Html.Encode(cargo.CodigoCargo)" />
+                                                <button type="submit" class="btn-eliminar">Eliminar</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        }
+
+        <p class="volver-inicio"><a href="@Url.Action("Index", "Bienvenida")">&larr; Volver al inicio</a></p>
+    </main>
+</body>
+</html>
